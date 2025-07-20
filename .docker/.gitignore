@@ -1,2 +1,2 @@
-mysql/*
-nginx/certs/*
+/mysql/*
+/nginx/certs/*
