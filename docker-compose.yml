@@ -11,7 +11,7 @@ services:
             MYSQL_USER: donnellson
             MYSQL_PASSWORD: passwords
         volumes:
-            - ./.docker/mysql:/var/lib/mysql
+            - mysql_data:/var/lib/mysql
         ports:
             - "3306:3306"
         networks:
@@ -84,4 +84,7 @@ services:
     
 networks:
     symfony:
+
+volumes:
+    mysql_data:
 
