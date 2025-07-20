@@ -1,0 +1,78 @@
+@import '../../style.scss';
+
+.comment{
+    @include themify($themes){
+        align-items: flex-start;
+        .rep-list{
+            .small{
+                font-weight: themed('weight',400);
+                color: themed('text',4);
+                font-size: 13px;
+                transition: .5s;
+                margin-top: -8px;
+                &:hover{
+                    color: themed('text',2);
+                    
+                }
+            }
+            .replies-preview{
+                color: themed('text',4);
+                margin-top: -8px;
+                margin-bottom: 10px;
+                transition: .5s;
+                font-weight: themed('weight',400);
+                &:hover{
+                    cursor: pointer;
+                    color: themed('text',2);
+                    small{
+                        color: themed('text',2) !important;
+                    }
+                }
+                .avatars{
+                    >*:not(:first-child){
+                        margin-left: -5px;
+                        background: themed('background',3);
+                        color: themed('text',3);
+                        position: relative;
+                    }
+                    >* img{
+                        border: 3px solid themed('background',3);
+                    }
+                    >.replies-count{
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        min-width: 23px;
+                        height: 23px;
+                        border-radius: 50%;
+                        font-size: 13px;
+                        padding: 3px;
+                        font-weight: themed('weight',600);
+                    }
+                }
+            }
+        }
+    }
+}
+.comment .rep-list .avatar{
+    width: 24px !important;height: 24px !important;
+}
+
+.comment-list .comment:not(:last-child):before {
+  @include themify($themes){
+    border-left: 2px dashed themed('background',5) !important;
+  }
+}
+
+ .comment-list .comment-dark.comment:before {
+  border-left: 2px dashed #353b4e !important;
+}
+
+@media (max-width:768px) {
+    .comment .rep-list .avatar{
+        width: 24px !important;height: 24px !important;
+    }
+    .comment > div > .comment-content .avatar img{
+        width: 32px !important;height: 32px !important;
+    }
+}

@@ -1,0 +1,59 @@
+const express = require('express');
+const { createServer } = require('node:http');
+const { join } = require('node:path');
+const { Server } = require('socket.io');
+
+const app = express();
+const server = createServer(app);
+const io = new Server(server, {
+    cors: {
+        origin: ["https://front.donnell.local"],
+        
+    }
+});
+
+let connectedUsers = []
+
+const addUser = (userId, socketId) => {
+    !connectedUsers.some((user) => user.userId === userId) &&
+        connectedUsers.push({ userId, socketId })
+}
+
+const removeUser = (socketId) => {
+    connectedUsers = connectedUsers.filter(u => u.socketId !== socketId)
+}
+
+
+
+io.on('connection', (socket) => {
+    console.log('a user connected');
+    socket.on('connectUser', userId => {
+        addUser(userId, socket.id)
+        console.log(connectedUsers, 'cUSER')
+    })
+    socket.on('sendMessage', ({ message, receivers, sender }) => {
+        io.to(connectedUsers.filter((cu) => receivers.find((r) => cu.userId = r && !sender)))
+            .emit('arrivalMsg', message)
+    })
+    socket.on('sendNotification', ({ notification, currentUser }) => {
+        try {
+            const connectedUserIds = new Set(connectedUsers.map(conn => conn.userId));
+            const receivers = notification.receivers.filter(r => connectedUserIds.has(r.id)).map(user => connectedUsers.find(conn => conn.userId === user.id)?.socketId).filter(socketId => socketId !== null);
+
+            console.log(receivers, 'RECEIVERS')
+            io.to(receivers)
+                .emit('newNotification', notification)
+            console.log(notification, 'NOTIF')
+        } catch (error) {
+            console.log(error, 'errrr')
+        }
+    })
+    socket.on('disconnect', () => {
+        console.log('a user diconnected');
+        removeUser(socket.id)
+    })
+});
+
+server.listen(3000, () => {
+    console.log('server running at http://localhost:3000');
+});

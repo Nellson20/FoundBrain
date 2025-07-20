@@ -1,0 +1,24 @@
+@import './style.scss';
+
+.Toastify__toast{
+    @include themify($themes){
+        background: themed("background",3) !important;
+        color: themed("text",2) !important;
+        max-height: unset !important;
+        height: unset !important;
+        .Toastify__toast-body{
+            align-items: start;
+        }
+        .Toastify__close-button{
+            color: themed("text",2) !important;
+        }
+        .Toastify__toast-icon{
+            height: 100%;
+            align-self: stretch;
+            max-height: 50px;
+            
+            display: flex;
+            align-items: center;
+        }
+    }
+}

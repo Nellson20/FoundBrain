@@ -1,0 +1,24 @@
+@import '../../style.scss';
+
+.toast{
+    @include themify($themes){
+        min-height: 60px;
+        height: auto;
+        max-height: auto;
+        padding: 10px;
+        border-radius: 5px;
+        background: themed("background",3);
+        color: themed("text",2);
+        box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+        
+        .close-toast{
+            width: 35px;
+            height: 35px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .5s;
+        }
+    }
+}

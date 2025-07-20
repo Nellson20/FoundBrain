@@ -1,0 +1,80 @@
+@import "../../style.scss";
+
+
+.discussion {
+    @include themify($themes) {
+        padding: 8px;
+        background: themed("background",3);
+        border-radius: 5px;
+        margin-bottom: 10px;
+        align-items: center;
+        cursor: pointer;
+        &.active {
+            // background: hsl(276, 91%, 91%);
+            background: themed("trans",purple);
+        }
+        .info {
+            max-width: 100%;
+            min-width: 0;
+            flex-grow: 1;
+            color: themed("text",1);
+            .bottom span {
+                color: themed("text",5);
+            }
+        }
+    }
+}
+
+.discussion:hover {
+    box-shadow: var(--elevation-1);
+}
+
+
+
+.discussion .more-btn {
+    all: unset;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .5s;
+    border-radius: 5px;
+}
+
+.discussion .more-btn:hover {
+    background: #eee;
+}
+
+.discussion .info .top {
+    margin: -5px -4px 0 0;
+
+}
+
+.discussion .info .top .name {
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+
+
+.discussion .info .top .name,
+.discussion .info .bottom span {
+    display: block;
+    white-space: nowrap;
+}
+
+.discussion .info .bottom {
+    max-width: 100%;
+    min-width: 0;
+    margin-top: -3px;
+}
+
+.discussion .info .top .name,
+.discussion .info .bottom .txt {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

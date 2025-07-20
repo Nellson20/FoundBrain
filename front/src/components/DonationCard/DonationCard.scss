@@ -1,0 +1,55 @@
+@import "../../style.scss";
+
+.donation-card {
+    @include themify($themes) {
+        border: themed("border", 2);
+        padding: 10px;
+
+        .imgs {
+            max-height: 200px;
+            border-radius: 5px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas:
+                "a b"
+                "c c";
+            overflow: hidden;
+            gap: 2px;
+            margin-bottom: 10px;
+            >div {
+               
+             
+                >img{
+                    width: 100%;
+                    display: block;
+                    object-fit: cover;
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            >div:nth-child(1) {
+                grid-area: a;
+            }
+
+            >div:nth-child(2) {
+                grid-area: b;
+            }
+
+            >div:nth-child(3) {
+                grid-area: c;
+            }
+        }
+        .capt{
+            color: themed('text',3);
+            h1{
+                font-size: 20px;
+                margin-top: 8px;
+                color: themed('text',0);
+            }
+            h5{
+                color: themed('text',2);
+            }
+        }
+    }
+}

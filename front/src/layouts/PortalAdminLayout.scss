@@ -1,0 +1,82 @@
+@import '../style.scss';
+
+.portal-admin-layout{
+    @include themify($themes){
+        height: 100%;
+
+        >.left{
+            width: 250px;
+            padding: 5px;
+            .top{
+                padding: 5px 5px 0 5px;
+            }
+            h2{
+                font-size: 14px;
+                font-weight: themed("weight",600);
+            }
+            ul{
+                li{
+                    a{
+                        color: themed("text",2);
+                        height: 40px;
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+                        margin-bottom: 5px;
+                        padding: 0 10px;
+                        border-radius: 5px;
+                        user-select: none;
+                        margin-right: 6px;
+                        transition: .5s;
+                        position: relative;
+                        font-weight: themed("weight",600);
+                        &:hover{
+                            background: themed("background",5);
+                        }
+                        &.active{
+                            background: themed("background",5);
+                            color: var(--orange);
+                            &:after{
+                                content: "";
+                                width: 5px;
+                                background: var(--orange);
+                                height: 20px;
+                                border-radius: 5px 0 0 5px;
+                                position: absolute;
+                                right: -10px;
+                            }
+                        }
+                        .ico{
+                            min-width: 35px;
+                            height: 35px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 50%;
+                            background: themed("background",5);
+                        }
+                    }
+                }
+            }
+        }
+        >*{
+            background: themed("background",3);
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+        }
+        >.content{
+            overflow-y: visible !important;
+            
+            padding: 10px;
+            // &:hover{
+            //     overflow-x: auto;
+            // }
+            >*{
+                min-width: 1000px;
+            }
+        }
+        
+    }
+    
+
+}

@@ -1,0 +1,54 @@
+@import "../../style.scss";
+
+
+.modal {
+    @include themify($themes) {
+        &:last-child{
+            background: rgba(20, 20, 20, 0.336);
+            backdrop-filter: blur(3px);
+        }
+        position: fixed;
+
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 100000000000000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        
+        .modalContent {
+            height: auto;
+            
+            >*{
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
+            }
+            
+        }
+        &.scaleModal .modalContent {
+            transform: scale(0.6);
+            animation: scaleModal 0.25s ease-out forwards;
+        }
+        
+    }
+
+}
+
+@keyframes scaleModal {
+    0% {
+        transform: scale(0.6)
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (max-width:768px) {
+    .modal {
+        backdrop-filter: unset;
+        background: white;
+    }
+}

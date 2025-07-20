@@ -1,0 +1,29 @@
+@import "../../style";
+.toggle-button {
+  @include themify($themes) {
+    position: relative;
+    width: 45px;
+    height: 25px;
+    border-radius: 34px;
+    background-color: themed('background',1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    .slider {
+      position: absolute;
+      width: 21px;
+      top: 2px;
+      left: 2px;
+      right: 2px;
+      bottom: 2px;
+      background-color: themed('background',3);
+      transition: 0.4s;
+      border-radius: 26px;
+    }
+    &.toggled {
+      background-color: var(--orange);
+      .slider {
+          transform: translateX(20px);
+        }
+    }
+  }
+}

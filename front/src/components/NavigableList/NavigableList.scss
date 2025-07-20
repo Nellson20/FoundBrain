@@ -1,0 +1,15 @@
+@import '../../style.scss';
+
+.navigable-list{
+    ul{
+        li{
+            a{
+                &.active{
+                    color: #333 !important;
+                    background: var(--main-gradient);
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
+}

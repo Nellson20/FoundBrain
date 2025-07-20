@@ -1,0 +1,27 @@
+@import '../../style.scss';
+
+.select-inpt {
+    @include themify($themes) {
+
+        .fk-select-inpt {
+            color: themed('text', 2);
+            background: themed('background', 5);
+            cursor: default;
+
+            .caret {
+                right: 0;
+                top: 0;
+                height: inherit;
+                aspect-ratio: 1;
+                margin-right: -10px;
+            }
+        }
+
+        color: themed('text', 2);
+
+        .dropdownMenu {
+            max-width: unset !important;
+            width: 100% !important;
+        }
+    }
+}

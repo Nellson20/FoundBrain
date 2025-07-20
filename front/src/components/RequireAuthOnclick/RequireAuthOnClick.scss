@@ -1,0 +1,54 @@
+@import "../../style.scss";
+
+.disconnectedModal {
+    @include themify($themes){
+        background: themed("background",3);
+        width: 450px;
+        max-height: 100vh;
+        max-width: 100vw;
+        border-radius: 5px;
+
+        position: relative;
+
+        .top {
+            height: 55px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid themed("border",2);
+            h2{
+                color: themed("text",0);;
+            }
+        }
+
+        .body {
+            >p{
+                color: themed("text",3);
+                strong{
+                    color: themed("text",1);
+                }
+            }
+            .auth-with-gate-btn {
+                background: var(--main-gradient);
+                width: 100%;
+                height: 50px;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+                font-weight: 600;
+                margin-top: 10px;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                cursor: pointer;
+                color: #222 !important;
+            }
+        }
+        .bottom p{
+            color: themed("text",3);
+        }
+    }
+
+
+}

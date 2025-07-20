@@ -1,0 +1,16 @@
+@import '../../style.scss';
+
+.africa-map{
+    @include themify($themes){
+        svg{
+            stroke: themed("border",1);
+        }
+        path{
+            cursor: pointer;
+            fill: themed("background",4) !important;
+            &:hover{
+                fill: var(--orange) !important;
+            }
+        }
+    }
+}

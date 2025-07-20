@@ -1,0 +1,175 @@
+@import "../../style.scss";
+
+.home-page{
+    @include themify($themes){
+        .home-page main{
+   
+        }
+        main > .left{
+            width: 280px;
+            min-width: 280px;
+            position: sticky;
+            top: 54px;
+            padding-top: 10px;
+            max-height: calc(100vh - 53px);
+            overflow:auto;
+            padding: 18px 5px;
+            background: themed("background",3);
+            box-shadow: var(--elevation-1);
+        }
+        main > .left h3{
+            font-size: 14px;
+            padding: 0 5px;
+            font-weight: 500;
+            margin-left: 6px;
+            line-height: 34px;
+            color: themed("text",3);
+        }
+        main > .left .left-menu li a{
+            font-weight: 600;
+            height: 45px;
+            padding: 0 12px;
+            font-size: 10px !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            white-space: pre;
+            text-overflow: ellipsis;
+            width: 100%;
+            min-width: 0;
+            color: themed("text",2);
+            margin-top: 10px;
+        }
+        main > .left .left-menu li a .ico{
+            width: 35px;
+            height: 35px;
+            background: themed("background",5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+        }
+        main > .left .pages-list li a{
+            font-weight: 600;
+            height: 40px;
+            padding: 0 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            width: 100%;
+            min-width: 0;
+            color: themed("text",2);
+        }
+        main > .left .pages-list li a span{
+            overflow: hidden;
+            white-space: pre;
+            text-overflow: ellipsis;
+            
+        }
+        
+        
+        main > .left ul li:hover{
+            background: themed("background",5);
+            border-radius: 4px;
+        }
+        main > .center{
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 0;
+        }
+        
+        main > .right{
+            width: 280px;
+            min-width: 280px !important;
+            background: themed("background",3);
+            box-shadow: var(--elevation-1);
+            padding:20px 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            color: themed("text",1);
+        }
+        .top-news{
+            border-bottom: 1px solid themed("border",2);
+        }
+        .news-slider{
+            margin-top: 8px;
+        }
+        .news-slider .slide{
+            height: 70px;
+            width: 100px;
+            position: relative;
+        }
+        .news-slider .slide img{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+        .popular-videos-slide-card{
+            border: 1px solid themed("border",2);
+            border-radius: 5px;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .popular-videos-slide-card .slider{
+            height: 130px;
+            background: #eee;
+        }
+        
+        .plan-slider{
+        }
+        .popular-videos-slide-card .slider{
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+        }
+        .popular-videos-slide-card .slider-prev-btn,.popular-videos-slide-card .slider-next-btn{
+            color: white;
+            position: absolute;
+            top: 10px;
+        }
+        .popular-videos-slide-card .slider .slide{
+            height: 130px;
+            position:relative;
+        }
+        .popular-videos-slide-card .slider .slide img{
+            position: absolute;
+            width: inherit;
+            height: inherit;
+            top: 0;
+            left: 0;
+        }
+        
+        .popular-videos-slide-card .slider .slide .list{
+            position: absolute;
+            bottom: 10px;
+            left:10px;
+            color:white;
+            background: rgba(39, 39, 39, 0.699);
+            border-radius:5px;
+            padding: 2px 5px;
+            border-radius: 5px;
+        }
+        .paly-video-btn{
+            position: absolute;
+            bottom: 10px;
+            right:10px;
+            color:white;
+            background: rgba(39, 39, 39, 0.13);
+            backdrop-filter: blur(5px);
+            border-radius:5px;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width:35px;
+            height:35px;
+        }
+    }
+}
+

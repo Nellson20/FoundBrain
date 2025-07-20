@@ -1,0 +1,20 @@
+@import '../../style.scss';
+
+.select-input{
+    @include themify($themes){
+        min-width: 0;
+        input{
+            background: themed("background",3);
+            border-radius: 5px;
+            height: 40px;
+            padding: 0 10px;
+            width: 100%;
+        }
+        .dropdownMenu{
+           min-width: 280px;
+           a{
+            line-height: 45px;
+           }
+        }
+    }
+}

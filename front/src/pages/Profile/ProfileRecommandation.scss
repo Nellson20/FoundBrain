@@ -1,0 +1,151 @@
+@import "../../style.scss";
+
+#profile-recommandation {
+  width: 100%;
+  @include themify($themes) {
+    > .top,
+    > .body .recommandation-item {
+      background: themed("background", 3);
+      border-radius: 5px;
+      box-shadow: var(--elevation-1);
+    }
+    > .top {
+      div {
+        cursor: pointer;
+        .three-dots {
+          background-color: themed("background", 5);
+          padding: 3px 8px;
+          border-radius: 5px;
+        }
+        ul {
+          li a {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            border-radius: 5px;
+            line-height: 20px;
+            padding: 5px;
+          }
+        }
+      }
+    }
+    .top {
+      height: 50px;
+      padding: 0 15px;
+    }
+    .body {
+      margin-top: 5px;
+      .tabs-heading li span {
+        font-size: 14px;
+      }
+      .tabs-heading li {
+        padding: 5px 5px 5px 5px !important;
+      }
+
+      .top {
+        background: themed("background", 3);
+        border-radius: 5px;
+        box-shadow: var(--elevation-1);
+        border-bottom: 1px solid themed("border", 2);
+      }
+      .recommandation-tabs {
+        .top {
+          li {
+            width: auto;
+            &.active::after {
+              width: 50%;
+            }
+          }
+        }
+        .tabs-body {
+          > div {
+            padding: 0;
+          }
+        }
+        .recommandation-item {
+          padding: 15px;
+          margin-top: 5px;
+          .left {
+            width: 250px;
+            .info {
+              > * {
+                display: block;
+              }
+              span {
+                font-size: 13px;
+              }
+              small {
+                font-size: 11px;
+              }
+            }
+          }
+          .right {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}
+.modal-recommandations {
+  @include themify($themes) {
+    .modalContent {
+      width: 100%;
+      max-width: 700px;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      form {
+        width: 100%;
+        border-radius: 5px;
+        background-color: themed("background", 3);
+        .head {
+          border-bottom: 1px solid themed("border", 1);
+          padding: 15px;
+          .close {
+            cursor: pointer;
+          }
+        }
+        .body {
+          padding: 15px;
+          > small {
+            color: var(--orange) !important;
+            display: block;
+            margin-bottom: 15px;
+          }
+          h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+          }
+          > div {
+            margin-bottom: 20px;
+            &:last-child {
+              margin-bottom: 0;
+            }
+            .select {
+              border: 1px solid themed("border", 2);
+              border-radius: 5px;
+              background-color: themed("background", 5);
+              padding: 8px;
+              cursor: pointer;
+
+              &:focus {
+                background-color: themed("background", 1);
+              }
+            }
+            textarea {
+              width: 100%;
+              height: 200px;
+              border-radius: 5px;
+            }
+          }
+        }
+        .footer {
+          padding: 0 15px 15px;
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}

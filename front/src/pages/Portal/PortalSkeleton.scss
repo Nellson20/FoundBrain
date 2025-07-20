@@ -1,0 +1,38 @@
+@import '../../style.scss';
+
+.portal-skeleton {
+    @include themify($themes) {
+        background: white;
+        background: linear-gradient(transparent -20%, themed("background", 3) 135%);
+        >* {
+            >* {
+                width: 100%;
+                max-width: 900px;
+                margin: auto;
+            }
+        }
+
+        .top {
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            background: themed("background", 5);
+            height: 170px;
+
+            >* {
+                position: absolute;
+                left: 20px;
+                bottom: 10px;
+
+            }
+        }
+
+        .nav {
+            margin-top: 20px;
+            padding: 10px 0;
+            box-shadow: var(--elevation-1);
+            border-bottom: 1px solid themed("border",2);
+            background: themed("background", 3);
+        }
+    }
+}

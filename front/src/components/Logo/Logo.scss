@@ -1,0 +1,9 @@
+@import '../../style.scss';
+
+.logo-avatar{
+    @include themify($themes){
+        img{
+            border-radius: 5px !important;
+        }
+    }
+}

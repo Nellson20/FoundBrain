@@ -1,0 +1,9 @@
+@import '../../style.scss';
+
+.multi-phone-option{
+    @include themify($themes){
+        border: 1px solid themed('border',2);
+        border-radius: 5px;
+        padding: 5px;
+    }
+}

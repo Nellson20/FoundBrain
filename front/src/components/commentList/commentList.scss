@@ -1,0 +1,22 @@
+@import "../../style.scss";
+
+.comment-list{
+     @include themify($themes){
+          color: themed("text",1);
+          .comment-list-top{
+               h4{
+                    margin-bottom: 15px;
+               }
+               
+          }
+          .order-comments,.more-comments,.more-comments-loading{
+               color: themed("text",4);
+               margin-bottom: 15px;
+               cursor: pointer;
+          }
+          .empty-comments{
+               margin: 30px auto;
+               max-width: 400px;
+          }
+     }
+}

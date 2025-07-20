@@ -1,0 +1,105 @@
+@import "../../style.scss";
+@media (max-width: 600px) {
+  .music-left {
+    position: fixed !important;
+    z-index: 123;
+  }
+}
+
+.music-left {
+  @include themify($themes) {
+    transition: 0.5s;
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+    // border-right: 1px solid themed("border",2);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    .inside-sticky {
+    //   height: 100vh;
+      background-color: white;
+      .music-menu {
+        border-radius: 0;
+        // width: 100%;
+        .menu-container {
+          display: flex;
+          justify-content: space-between;
+        }
+        ul {
+          display: flex;
+          flex-direction: column;
+        li{
+            display: block
+        };
+        }
+      }
+    }
+
+    .popular-artists-list {
+      background: themed("background", 3);
+      box-shadow: var(--elevation-1);
+      padding: 15px;
+      flex-grow: 1;
+      h2 {
+        font-size: 15px;
+        margin-bottom: 8px;
+      }
+      ul {
+        li {
+          a {
+            color: themed("text", 2);
+            display: flex;
+            align-items: center;
+            // gap: 10px;
+            border-radius: 5px;
+            transition: 0.5s;
+            margin: 0 -10px;
+            padding: 5px 10px;
+            font-weight: themed("weight", 600);
+            &:hover {
+              background: themed("background", 5);
+            }
+          }
+        }
+      }
+    }
+    &.opened {
+      .hamburgerMenu {
+        display: none;
+      }
+      .close {
+        display: block;
+      }
+    }
+    &.closed {
+      width: 70px;
+      min-width: 70px;
+      max-width: 70px;
+      .inside-sticky {
+        .music-menu {
+          .menu-container {
+            .menu {
+              display: none;
+            }
+            .close {
+              display: none;
+            }
+          }
+          ul {
+            li {
+              padding: 5px 3px;
+            }
+          }
+          box-shadow: none;
+        }
+      }
+      span {
+        display: none;
+      }
+      .popular-artists-list {
+        display: none;
+      }
+    }
+  }
+}

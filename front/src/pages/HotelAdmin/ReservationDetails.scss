@@ -1,0 +1,143 @@
+@import "../../style.scss";
+
+.reservation-details {
+    width: 1200px;
+    margin: auto;
+  @include themify($themes) {
+    .btn-purple {
+      background-color: transparent;
+      color: themed("mainColor", purple);
+      border: 1px solid themed("mainColor", purple);
+    }
+    h2 {
+      padding: 15px 0;
+    }
+    .reservation-left {
+      width: 800px;
+    }
+    .reservation {
+      span {
+        font-weight: 700;
+        margin-top: 7px;
+      }
+      .left {
+        width: 33%;
+        > div {
+          margin-bottom: 15px;
+        }
+        .important {
+          font-size: 16px;
+        }
+      }
+      .right {
+        flex: 1;
+        > div {
+          margin-bottom: 15px;
+        }
+        a {
+          display: block;
+          font-size: 15px;
+        }
+        .nom {
+          margin-top: 7px;
+          img {
+            width: 23px;
+            box-shadow: var(--elevation-1);
+            align-self: flex-start;
+          }
+          p {
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+        .deux-colone {
+          > div {
+            width: 50%;
+          }
+        }
+      }
+    }
+    .tarif {
+      .head {
+        padding-bottom: 15px;
+        border-bottom: 1px solid themed("border", 2);
+        > div {
+          span {
+            font-size: 15px;
+            font-weight: 600;
+          }
+        }
+      }
+      .bottom {
+        margin-top: 15px;
+        .left {
+          > div {
+            margin-bottom: 15px;
+          }
+          span {
+            font-weight: 600;
+            margin-top: 7px;
+          }
+        }
+        .right {
+            width: 100%;
+          table {
+            width: 100%;
+            border-collapse: collapse;
+            tr {
+              border-bottom: 1px solid #ddd;
+              &:last-child {
+                border: none;
+              }
+            }
+            th,
+            td {
+              font-size: 14px;
+              color: themed("text", 3);
+              padding: 8px;
+              text-align: left;
+              &:last-child {
+                text-align: end;
+              }
+            }
+            .total {
+              background-color: themed("background", 5);
+            }
+          }
+        }
+      }
+    }
+    .reservation-right{
+        flex: 1;
+        .action{
+            button{
+                width: 91%;
+                margin-bottom: 15px;
+            }
+            h3{
+                font-size: 15px;
+                margin-bottom: 15px;
+            }
+            .paiement{
+                button +div{
+                    margin-bottom: 15px;
+                    small{
+                        color: map-get($red,primary ) !important;
+                    }
+                }
+                .status{
+                    .selection{
+                        padding: 15px;
+                        height: 40px;
+                        border: 1px solid themed('border',1);
+                        border-radius: 5px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+
+        }
+
+    }
+  }
+}

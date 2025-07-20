@@ -1,0 +1,48 @@
+@import "../../style.scss";
+
+
+.dropdownMenu {
+  @include themify($themes) {
+    display: none;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.419);
+    background: themed("background", 3);
+    border: 1px solid themed("border", 2);
+    padding: 8px;
+    border-radius: 6px !important;
+    z-index: 10000000 !important;
+    min-width: 250px;
+
+    &.shown {
+      display: block;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: themed('background', 5) !important;
+      border-radius: 8px !important;
+    }
+
+    &::-webkit-scrollbar-button:single-button {
+      display: none;
+    }
+
+    ul li {
+      margin: 0 0 4px 0 !important;
+      &:last-child {
+        margin: 0;
+      }
+      >*{
+        width: 100%;
+      }
+      a {
+        font-weight: themed("weight", 600);
+        color: themed('text',2);
+        padding: 0 10px;
+      }
+    }
+  }
+}

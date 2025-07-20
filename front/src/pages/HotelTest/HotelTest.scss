@@ -1,0 +1,116 @@
+nav{
+    align-items: center;
+    gap: 25px;
+    .menu{
+        display: none;
+    }
+
+}
+
+.side-nav{
+    width: 200px;
+    background: red !important;
+    height: 100vh !important;
+    transition: 0.5s !important;
+    position: fixed;
+    max-width: 100%;
+    right:-200px;
+    z-index: 3;
+    top: 0 !important;
+    &.open{
+        right:  0;
+        top: 0;
+    }
+}
+
+
+.content-test{
+    position: relative;
+    border: 1px solid black;
+    z-index: 2;
+    .contenu-item{
+        position: absolute;
+        transition: 0.5s;
+        z-index: -1;
+        top: 5px;
+        &.azert{
+            bottom: 0 !important;
+            z-index: 2 !important;
+            top: 500px;
+        }
+    }
+}
+.accordeon{
+    padding: 15px;
+    border: 1px solid black;
+    margin: 15px;
+    transition: 10s;
+    .accordeon-content{
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 4s ease-out;
+        &.open{
+            max-height: 200px; /* ou toute autre valeur que vous souhaitez */
+
+        }
+    }
+}
+
+@media (max-width:720px){
+   
+   .testa{
+    ul{
+        justify-content: flex-end;
+
+        li{
+            display: none !important;
+        }
+        .menu{
+            display: block !important;
+            &.test{
+                position: fixed;
+                top: 0 !important;
+                z-index: 2 ;
+            }
+        }
+    }
+   }
+   
+}
+
+.img {
+    position: relative;
+
+    /* La classe .img ne contient plus le pseudo-élément ::before */
+    img {
+        width: 250px;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    /* Nouveau conteneur pour le pseudo-élément ::before */
+    .hover-container::before {
+        content: '';
+        display: block;
+        background: rgba(0, 0, 0, 0.458);
+        height: 250px;
+        width: 250px;
+        position: absolute;
+    }
+
+    /* Utilisation de :hover sur le conteneur pour changer la couleur du pseudo-élément ::before */
+    .hover-container:hover::before {
+        background: rgba(255, 0, 0, 0.243);
+    }
+}
+
+
+.progress-bar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: 
+      radial-gradient(closest-side, white 79%, transparent 80% 100%),
+      conic-gradient(hotpink 75%, pink 0);    
+  }
+  

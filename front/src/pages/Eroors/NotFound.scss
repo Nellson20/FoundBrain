@@ -1,0 +1,44 @@
+@import '../../style.scss';
+
+.error-page{
+    @include themify($themes){
+        min-height: calc(100vh - var(--topbar-height));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .center{
+            width: 600px;
+            max-width: 100%;
+            height: 300px;
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+            background: themed('background',3);
+            .ico{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: themed('background',5);
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                img{
+                    width: 60%;
+                    height: 60%;
+                    border-radius: inherit;
+                }
+            }
+            h4{
+                color: themed('text',1);
+            }
+            p{
+                color: themed('text',3);
+                margin-bottom: 5px;
+            }
+            >*{
+                max-width: 500px;
+                text-align: center;
+            }
+
+        }
+    }
+}

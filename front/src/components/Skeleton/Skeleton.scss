@@ -1,0 +1,23 @@
+@import "../../style.scss";
+
+.skeleton {
+    @include themify($themes) {
+        background: linear-gradient(80deg,themed("background",5) 40%,rgba(255, 185, 55, 0.329),themed("background",5) 60%);
+    background-size: 200% 100%;
+    background-attachment: fixed !important;
+    background-position: 0% 0%;
+    animation: moveGradient 1s linear infinite;
+
+    }
+}
+
+@keyframes moveGradient {
+    0% {
+        background-position: 120% 0%;
+        
+    }
+
+    100% {
+        background-position: 20%  0%;
+    }
+}

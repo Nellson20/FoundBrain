@@ -1,0 +1,80 @@
+@import '../../style.scss';
+
+.select-search {
+    @include themify($themes) {
+        .fake-select {
+            .inpt{
+                border: none;
+                background: themed("background",5);
+                display: flex;
+                align-items: center;
+                padding: 0 10px;
+                min-width: 200px;
+                color: themed("text",1);
+                user-select: none;
+                gap: 5px;
+                font-size: 14px;
+                padding-right: 30px;
+            }
+            .selected{
+                .fake-input{
+                    .chevron{
+                        svg{
+                            transform: rotate(-180deg);
+                        }
+                    }
+                }
+            }
+            .fake-input{
+                position: relative;
+                .chevron {
+                    color: themed("text", 3);
+                    position: absolute;
+                    height: 100%;
+                    width: 35px;
+                    background: themed("background",5);
+                    top: 0;
+                    right: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 5px;
+                    svg{
+                        transition: .5s;
+                        transform-origin: center;
+                    }
+                }
+                input{
+                    user-select: none;
+                    cursor: default;
+                }
+            }
+        }
+
+        .dropdownMenu {
+            max-width: unset;
+            width: 100% !important;
+            max-height: 300px;
+            overflow-y: auto;
+            ul li a {
+                display: flex;
+                font-weight: 600;
+                padding: 0 15px;
+                height: 35px;
+                border-radius: 5px;
+                -webkit-user-select: none;
+                user-select: none;
+                align-items: center;
+                gap: 10px;
+            }
+        }
+
+        .select-search-dropdown-menu {
+            .searchbar {
+                padding: 0 0 5px 0 !important;
+            }
+
+            .select-search-list {}
+        }
+    }
+}

@@ -1,0 +1,62 @@
+@import "../../style.scss";
+
+.home-banner-slider {
+    @include themify($themes) {
+        padding: 20px 0 30px 15px;
+        background: themed("background", 3);
+        box-shadow: var(--elevation-1);
+        border-bottom: 1px solid themed("border", 2);
+
+        .home-banner-top {
+            margin: 20px 0 15px 0;
+            padding-right: 15px;
+        }
+
+        .home-banner-top .heading h1 {
+            margin: 0 !important;
+            color: themed("text", 2)
+        }
+
+        .add-invest {
+            color: themed("text", 3);
+            border-radius: 5px;
+            height: 204px;
+
+            >div {
+                background: var(--main-gradient);
+                width: 100%;
+                height: 100%;
+                border-radius: 5px;
+                display: flex;
+                padding: 1px;
+                >div {
+                    flex-grow: 1;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+                    background: themed("background",3);
+                    border-radius: 6px;
+                    gap: 8px;
+                    cursor: pointer;
+                    transition: .5s;
+                    .ico {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        background: themed("background", 5);
+                        svg{
+                            display: block;
+                        }
+                    }
+                    &:hover{
+                        filter: brightness(1.05);
+                    }
+                }
+            }
+        }
+    }
+}

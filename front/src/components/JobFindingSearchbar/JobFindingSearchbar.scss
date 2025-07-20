@@ -1,0 +1,176 @@
+@import "../../style.scss";
+
+
+.job-finding-searchbar {
+    @include themify($themes) {
+        
+        
+        .job-title {
+            position: relative;
+            flex-grow: 1 !important;
+            .suggest-inpt {
+                position: unset !important;
+
+                .suggest-list {
+                    left: -10px;
+                    top: 40px;
+                    border-radius: 0 0 5px 5px;
+                    width: calc(100% + 10px) !important;
+
+                    li {
+                        >* {
+                            padding-left: 25px;
+                        }
+                    }
+
+                }
+            }
+        }
+        .suggest-inpt {
+            position: unset !important;
+
+            .suggest-list {
+                left: -10px;
+                top: 40px;
+                border-radius: 0 0 5px 5px;
+                width: calc(100% + 10px) !important;
+
+                li {
+                    >* {
+                        padding-left: 25px;
+                    }
+                }
+
+            }
+        }
+
+        .search-form {
+            bottom: 30px;
+            height: 50px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: stretch;
+            align-items: center;
+            background: themed("background", 6);
+            box-shadow: var(--nav-elevation);
+            padding: 0 10px;
+            color: themed("text", 4);
+            font-weight: 400;
+            border-top: 1px solid themed("border", 2);
+            margin-top: 20px;
+            >*{
+                &:not(.job-title){
+                    width: 120px !important;
+                    min-width:  120px !important;
+                    padding: 0 10px;
+                }
+                .job-search-btn{
+                    padding-right: 0 !important;
+                    display: flex;
+                    justify-content: end;
+                }
+                position: relative;
+                *{
+                    .inpt{
+                        background: none !important;
+                        min-width: 0 !important;
+                    
+                    }
+                    .chevron{
+                        background: none !important;
+                    }
+                }
+                &:not(:last-child):after{
+                    content:"";
+                    position: absolute;
+                    width: 1px;
+                    height: 20px;
+                    top: 10px;
+                    background: #a1a1a144;
+                    right: 1px;
+                }
+            }
+            .suggest-inpt {
+                flex-grow: 1;
+
+                input {
+                    border-radius: 0;
+                }
+            }
+        }
+
+        @media (max-width:768px) {
+            & {
+                position: static;
+            }
+        
+            & .search-form {
+                flex-wrap: wrap;
+                height: auto !important;
+                padding: 0 !important;
+                gap: 0 !important;
+
+            }
+        
+            & .search-form>* {
+                height: 45px;
+                display: flex;
+                width: calc(50% - 4px);
+                align-items: center;
+                padding: 0 10px;
+                border-radius: 5px;
+                margin: 0 !important;
+            }
+            & .search-form > *:nth-child(1),& .search-form > *:nth-child(2){
+                width: 100% !important;
+                border-bottom: 1px solid #a1a1a144 !important;
+                margin-bottom: 0 !important;
+                border-radius: 0 !important;
+            }
+            & .search-form > *:not(:nth-child(3)):after{
+                display: none !important;
+            }
+            & .search-form>*:last-child {
+                border-right: none;
+                padding: 0;
+                height: unset;
+            }
+            & .search-form > *:last-child{
+                padding: 8px;
+                width: unset !important;
+                min-width: unset !important;
+                button{
+                    height: 35px !important;
+                    width: 37px !important;
+                    padding: 0 !important;
+                    svg{
+                        color: white !important;
+                    }
+                }
+            }
+            & .search-form > *:nth-child(3),& .search-form > *:nth-child(4){
+                flex: 1 !important;
+                flex-grow: 1;
+            }
+        
+        }
+
+
+
+    }
+}
+
+.job-finding-searchbar>div {
+    max-width: 900px;
+}
+
+
+.job-finding-searchbar .search-form>*:not(:last-child) {
+    flex-grow: 1;
+}
+
+.job-finding-searchbar>* svg {
+    color: var(--orange);
+    min-width: 1em;
+}
+

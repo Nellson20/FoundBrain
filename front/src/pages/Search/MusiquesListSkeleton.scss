@@ -1,0 +1,25 @@
+@import '../../style.scss';
+
+.musiques-list-skeleton{
+    @include themify($themes){
+        >*{
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+            background: themed("background",3);
+        
+        }
+        >.center{
+            padding: 15px;
+            .right{
+                flex: 1;
+                height: 100px;
+            }
+        }
+        >.top{
+            height: 50px;
+        }
+        >.bottom{
+            height: 50px;
+        }
+    }
+}

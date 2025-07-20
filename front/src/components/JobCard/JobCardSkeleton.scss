@@ -1,0 +1,13 @@
+@import '../../style.scss';
+
+.job-card-skeleton{
+    @include themify($themes){
+        background: themed("background",3);
+        border-radius: 5px;
+        box-shadow: var(--elevation-1);
+        margin-bottom: 5px;
+        .top{
+            border-bottom: 1px solid themed("border",2);
+        }
+    }
+}

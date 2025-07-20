@@ -1,0 +1,111 @@
+@import "../../style.scss";
+
+.picture-show-modal {
+  @include themify($themes) {
+    width: 90%;
+    margin: auto;
+    display: flex;
+
+    .left {
+      width: 60% ;
+      position: relative;
+      .image {
+        display: table;
+        overflow: hidden;
+          border-radius: 5px 0 0 5px;
+
+        .banner {
+          position: absolute;
+          background: rgba(26, 26, 26, 0.315);
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: inherit;
+        }
+        img {
+          width: 100%;
+          object-fit: cover;
+          margin-bottom: -5px;
+          border-radius: inherit;
+          aspect-ratio: 10/7;
+        }
+      }
+      .next-slide-btn,
+      .prev-slide-btn {
+        background: rgba(84, 84, 84, 0.5);
+        color: white;
+        width: 35px;
+        height: 35px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 10px;
+      }
+      .prev-slide-btn {
+        left: 10px;
+      }
+      .next-slide-btn {
+        right: 10px;
+      }
+    }
+    .right {
+      flex: 1;
+      padding: 5px 5px 15px 15px;
+      position: relative;
+      h3 {
+        color: themed("text", 2);
+        font-size: 16px;
+      }
+      .head {
+        .close {
+          color: themed("text", 2);
+          cursor: pointer;
+        }
+      }
+      .body {
+        padding-right: 30px;
+        .keywords {
+          input {
+            height: 35px;
+            padding: 15px;
+            border-radius: 5px;
+            width: 250px;
+            margin-top: 5px;
+          }
+          .list{
+            ul{
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+                li{
+                    display: flex;
+                    align-items: center;
+                    gap: 5;
+                    background-color: var(--orange);
+                    border-radius: 5px;
+                    color: white;
+                    padding: 5px 10px 5px 0;
+                    svg{
+                        cursor: pointer;
+                    }
+                }
+            }
+          }
+        }
+        .accommodation-type {
+          h3 {
+            margin-bottom: 10px;
+          }
+        }
+      }
+      .bottom {
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  }
+}

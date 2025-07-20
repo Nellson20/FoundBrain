@@ -1,0 +1,9 @@
+@import "../../style.scss";
+.text{
+    @include themify($themes) {
+        span{
+            color: themed('mainColor',purple);
+            cursor: pointer;
+        }
+    }
+}

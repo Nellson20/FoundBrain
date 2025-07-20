@@ -1,0 +1,399 @@
+@import "../style.scss";
+
+#profile-page {
+    display: flex;
+
+    @include themify($themes) {
+
+        >.left {
+            color: themed("text", 1);
+            flex-grow: 1;
+
+            >.content {
+                padding-top: 15px;
+                margin: 0 auto;
+                max-width: 900px;
+
+                >.top {
+                    
+                    
+                    .profile-user {
+                        padding: 0 20px;
+                        width: 100%;
+                        margin-top: 10px;
+                        
+                        .avatar {
+                            margin-top: -25px;
+                            .online{
+                                min-width: 13px !important;
+                                min-height: 13px !important;
+                                transform: unset !important;
+                            }
+                            >img {
+                                border: 1px solid themed("border", 2);
+                                background: themed("background", 6);
+                                border-radius: 6px !important;
+                            }
+                        }
+
+                        .info {
+
+                            >.name {
+                                font-size: 20px;
+                            }
+
+                            >.job {
+                                color: themed("text", 4);
+                            }
+                        }
+                    }
+
+                    .profile-bio {
+                        margin-top: 10px;
+                        padding: 0 20px;
+                    }
+
+                    >.profile-nav {
+                        background: themed("background", 3);
+                        border-radius: 6px;
+                        padding: 8px;
+                        margin-top: 15px;
+                        max-width: 100vw;
+                        overflow: auto;
+
+                        >ul {
+                            display: flex;
+
+                            >li {
+                                flex: 1;
+                                    max-width: 90px;
+                                    min-width: 90px;
+                                a {
+                                    display: flex;
+                                    flex-direction: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                    width: 100%;
+                                    min-width: 0;
+                                    
+                                    height: 100%;
+                                    border-radius: 5px;
+                                    padding: 3px 0;
+                                    font-weight: themed("weight", 700);
+                                    color: themed("text",0);
+                                    &.active {
+                                        background: themed("background", 5);
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                >.bottom {
+                    margin-top: 15px;
+                    >.right {
+                        flex-grow: 1;
+                        min-width: 0 !important;
+                        .timeline{
+                            padding-top: 0 !important;
+                        }
+                    }
+
+                    >.left {
+                        max-width: 260px !important;
+                        min-width: 260px !important;
+
+                        .plan-slider {
+                            background: var(--main-gradient);
+                            padding: 15px;
+                            border-radius: 5px;
+
+                            .slick-slider {
+                                margin-right: -15px;
+                            }
+
+                            .plan-card {
+                                background: rgba(41, 5, 41, 0.411);
+                                border: none;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                @media (max-width:758px) {
+                    max-width: 100vw;
+                }
+
+            }
+
+        }
+
+        >.right {
+            width: 320px;
+            min-width: 320px;
+        }
+    }
+}
+
+
+
+
+// #profile-page {
+//     @include themify($themes) {
+//         display: flex;
+
+//         >.left {
+//             width: 260px;
+//             height: calc(100vh - var(--topbar-height));
+//             background: themed("background", 3);
+//             box-shadow: var(--elevation-1);
+//             position: sticky;
+//             top: 58px;
+
+//             .profile-name {
+//                 font-size: 20px;
+//                 margin-top: 25px;
+//                 color: themed("text", 1);
+//             }
+
+//             .profile-job {
+//                 color: themed("text", 4);
+//             }
+
+//             .profile-progress {
+//                 border: 1px solid themed("border", 2);
+//                 border-radius: 6px;
+//                 padding: 10px;
+//                 margin-top: 15px;
+//                 display: flex;
+//                 flex-direction: column;
+//                 width: 100%;
+
+//                 .progress-bar {
+//                     height: 5px;
+//                     background: themed("background", 5);
+//                     border-radius: 5px;
+//                     margin-top: 10px;
+//                 }
+
+//                 >div {
+//                     >b {
+//                         color: themed("text", 2);
+//                     }
+//                     >span{
+//                         color: themed("text", 4);
+//                     }
+//                 }
+
+//             }
+
+//             .profile-bio {
+//                 margin-top: 10px;
+//                 color: themed("text", 1);
+//             }
+//         }
+
+//         .bg-ico {
+//             background: themed("background", 5);
+//             width: 35px;
+//             height: 35px;
+//             border-radius: 50%;
+//             display: flex;
+//             align-items: center;
+//             justify-content: center;
+//             color: themed("text", 1);
+//         }
+//     }
+// }
+
+// .profile-cover {
+//     height: 260px;
+//     margin: auto;
+//     border-radius: 5px;
+//     background: #eee;
+//     position: relative;
+// }
+
+// .edit-profile-banner-btn {
+//     position: absolute;
+//     right: 15px;
+//     top: 15px;
+//     color: #333;
+//     height: 35px;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     gap: 5px;
+//     cursor: pointer;
+//     border-radius: 5px;
+//     padding: 0 16px;
+//     background: white;
+//     box-shadow: var(--elevation-1);
+// }
+
+// .profile-cover .gradient {
+//     height: 70%;
+//     width: 100%;
+//     position: absolute;
+//     bottom: 0;
+//     left: 0;
+//     background: linear-gradient(transparent, rgba(17, 15, 19, 0.904));
+// }
+
+// .profile-cover img {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     object-fit: cover;
+// }
+
+// #profile-page>.left>.top {
+
+//     padding: 40px 10px 0 10px;
+// }
+
+// #profile-page>.left>.bottom>ul>li {
+//     margin-bottom: 20px;
+// }
+
+// #profile-page>.center .content {
+//     margin: 0 auto;
+//     justify-content: center;
+//     position: relative;
+//     margin: auto;
+//     max-width: 1020px;
+//     gap: 30px;
+// }
+
+// .gradient-menu {
+
+//     margin: auto;
+//     margin-top: -100px;
+//     max-width: 1020px;
+
+// }
+
+// .gradient-menu ul {
+//     display: flex;
+//     height: 75px;
+//     align-items: center;
+//     font-weight: 400;
+//     position: relative;
+// }
+
+// .gradient-menu ul li {
+//     color: white;
+//     margin-right: 35px;
+// }
+
+// .gradient-menu ul li span {
+//     font-size: 14px;
+// }
+
+
+
+// .profile-progress .progress-bar>div {
+//     background: var(--orange);
+//     width: 60%;
+//     border-radius: inherit;
+//     height: inherit;
+// }
+
+// #profile-page .plan-slider {
+//     background: var(--main-gradient);
+//     padding: 15px;
+//     border-radius: 5px;
+// }
+
+// #profile-page .plan-slider .plan-card {
+//     background: rgba(41, 5, 41, 0.411);
+//     border: none;
+//     color: white;
+// }
+
+// #profile-page .plan-slider .slick-slider {
+//     margin-right: -15px;
+// }
+
+// #profile-page .plan-slider .floating-btn {
+//     position: relative;
+//     background: rgba(41, 5, 41, 0.411);
+//     backdrop-filter: blur(5px);
+//     color: white;
+//     border: none;
+//     left: 0;
+//     margin-bottom: 10px;
+//     z-index: 100;
+//     box-shadow: none;
+//     display: inline-flex;
+//     margin-right: 10px;
+// }
+
+
+
+
+
+
+
+
+
+
+
+// #profile-page>.top>div>.body>.right {
+//     position: absolute;
+//     right: 0;
+//     top: 10px;
+// }
+
+// #profile-page>.center>.content>.right {
+//     width: 390px;
+//     min-width: 390px;
+// }
+
+// .profile-photos {
+//     background: white;
+//     border-radius: 5px;
+//     box-shadow: var(--elevation-1);
+//     height: 300px;
+// }
+
+// @media (max-width:768px) {
+//     #profile-page {
+//         display: block !important;
+//     }
+
+//     #profile-page>.left {
+//         width: 100%;
+//         height: auto;
+//         background: white;
+//         box-shadow: var(--elevation-1);
+//         position: static;
+//     }
+
+//     #profile-page>.center .content {
+//         flex-direction: column;
+//     }
+
+//     .profile-cover {
+//         display: none;
+//     }
+
+//     .gradient-menu {
+//         margin-top: 0;
+//     }
+
+//     #profile-page>.center>.content>.right {
+//         width: 100%;
+//         min-width: 360px;
+//     }
+// }
+
+
+
+
+// .edit-profile-btn {
+//     flex-grow: 1;
+//     margin-top: 15px;
+// }

@@ -1,0 +1,110 @@
+@import '../../style.scss';
+
+
+.slider-nav {
+    @include themify($themes) {
+        position: relative;
+        padding: 0 25px;
+        user-select: none !important;
+        margin: 0 0 15px 0;
+
+        .prev,
+        .next {
+            position: absolute;
+            background: themed("background", 4);
+            color: themed("text", 1);
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: var(--elevation-1);
+            z-index: 2;
+            cursor: pointer;
+            opacity: 0;
+            transition: .5s;
+        }
+
+        &:hover {
+
+            .prev,
+            .next {
+                opacity: 1;
+            }
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        >ul {
+            padding: 3px 0;
+            padding-left: 5px;
+
+            gap: 13px;
+            font-weight: 600;
+            color: themed("text", 1);
+            width: 100%;
+            min-width: 0 !important;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+            border-radius: 5px;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+
+
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+
+            & li {
+                background: themed("background", 4);
+                border: themed("border", 2);
+                padding: 6px 10px;
+                border-radius: 5px;
+                box-shadow: var(--elevation-1);
+                max-width: 120px;
+                cursor: pointer;
+                transition: .5s;
+
+                >* {
+                    white-space: pre;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                    display: block;
+                }
+            }
+
+            & li.active {
+                background: themed("trans", orange);
+                color: var(--orange);
+                box-shadow: none;
+                border: 1px solid #ffc47248;
+            }
+        }
+
+        @media (max-width:768px) {
+            padding: 0;
+            >ul{
+                padding: 0 10px;
+                overflow-x: auto;
+            }
+            .prev,
+            .next {
+                display: none;
+            }
+        }
+    }
+}

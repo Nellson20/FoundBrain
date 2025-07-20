@@ -1,0 +1,90 @@
+@import "../style.scss";
+
+#portal-dashboard-layout {
+    @include themify($themes) {
+        display: flex;
+        >.left {
+            max-width: 260px;
+            min-width: 260px;
+            position: sticky;
+            padding: 15px 5px 15px 5px;
+
+            top: var(--topbar-height);
+            background: themed("background", 3);
+            
+            color: themed("text", 3);
+            box-shadow: var(--elevation-1);
+            height: calc(100vh - var(--topbar-height));
+
+            h3,
+            h5 {
+                color: themed("text", 1);
+            }
+
+            .top {
+                padding: 0 5px;
+            }
+
+            .bottom {
+                margin-top: 10px;
+                display: flex;
+                justify-content: stretch;
+
+            }
+
+            .create-btn {
+                width: 100% !important;
+                background: var(--main-gradient);
+                color: #333 !important;
+                font-weight: themed("weight", 700);
+
+                &.active {
+                    opacity: 0.6;
+                    cursor: none;
+                    pointer-events: none;
+                }
+            }
+
+        }
+
+        >.center {
+            flex-grow: 1;
+            min-width: 0;
+            overflow-y: visible;
+        }
+
+        .my-portals {
+            margin-top: 15px;
+
+
+            li {
+                a {
+                    margin-bottom: 5px;
+                    margin-right: -6px;
+                    color: themed("text", 1);
+                    font-weight: themed("weight", 700) !important;
+                    border-radius: 5px;
+                    height: 40px;
+                    padding: 0 6px;
+
+                    &:hover,
+                    &.active {
+                        background: themed("background", 5);
+                    }
+
+                    svg {
+                        position: absolute;
+                        right: 10px;
+                    }
+
+                    .avatar {
+                        img {
+                            border-radius: 5px !important;
+                            border: 1px solid themed("border", 2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

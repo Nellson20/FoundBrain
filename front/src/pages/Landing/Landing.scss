@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "../../style.scss";
+
+// #topbar.transparent{
+//     border: none !important;
+//     background: var(--main-gradient) !important;
+//     background-attachment: fixed !important;
+//     background-size: 100vw 100vh !important;
+//     box-shadow: none;
+// }
+#landing-page {
+    @include themify($themes){
+        > .banner{
+            background: var(--main-gradient);
+            background-attachment: fixed;
+            background-size: 100vw 100vh;
+            height: calc(100vh - 58px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h1{
+                font-family: 'Archivo Black', sans-serif;
+                font-size: 45px;
+                margin-top: 0;
+            }
+            >.center{
+                display: flex;
+                max-width: 950px;
+                align-items: center;
+                gap: 8px;
+                .logo{
+                    img{
+                        width: 200px;
+                    }
+                }
+                .img {
+                    img{
+                        display: block;
+                        margin-top: 30px;
+                    }
+                }
+                .btns{
+                    margin-top: 20px;
+                    button{
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    }
+}

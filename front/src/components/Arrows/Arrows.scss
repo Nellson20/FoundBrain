@@ -1,0 +1,23 @@
+
+.custom-left,
+.custom-right {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: rgba(13, 13, 13, 0.573);
+    color: white !important;
+}
+
+.custom-left {
+    left: 20px;
+
+}
+
+.custom-right {
+    right: 20px;
+
+}
+

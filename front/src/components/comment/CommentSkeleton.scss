@@ -1,0 +1,44 @@
+@import '../../style.scss';
+
+.comment-skeleton {
+    @include themify($themes) {
+        .left {
+            border-radius: 10px;
+            background: themed('background', 5);
+            padding: 15px 10px;
+        }
+
+        .triangle {
+            width: 15px;
+            height: 18px;
+            position: absolute;
+            left: -6px;
+            top: 0px;
+            overflow: hidden;
+        }
+
+        .triangle::before {
+            content: "";
+            position: absolute;
+            left: -1px;
+            top: 0;
+            width: 10px;
+            height: 9px;
+            background-attachment: fixed;
+        }
+
+        .triangle:after {
+            background: themed("background", 5);
+            border: 1px solid themed("background", 3);
+            content: "";
+            position: absolute;
+            width: calc(100% * 2);
+            top: -8px;
+            left: -80%;
+            height: 180%;
+            transform-origin: center;
+            transform: rotate(55deg) translate(0, -52%);
+            pointer-events: none;
+        }
+    }
+}

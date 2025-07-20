@@ -1,0 +1,15 @@
+@import '../../style.scss';
+
+.person-slide-item{
+    @include themify($themes){
+        background: themed('background',3);
+        border-radius: 5px;
+        box-shadow: var(--elevation-1);
+        .right{
+            .name{
+                font-size: 14px;
+                color: themed('text',1);
+            }
+        }
+    }
+}

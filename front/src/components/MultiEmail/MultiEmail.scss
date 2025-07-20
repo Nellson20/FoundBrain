@@ -1,0 +1,11 @@
+@import '../../style.scss';
+
+.multi-email {
+    @include themify($themes) {
+        .multi-email-option {
+            border: 1px solid themed('border', 2);
+            padding: 5px;
+            border-radius: 6px;
+        }
+    }
+}

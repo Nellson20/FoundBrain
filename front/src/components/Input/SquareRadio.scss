@@ -1,0 +1,44 @@
+@import '../../style.scss';
+
+
+
+.square-radio-ref {
+    @include themify($themes) {
+        border: 1px solid themed('border', 2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        border-radius: 3px;
+        user-select: none;
+        color: themed('text',2);
+        font-weight: themed('weight',500);
+        &:hover{
+            border-color: themed('border',1);
+            color: themed('text',3);
+        }
+        .checked-mark {
+            background: themed('mainColor', purple);
+            color: white;
+            width: 15px;
+            height: 15px;
+            right: -7px;
+            top: -7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            display: none;
+        }
+    }
+}
+
+.square-radio:checked+.square-radio-ref {
+    @include themify($themes) {
+        .checked-mark {
+            display: block;
+        }
+        color: themed('mainColor', purple);
+        border: 1px solid themed('mainColor', purple);
+    }
+}

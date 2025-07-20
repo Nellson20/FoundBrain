@@ -1,0 +1,58 @@
+@import '../../style.scss';
+
+.do-suggest-inpt {
+    @include themify($themes) {
+        position: relative;
+
+        >* {
+            position: relative;
+        }
+
+        >.suggest-list-parent {
+            pointer-events: none;
+            position: absolute;
+            &.shown {
+                pointer-events: all;
+
+                >.suggest-list {
+                    transform: scale(1);
+                    opacity: 1;
+                }
+            }
+
+            >.suggest-list {
+                padding: 8px;
+                
+                top: 100%;
+                width: 100%;
+                border: 1px solid themed('border', 2);
+                border-radius: 5px;
+                background: themed('background', 3);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.419);
+
+                transition: .2s;
+                transform: scale(0.6);
+                transform-origin: center;
+                transition-property: transform, opacity !important;
+                transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                opacity: 0;
+
+                li {
+                    display: flex;
+                    align-items: center;
+                    padding: 0 10px;
+                    height: 38px;
+                    font-weight: themed('weight', 500);
+                    color: themed('text', 1);
+                    cursor: pointer;
+
+                    a {
+                        all: inherit;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+    }
+}

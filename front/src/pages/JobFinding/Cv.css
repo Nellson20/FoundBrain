@@ -1,0 +1,70 @@
+.cv{
+    display: flex;
+    background: white;
+    padding: 55px 20px;
+    width: 100;
+}
+.cv .content{
+    flex-grow: 1;
+    
+    min-width: 0;
+}
+.cv .content h4{
+    margin-bottom: 10px;
+}
+
+.cv > .left{
+    min-width: 33%;
+    max-width: 33%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0 20px;
+
+}
+.cv > .left .skills{
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+.cv > .left .skills span{
+    display: block;
+    padding: 5px;
+    border-radius: 3px;
+    background: rgba(122, 26, 247, 0.062);
+    color: var(--purple);
+}
+.cv > .left .name{
+    font-size: 18px;
+    margin-top: 5px;
+}
+.cv > .left .job{
+    font-size: 14px;
+    color: rgb(85, 85, 85);
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.cv > .left .other-infos{
+    color: #444;
+}
+.cv > .left button{
+    margin-top: 30px;
+}
+.cv .content > div{
+    margin-bottom: 26px;
+}
+.cv .content > div .top{
+    margin-bottom: 7px;
+}
+.exp,.ed{
+    margin-top: 15px;
+}
+.cv p,.cv li{
+    font-size: 15px;
+}
+.cv p{
+    line-height: 23px;
+}
+.cv ul li{
+    margin-bottom: 5px;
+}

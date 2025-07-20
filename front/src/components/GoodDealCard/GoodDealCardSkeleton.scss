@@ -1,0 +1,28 @@
+@import "../../style.scss";
+
+.good-deal-card-skeleton {
+    @include themify($themes) {
+        width: 230px;
+        height: 200px;
+        background: themed("background",5);
+        border-radius: 5px;
+        box-shadow: var(--elevation-1);
+        border: 1px solid themed("border",2);
+        position: relative;
+        .capt{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            border-radius: 0 0 5px 5px;
+            background: rgba(24, 24, 24, 0.274);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            padding-top: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            background: themed("background",3);
+        }
+    }
+}

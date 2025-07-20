@@ -1,0 +1,58 @@
+@import '../../style.scss';
+
+#hotel-info{
+    @include themify($themes){
+        max-width: 900px;
+        margin: auto;
+        .info{
+            line-height: 25px;
+            h3{
+                font-size: 14px;
+            }
+            input{
+                background-color: transparent;
+                border-radius: 5px;
+                height: 40px;
+                width: 300px;
+                color: themed('text',3);
+                font-size: 14px;
+                &.active{
+                    background-color: themed('background',5);
+                    padding: 15px;
+                }
+            }
+            .status{
+                border-radius: 2px;
+                color: white !important;
+                padding:2px 5px;
+                &.open{
+                    background-color: #008000;
+                }
+                &.close{
+                    background-color: map-get($red, primary);
+                }
+            }
+        }
+        .type{
+            h3{
+                font-size: 16px;
+                padding: 15px 0;
+            }
+            h4{
+                font-size: 14px;
+            }
+            .option{
+                align-items: flex-start;
+                margin-bottom: 15px;
+                input{
+                    margin-top: 3px;
+                }
+                label{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+            }
+        }
+    }
+}

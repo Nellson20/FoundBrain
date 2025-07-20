@@ -1,0 +1,164 @@
+@import "../../style.scss";
+
+.portal-avis {
+  @include themify($themes) {
+    .head {
+      p {
+        margin-top: -10px;
+      }
+      .close{
+        cursor: pointer;
+      }
+    }
+    .questions {
+      .yesOrNo {
+        .question {
+            margin-top: 15px;
+          h4 {
+            font-size: 14px;
+            font-weight: 600;
+          }
+          .btn {
+            margin-top: 10px;
+            display: flex;
+            border-radius: 5px;
+            height: 40px;
+            width: 100%;
+            // border: 1px solid themed('mainColor',purple);
+            button {
+                flex:1;
+                background-color: none;
+                border: none;
+                border-radius: 5px;
+              padding: 20px auto;
+              color: themed('mainColor',purple);
+              cursor: pointer;
+            }
+            button:first-child{
+            //   border-right: 1px solid themed('mainColor',purple);
+              border-radius: 5px 0 0 5px;
+            }
+            button:last-child{
+              border-radius: 0 5px 5px 0;
+            }
+            button:hover{
+                z-index: 123;
+                box-shadow: 0 0 2px 1px themed('mainColor',purple);
+            }
+          }
+        }
+      }
+      .category {
+        margin-top: 15px;
+        h3 {
+          font-size: 16px;
+        }
+        .question {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          padding: 10px;
+          @media (max-width:680px){
+            justify-content: space-between;
+          }
+          .section {
+            width: 250px;
+            margin-bottom: 10px;
+            h4 {
+              height: 40px;
+              display: flex;
+              align-items: center;
+              font-size: 15px;
+              margin-bottom: 5px;
+              font-weight: 600;
+            }
+            .rating-diamond-img{
+                width: 22px;
+                height: 22px;
+                margin-right: 8px;
+            }
+          }
+        }
+      }
+      .description-culture {
+        .responses {
+          margin-top: 15px;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          .option {
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            border: 1px solid themed("border", 3);
+            border-radius: 5px;
+            margin: 5px 0;
+            width: 49%;
+            @media (max-width:600px){
+                width: 100%;
+            }
+            input[type="checkbox"] {
+              position: absolute;
+              opacity: 0;
+            }
+            label {
+              margin-left: 10px;
+              margin-bottom: 0;
+              cursor: pointer;
+            }
+          }
+          .option:hover {
+            box-shadow: 0px 0px 4px 1px themed("border", 3);
+          }
+        }
+      }
+      .avis {
+        label {
+          font-size: 15px;
+          font-weight: 600;
+        }
+        .titre,.point-negatif, .point-positif {
+          margin: 15px;
+          input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 5px;
+          }
+        }
+        .corps {
+          margin: 15px;
+          .points-a-dire {
+            ul {
+              list-style-type: circle;
+              li {
+                margin-left: 40px;
+              }
+            }
+          }
+          textarea {
+            margin-top: 5px;
+            border-radius: 5px;
+            width: 100%;
+            height: 18vw;
+          }
+        }
+      }
+      .valider {
+        display: flex;
+        justify-content: flex-end;
+        margin: 15px;
+        button {
+          width: 100%;
+          padding: 5px;
+          border-radius: 5px;
+          color: themed('mainColor',purple);
+          border: 1px solid themed('mainColor',purple);
+          cursor: pointer;
+          font-weight: 800;
+          font-size: 17px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+@import '../../../style.scss';
+
+.navigable-list {
+    @include themify($themes) {
+        width: auto !important;
+        li {
+            color: themed('text', 1);
+            border-radius: 5px;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            transition: .5s;
+            transition-property: background;
+            >* {
+                color: themed('text', 1);
+            }
+
+            &.active {
+                background: var(--main-gradient);
+                color: #333;
+
+                >* {
+                    color: #333;
+                }
+            }
+        }
+
+    }
+}

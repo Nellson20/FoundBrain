@@ -1,0 +1,12 @@
+@import "../../style.scss";
+
+#artist-dashboard{
+    @include themify($themes){
+        .add-video-card{
+            border: 1px dashed themed('border',2);
+            border-radius: 5px;
+            max-width: 350px;
+            min-height: 450px;
+        }
+    }
+}

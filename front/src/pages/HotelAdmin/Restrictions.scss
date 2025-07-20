@@ -1,0 +1,194 @@
+@import "../../style.scss";
+
+.restriction {
+  max-width: 1000px;
+  margin: auto;
+  @include themify($themes) {
+    .title {
+      background-color: themed("background", 1);
+      border-radius: 5px 5px 0 0;
+      h3{
+        font-size: 17px;
+      }
+    }
+    .rule-list-container {
+      border-radius: 5px;
+      .rule-list {
+        table {
+          border-collapse: collapse;
+          // width: 100%;
+          margin: 0 15px;
+          // border: 1px solid themed('border',1);
+          border-radius: 5px;
+          tr:first-child {
+            background-color: themed("background", 2);
+          }
+          tr {
+            &:last-child {
+              border: none;
+            }
+          }
+          th,
+          td {
+            padding: 10px;
+            text-align: start;
+            max-width: 250px;
+            color: themed("text", 1);
+            font-size: 14px;
+          }
+          th:first-child {
+            border-radius: 5px 0 0 5px;
+          }
+          th:last-child {
+            border-radius: 0 5px 5px 0;
+          }
+        }
+      }
+    }
+    .rule-creation-container {
+      h4 {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 500;
+        font-size: 17px;
+        margin-bottom: 10px;
+        span {
+          display: grid;
+          place-items: center;
+          border: 2px solid themed("mainColor", purple);
+          border-radius: 50%;
+          width: 25px;
+          height: 25px;
+          color: themed("mainColor", purple);
+          font-weight: 600;
+        }
+      }
+      .rule-creation {
+        .overnight-stay {
+          margin-top: 10px;
+          .item {
+            position: relative;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            border: 1px solid themed("border", 2);
+            width: 50%;
+            &:hover {
+              background-color: themed("background", 5);
+            }
+            &.active {
+              border-color: themed("mainColor", purple);
+              background-color: themed("background", 5);
+              .check {
+                // background-color: themed('background',5);
+                color: themed("mainColor", purple) !important;
+              }
+            }
+            .check {
+              background-color: themed("background", 5);
+              color: themed('text',5);
+              display: table;
+              position: absolute;
+              right: -6px;
+              top: -6px;
+              border-radius: 50%;
+            }
+            .icon {
+              text-align: center;
+              color: var(--orange);
+              display: flex;
+              justify-content: center;
+            }
+            h3 {
+              padding: 15px 0;
+            }
+          }
+        }
+        .note {
+          padding: 15px;
+          background-color: themed("background", 5);
+          border-radius: 5px;
+          h3 {
+            font-size: 15px;
+            margin-bottom: 10px;
+          }
+          div:first-child {
+            margin-bottom: 50px;
+          }
+          > div {
+            display: flex;
+            gap: 10px;
+            width: 90%;
+          }
+          svg{
+            color: themed('text',2);
+          }
+        }
+      }
+
+      .configuration {
+        h3 {
+          display: block;
+          font-weight: 600;
+          font-size: 15px;
+        }
+        label {
+          font-weight: 600;
+          font-size: 13px;
+        }
+        .select {
+          width: 230px;
+          margin-top: 5px;
+        }
+        .restriction-rate {
+          > div {
+            margin-top: 0;
+          }
+          > small {
+            display: block;
+            margin-bottom: 5px;
+            max-width: 700px;
+          }
+        }
+        .number {
+          position: relative;
+          background-color: themed("background", 5);
+          border-radius: 5px;
+          input[type="number"] {
+            height: 40px;
+            width: 90%;
+            border-radius: 5px 0 0 5px;
+            padding: 0 15px;
+          }
+          span {
+            position: absolute;
+            display: block;
+            padding: 3px 10px;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 1px solid themed("border", 1);
+            font-size: 16px;
+          }
+        }
+        .plan-type {
+          .accommodation-type {
+            width: 230px;
+          }
+        }
+        .rule-status {
+          .programmed-date {
+            display: none;
+            margin-left: 15px;
+            width: 230px;
+            &.selected {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}

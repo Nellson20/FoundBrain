@@ -1,0 +1,23 @@
+@import '../../style.scss';
+
+.phone-number-input{
+    @include themify($themes){
+        height: 40px;
+        border-radius: 5px;
+        gap: 5px;
+        .country-code-item *{
+            font-weight: themed('weight',400);
+        }
+        .fake-input{
+           .inpt{
+            min-width: unset !important;
+            padding-right: 23px !important;
+           }
+           .chevron{
+            background: none !important;
+            width: unset !important;
+            margin-right: 5px;
+           }
+        }
+    }
+}

@@ -1,0 +1,154 @@
+@import "../../style.scss";
+
+
+.message-group {
+    @include themify($themes) {
+
+        max-width: 75% !important;
+
+        .message {
+
+            display: flex;
+            gap: 6px;
+
+            >.left>p {
+                background: themed("background", 6);
+                background-attachment: fixed;
+                padding: 8px 10px;
+
+
+            }
+
+            .right {
+                .dropDown>.selected button {
+                    color: themed("text", 0);
+                    background: themed("background", 4);
+                }
+
+                button {
+                    all: unset;
+                    cursor: pointer;
+                    padding: 2px;
+                    border-radius: 5px;
+                    color: themed("text", 3);
+
+                    &:hover {
+                        color: themed("text", 0);
+                        background: themed("background", 4);
+                    }
+                }
+
+            }
+        }
+
+        &:not(.mine) {
+            color: themed("text", 1);
+        }
+        @media (max-width:768px) {
+            max-width: 90% !important;
+        }
+    }
+}
+
+.message-group>.messages-list>.message>.left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    align-items: flex-start;
+}
+
+.message-group>.messages-list>.message>.right {
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.message-group>.messages-list>.message>.left>.imgs:not(.simple) {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3px;
+}
+
+
+
+.message-group>.messages-list>.message>.left>.imgs>div {
+    position: relative;
+}
+
+.message-group>.messages-list>.message>.left>.imgs>div>img {
+    border-radius: 5px;
+    object-fit: cover;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.message-group>.messages-list>.message>.left>.imgs.simple{
+    > div {
+        aspect-ratio: unset !important;
+        img{
+         height: auto;
+         max-height: 200px;
+         position: relative !important;
+         aspect-ratio: unset !important;
+        }
+     }
+} 
+
+
+
+
+.message-group .message>.left>* {
+    border-radius: 20px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+
+.message-group .message p {
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.message-group .message:first-child>.left>*:first-child {
+    border-top-left-radius: 20px;
+}
+
+.message-group .message:last-child>.left>*:last-child {
+    border-bottom-left-radius: 20px;
+}
+
+.message-group.mine>.messages-list>.message {
+    flex-direction: row-reverse;
+}
+
+.message-group.mine>.messages-list>.message>.left {
+    align-items: flex-end;
+}
+
+.message-group.mine {
+    align-self: flex-end;
+}
+
+.message-group.mine .messages-list {
+    align-items: flex-end;
+}
+
+.message-group.mine .message>.left>* {
+    border-radius: 20px 6px 6px 20px;
+}
+
+.message-group.mine .message>.left>p {
+    background: linear-gradient(315deg, #f6daaf 20%, #9f98e8 35%);
+    background-attachment: fixed;
+    padding: 8px 10px;
+}
+
+.message-group.mine .message:first-child>.left>*:first-child {
+    border-top-right-radius: 20px;
+}
+
+.message-group.mine .message:last-child>.left>*:last-child {
+    border-bottom-right-radius: 20px;
+}

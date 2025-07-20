@@ -1,0 +1,23 @@
+
+.tabs-heading{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.tabs-body{
+    display: flex;
+}
+.tabs-body > div{
+    width: 100% !important;
+    padding: 15px;
+}
+.tabs-body > div > div{
+    width: 100%;
+    display: none;
+    
+}
+.tabs-body > div > div.opened{
+    display: block;
+    max-width: 100% !important;
+    width: 100% !important;
+}

@@ -1,0 +1,70 @@
+@import '../../style.scss';
+
+#contacts-page {
+    @include themify($themes) {
+        display: flex;
+        min-height: calc(100vh - 58px);
+        >.left {
+            background: themed('background', 3);
+            box-shadow: var(--elevation-1);
+            width: 300px;
+            min-width: 300px;
+            height: calc(100vh - 58px);
+            position: sticky;
+            top: 58px;
+            >.top{
+                // height: 60px;
+                display: flex;
+                align-items: center;
+                padding: 10px;
+                h2{
+                    color: themed('text',1);
+                }
+            }
+            >.bottom{
+                
+            }
+        }
+        >.center{
+            flex-grow: 1;
+        }
+
+        .contact-list {
+            .contact-item {
+                margin-bottom: 10px;
+                padding: 6px;
+                transition: .5s;
+                border-radius: 5px;
+                margin: 0 -6px;
+                cursor: pointer;
+                button{
+                    padding: 0;
+                    width: 40px;
+                }
+                
+                .center{
+                    min-width: 0 !important;
+                    .contact-name{
+                        font-weight: themed('weight',700);
+                        color: themed('text',2);
+                    }
+                    span{
+                        color: themed('text',4);
+                        font-weight: themed('weight',500);
+                        font-family: sans-serif;
+                    }
+                }
+                .right{
+                    display: none !important;
+                }
+                &:hover{
+                    background: themed('background',5);
+                    .right{
+                        display: flex !important;
+                    }
+                }
+            }
+        }
+    }
+
+}

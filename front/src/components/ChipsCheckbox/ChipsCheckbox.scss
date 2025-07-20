@@ -1,0 +1,36 @@
+@import '../../style.scss';
+
+.chips-checkbox-inpt {
+    display: none;
+}
+
+input[type="checkbox"]:checked+.chips-checkbox {
+    @include themify($themes) {
+        background: rgba(157, 73, 252, 0.116);
+
+        span {
+            color: themed('mainColor', purple);
+            &.ico{
+                display: block;
+            }
+        }
+    }
+}
+
+.chips-checkbox {
+    @include themify($themes) {
+        cursor: pointer;
+        height: 38px;
+        padding: 0 15px;
+        border-radius: 6px;
+        background: themed('background', 5);
+        columns: themed('text', 3);
+
+        >span {
+            color: themed(text, 3);
+            &.ico{
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@import "../../style.scss";
+
+
+.register-page {
+    height: calc(100vh - var(--topbar-height));
+}
+
+.register-form {
+    @include themify($themes) {
+        width: 600px;
+        max-width: calc(100vw - 30px);
+        background: themed("background", 3);
+        border-radius: 5px;
+        box-shadow: var(--elevation-1);
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: themed("text", 3);
+        h3{
+            color: themed("text", 1);
+        }
+        label{
+            color: themed("text", 2);
+        }
+    }
+}
+
+.register-form-btns button {
+    flex-grow: 1;
+    margin-top: 5px;
+}
+
+.register-to-login-link {
+    display: block;
+    text-align: center;
+    margin: 15px 0 5px 0;
+}

@@ -1,0 +1,100 @@
+@import "../../style.scss";
+
+
+.job-details {
+    @include themify($themes) {
+        width: 100%;
+        min-height: 100%;
+        padding: 15px;
+        background: themed("background",3);
+        margin: auto;
+        .avatar{
+            img{
+                border: 1px solid themed("border",2);
+            }
+        }
+        .job-detail-sticky-top{
+            background: themed("background",3);
+            z-index: 10;
+            position: sticky;
+            top: 0;
+            padding-bottom: 8px;
+            >div:nth-child(1){
+                min-width: 0;
+            }
+            button{
+                width: 100px;
+            }
+        }
+        .job-title{
+            color: themed("text",0);
+        }
+        h4 {
+            margin-bottom: 8px;
+            color: themed("text",1);
+        }
+        p,li {
+            line-height: 20px;
+            color: themed("text",1);
+        }
+        .job-requirements{
+            span{
+                color: themed("text",5);
+            }
+            b{
+                color: themed("text",1);
+            }
+        }
+    }
+}
+
+.job-details ul li {
+    margin-bottom: 4px;
+}
+
+.job-details .cover {
+    height: 100px;
+    border-radius: 5px;
+    background: rgb(216, 216, 216);
+    margin-bottom: 10px;
+}
+
+.job-details .cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.job-details .job-title {
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.job-details .job-location {
+    font-size: 14px;
+}
+
+.job-details .job-requirements>div {
+    margin-top: 10px;
+}
+
+.job-details .job-requirements>div>span {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgb(83, 83, 83);
+}
+
+.job-details .job-requirements>div>b {
+    font-weight: 500;
+}
+
+.job-details .role {
+    margin-top: 20px;
+}
+.portal-note{
+    display: flex !important;
+    >div{
+        min-width: 0 !important;
+    }
+}

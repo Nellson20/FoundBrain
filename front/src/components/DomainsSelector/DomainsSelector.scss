@@ -1,0 +1,163 @@
+@import '../../style.scss';
+
+.domains-selector-modal {
+    @include themify($themes) {
+        .modalContent > div {
+            background: themed("background", 3);
+            border-radius: 5px;
+            width: 800px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+
+            >.top {
+                height: 55px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                padding: 45px 0 15px 0;
+
+                h1 {
+                    font-size: 20px;
+                    color: themed("text", 1);
+                }
+
+                .close {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    cursor: pointer;
+                    color: themed("text", 2);
+                }
+            }
+
+            >.body {
+                
+                flex-grow: 1;
+                overflow: auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                .searchbar-sticky {
+                    background: themed("background", 3);
+                    position: sticky;
+                    padding: 10px 0;
+                    top: -10px;
+                    width: 100%;
+                }
+
+                p {
+                    max-width: 80%;
+                    color: themed("text", 2);
+                }
+
+                .searchbar {
+                    width: 400px;
+                    margin: auto;
+                }
+
+                .domains-list {
+                    padding: 10px;
+                    display: grid !important;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 10px;
+                    max-width: 650px;
+
+                    li {
+                        border: 1px solid themed("border", 2);
+                        background: themed("background", 4);
+                        border-radius: 5px;
+                        height: 45px;
+                        display: flex;
+                        align-items: center;
+                        padding: 0 10px;
+                        color: themed("text", 1);
+                        font-weight: 600;
+                        white-space: pre;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        box-shadow: var(--elevation-1);
+                        cursor: pointer;
+
+                        &:hover {
+                            background: themed("background", 5);
+                        }
+                    }
+                }
+            }
+
+            >.footer {
+                border-top: 1px solid themed("border", 2);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: end;
+
+                gap: 10px;
+                position: relative;
+                h5{
+                    color: themed("text",2);
+                    align-self: flex-start;
+                    margin: 10px 30px 0 30px;
+                }
+                .slider-nav {
+                    margin:  0;
+                    width: 100%;
+
+                    ul {
+                        li {
+                            background: none;
+                            border: 1px solid themed("border", 2);
+                            box-shadow: none;
+
+                            gap: 5px;
+
+                            &:hover {
+                                background: themed("background", 4);
+                            }
+
+                            >div {
+                                width: 100%;
+                                flex-grow: 1;
+                                display: flex;
+                                align-items: center;
+                            }
+
+                            span {
+                                flex-grow: 1 !important;
+                                min-width: 0;
+                                display: block;
+                                white-space: pre;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                            }
+
+                            .ico {
+                                width: 20px;
+                                height: 20px !important;
+
+                                svg {
+                                    display: block;
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+                .bottom {
+                    padding: 10px 10px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

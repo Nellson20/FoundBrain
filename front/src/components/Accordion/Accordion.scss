@@ -1,0 +1,40 @@
+@import "../../style.scss";
+
+
+
+
+.accordion {
+    @include themify($themes){
+        .open{
+            overflow: visible;
+            z-index: 1000;
+        }
+        > .accordion-content{
+            overflow: hidden;
+            height: 0px;
+        }
+        .accordion-heading{
+            height: 60px;
+            border-bottom: 1px solid themed("border",2);
+            position: sticky;
+            top: 0px;
+            background: themed("background",3);
+            z-index: 10;
+            color: themed("text",1);
+            padding: 0 15px;
+            button{
+                height: 38px;
+                width: 38px;
+                background: themed("background",5);
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: themed("text",1);
+            }
+        }
+    }
+}
+

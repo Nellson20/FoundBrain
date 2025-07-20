@@ -1,0 +1,140 @@
+@import "../../style.scss";
+
+
+.job-finding-top {
+    @include themify($themes) {
+        padding: 25px 0 8px 0;
+        background-image: linear-gradient(315deg, #9f98e8 0%, #f6daaf 74%);
+        box-shadow: var(--nav-elevation);
+        position: sticky;
+        overflow: visible !important;
+        top: -48px;
+        z-index: 900;
+        @media (max-width:768px) {
+            &{
+                padding: 10px;
+                position: static;
+            }
+        }
+        >div{
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h2 {
+            color: #222 !important;
+        }
+    }
+}
+
+.job-finding-home {
+    @include themify($themes) {
+        >.left {
+            padding: 25px 15px;
+            background: themed("background", 3);
+            box-shadow: var(--elevation-1);
+            width: 280px;
+            min-width: 280px;
+            height: calc(100vh - calc(108px + 13px));
+            overflow-y: scroll;
+            position: sticky;
+            top: 120px;
+
+            h4 {
+                color: themed("text", 1);
+                margin-bottom: 10px;
+            }
+
+            .sortable-list {
+            
+                    h3 {
+                        margin-left: 0;
+                        padding: 0;
+                        font-size: 15px;
+                    }
+                }
+
+            span {
+                color: themed("text", 4);
+            }
+
+            ul>li {
+                margin-top: 6px;
+                color: themed("text", 2);
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 15px;
+                label{
+                    margin-bottom: 0;
+                }
+            }
+            .salary-inputs > div:last-child{
+                flex-direction: column;
+                > div{
+                    flex-direction: column;
+                    gap: 0;
+                }
+            }
+            
+        }
+
+        .empty-job {
+            background: themed('background', 3);
+            border-radius: 5px;
+            margin-top: 5px;
+            box-shadow: var(--elevation-1);
+            padding: 20px;
+            text-align: center;
+            height: 300px;
+
+            a {
+                margin-top: 10px;
+                width: 190px;
+            }
+        }
+
+        >.right {
+            background: themed("background", 3);
+            box-shadow: var(--elevation-1);
+            min-width: 490px;
+            width: 490px;
+            height: calc(100vh - 54px);
+            position: sticky;
+            top: 121px;
+            height: calc(100vh - 121px);
+            min-height: calc(100vh - 121px);
+            overflow-y: auto;
+
+        }
+    }
+}
+
+.job-finding-home>.left>form {
+    margin-bottom: 15px;
+}
+
+.job-finding-home>.left>form>input[type="text"] {
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    padding: 0 10px;
+    margin-top: 10px;
+}
+
+.job-finding-home>.left>ul {
+    margin-bottom: 15px;
+}
+
+.job-finding-home>.center {
+    flex-grow: 1;
+    max-width: 600px;
+}
+
+
+.job-list {
+    margin-top: 5px;
+}

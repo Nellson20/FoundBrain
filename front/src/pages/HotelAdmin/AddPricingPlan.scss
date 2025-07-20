@@ -1,0 +1,51 @@
+@import '../../style.scss';
+
+.add-pricing-plan{
+    @include themify($themes){
+        max-width: 1000px;
+        margin: auto;
+        h3{
+            font-size: 17px;
+        }
+        .head{
+            padding: 15px 0 0;
+        }
+        section{
+            margin-top: 20px;
+            >h3{
+                color: themed('text',2);
+            }
+        }
+        .list{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            .pricing-plan-card{
+                width: 280px;
+                .icon{
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    background-color: themed('background',5);
+                    display: grid;
+                    place-items: center;
+                    color: var(--orange);
+                }
+                h3{
+                    margin-top: 15px;
+                    color: themed('text',3);
+                }
+                p{
+                    margin: 15px 0;
+                }
+                button{
+                    width: 100%;
+                }
+                .btn-{
+                    border: 1px solid themed('mainColor',purple);
+                    color: themed('mainColor',purple);
+                }
+            }
+        }
+    }
+}

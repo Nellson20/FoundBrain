@@ -1,0 +1,96 @@
+@import "../../style.scss";
+
+#advantages {
+  @include themify($themes) {
+    max-width: 1200px;
+    margin: auto;
+    .head {
+      background-color: themed("background", 1);
+      border-radius: 5px 5px 0 0;
+      select {
+        width: 200px !important ;
+      }
+    }
+    .table {
+      margin: 15px;
+      // padding-bottom: 15px;
+      th,
+      td {
+        font-size: 14px;
+        text-align: start;
+        padding: 15px;
+        color: themed("text", 1);
+      }
+      tr {
+        th:first-child {
+          border-radius: 5px 0 0 5px;
+        }
+        th:last-child{
+          border-radius: 0 5px 5px 0;
+        }
+      }
+      li{
+        display: inline-block;
+      }
+      .title {
+        border-radius: 5px;
+        background-color: themed("background", 2);
+      }
+      > table {
+        border-collapse: collapse;
+        width: 100%;
+        > tr {
+          align-items: flex-start;
+        }
+        .buttons {
+          button {
+            background-color: transparent;
+            color: themed("text", 1);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            .tooltiptext {
+              visibility: hidden;
+              width: 120px;
+              background-color: themed("background", 2);
+              color: themed("text", 1);
+              text-align: center;
+              border-radius: 6px;
+              padding: 5px 0;
+              position: absolute;
+              z-index: 1;
+              top: 150%;
+              left: 50%;
+              margin-left: -60px;
+            }
+            .tooltiptext::after {
+              content: "";
+              position: absolute;
+              bottom: 100%;
+              left: 50%;
+              margin-left: -5px;
+              border-width: 5px;
+              border-style: solid;
+              border-color: transparent transparent themed("background", 2)
+                transparent;
+            }
+            &:hover .tooltiptext {
+              visibility: visible;
+            }
+          }
+          .edit {
+            margin-right: 15px;
+            &:hover {
+              color: var(--orange);
+            }
+          }
+          .delete {
+            &:hover {
+              color: map-get($red, primary);
+            }
+          }
+        }
+      }
+    }
+  }
+}

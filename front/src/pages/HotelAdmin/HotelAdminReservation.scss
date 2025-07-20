@@ -1,0 +1,82 @@
+@import "../../style.scss";
+
+.hotel-admin-reservation {
+  @include themify($themes) {
+    .search {
+      align-items: end;
+      .trie {
+        > div {
+          height: 40px;
+          display: flex;
+          align-items: center;
+          padding: 10px;
+          background-color: themed("background", 5);
+          border-radius: 5px;
+        }
+      }
+      .btn-purple {
+        height: 40px;
+      }
+      input[type="date"]{
+        color: themed('text',3);
+      }
+    }
+    .reservation-lists {
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        th,
+      td {
+        font-size: 14px;
+        text-align: start;
+        padding: 15px;
+        color: themed("text", 1);
+      }
+      tr {
+        th:first-child {
+          border-radius: 5px 0 0 5px;
+        }
+        th:last-child{
+          border-radius: 0 5px 5px 0;
+        }
+      }
+      .title {
+        border-radius: 5px;
+        background-color: themed("background", 2);
+      }
+        tr {
+        //   border-bottom: 1px solid themed("border", 3);
+
+          &:last-child {
+            border: none;
+          }
+        }
+        th,
+        td {
+          color: themed("text", 1);
+          text-align: start;
+          padding: 15px;
+        }
+
+        td {
+          font-size: 14px;
+        }
+
+        span {
+          display: block;
+        }
+        .status {
+          font-weight: 700;
+        }
+      }
+    }
+    >.bottom{
+        text-align: end;
+        margin-top: 5px !important;
+        .total{
+            margin-left: 15px;
+            font-weight: 700;
+        }
+    }
+  }
+}

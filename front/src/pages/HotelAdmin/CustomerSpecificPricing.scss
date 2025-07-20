@@ -1,0 +1,108 @@
+@import "../../style.scss";
+
+.customer-specific-pricing {
+  @include themify($themes) {
+    max-width: 900px;
+    margin: auto;
+    .container {
+      .occupation-pricing-tabs {
+        .top {
+          background: themed("background", 3);
+          border-radius: 5px;
+          box-shadow: var(--elevation-1);
+          border-bottom: 1px solid themed("border", 2);
+          padding: 0 15px;
+          height: 50px;
+          .tabs-heading li span {
+            font-size: 14px;
+          }
+          .tabs-heading li {
+            padding: 5px 5px 5px 5px !important;
+          }
+          li {
+            width: auto;
+            &.active::after {
+              width: 50%;
+            }
+          }
+        }
+        .tabs-body {
+          > div {
+            padding: 0;
+          }
+        }
+        .item {
+          padding: 15px;
+          margin-top: 5px;
+          .body {
+            .capacity-input{
+                input{
+                    height: 40px;
+                    width: 250px;
+                    padding:15px;
+                    border-radius: 5px;
+                }
+            }
+            label {
+              margin: 0;
+            }
+            table {
+              width: 100%;
+              border-collapse: collapse;
+              margin-top: 15px;
+              th,
+              td {
+                font-size: 14px;
+                text-align: start;
+                padding: 15px;
+                color: themed("text", 1);
+            }
+            .usuel-price{
+                background-color: themed('background',5);
+                td:first-child {
+                    border-radius: 5px 0 0 5px;
+                  }
+                  td:last-child {
+                    border-radius: 0 5px 5px 0;
+                  }
+            }
+            tr {
+                th:first-child {
+                  border-radius: 5px 0 0 5px;
+                }
+                th:last-child {
+                  border-radius: 0 5px 5px 0;
+                }
+                td:last-child{
+                    width: 200px;
+                }
+              }
+              .title {
+                border-radius: 5px;
+                background-color: themed("background", 2);
+              }
+              .input {
+                height: 40px;
+                width: 250px;
+                // position: relative;
+                display: flex;
+                gap: 1px;
+                input {
+                  height: 100%;
+                    padding: 15px;
+                border-radius: 5px 0 0 5px;
+                box-shadow: none;
+                }
+                select{
+                        width: 70px;
+                        border-radius: 0 5px 5px 0;
+                        text-align: center;
+                    }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

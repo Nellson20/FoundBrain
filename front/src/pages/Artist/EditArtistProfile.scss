@@ -1,0 +1,40 @@
+@import "../../style.scss";
+
+
+#edit-artist-profile{
+    @include themify($themes){
+        .artist-edit-tabs > .top{
+            padding: 10px 15px 10px 15px;
+            border-bottom: 1px solid themed('border',2);
+            position: sticky;
+            top: 0;
+            background: themed('background',3);
+            .tabs-heading li,.tabs-heading li a{
+                width: auto !important;
+                height: 38px;
+                font-weight: themed('weight',500);
+                padding: 0 15px;
+                
+            }
+            .tabs-heading li a:not(.active){
+                color: themed("text",4);
+            }
+            .tabs-heading li{
+                padding: 0;
+            }
+        }
+        .tabs-body{
+            max-width: 900px;
+        }
+        .footer{
+            padding: 10px 15px;
+            position: sticky;
+            bottom: 0;
+            background: themed('background',3);
+            border-top: 1px solid themed('border',2);
+        }
+        .form-group{
+            margin-bottom: 20px;
+        }
+    }
+}

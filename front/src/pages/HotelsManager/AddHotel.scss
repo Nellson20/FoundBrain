@@ -1,0 +1,48 @@
+@import '../../style.scss';
+
+#add-hotel-page{
+    margin-top: 70px;
+}
+
+form {
+    table {
+        border-spacing: 15px;
+    }
+
+    input[type="radio"] {
+        display: block;
+        margin: 0;
+    }
+
+}
+
+.stars-number {
+    svg {
+        color: var(--orange);
+    }
+}
+
+.hotel-location-form {
+    .location-pin {
+        overflow: hidden;
+        .map{
+            height: 250px !important;
+            width: 100% !important;
+        }
+    }
+}
+
+.hotel-equipments-form {
+    .form-group {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+}
+.amount-input{
+    flex-grow: 1;
+}
+label span{
+    font-weight: normal;
+    display: flex;
+}

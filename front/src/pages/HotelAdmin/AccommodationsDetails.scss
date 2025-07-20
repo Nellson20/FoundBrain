@@ -1,0 +1,98 @@
+@import "../../style.scss";
+#accommodations-details {
+  @include themify($themes) {
+    max-width: 1000px;
+    margin: auto;
+    h3 {
+      font-size: 16px;
+    }
+    h4 {
+      font-size: 14px;
+    }
+    .size {
+      .container {
+        .item {
+          flex: 1;
+          max-width: 33%;
+          .input-container {
+            // position: relative;
+            // border-radius: 5px;
+            display: flex;
+            gap: 1px;
+            height: 40px;
+            input {
+              height: 100%;
+              padding: 15px;
+              flex: 1;
+              border-radius: 5px 0 0 5px;
+              box-shadow: none;
+            }
+            .unity {
+              height: 100%;
+              width: 50px;
+              display: grid;
+              place-items: center;
+              border-radius: 0 5px 5px 0;
+              text-align: center;
+              background-color: themed("background", 5);
+            }
+          }
+        }
+      }
+    }
+    .equipment {
+      padding: 15px;
+      padding-bottom: 0;
+      .container {
+        margin-top: 10px;
+        .item {
+          padding: 15px 0;
+          display: flex;
+          justify-content: space-between;
+          border-bottom: 1px solid themed("border", 2);
+          &:last-child{
+            border: none;
+          }
+          h4 {
+            margin-top: 10px;
+          }
+          li{
+            color: themed('text',4);
+            // font-weight: 400;
+          }
+          .options {
+            ul {
+              display: flex;
+              align-items: center;
+              gap: 5px;
+              li {
+                display: flex;
+                align-items: center;
+                height: 40px;
+                padding: 15px;
+                background-color: themed("background", 5);
+                border-radius: 5px;
+                cursor: pointer;
+                &.active {
+                  background-color: themed("mainColor", purple);
+                  color: white;
+                }
+              }
+            }
+            .list-room {
+              margin-top: 15px;
+              display: none;
+              &.show {
+                display: block;
+              }
+              .room {
+                display: flex;
+                gap: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+@import '../../style.scss';
+
+.multi-step-form{
+    @include themify($themes){
+        margin-top: 70px;
+        .multi-form-step-title{
+            margin-bottom: 20px;
+        }
+        >.top{
+            >.timeline {
+                position:sticky;
+                top:70px;
+                display: flex;
+                margin: -1px -1px 40px -1px;
+                padding: 0 !important;
+    
+                >div {
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                    position: relative;
+                    border-radius: 2px;
+                    background: themed('background',4);
+                    border: 1px solid themed('background',0);
+                    border-top: none !important;
+                    height: 6px;
+                    background: var(--orange);
+                    &.active {
+                            
+                            & ~ div{
+                                background: themed('background',4); 
+                            }
+                    }
+    
+                }
+    
+            }
+        }
+        .center{
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        form{
+            width: 600px;
+            .body,.footer{
+                background: themed('background',3);
+                border-radius: 5px;
+                box-shadow: var(--elevation-1);
+                padding: 20px 10px 5px 10px;
+            }
+            .footer{
+                margin-top: 5px;
+                margin-bottom: 15px;
+                padding: 10px;
+            }
+        }
+    }
+}

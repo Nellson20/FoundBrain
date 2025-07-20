@@ -1,0 +1,88 @@
+@import "../../style.scss";
+
+#InBox {
+  @include themify($themes) {
+    height: calc(100vh - 130px);
+    overflow-y: hidden;
+    display: flex;
+    gap: 15px;
+    .left {
+        background-color: themed('background',3);
+      width: 25%;
+      height: 100%;
+      padding: 15px;
+      .search {
+        width: 100%;
+        position: relative;
+        display: table;
+        input {
+          height: 40px;
+          width: 100%;
+          border-radius: 5px;
+          padding: 15px 40px 15px 15px;
+        }
+        .iconSearch {
+          position: absolute;
+          top: 50%;
+          right: 15px;
+          transform: translateY(-50%);
+          color: themed('text',2    );
+        }
+      }
+      .list-discussion {
+        background-color: themed('background',5);
+        padding: 10px 10px 1px;
+        border-radius: 5px;
+        overflow-y: auto;
+        height: calc(100% - 90px);
+        .discussion {
+          display: flex;
+          gap: 10px;
+          &.read{
+            background-color: themed('background',5);
+          }
+          .descri {
+            .head {
+              display: flex;
+              justify-content: space-between;
+              .name {
+                font-weight: 600;
+              }
+              small {
+                font-size: 11px;
+              }
+            }
+            .msg {
+              p {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: themed("text", 4);
+              }
+            }
+          }
+        }
+      }
+    }
+    .center{
+        width: 50%;
+        padding: 15px;
+        .head{
+          border-bottom: 1px solid themed('border',1);
+          padding-bottom: 15px;
+          .name {
+            font-weight: 600;
+          }
+          small{
+            display: block;
+            font-size: 11px;
+          }
+        }
+    }
+    .right{
+        width: 25%;
+    }
+  }
+}

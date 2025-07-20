@@ -1,0 +1,36 @@
+.welcome-banner{
+    background: #eee;
+    background-color: #aff6cf;
+    background-image: linear-gradient(315deg,#9f98e8 0%,#f6daaf 74%);
+    padding: 20px;
+    padding-right: 55px;
+    
+}
+.welcome-banner .text a{
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background: none;
+    border: 1px solid #222;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: #222;
+}
+.welcome-banner .register-btn{
+    height: 30px;
+    border-radius: 20px;
+    margin-top: 10px;
+    background: var(--purple) !important;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    color: white !important;
+    border: none !important;
+}
+.welcome-banner .close{
+    right:20px;
+    color: rgba(49, 49, 49, 0.863);
+    top:20px;
+}

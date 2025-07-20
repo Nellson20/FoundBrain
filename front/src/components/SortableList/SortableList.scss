@@ -1,0 +1,55 @@
+@import '../../style.scss';
+
+
+.sortable-list {
+    @include themify($themes) {
+        .searchbar {
+            position: absolute;
+            right: 0;
+            padding: 0 !important;
+        }
+
+        h3 {
+            font-weight: themed("weight", 700) !important;
+            color: themed("text", 1) !important;
+            font-size: 16px;
+            margin-left: 6px;
+            padding: 0 5px;
+            line-height: 34px;
+        }
+
+        ul {
+            margin-top: 6px;
+
+            li {
+                a {
+                    font-weight: 600;
+                    height: 40px;
+                    padding: 0 12px;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    cursor: pointer;
+                    width: 100%;
+                    min-width: 0;
+                    color: themed("text", 2);
+
+                    span {
+                        overflow: hidden;
+                        white-space: pre;
+                        text-overflow: ellipsis;
+                    }
+
+                    &:hover {
+                        background: themed("background", 5);
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.sortable-list-skeleton {
+    margin: 20px 10px 0 10px;
+}

@@ -1,0 +1,87 @@
+#docker-compose.yml
+version: "3.8"
+
+services:
+    db:
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: passwords
+            MYSQL_DATABASE: newgate
+            MYSQL_USER: donnellson
+            MYSQL_PASSWORD: passwords
+        volumes:
+            - ./.docker/mysql:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - symfony
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        restart: always
+        depends_on:
+            - db
+        environment:
+            PMA_HOST: db
+            PMA_PORT: 3306
+        ports:
+            - "8090:80"
+        networks:
+            - symfony
+    php:
+        build: ./DoGate
+        volumes:
+            - ./DoGate:/var/www/symfony
+            - /var/www/symfony/vendor
+            - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
+        environment:
+            DB_NAME: newgate
+            DB_USER: root
+            DB_PASSWORD: passwords
+        depends_on:
+            - db
+        networks:
+            - symfony
+    front:
+        build: ./front
+        ports:
+            - "3000"
+        volumes:
+            - ./front:/app
+            - /app/node_modules
+        networks:
+            - symfony
+    chat:
+        build: ./chat
+        ports:
+            - "5000:3000"
+        volumes:
+            - ./chat:/var/www/chat
+            - /var/www/chat/node_modules
+        networks:
+            - symfony
+    nginx:
+        build: 
+            context: ./.docker/nginx
+            args:
+                DOMAIN: ${DOMAIN}
+                API_DOMAIN: ${API_DOMAIN}
+        ports:
+            - "80:80"
+            - "443:443"
+        environment:
+            DOMAIN: ${DOMAIN}
+            API_DOMAIN: ${API_DOMAIN}
+        volumes:
+            - ./DoGate:/var/www/symfony
+        depends_on:
+            - chat
+            - front
+            - db
+            - php
+        networks:
+            - symfony
+    
+networks:
+    symfony:
+

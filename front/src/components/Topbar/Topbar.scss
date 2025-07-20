@@ -1,0 +1,185 @@
+@import "../../style.scss";
+
+:root {
+    --topbar-height: 58px;
+}
+
+#topbar {
+    @include themify($themes) {
+
+        background: themed("background", 3);
+        justify-content: space-between;
+        min-height: var(--topbar-height);
+        transition: .5s;
+        z-index: 1000;
+        box-shadow: var(--elevation-1);
+        border-bottom: 1px solid themed("border", 2);
+
+        &.sticky {
+            position: sticky;
+            top: 0;
+        }
+
+        .top-to-afrimuz {
+            img {
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        .topbar-mew-btn {
+            padding: 0 6px;
+        }
+
+        >.left {
+            width: 280px;
+        }
+
+        .left img {
+            height: 30px;
+            display: block;
+        }
+
+        .right {
+            width: 280px;
+            gap: 10px;
+
+            >* {
+                cursor: pointer;
+            }
+        }
+
+        .right>*:not(.profile) {
+            transition: .5s;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            height: 35px;
+            color: themed("text", 2);
+            background: themed("background", 5);
+        }
+
+        .right>.profile {
+            position: relative;
+            transition: .5s;
+            background: none !important;
+
+            &:hover {
+                img {
+
+                    filter: brightness(1.3);
+                }
+
+            }
+
+            .ico {
+                position: absolute;
+                right: -3px;
+                bottom: 0px;
+                width: 15px;
+                height: 15px;
+                border-radius: 5px;
+                background: themed('background', 5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: themed('text', 2);
+            }
+        }
+
+        .right>a {
+            position: relative;
+            .badge{
+                background: var(--red) !important;
+                color: white;
+                border-radius: 10px !important;
+                font-size: 10px !important;
+                position: absolute;
+                padding: 2px !important;
+                height: 18px !important;
+                border: 2px solid themed('background',5);
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 2px;
+            }
+        }
+
+        .right>span:hover,
+        #topbar .right>a:hover {
+            background: themed("background", 5);
+        }
+
+        >nav {
+            flex-grow: 1;
+            max-width: 789px;
+
+            >ul {
+                width: 100%;
+
+                >li {
+                    line-height: 16px;
+
+                    >a {
+                        display: block;
+                        color: themed("text", 4);
+                        min-width: 65px;
+                        position: relative;
+
+                        border-radius: 5px;
+                        height: 35px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        position: relative;
+                    }
+
+                    >a.active {
+                        background: themed("background", 5);
+
+                        color: themed("mainColor", purple);
+                    }
+
+                    >a.active::before {
+                        content: "";
+                        background: themed("mainColor", purple);
+                        position: absolute;
+                        width: 20px;
+                        height: 15px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        top: -22px;
+                        border-radius: 5px;
+                    }
+
+                    .searchbar {
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+
+        /* #topbar nav ul li a::after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    border-radius: 360%;
+    height: 15px;
+    margin-top: 5px;
+    background: rgb(212, 211, 211);
+    top: 0;
+    right: 0;
+}
+#topbar nav ul li a:first-child:after{
+    content: "";
+    position: absolute;
+    width: 1px;
+    border-radius: 360%;
+    height: 15px;
+    background: rgb(212, 211, 211);
+    top: 0;
+    left: 0;
+} */
+    }
+}

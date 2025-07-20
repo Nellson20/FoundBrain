@@ -1,0 +1,46 @@
+@import '../../style.scss';
+
+.timeline {
+    @include themify($themes) {
+        flex-grow: 1 !important;
+        padding-top: 15px;
+        width: 100%;
+        max-width: 100%;
+
+        .post-list {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .empty-timeline {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 10px;
+            height: 300px;
+            background: themed("background",3);
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+            text-align: center;
+            padding: 15px;
+            h1{
+                color: themed("text",1);
+                max-width: 60%;
+                font-size: 18px;
+            }
+            p{
+                color: themed("text",4);
+                max-width: 75%;
+            }
+            button{
+                font-weight: themed("weight",700);
+            }
+        }
+        @media (max-width:768px) {
+            .post-list {
+                max-width: 100%;
+            }
+        }
+    }
+}

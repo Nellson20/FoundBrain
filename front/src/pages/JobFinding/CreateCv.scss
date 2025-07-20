@@ -1,0 +1,122 @@
+@import "../../style.scss";
+
+.create-cv{
+    @include themify($themes){
+        >.left {
+            background: themed("background",3);
+            box-shadow: var(--elevation-1);
+            min-width: 450px;
+            max-width: 450px;
+            height: calc(100vh - var(--topbar-height));
+            position: sticky;
+            top: 58px;
+            display: flex;
+            flex-direction: column;
+            h2{
+                color:  themed("text",1);
+            }
+            .footer{
+                border-top: 1px solid themed("border",2);
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                padding: 0 20px;
+                justify-content: flex-end;
+                gap: 8px;
+            }
+            
+        }
+        >.content{
+            >.footer>div {
+                    background: themed("background",3);
+                    box-shadow: var(--elevation-1);
+                    border-radius: 5px;
+                    height: 53px;
+                    pointer-events: all;
+                    padding: 0 10px;
+                button{
+                    all: unset;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 40px;
+                    padding: 0 8px;
+                    gap: 5px;
+                    color:themed("text",2);
+                    cursor: pointer;
+                    transition: .5s;
+                    border-radius: 5px;
+                }
+                .dropDown .selected button{
+                    background: themed("background",5);
+                }
+                button:hover{
+                    background: #eeeeee54;
+                }
+            }
+        } 
+        .photo-opts button{
+            border: 1px solid themed("border",2);
+            color: themed("text",1);
+            background: themed("background",3);
+            border-radius: 5px;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+.create-cv>.left > .body{
+    flex-grow: 1;
+    overflow: auto;
+}
+.create-cv>.left > .footer button{
+    height: 40px;
+    padding: 0 15px;
+}
+
+.create-cv>.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.create-cv>.content>.body{
+    flex-grow: 1;
+    padding: 20px;
+    overflow: auto;
+}
+.create-cv>.content>.footer{
+    height: 60px;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    position: sticky;
+    bottom: 0px;
+}
+
+.photo-opts .avatar img{
+    // border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.experience-form,.skill-form,.lang-form,.hobby-form{
+    border:  1px solid #eee;
+    border-radius: 5px;
+}
+.cv-main-color-drop-down .dropdownMenu{
+    padding: 0;
+}
+
+@media (max-width:768px){
+    .create-cv>.content {
+        display: none;
+    }
+    .create-cv>.left {
+        min-width: 100%;
+        max-width: 100%;
+        height: calc(100vh - calc(var(--bottom-nav-height) + var(--topbar-height) - 9px));
+    }
+}

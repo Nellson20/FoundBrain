@@ -1,0 +1,27 @@
+@import '../../style.scss';
+
+.cv-list {
+    @include themify($themes) {
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+
+            .cv-papper {
+                overflow: hidden;
+                background-color: #ddd;
+                border: 1px solid #2e2e2e;
+                aspect-ratio: 1/1.4142;
+
+                .a4 {
+                    height: 1123px;
+                    width: 793px;
+                    transform-origin: 0 0 !important;
+                    background: white;
+                }
+            }
+
+        }
+    }
+}

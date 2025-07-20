@@ -1,0 +1,22 @@
+.input > input{
+    transition: .3s;
+    box-shadow: 0px 0px 0px 0px #702f8059;
+}
+.input > input:focus{
+    border: 1px solid #702f80cb;
+    transition: .3s;
+    box-shadow: 0px 0px 0px 3px #702f8044;
+}
+
+.input.has-error > input{
+    border: 1px solid var(--red);
+    transition: .3s;
+    box-shadow: 0px 0px 0px 0px rgba(248, 59, 59, 0.39);
+}
+.input.has-error > input:focus{
+    box-shadow: 0px 0px 0px 3px rgba(248, 59, 59, 0.39);
+}
+.input.has-error > .errorLabel > *{
+    color: var(--red) !important;
+    font-size: 13px;
+}

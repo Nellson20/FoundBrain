@@ -1,0 +1,29 @@
+@import '../../style.scss';
+
+#artist-dashboard {
+    @include themify($themes) {
+        gap: 3px;
+        height: calc(100vh - var(--topbar-height));
+        >*{
+            box-shadow: var(--elevation-1);
+        }
+        >.left {
+            min-width: 280px;
+            max-width: 280px;
+            overflow: auto;
+            *{
+                box-shadow: none;
+            }
+        }
+        >.content{
+            border-radius: 5px;
+            margin: 3px 3px 3px 0;
+            overflow: auto;
+        }
+        .dashboard-ttl{
+            font-size: 23px;
+            color: themed('text',1);
+            font-weight: themed('weight',700);
+        }
+    }
+}

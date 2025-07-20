@@ -1,0 +1,276 @@
+@import "../../style.scss";
+
+.messages-page {
+    @include themify($themes) {
+        position: relative;
+
+        >.left {
+            height: inherit;
+            box-shadow: var(--elevation-1);
+            transition: .5s;
+
+            >div>.top {
+                position: relative;
+                z-index: 100 !important;
+                background: red;
+
+                .searchbar {
+                    margin-left: -6px;
+                    margin-right: -6px;
+                }
+            }
+        }
+
+        >.left>div .post-plus-btn {
+            background: var(--main-gradient) !important;
+            color: #222 !important;
+        }
+
+        .empty-msg {
+            color: themed("text", 2);
+
+            >img {
+                background: themed;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+        }
+
+        >.left>div {
+            height: inherit;
+            min-width: 340px;
+            max-width: 340px;
+            position: sticky;
+            top: 54px;
+            overflow: auto;
+            background: themed("background", 3);
+            background-size: cover;
+            background-attachment: fixed;
+
+
+            h2 {
+                color: themed("text", 1);
+            }
+
+            >.top {
+                padding: 13px 8px 10px 8px;
+                z-index: 10;
+                background: inherit;
+                background-size: cover;
+                background-attachment: fixed;
+                position: sticky;
+                top: 0;
+            }
+        }
+
+        .post-comments-tabs>.top {
+            top: 98px;
+            border-bottom: 1px solid themed("border", 2);
+
+            ul li {
+                max-width: unset;
+                width: unset;
+            }
+        }
+
+        .order-discussion {
+            color: themed("text", 3);
+        }
+
+        .messenger>.content>.footer {
+            position: sticky;
+            bottom: 0;
+            min-width: 0;
+            background: themed("messengerFooter",bg);
+            backdrop-filter: blur(5px);
+        
+            >div {
+                max-width: 100%;
+            }
+        }
+        .messenger-loader{
+            height: 100%;
+        }
+
+    }
+    
+}
+
+
+
+
+
+
+
+
+.messages-page>.left>.discussion-list {
+    padding: 10px 8px;
+}
+
+.messages-online-contacts {
+
+    @include themify($themes) {
+        overflow-x: hidden;
+        padding: 10px;
+
+        >h5 {
+            color: themed("text", 2);
+            margin-bottom: 10px;
+        }
+
+        >div {
+            margin-left: -10px;
+
+            b {
+                color: themed("text", 1);
+                font-weight: themed("weight", 800);
+            }
+
+            >div {
+                width: 80px;
+                min-width: 80px;
+                text-align: center;
+            }
+        }
+    }
+
+}
+
+.messages-page .tabs-body>div {
+    width: 100% !important;
+    padding: 3px;
+}
+
+.messages-favorite-contacts>div>b {
+    text-align: center;
+    line-height: 17px;
+    font-weight: 600;
+}
+
+.messages-page {
+    height: calc(100vh - var(--topbar-height));
+}
+
+.messages-page .center {
+    min-width: 0 !important;
+}
+
+.messenger {
+    @include themify($themes) {
+        max-width: 100%;
+        width: 100%;
+        min-width: 0;
+        height: calc(100vh - var(--topbar-height));
+        display: flex;
+        flex-direction: column;
+
+        >.top {
+            height: 55px;
+            min-height: 55px;
+            background: themed("background", 3);
+            box-shadow: var(--elevation-1);
+            border-bottom: 1px solid themed("border", 2);
+            z-index: 1;
+            padding: 0 15px;
+
+            .left>div {
+                height: 31px;
+                width: 31px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                border-radius: 5px;
+                background: themed("background", 5);
+                color: themed("text", 1);
+            }
+
+            .discu-info {
+                h5 {
+                    color: themed("text", 1);
+                }
+
+                span {
+                    color: themed("text", 3);
+                }
+            }
+        }
+
+        .do-dinamic-textarea {
+            background: themed("background", 6);
+        }
+    }
+}
+
+
+
+.messenger>.content {
+    flex-grow: 1;
+    overflow: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.messenger>.content>.body {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.messenger>.content>.footer>div {
+    flex-grow: 1;
+    padding: 0 15px;
+    margin-bottom: 15px;
+}
+
+.messenger>.content>.footer>div>.do-dinamic-textarea {
+    box-shadow: var(--elevation-1);
+}
+
+.message-group {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.message-group>.left {
+    align-self: flex-end;
+}
+
+.message-group .messages-list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3px;
+}
+
+@media (max-width: 768px) {
+    .messages-page {
+        height: calc(100vh - 50px);
+
+        @include themify($themes) {
+            >.left{
+                width: 100% !important;
+                height: auto;
+                >div {
+
+                    width: 100% !important;
+                    min-width: 100% !important;
+                    
+                    min-height: calc(100vh - var(--mobile-topbar-height)) !important;
+                }
+            }
+        }
+
+    }
+
+    .messenger {
+        height: calc(100vh - var(--mobile-topbar-height)) !important;
+    }
+}

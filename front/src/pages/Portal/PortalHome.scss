@@ -1,0 +1,445 @@
+@import "../../style.scss";
+
+.portal-page {
+  @include themify($themes) {
+    color: themed("text", 2);
+
+    .offer,
+    .other-portal {
+      border: 1px solid themed("border", 2);
+      padding: 15px;
+      border-radius: 5px;
+      height: 120px;
+    }
+    a.create-job-link {
+      cursor: pointer;
+      transition: 0.5s;
+      color: themed("text", 3) !important;
+      &:hover {
+        background: themed("background", 5);
+      }
+    }
+    .partenaire {
+      width: 200px !important;
+      border: 1px solid themed("border", 2);
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .portal-summary {
+      -webkit-line-clamp: 5;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .avis {
+      .avis-container {
+          @media (max-width:630px){
+              width: 100% ;
+              min-width: 100%;
+          }
+        margin-top: 10px;
+        width: 60%;
+        min-width: 600px;
+        .avi {
+          margin-bottom: 30px;
+          .head {
+            display: flex;
+            align-items: center;
+            .avatar {
+              color: themed("text", 5);
+            }
+            .author {
+              margin-left: 15px;
+              h2 {
+                font-size: 15px;
+                font-weight: 500;
+                margin-bottom: 10px;
+              }
+            }
+          }
+          .corps {
+            margin-top: 15px;
+            h2 {
+              font-size: 17px;
+              font-weight: 600;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+    }
+    .lieu {
+      .ca-slider{
+        >div{
+            // width: 49% !important;
+            flex: 1;
+            padding: 15px;
+            background: themed("background", 5);
+            color: themed("text", 2);
+        }
+        .icon-localisation {
+          color: #f8b75c;
+        }
+      }
+    }
+    .other-portal {
+        height: auto;
+      .portal {
+        border: 1px solid themed("border", 2);
+        border-radius: 5px;
+        padding: 10px;
+        width: 230px !important;
+        .logo {
+            height: 70px;
+          img {
+            height: 100%;
+          }
+        }
+      }
+    }
+    .travails{
+        .list{
+            .travail{
+                display: flex;
+                justify-content: space-between;
+                width: 49% ;
+                padding: 20px 15px;
+                border-radius: 5px;
+                border: 1px solid themed("border", 2);
+                .left{
+                    display: flex;
+                    span{
+                        display: inline-block;
+                        margin-right: 10px;
+                        color: #f8b75c;
+                    }
+                    h4{
+                        font-weight: 500;
+                    }
+                }
+                @media (max-width:600px){
+                    width: 100%;
+                }
+            }
+        }
+    }
+  }
+}
+
+.pg-page > main {
+  margin-top: -140px;
+}
+
+.contact-btn {
+  border: 1px solid var(--orange);
+  height: 35px;
+  padding: 0 12px;
+  border-radius: 5px;
+  color: var(--orange);
+  background: none;
+}
+
+.more-btn {
+  all: unset;
+  background: #eee;
+  border-radius: 5px;
+  padding: 0 12px;
+}
+
+.modif-btn {
+  all: unset;
+  background: #080808be;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  top: -130px;
+  height: 40px;
+  width: 40px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.pg-page > main > .left > .top .capt .center .flag {
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+}
+
+.pg-page > main > .left > .top .capt .center .btns {
+  position: absolute;
+  right: 0;
+  bottom: 18px;
+}
+
+.pg-page > main > .left > .top .capt .center .flag img {
+  width: 40px;
+}
+
+.pg-page > main > .left > .top .capt .avatar {
+  margin-bottom: 20px;
+}
+
+.default-nav {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 0 0 5px 5px;
+  box-shadow: var(--elevation-1);
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid #eee;
+}
+
+.default-nav ul {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+}
+
+.default-nav ul::-webkit-scrollbar {
+  display: none;
+}
+
+.default-nav ul li {
+  width: 200px !important;
+  height: inherit;
+}
+
+.default-nav ul li a.active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 5px;
+  left: 0;
+  bottom: 0;
+}
+
+.default-nav ul li a.active svg {
+  color: var(--orange);
+}
+
+.default-nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: inherit;
+  position: relative;
+  color: #222;
+  font-weight: 600;
+  gap: 10px;
+  width: 110px;
+}
+
+.default-nav ul li a span {
+  white-space: pre;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  min-width: 0;
+}
+
+.pg-page > main > .left > .top .capt .info {
+  text-align: center;
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+  box-shadow: var(--elevation-1);
+  background: white;
+  padding: 20px;
+}
+
+.pg-page > main > .left > .top .capt .info .numbers > span {
+  display: block;
+  position: relative;
+}
+
+.pg-page > main > .left > .top .capt .info .numbers > span::after {
+  content: "";
+  position: absolute;
+  height: 30px;
+  border-left: 1px solid #eee;
+  top: 8px;
+  right: -10px;
+}
+
+.pg-page > main > .left > .top .capt h1 {
+  font-size: 16px;
+}
+
+.pg-page > .cover {
+  height: 280px;
+}
+
+.pg-page > .cover > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.pg-page > .cover > .gradient {
+  height: 150px;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.76));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.pg-page > main > .left {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.pg-page > main > .right {
+  min-width: 380px !important;
+  max-width: 380px !important;
+  flex-grow: 0;
+  z-index: 10;
+}
+
+.pg-page > main > .right p {
+  min-width: 0 !important;
+  word-break: break-all;
+}
+
+.pg-page > main > .right h4 {
+  margin-bottom: 5px;
+  font-size: 15px;
+}
+
+.about-card {
+  background: white;
+  border-radius: 5px;
+  box-shadow: var(--elevation-1);
+}
+
+.map {
+  background: #eee;
+  border-radius: 5px;
+  height: 150px;
+  margin-top: 10px;
+}
+
+.map iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+}
+
+.same-domain-entreprises-list {
+  background: white;
+  border-radius: 5px;
+  box-shadow: var(--elevation-1);
+  margin-top: 20px;
+}
+
+.entreprise-resume {
+  padding-top: 0;
+}
+
+.util-infos .elevated-card {
+  border: 1px solid #eee;
+}
+
+.partenaires .slick-slider, .other-portal .slick-slider {
+  margin-top: 15px;
+}
+
+.partenaires .slick-track , .other-portal .slick-track{
+  display: flex;
+  gap: 10px;
+}
+
+.partenaires,
+.offers {
+  padding-top: 0;
+}
+
+.partenaires .logo img {
+  height: 50px;
+}
+
+.offers,
+.partenaires {
+  padding-right: 0;
+}
+
+.offers .logo img {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.offers .slick-track {
+  display: flex;
+  gap: 10px;
+}
+
+
+
+@media (max-width: 768px) {
+  .pg-page > .cover {
+    height: 180px;
+  }
+
+  .pg-page > main > .left > .top .capt .center .btns {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .pg-page > main > .left > .top .capt .center .flag {
+    left: 10px;
+    bottom: 10px;
+  }
+
+  .pg-page > main > .left > .top .capt .avatar {
+    margin-bottom: 50px;
+  }
+
+  .modif-btn {
+    top: -30px;
+    right: 10px;
+  }
+
+  .pg-page > main > .left > .top .capt .info {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .pg-page > main > .left > .top .capt .info br {
+    display: none;
+  }
+
+  .pg-page > main > .left > .top .capt .info .numbers {
+    margin-top: 10px;
+    position: static;
+  }
+}
+
+.entreprise-resume {
+  @include themify($themes) {
+    .ca-slider {
+      > div {
+        background: themed("background", 5);
+        color: themed("text", 2);
+      }
+    }
+
+    .util-infos {
+      border-top: 1px solid themed("border", 2);
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,341 @@
+@import "../../style.scss";
+
+#video-home-page .top {
+    @include themify($themes) {
+        background: themed("background",3);
+        box-shadow: var(--elevation-1);
+        padding: 30px 15px 20px 15px;
+    }
+}
+
+#video-home-page .top>div {
+    margin: auto;
+}
+
+.video-top-banner {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+
+}
+
+#video-home-page .top .explorer-slider .slide {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    height: 50px;
+}
+
+.video-top-banner .left {
+    background: #eee;
+    width: 55%;
+    border-radius: 5px;
+}
+
+.video-top-banner .left>img {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    object-fit: cover;
+}
+
+.video-top-banner .right {
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    width: 45%;
+}
+
+.video-top-banner .right>div {
+    background: #eee;
+    aspect-ratio: 16/9;
+    border-radius: 5px;
+    position: relative;
+}
+
+.absolute-video-capt {
+    position: absolute;
+    bottom: 0;
+    padding: 8px 6px;
+}
+
+.absolute-video-capt .user-info {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.absolute-video-capt {
+    font-size: 14px;
+    color: white;
+    width: 100%;
+}
+
+.video-top-banner .right>div>img {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.video-top-banner .left {
+    position: relative;
+}
+
+.video-top-banner .left .play-btn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+    background: rgba(39, 39, 39, 0.13);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.absolute-video-capt .play-btn {
+    background: rgba(39, 39, 39, 0.13);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    width: 25px;
+    min-width: 25px;
+    height: 25px !important;
+    position: unset;
+    transform: unset;
+}
+
+
+
+.floatting-nav {
+    @include themify($themes) {
+        width: 100%;
+        min-width: 0 !important;
+        margin: 0 auto;
+        padding: 15px 0;
+        overflow: hidden;
+        margin-left: -5px;
+
+        & ul {
+            padding-left: 5px;
+            gap: 20px;
+            font-weight: 600;
+            color: themed("text", 1);
+
+            & li {
+                background: themed("background", 4);
+                padding: 6px 10px;
+                border-radius: 5px;
+                box-shadow: var(--elevation-1);
+            }
+
+            & li.active {
+                background: themed("trans", orange);
+                color: var(--orange);
+                box-shadow: none;
+                border: 1px solid #ffc47248;
+            }
+        }
+    }
+}
+
+
+#video-home-page .content {
+    max-width: 1200px;
+    width: 100%;
+    min-width: 0;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+
+#video-home-page .content>.right {
+    min-width: 350px;
+    width: 350px;
+    padding: 15px 0;
+}
+
+.video-thumb-top-left {
+    display: flex;
+    gap: 5px;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+.video-thumb-top-left>div {
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px !important;
+    background: rgba(0, 0, 0, 0.575);
+    padding: 1px 3px;
+    border-radius: 5px;
+}
+
+@keyframes boomRed {
+    0% {
+        box-shadow: 0 0 0 5px #fc3c3262;
+    }
+
+    100% {
+        box-shadow: 0 0 0 16px #0efba000;
+    }
+
+}
+
+.video-thumb-top-left>div.live-icon {
+    width: 13px;
+    height: 13px;
+    background: var(--red);
+    animation: boomRed 1.1s infinite;
+}
+
+/*mansonry*/
+.mansonry-container {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: auto;
+    columns: 4;
+    column-gap: 10px;
+}
+
+.mansonry-container .box {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 10px;
+    break-inside: avoid;
+    box-shadow: var(--elevation-1);
+    border-radius: 5px;
+}
+
+.mansonry-container .box>img {
+    max-width: 100%;
+    border-radius: 5px;
+    display: block;
+}
+
+@media (max-width: 1200px) {
+    .mansonry-container {
+        width: calc(100% - 40px);
+        columns: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .floatting-nav {
+        margin-left: 10px !important;
+    }
+
+    .video-page-top .explorer-slider {
+        min-width: calc(100% + 30px) !important;
+        margin-left: -15px !important;
+    }
+
+    .video-page-top .explorer-slider .slick-track {
+        margin-left: 15px;
+    }
+
+    .mansonry-container {
+        columns: 1;
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    #video-home-page .content {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+
+    .video-top-banner>.left,
+    .video-top-banner>.right>div {
+        aspect-ratio: 16/9;
+    }
+
+    .video-top-banner {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .video-top-banner>.left,
+    .video-top-banner>.right {
+        align-self: stretch;
+        width: 100%;
+    }
+
+    .video-page-top {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .video-page-top .right {
+        margin-bottom: 10px;
+    }
+
+    .video-page-top .right>div {
+        max-width: 100% !important;
+        flex-grow: 1;
+    }
+
+    #video-home-page .content>.right {
+        width: 100%;
+        padding-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .mansonry-container {
+        columns: 1;
+    }
+}
+
+.sponsored-videos {
+    background: var(--main-gradient);
+    border-radius: 5px;
+}
+
+.sponsored-videos .top {
+    background: transparent !important;
+    box-shadow: none !important;
+    padding: 12px 15px 3px 15px !important;
+    margin-bottom: 8px;
+}
+
+.sponsored-videos .bottom {
+    display: flex;
+    justify-content: end;
+    height: 30px;
+    padding: 0 15px;
+    color: #333;
+}
+
+.sponsored-videos-slider .slick-track {
+    display: flex;
+    gap: 8px;
+    margin-left: 15px;
+}
+
+.sponsored-video-slide {
+    background: rgba(41, 5, 41, 0.411);
+    border-radius: 5px;
+    color: white;
+    width: 150px !important;
+    height: 70px;
+}

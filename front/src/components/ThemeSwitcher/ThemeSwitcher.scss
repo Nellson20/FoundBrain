@@ -1,0 +1,54 @@
+@import "../../style.scss";
+
+
+.theme-dark {
+
+    .theme-switcher {
+      
+            >div {
+                margin-left: 0px;
+                background: map-get(map-get(map-get($themes, dark),mainColor), purple);
+            }
+        
+    }
+}
+
+.theme-light {
+    .theme-switcher {
+        >div {
+            margin-left: -21px;
+        }
+    }
+}
+
+.theme-switcher {
+    @include themify($themes) {
+        width: 50px;
+        height: 30px;
+        border-radius: 5px;
+        background: themed("background", 5);
+
+        >div {
+            height: inherit;
+            width: inherit;
+            border-radius: inherit;
+            display: flex;
+            justify-content: flex-end;
+            padding: 3px;
+            transition: .5s;
+
+            .ico {
+                width: 24px;
+                height: 24px;
+                background: themed("background", 3);
+                color: themed("text", 1);
+                ;
+                border-radius: inherit;
+                box-shadow: var(--elevation-1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+    }
+}

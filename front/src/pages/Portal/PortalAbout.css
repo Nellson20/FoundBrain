@@ -1,0 +1,26 @@
+ul.after-nav{
+    height: 50px;
+    border-bottom: 1px solid #eee;
+}
+
+ul.after-nav li{
+    min-width: 80px;
+    font-weight: 500;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 0 15px;
+}
+ul.after-nav li.active{
+    color: var(--purple);
+}
+ul.after-nav li.active::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background: var(--purple);
+    border-radius: 3px;
+    bottom: -15px;
+    left: 0;
+}

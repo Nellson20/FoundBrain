@@ -1,0 +1,8 @@
+.carret-inpt.active{
+    .carret{
+        svg{
+            transform: rotate(180deg);
+            transition: .5s;
+        }
+    }
+}

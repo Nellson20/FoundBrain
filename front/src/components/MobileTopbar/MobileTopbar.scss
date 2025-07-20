@@ -1,0 +1,79 @@
+@import "../../style.scss";
+
+:root{
+    --mobile-topbar-height:50px;
+}
+#m-topbar{
+    @include themify($themes){
+        background: themed("background",3);
+    }
+    min-height: var(--mobile-topbar-height);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--elevation-1);
+    overflow: visible;
+}
+.mobile-topbar-new-btn{
+    height: 30px;
+    width: 30px !important;
+    padding: 0;
+}
+#m-topbar .left{
+    width: unset;
+}
+#m-topbar .left img{
+    height: 28px;
+    display: block;
+}
+#m-topbar .center{
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    margin-right: -6px;
+}
+#m-topbar .center .searchbar{
+    min-width: unset;
+    width: 100%;
+    font-size: 15px;
+    gap: 0;
+}
+#m-topbar .center .searchbar .input{
+    height: 31px;
+}
+#m-topbar .center .searchbar .icon-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+}
+#m-topbar .center .searchbar input{
+    min-width: 0px !important;
+    width: 10px;
+    display: flex;
+    flex-grow: 1 !important;
+    flex: 1 !important;
+}
+#m-topbar .right{
+    width: unset;
+}
+#m-topbar .right > *,#m-topbar .right > a{
+    transition: .5s;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    color: #222;
+}
+#m-topbar .right > * a{
+    color: #222;
+}
+#m-topbar .right > span:hover,#m-topbar .right > div{
+    @include themify($themes){
+        background: themed("background",5);
+    }
+}
+

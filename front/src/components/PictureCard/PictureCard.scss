@@ -1,0 +1,111 @@
+@import "../../style.scss";
+.picture-card,
+.add-picture-card {
+  @include themify($themes) {
+    position: relative;
+    aspect-ratio: 10/7;
+    width: calc(20% - 60px / 5);
+    border-radius: 5px;
+    // overflow: hidden;
+    cursor: pointer;
+    .banner {
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      background-color: transparent;
+    }
+    &:hover {
+      .banner {
+        background-color: rgba(0, 0, 0, 0.363);
+      }
+    }
+  }
+}
+.picture-card {
+  @include themify($themes) {
+    &:hover {
+      img {
+        transform: scale(1.03);
+      }
+      .actions {
+        display: block;
+      }
+    }
+    &.checked {
+      img {
+        transform: scale(1.03);
+      }
+      .banner {
+        background-color: rgba(0, 0, 0, 0.363);
+      }
+      .actions {
+        display: block;
+        .center,
+        .dropDown {
+          display: none;
+        }
+      }
+    }
+    .img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      border-radius: 5px;
+      overflow: hidden;
+      img {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        object-fit: cover;
+        transition: 0.2s;
+      }
+    }
+    .actions {
+      position: absolute;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      padding: 5px;
+      display: none;
+      .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .center {
+        display: flex;
+        justify-content: center;
+        margin-top: calc(25% - (26px / 2));
+        color: #e0e0e0;
+      }
+      .dropdownMenu {
+        z-index: 12345;
+        max-width: none;
+        width: 330px;
+      }
+      .options {
+        color: themed("text", 3);
+        background-color: themed("background", 4);
+        padding: 3px 5px;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+.add-picture-card {
+  @include themify($themes) {
+    background: themed("gradient", main);
+    color: themed("text", 3);
+    span {
+      font-weight: 600;
+      font-size: 16px;
+      color: themed("text", 3);
+    }
+  }
+}

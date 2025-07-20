@@ -1,0 +1,47 @@
+@import '../../style.scss';
+
+#create-invest{
+    @include themify($themes){
+        @media (max-width:1024px){
+            flex-direction: column-reverse;
+            height: unset;
+            .formulaire{
+                min-width: 100% !important;
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+        display: flex;
+        height: calc(100vh - var(--topbar-height));
+        >.formulaire{
+            min-width: 400px;
+            max-width: 400px;
+            background: themed("background",3);
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--elevation-1);
+            .top{
+                padding: 10px;
+            }
+            .bottom{
+                flex-grow: 1;
+                padding: 10px;
+                overflow: auto;
+            }
+            .footer{
+                min-height: 60px;
+                height: 60px;
+                padding: 0 10px;
+                border-top: 1px solid themed("border",2);
+                button{
+                    height: 40px;
+                    padding: 0 15px;
+                }
+            }
+        }
+        
+        .right{
+            flex-grow: 1;
+        }
+    }
+}

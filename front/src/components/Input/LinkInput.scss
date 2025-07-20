@@ -1,0 +1,9 @@
+@import '../../style.scss';
+
+.link-input{
+    @include themify($themes){
+        .link-ttl{
+            max-width: 200px;
+        }
+    }
+}

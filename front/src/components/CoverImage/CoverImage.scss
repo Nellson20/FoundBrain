@@ -1,0 +1,35 @@
+@import '../../style.scss';
+
+.cover-image {
+    @include themify($themes) {
+        background: themed("background", 5);
+        border-radius: 5px;
+        position: relative;
+        aspect-ratio: 10/2.5;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+        }
+
+        button {
+            all: unset;
+            background: themed("background", 3);
+            color: themed("text", 1);
+            display: flex;
+            align-items: center;
+            height: 35px;
+            padding: 0 10px;
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+            gap: 10px;
+            font-weight: themed("weight", 500);
+            font-size: 14px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+    }
+}

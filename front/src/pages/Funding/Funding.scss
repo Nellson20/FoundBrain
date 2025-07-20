@@ -1,0 +1,218 @@
+@import url('https://unpkg.com/leaflet@1.6.0/dist/leaflet.css');
+@import "../../style.scss";
+
+:root {
+    --leaflet-tile-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+}
+.leaflet-control-attribution{
+    display: none;
+}
+
+.theme-dark{
+    .leaflet-tile {
+        filter: var(--leaflet-tile-filter, none);
+    }
+
+    .leaflet-container {
+        background: #303030;
+    }
+}
+
+#funding-page {
+    @include themify($themes) {
+        
+        >* {
+            min-height: calc(100vh - 58px);
+        }
+
+        >.left {
+            width: 280px;
+            background: themed("background", 3);
+            box-shadow: var(--elevation-1);
+            .sortable-list{
+                h3{
+                    margin: 0;
+                    padding: 0;
+                }
+                .searchbar.expandable.expanded{
+                    padding: 0 !important;
+                }
+                .sortable-list-skeleton {
+                    margin: 20px 0 0 0;
+                }
+                ul {
+                    margin-top: 5px !important;
+                    li{
+                        display: flex;
+                        gap: 10px;
+                        align-items: center;
+                        label{
+                            user-select: none;
+                        }
+                    }
+                }
+            }
+            h2 {
+                color: themed("text", 1);
+                margin-bottom: 5px;
+            }
+
+            small {
+                color: themed("text", 4);
+                display: block;
+                margin-bottom: 10px;
+            }
+
+            label {
+                color: themed("text", 1);
+                display: block;
+                margin-bottom: 5px !important;
+            }
+
+            ul {
+                margin-top: 15px !important;
+
+                >li {
+                    color: themed("text", 3);
+                    margin-bottom: 15px;
+                    gap: 13px;
+                    label{
+                        color: themed("text", 3);
+                        font-weight: themed("weight",500) !important;
+                        margin: 0 !important;
+                    }
+                }
+            }
+        }
+
+
+        >.center {
+            z-index: 2;
+            min-width: 0;
+            >.top {
+                height: 54px;
+                background: themed("blured", nav);
+                box-shadow: var(--elevation-1);
+                position: sticky;
+                z-index: 2;
+                top: 58px;
+                backdrop-filter: blur(3px);
+            }
+        }
+
+        .leaflet-control-zoom {
+            border: none !important;
+            display: flex;
+            gap: 10px;
+
+            >a {
+                display: block;
+                width: 35px !important;
+                height: 35px !important;
+                border-bottom: 1px solid themed("border", 2) !important;
+                box-shadow: var(--elevation-1);
+                border-radius: 8px !important;
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                background: themed("background", 3);
+            }
+
+            >a span {
+                font-size: 20px !important;
+                color: themed("text", 2);
+            }
+
+            >a:hover {
+                border-bottom: 2px solid themed("border", 2) !important;
+            }
+        }
+
+        >#funding-map {
+
+            width: 40%;
+            min-width: 40%;
+            height: 200px;
+            align-self: flex-start;
+            overflow: hidden;
+            position: sticky;
+            top: 58px;
+        }
+    }
+}
+
+#funding-page>.center>.top>.inpt {
+    height: 35px;
+    width: 100px;
+}
+
+
+
+
+.leaflet-container {
+    height: 100% !important;
+    width: 100%;
+    display: block;
+}
+
+.funding-list .ca tr td {
+    height: 30px;
+    font-size: 14px;
+}
+
+
+
+.funding-list .ca tr td:first-child {
+    width: 60px;
+}
+
+
+
+@media (max-width:768px) {
+    #funding-page{
+        height: calc(100vh - 112px) !important;
+    }
+    .funding-card>.top {
+        flex-direction: column;
+    }
+
+    .funding-card>.top>.img {
+        width: 100%;
+        height: unset;
+        aspect-ratio: 16/9;
+    }
+    #funding-page{
+    }
+    #funding-page>* {
+        order: 3;
+        min-height: unset;
+    }
+    #funding-page>.center {
+        
+            
+            
+        
+    }
+
+    #funding-page>#funding-map {
+        order: 1;
+        width: 100% !important;
+        min-height: 32vh;
+        height: 32vh;
+        aspect-ratio: 16/9 !important;
+        border: none;
+        top: 0px !important;
+        position: sticky;
+        left: 0;
+        z-index: 4;
+    }
+
+    #funding-page {
+        height: calc(100vh - var(--mobile-topbar-height));
+
+    }
+
+    #funding-page>.center>.top {
+        top: 32vh;
+    }
+}

@@ -1,0 +1,129 @@
+@import "../../style.scss";
+
+.accommodation-controls {
+  @include themify($themes) {
+    display: table;
+    margin-left: 200px;
+    margin: auto;
+    h3 {
+      font-size: 15px;
+      color: themed("text", 2);
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: 500;
+      color: themed("text", 3);
+    }
+    span {
+      color: themed("text", 2);
+    }
+    .rdrCalendarWrapper {
+      min-width: 750px;
+      background-color: themed("background", 3);
+      .rdrMonth {
+        flex: 1;
+      }
+    }
+    .rdrDefinedRangesWrapper {
+      display: none;
+    }
+    .rdrDateDisplayWrapper {
+      border-radius: 5px;
+      background-color: themed("background", 5);
+    }
+    .rdrInputRanges {
+      display: none;
+    }
+    .rdrDateDisplayItem {
+      border: none;
+      background: themed("background", 3) !important;
+      &.rdrDateDisplayItemActive {
+        border: 1px solid themed("mainColor", purple);
+      }
+      input {
+        background: themed("background", 3) !important;
+        border-radius: 3px;
+      }
+    }
+    .rdrNextPrevButton {
+      background-color: themed("background", 5);
+      i {
+        color: themed("text", 1);
+      }
+    }
+    .rdrMonth {
+      span {
+        font-size: 12px;
+      }
+    }
+    .rdrDays {
+      .rdrDay {
+        span {
+          color: themed("text", 1);
+        }
+        &.rdrDayPassive {
+          span {
+            color: themed("text", 5);
+          }
+        }
+      }
+      .rdrDayPassive{
+        span{
+          color: themed('text',5) !important;
+        }
+      }
+      .rdrStartEdge ~ .rdrDayNumber,
+      .rdrInRange ~ .rdrDayNumber,
+      .rdrEndEdge ~ .rdrDayNumber {
+        span {
+          color: white !important;
+        }
+      }
+    }
+    .accommodation-type {
+      .accommodation-type-item {
+        > div {
+          margin-top: 10px;
+          gap: 50px;
+          > div {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            input,
+            label {
+              margin: 0;
+            }
+          }
+        }
+        .pricing-plan {
+          margin-top: 15px;
+          > span {
+            font-weight: 700;
+          }
+          > div {
+            width: auto;
+            gap: 50px;
+            > div {
+              align-items: center;
+            }
+          }
+        }
+      }
+    }
+    .status {
+      > div {
+        margin-top: 10px;
+        gap: 30px;
+        > div {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          input,
+          label {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

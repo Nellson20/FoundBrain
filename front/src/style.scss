@@ -1,0 +1,181 @@
+$yellow: (
+    primary:#fd980f,
+    transparent:#ffd8a265
+);
+$purple: (
+    primary:#702f80
+);
+$red: (
+    primary:#fc3d32
+);
+$elevation: (
+    primary:(-1px 1px 2px #0000001c, 1px 1px 3px #00000015),
+    navbar: 0px 2px 2px #2b2a2a1c
+);
+$mainGradient: (
+    main:linear-gradient(315deg, #9f98e8 0%, #f6daaf 74%),
+    invert:linear-gradient(315deg, #f6daaf 60%, #9f98e8 120%),
+);
+
+
+$colors: (
+    dark: (primary: #222,
+        secondary: #333,
+        tertiary: #444,
+        quaternary: #555,
+    ),
+    white: (primary: white,
+        secondary: rgba(255, 255, 255, 0.89),
+        tertiary: rgba(255, 255, 255, 0.767),
+        quaternary: rgba(255, 255, 255, 0.623),
+    ),
+    grey: (primary: #9c9c9c,
+        secondary: #b8b8b8,
+        tertiary: #cfcfcf,
+        quaternary: #f3f3f3,
+        yellow:rgb(241 243 233))
+);
+
+
+$themes: (
+    light: (trans:(orange:#ffd8a265,
+            purple:#d1a1ff1f),
+        transBorder:(orange:#d4a76748),
+        text: (0: #111,
+            1: #222,
+            2: #333,
+            3: #444,
+            4: #636363,
+            5: #949393),
+        background: (0: #f3f3f3,
+            1: #cfcfcf,
+            2: #b8b8b8,
+            3: white,
+            4: #fff,
+            5: #ececec,
+            6: white,
+        ),
+        border: (0: #9c9c9c,
+            1: #cacaca,
+            2: #e7e7e7,
+            3: #f3f3f3,
+            4: rgb(241, 243, 233)),
+        mainColor:(purple:#702f80),
+        messengerFooter:(bg:linear-gradient(transparent,#cacacad0)),
+        blured:(nav:rgba(255, 255, 255, 0.925)),
+        weight:(100:100,
+            200:200,
+            300:300,
+            400:400,
+            500:500,
+            600:600,
+            700:700,
+            800:800),
+        scrollbar: (scrollbarBg:#dfdfdf,
+            thumbBg:#b9b9b9,
+            arrowBg: url("../public/img/icons/arrow.png")),
+        gradient:(main:linear-gradient(315deg, #9f98e8 0%, #f6daaf 74%)),
+        elevation:(1:(-1px 1px 2px #0000001c, 1px 1px 3px #00000015))),
+    dark: (trans:(orange:#64564365,
+            purple:#d1a1ff1f),
+        transBorder:(orange:#ffc47248),
+        text: (0: rgb(255, 255, 255),
+            1: rgba(255, 255, 255, 0.89),
+            2: rgba(255, 255, 255, 0.767),
+            3: rgba(255, 255, 255, 0.623),
+            4: rgba(255, 255, 255, 0.527),
+            5: rgba(255, 255, 255, 0.427),
+        ),
+        background: (0: #262626,
+            1: rgb(29, 29, 29),
+            2: rgb(44, 44, 44),
+            3: rgb(53, 54, 56),
+            4: rgb(78, 78, 78),
+            5: rgb(85, 84, 87),
+            6: rgb(95, 94, 95),
+        ),
+        border: (0: rgba(255, 255, 255, 0.808),
+            1: rgba(255, 255, 255, 0.664),
+            2: #4e4d50,
+            3: rgba(255, 255, 255, 0.075),
+            4: rgba(255, 255, 255, 0.274),
+        ),
+        mainColor:(purple:#c508f3),
+        messengerFooter:(bg:linear-gradient(transparent,rgba(30, 30, 31, 0.76))),
+        blured:(nav:rgba(53, 54, 56, 0.825)),
+        weight:(100:none,
+            200:100,
+            300:200,
+            400:300,
+            500:400,
+            600:500,
+            700:600,
+            800:700),
+        scrollbar: (scrollbarBg:#444,
+            thumbBg:#777,
+            arrowBg: url("../public/img/icons/arrow_dark.png")),
+        gradient:(main:linear-gradient(315deg, #4c3c59 0%, #76674a 74%)),
+        elevation:(1:(-1px 1px 2px #0000001c, 1px 1px 3px #00000015))),
+
+);
+
+@mixin themify($themes) {
+
+    @each $theme,
+    $map in $themes {
+        .theme-#{$theme} & {
+            $theme-map: () !global;
+
+            @each $key,
+            $submap in $map {
+                $value: map-get(map-get($themes, $theme), "#{$key}");
+                $theme-map: map-merge($theme-map,
+                    ($key: $value,
+                    )) !global;
+            }
+
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@function themed($key, $subkey) {
+    @return map-get(map-get($theme-map, $key), $subkey);
+}
+
+
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 960px) {
+        @content;
+    }
+}
+
+.ql-indent-1:not(.ql-direction-rtl) {
+    padding-left: 3em;
+}
+
+.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 6em;
+}
+
+.ql-indent-2:not(.ql-direction-rtl) {
+    padding-left: 18em;
+}
+
+@keyframes boomPurple {
+    0% {
+        box-shadow: 0 0 0 5px #7d0efb38;
+    }
+
+    100% {
+        box-shadow: 0 0 0 16px #0efba000;
+    }
+
+}

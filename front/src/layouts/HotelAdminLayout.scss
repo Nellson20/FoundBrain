@@ -1,0 +1,83 @@
+@import "../style.scss";
+
+#hotel-admin {
+  @include themify($themes) {
+    .nav {
+      height: 50px;
+    }
+    .hotel-admin-container {
+      .hotel-admin-nav {
+        background: themed("background", 3);
+        border-radius: 6px;
+        padding: 8px;
+        margin-top: 15px;
+        position: relative;
+        z-index: 2;
+
+        > ul {
+          display: flex;
+          margin-top: 3px;
+          > li {
+            a:not(.dropdownMenu a) {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              border-radius: 5px;
+              padding: 5px 15px;
+              font-weight: themed("weight", 700);
+              color: themed("text", 4);
+              small {
+                display: flex;
+                align-items: center;
+              }
+            }
+          }
+        }
+        .dropdownMenu {
+            z-index: 1234;
+          a {
+            align-items: start;
+          }
+        }
+        .dropdown-tarif-disponibility{
+            .dropdownMenu{
+                max-width: none;
+                width: 280px;
+            }
+        }
+        .hotel-name {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: themed("text", 4);
+          margin-right: 15px;
+          h1 {
+            font-size: 20px;
+          }
+        }
+      }
+      > .bottom {
+        max-width: 1300px;
+        margin: 0 auto;
+        h2 {
+          font-size: 20px;
+        }
+        h3 {
+          color: themed("text", 2);
+        }
+        h4 {
+          color: themed("text", 3);
+        }
+        p {
+          color: themed("text", 2);
+        }
+        span {
+          color: themed("text", 3);
+        }
+      }
+    }
+  }
+}

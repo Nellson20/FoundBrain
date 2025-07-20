@@ -1,0 +1,17 @@
+@import '../../style.scss';
+.posts-list-skeleton{
+    @include themify($themes){
+        >*{
+            border-radius: 5px;
+            box-shadow: var(--elevation-1);
+            background: themed("background",3);
+        
+        }
+        >.top{
+            height: 50px;
+        }
+        >.bottom{
+            height: 50px;
+        }
+    }
+}

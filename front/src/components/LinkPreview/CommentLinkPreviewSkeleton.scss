@@ -1,0 +1,11 @@
+@import '../../style.scss';
+
+.comment-link-preview-skeleton{
+    @include themify($themes){
+        border: 1px solid themed('border',2);
+        background: themed('background',3);
+        border-radius: 8px;
+        overflow: hidden;
+        width: 300px;
+    }
+}

@@ -1,0 +1,25 @@
+@import "../../style.scss";
+
+#galery-pictures {
+  @include themify($themes) {
+    max-width: 1200px;
+    margin: auto;
+    .head {
+      display: flex;
+      justify-content: space-between;
+    }
+    .menu {
+      ul {
+        display: flex;
+        gap: 20px;
+        li {
+          cursor: pointer;
+          color: themed("mainColor", purple);
+        }
+        li:last-child {
+          color: map-get($red, primary);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import "../../style.scss";
+
+
+
+.emoji-picker-dropdown {
+    img.emoji {
+        height: 28px;
+        width: 28px;
+        margin: 0 .05em 0 .1em;
+        vertical-align: -0.1em;
+     }
+    .dropdownMenu {
+        height: 400px;
+        width: 420px !important;
+        max-width: unset !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 0;
+    }
+}
+
+.emojis-picker-tabs {
+    @include themify($themes) {
+
+        .emoji-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 37px;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover{
+                background: themed("background",6);
+            }
+            img {
+                
+                display: block;
+            }
+        }
+        .top {
+            border-bottom: 1px solid themed("border", 3);
+            position: sticky !important;
+            top: 0 !important;
+            padding-top: 5px !important;
+            background: themed("background",4);
+            ul {
+                flex-direction: row !important;
+                gap: 5px;
+                width: 100%;
+                li{
+                    width: 30px !important;
+                    height: 29px !important;
+                    
+                }
+            }
+        }
+        .tabs-body{
+            >div{
+                padding: 5px !important;
+            }
+            
+        }
+    }
+}
+.cat-emojis{
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+}

@@ -1,0 +1,23 @@
+@import '../../style.scss';
+
+.diamond-rating {
+    @include themify($themes) {
+        display: flex !important;
+        gap: 3px;
+        &.xs {
+            img {
+                width: 18px;
+                height: 16px;
+                display: block;
+            }
+        }
+
+        &.sm {
+            img {
+                width: 20px;
+                height: 18px;
+                display: block;
+            }
+        }
+    }
+}

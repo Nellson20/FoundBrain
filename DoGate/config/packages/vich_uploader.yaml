@@ -1,0 +1,89 @@
+vich_uploader:
+    db_driver: orm
+    metadata:
+        type: attribute
+    mappings:
+        post_thumbnail:
+            uri_prefix: /upload/img/postThumb
+            upload_destination: '%kernel.project_dir%/public/upload/img/postThumb'
+            namer: App\Namer\PostThumbnailNamer
+            delete_on_update: true
+            delete_on_remove: true
+        profile_picture_upload:
+            uri_prefix: /upload/img/profilePictures
+            upload_destination: '%kernel.project_dir%/public/upload/img/profilePictures'
+            namer: App\Namer\PostThumbnailNamer
+            delete_on_update: true
+            delete_on_remove: true
+        company_logo_uri:
+            uri_prefix: /upload/img/logo
+            upload_destination: '%kernel.project_dir%/public/upload/img/logo'
+            namer: App\Namer\PostThumbnailNamer
+            delete_on_update: true
+            delete_on_remove: true
+        invest_picture_upload:
+            uri_prefix: /upload/img/invest
+            upload_destination: '%kernel.project_dir%/public/upload/img/invest'
+            namer: App\Namer\PostThumbnailNamer
+            delete_on_update: true
+            delete_on_remove: true
+        seal_upload:
+            uri_prefix: /upload/img/seal
+            upload_destination: '%kernel.project_dir%/public/upload/img/seal'
+            namer: App\Namer\PostThumbnailNamer
+            delete_on_update: true
+            delete_on_remove: true
+        flag_upload:
+            uri_prefix: /upload/img/flag
+            upload_destination: '%kernel.project_dir%/public/upload/img/flag'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        country_thumbnail:
+            uri_prefix: /upload/img/country
+            upload_destination: '%kernel.project_dir%/public/upload/img/country'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        hotel_thumbnail_uri:
+            uri_prefix: /upload/img/hotelthumb
+            upload_destination: '%kernel.project_dir%/public/upload/img/hotelThumb'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        cities_thumbnail_uri:
+            uri_prefix: /upload/img/citiesthumb
+            upload_destination: '%kernel.project_dir%/public/upload/img/citiesThumb'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        cover_img_upload:
+            uri_prefix: /upload/img/coverImage
+            upload_destination: '%kernel.project_dir%/public/upload/img/coverImage'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        picture_uri:
+            uri_prefix: /upload/img/pictures
+            upload_destination: '%kernel.project_dir%/public/upload/pictures'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        msg_picture:
+            uri_prefix: /upload/img/msgPictures
+            upload_destination: '%kernel.project_dir%/public/upload/img/msgPictures'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        msg_audio:
+            uri_prefix: /upload/audio/msgAudios
+            upload_destination: '%kernel.project_dir%/public/upload/audio/msgAudios'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true
+        artist_video:
+            uri_prefix: /upload/video/artistVideo
+            upload_destination: '%kernel.project_dir%/public/upload/video/artistVideo'
+            namer: Vich\UploaderBundle\Naming\OrignameNamer
+            delete_on_update: true
+            delete_on_remove: true

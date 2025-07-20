@@ -1,0 +1,97 @@
+@import '../../style.scss';
+
+#dashboard{
+    @include themify($themes){
+        >.top{
+            background: var(--main-gradient);
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            h1{
+                font-size: 22px;
+            }
+        }
+        >.body{
+            color: themed("text",2);
+        }
+        .portal-stats-card{
+            background: themed("background",4);
+            box-shadow: var(--elevation-1);
+            border-radius: 5px;
+            display: flex;
+            min-width: 0;
+            gap: 10px;
+            flex: 1;
+            padding: 15px;
+            .left{
+                min-width: 0;
+            }
+            .ico{
+                width: 40px;
+                height: 40px;
+                background: themed("background",5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                color: themed("text",2);
+            }
+            span{
+                color: themed("text",3);
+            }
+            p{
+                color: themed("text",1);
+            }
+        }
+        .bottom{
+            .left{
+                max-width: 50% !important;
+                min-width: 50% !important;
+                .last-portal-posts{
+                    >.top{
+                        background: themed("background",4);
+                        height: 45px;
+                        border-radius: 5px;
+                        display: flex;
+                        align-items: center;
+                        padding: 0 15px;
+                        a{
+                            color: themed("mainColor",purple) !important;
+                        }
+                        h2{
+                            font-size: 18px;
+                            margin: 0;
+                        }
+                    }
+                    .posts-slider{
+                        margin-top: 15px;
+                    }
+                    .post-card{
+                        border: 1px solid themed('border',2);
+                    }
+                }
+            }
+        }
+        .questions-responses{
+            background: themed("background",4);
+            padding: 15px;
+            border-radius: 5px;
+            .top{
+                margin-bottom: 15px;
+            }
+            .accordion-heading{
+                background: none !important;
+                padding: 0 !important;
+                height: 55px;
+                border-top:  1px solid themed("border",1) !important;
+                .toggle-btn{
+                    height: 30px;
+                    width: 30px;
+                }
+            }
+            .accordion-content>div{
+                padding: 0 0 10px 0 !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+@import "../../style.scss";
+
+#job-detail {
+
+    $padding-left : 3rem;
+
+    @include themify($themes) {
+
+        color: themed("text", 1);
+
+        >.container {
+            max-width: 1000px;
+            margin: auto;
+
+            .text-grey{
+                color: themed('text',5);
+            }
+
+            >.cover-image {
+                position: relative;
+                height: 175px;
+                width: 100%;
+                border-radius: 5px;
+                margin-top: 10px;
+                background-image: url('https://localhost:3000/img/test/image_test.jpg');
+
+            }
+
+            .profile-image {
+
+                position: absolute;
+                bottom: 0;
+                left: $padding-left;
+                transform: translateY(50%);
+
+                .profile-image-circle {
+
+                    background-color: themed('background', 6);
+                    padding: 15px;
+                    border-radius: 75px;
+                    width: 150px;
+                    height: 150px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 80%;
+                    }
+                }
+
+            }
+
+            .main-content {
+                margin-top: 5px;
+                margin-bottom: 5px;
+                box-shadow: var(--elevation-1);
+                background: themed("background",3);
+                border-radius: 5px;
+                padding: 15px;
+                .location-date-actions {
+                    margin-top: 1rem;
+                    color: themed('text', 4);
+                }
+            }
+
+            .card{
+                padding: 20px;
+                border-radius: 5px;
+                background-color: themed('background',3);
+                box-shadow: var(--elevation-1);
+
+                .btn-see-all{
+                    margin-top: 45px;
+                }
+
+                .skill{
+                    background-color: themed('background',0);
+                    padding : 5px 10px;
+                    border-radius: 5px;
+                    margin-right: 10px;
+                }
+
+            }
+
+            .company-image{
+                display: flex;
+                align-items: center;
+                width: 25px;
+
+                img{
+                    width: 100%;
+                }
+            }
+
+            .about-company .company-image{
+                width: 40px;
+            }
+
+        }
+
+
+    }
+}

@@ -1,0 +1,21 @@
+@import '../../style.scss';
+
+#profil-details{
+    @include themify($themes){
+        li{
+            position: relative;
+            padding-left: 15px;
+            &::after{
+                content: '';
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background-color: themed('mainColor',purple);
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+}

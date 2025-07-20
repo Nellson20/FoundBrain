@@ -1,0 +1,358 @@
+@import "../../style.scss";
+
+.portal-evaluation {
+  @include themify($themes) {
+    @media (max-width: 600px) {
+      .avis {
+        .list-avis {
+          .avi-item {
+            flex-direction: column;
+            .left {
+              margin-bottom: 15px;
+            }
+            .content {
+              margin-left: 50px !important;
+            }
+          }
+        }
+      }
+    }
+    @media (max-width: 992px) {
+      .head {
+        max-width: 680px;
+        margin: 15px auto 0 auto;
+        .triage {
+          .selection {
+            flex-wrap: wrap;
+            div {
+              flex: none !important;
+              width: 100%;
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+      .titre {
+        max-width: 680px;
+        padding: 0 15px;
+        margin: 15px auto !important;
+      }
+      .avis {
+        flex-direction: column-reverse;
+        .list-avis {
+          margin: auto;
+        }
+        .right {
+          
+          top: 0 !important;
+          .container {
+            width: 100% !important;
+            align-items: flex-start;
+            h3 {
+              position: relative;
+              text-align: left !important;
+              display: table;
+            }
+            h3::after {
+              content: "";
+              position: absolute;
+              width: 25px;
+              height: 5px;
+              right: -35px;
+              top: 50%;
+              background-color: rgba(128, 0, 128, 0.26);
+              border-radius: 5px;
+            }
+            .content {
+              width: 100% !important;
+              justify-content: space-between;
+              .rating-breakdown {
+                flex: 1;
+                display: table;
+                margin-left: 20px;
+                .bar-container {
+                  width: 90% !important;
+                }
+              }
+            }
+          }
+          .note-global {
+            margin-bottom: 0 !important;
+            .content {
+              display: flex;
+              align-items: center;
+            }
+          }
+          .question,
+          .job-populaire {
+            display: none;
+          }
+        }
+      }
+    }
+    .head {
+      .heading2 {
+        button {
+          border: 1px solid themed("mainColor", purple);
+          border-radius: 5px;
+          color: themed("mainColor", purple);
+        }
+      }
+      h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin: 15px 0;
+      }
+      .triage {
+        .selection {
+          justify-content: space-between;
+          gap: 10px;
+          div {
+            flex: 1;
+          }
+        }
+      }
+      .bottom {
+        display: flex;
+        justify-content: space-between;
+        .trie {
+          .option {
+            display: flex;
+            gap: 10px;
+            .item {
+              display: flex;
+              align-items: center;
+              padding: 7px 15px;
+              color: themed("mainColor", purple);
+              cursor: pointer;
+              border: 1px solid themed("border", 1);
+              border-radius: 5px;
+              .arrow {
+                opacity: 0;
+                margin-left: 10px;
+              }
+              &.active {
+                color: themed("text", 1);
+                font-weight: 600;
+                background-color: themed("background", 1);
+                .arrow {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+        }
+        .langue {
+          width: 150px;
+        }
+      }
+    }
+    .titre {
+      margin: 20px;
+      span {
+        font-weight: 700;
+      }
+    }
+    .avis {
+      gap: 5px;
+      .list-avis {
+        flex: 1;
+        .avi-item {
+          display: flex;
+          border-bottom: 1px solid themed("border", 3);
+          padding: 15px;
+          .left {
+            display: flex;
+            flex-direction: column;
+            width: 130px;
+            .profil {
+              display: flex;
+              align-items: center;
+            }
+            .text {
+              margin-left: 10px;
+              display: flex;
+              flex-direction: column;
+              .name {
+                font-size: 17px;
+                font-weight: 600;
+              }
+              .date {
+                font-size: 10px;
+              }
+            }
+            .info {
+              font-size: 13px;
+            }
+          }
+          .content {
+            margin-left: 20px;
+            max-width: 500px;
+            .top {
+              display: flex;
+              align-items: center;
+              .portal-evaluation-note {
+                display: flex !important;
+                gap: 3px;
+                img {
+                  width: 16px;
+                  height: 14px;
+                  display: block;
+                }
+              }
+              .note {
+                margin-left: 10px;
+                font-size: 16px;
+                font-weight: 700;
+              }
+            }
+            h3 {
+              font-size: 16px;
+              margin: 15px 0;
+            }
+          }
+          .bottom {
+            margin-top: 15px;
+            .question {
+              p {
+                font-size: 12px;
+              }
+              .btn {
+                button {
+                  //   border: 1px solid themed('mainColor',purple);
+                  border: none;
+                  background: themed("background", 1);
+                  color: themed("text", 2);
+                  padding: 5px 10px;
+                  border-radius: 5px;
+                  margin-right: 5px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+        width: 350px !important;
+        // flex: 1;
+        .container {
+          margin-bottom: 5px;
+          padding: 15px;
+          border-radius: 5px;
+          h3 {
+            font-size: 16px;
+            text-align: center;
+            margin-bottom: 10px;
+          }
+          p {
+            font-size: 16px;
+          }
+          .btn {
+            border: 1px solid themed("mainColor", purple);
+            color: themed("mainColor", purple);
+            flex: 1;
+            text-align: center;
+            padding: 8px;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+          }
+        }
+        .note-global {
+          max-width: 680px;
+          p {
+            font-size: 12px;
+          }
+          .content {
+            .rating {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin: 15px 0;
+              .portal-evaluation-note {
+                display: flex !important;
+                gap: 3px;
+                img {
+                  width: 20px;
+                  height: 18px;
+                  display: block;
+                }
+              }
+              .progress-bar {
+                display: grid;
+                place-items: center;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                margin-bottom: 15px;
+                background: radial-gradient(
+                    closest-side,
+                    white 79%,
+                    transparent 80% 100%
+                  ),
+                  conic-gradient(var(--orange) 75%, #fd9a0f48 0);
+                transform: rotatez(90deg);
+                span {
+                  transform: rotateZ(-90deg);
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: themed("mainColor", purple);
+                }
+              }
+            }
+            .rating-breakdown {
+              .item {
+                display: flex;
+                align-items: center;
+                .numero {
+                  width: 10px;
+                  display: flex;
+                  align-items: center;
+                  font-weight: 600;
+                }
+                img {
+                  width: 10px;
+                  height: 10px;
+                  margin: 0 5px;
+                }
+                .bar-container {
+                  width: 70%;
+                  background-color: themed("background", 1);
+                  border-radius: 50px;
+                  height: 7px;
+                  .bar-progress {
+                    height: 100%;
+                    background-color: var(--orange);
+                    border-radius: 50px;
+                  }
+                }
+                .compte {
+                  margin-left: 10px;
+                  font-size: 13px;
+                  width: 30px;
+                  text-align: end;
+                }
+              }
+            }
+          }
+        }
+        .question {
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+}
+}
+
+.modal-evaluation {
+  .modalContent {
+    overflow: scroll;
+    overflow-x: hidden;
+    max-width: 700px;
+  }
+}

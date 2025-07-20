@@ -1,0 +1,26 @@
+.prog{
+    position: absolute;
+    background: #eee !important;
+    bottom: 0;left: 0;width: 100%;height: 4px;
+}
+@keyframes loadingBackground {
+    0%{
+        background-position-x: 0;
+    }
+    
+    100%{
+        background-position-x: 100px;
+    }
+    
+}
+.prog > div{
+    height: 100%;
+    width: 0%;
+    overflow: hidden;
+}
+.prog > div > div{
+    background-repeat: no-repeat;
+    background: linear-gradient(90deg,#a113f3 -100%,#fb0fd433 200%);
+    background-position-x: 0;
+    height: 100%;
+}

@@ -1,0 +1,40 @@
+@import "../../style.scss";
+
+
+.checkBox {
+    @include themify($themes) {
+        border: 1px solid #a9a9a9;
+        // background: themed("background", 5);
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+    }
+}
+
+.checkBox.checked {
+    @include themify($themes) {
+        border: 1px solid themed("mainColor", purple);
+        .checkMark {
+            background: themed("mainColor", purple);
+            opacity: 1;
+            transition: .5s;
+        }
+    }
+    
+}
+
+.checkBox .checkMark {
+    width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    opacity: 0;
+}
+
+
+.checkBox input {
+    display: none;
+}

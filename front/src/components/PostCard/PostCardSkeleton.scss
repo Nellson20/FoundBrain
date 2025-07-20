@@ -1,0 +1,23 @@
+@import "../../style.scss";
+
+.post-card-skeleton{
+    @include themify($themes){
+        border-radius: 5px;
+        background: themed("background",3);
+        box-shadow: var(--elevation-1);
+        margin-bottom: 20px;
+        width: 100%;
+        .top{
+            border-bottom: 1px solid themed("border",2);
+            padding: 8px 10px;
+            .user-info{
+                margin-top: 5px;
+                gap: 13px;
+            }
+        }
+        .footer{
+            border-top: 1px solid themed("border",2);
+            height: 40px;
+        }
+    }
+}

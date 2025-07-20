@@ -1,0 +1,58 @@
+@import "../../style.scss";
+
+.text-editor {
+    @include themify($themes) {
+        border-radius: 5px;
+        background: themed("background",5);
+        .ql-toolbar {
+            border-radius: 5px 5px 0 0;
+            border: none;
+            button{
+                color: red !important;
+            }
+            
+        }
+        .ql-container{
+            border:none;
+        }
+        .ql-editor{
+            *{
+                color: themed("text",1);
+                word-break: break-all;
+            }
+
+        }
+        .ql-editor::before{
+            color: themed("text",5);
+            font-style: normal;
+        }
+        button{
+            border-radius: 5px;
+        }
+        button.ql-active{
+            
+            background: themed("background",6);
+            
+            svg *{
+                stroke: themed("mainColor",purple) !important;
+            }
+        }
+        button:hover{
+            background: themed("background",6);
+            svg *{
+                stroke: themed("text",2) !important;
+            }
+        }
+        .ql-formats{
+            margin-right: 0 !important;
+        }
+        svg *{
+            stroke: themed("text",4) !important;
+        }
+        
+    }
+}
+
+.ql-toolbar button{
+   
+}
