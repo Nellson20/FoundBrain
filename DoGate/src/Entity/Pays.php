@@ -133,7 +133,7 @@ class Pays
     private Collection $leaders;
 
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: CountryThumbnail::class)]
-    #[Groups(['pays_read'])]
+    #[Groups(['pays_read','country_list'])]
     private Collection $countryThumbnails;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]

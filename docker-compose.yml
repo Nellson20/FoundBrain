@@ -42,6 +42,17 @@ services:
             - db
         networks:
             - symfony
+    video_api:
+        build: ./video_api
+        ports:
+            - "3000"
+        volumes:
+            - ./video_api:/app
+            - ./hls:/hls
+            - ./audio:/audio
+            - ./media:/media
+        networks:
+            - symfony
     front:
         build: ./front
         ports:
@@ -74,6 +85,8 @@ services:
             API_DOMAIN: ${API_DOMAIN}
         volumes:
             - ./DoGate:/var/www/symfony
+            - ./hls:/usr/share/nginx/html/hls
+            - ./audio:/usr/share/nginx/html/audio
         depends_on:
             - chat
             - front

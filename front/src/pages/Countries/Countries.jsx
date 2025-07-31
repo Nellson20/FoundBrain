@@ -30,7 +30,7 @@ const Countries = () => {
         url: `${process.env.REACT_APP_API_DOMAIN}/pays`,
         ipp: 10,
         queryKey: ['countries_read'],
-        queryString: '',
+        queryString: 'groups[]=country_list',
         transformResult: (result) => {
             return { data: result['hydra:member'], nextPage: result['hydra:view']['hydra:next'] ? parseInt(result['hydra:view']['hydra:next'].match(/page=(\d+)/)[0].split('=')[1]) : undefined }
         }
