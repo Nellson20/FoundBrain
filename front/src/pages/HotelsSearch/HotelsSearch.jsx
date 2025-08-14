@@ -9,9 +9,10 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import StickySideBar from '../../components/StickySideBar/StickySideBar';
 import { useState } from 'react';
 import { useEffect } from 'react';
-
+import { useTranslation } from 'react-i18next'
 
 const NavbarPrice = ({ setOpen }) => {
+  const { t } = useTranslation()
   const [boxShadow, setBoxShadow] = useState(false);
   useEffect(() => {
 
@@ -45,7 +46,7 @@ const NavbarPrice = ({ setOpen }) => {
       <div className={`hotel-search-price-content ${boxShadow ? ' active' : ''}`}>
         <div className='hotel-search-item'>
           <div className='hotel-price'>
-            <span><b>Prix : </b> par nuit</span>
+            <span><b>{t("Prix : ")}</b> {t("par nuit")}</span>
             <div className='hotel-price-content'>
               <span>1$ - 500$</span>
               <ChevronCompactDown />
@@ -55,9 +56,9 @@ const NavbarPrice = ({ setOpen }) => {
 
         <div className='hotel-search-item'>
           <div className='hotel-price'>
-            <span><b>Filtres : </b></span>
+            <span><b>{t("Filtres : ")}</b></span>
             <div className='hotel-price-content'>
-              <span>Choisir</span>
+              <span>{t("Choisir")}</span>
               <ChevronCompactDown />
             </div>
           </div>
@@ -65,9 +66,9 @@ const NavbarPrice = ({ setOpen }) => {
 
         <div className='hotel-search-item'>
           <div className='hotel-price'>
-            <span><b>Avis :</b></span>
+            <span><b>{t("Avis :")}</b></span>
             <div className='hotel-price-content'>
-              <span>Tout</span>
+              <span>{t("Tout")}</span>
               <ChevronCompactDown />
             </div>
           </div>
@@ -75,18 +76,18 @@ const NavbarPrice = ({ setOpen }) => {
 
         <div className='hotel-search-item'>
           <div className='hotel-price'>
-            <span><b>Hebergement</b></span>
+            <span><b>{t("Hebergement")}</b></span>
             <div className='hotel-price-content'>
-              <span>Choisir</span>
+              <span>{t("Choisir")}</span>
               <ChevronCompactDown />
             </div>
           </div>
         </div>
         <div className='hotel-search-item'>
           <div className='hotel-price'>
-            <span><b>Emplacement</b></span>
+            <span><b>{t("Emplacement")}</b></span>
             <div className='hotel-price-content'>
-              <span>Centre ville</span>
+              <span>{t("Centre ville")}</span>
               <ChevronCompactDown />
             </div>
           </div>
@@ -96,6 +97,7 @@ const NavbarPrice = ({ setOpen }) => {
   )
 }
 const HotelsSearch = () => {
+  const { t } = useTranslation()
   const [open, setOpen] = useState(false)
 
 
@@ -107,13 +109,13 @@ const HotelsSearch = () => {
         <div className='search-page-input'>
           <form className="hotel-searchbar flex">
             <div className="keyword-inpt flex-grow-1">
-              <input type="text" placeholder='Antanananarivo destination' />
+              <input type="text" placeholder={t('Antanananarivo destination')} />
             </div>
             <div className="date-inpt flex align-items-center">
-              <div className='flex align-items-center'><span>Sam. 30 jan.</span> <ArrowRight /> <span>Jeu. 12 fev.</span><ChevronDown /></div>
+              <div className='flex align-items-center'><span>{t("Sam. 30 jan.")}</span> <ArrowRight /> <span>{t("Jeu. 12 fev.")}</span><ChevronDown /></div>
             </div>
             <div className="include-inpt flex align-items-center">
-              <div className='flex align-items-center gap-5'><People /> <span>Adultes</span><span>Chambres</span><ChevronDown /></div>
+              <div className='flex align-items-center gap-5'><People /> <span>{t("Adultes")}</span><span>{t("Chambres")}</span><ChevronDown /></div>
             </div>
             <div className="search-btn">
               <button className="btn btn-purple"><Search /></button>
@@ -129,47 +131,47 @@ const HotelsSearch = () => {
 
             <div className="content-left">
               <div className="content-title">
-                <h3>Antananarivo ,hotels disponible</h3>
+                <h3>{t("Antananarivo ,hotels disponible")}</h3>
                 <div className='content-suggest-search'>
                   <div className="content-item-search relative">
                     <img className="image-hover-scale" src='/img/other/montagne.jpg' alt='' />
                     <div className="content-item-search-text">
-                      <span>Séjour 5 étoile</span>
+                      <span>{t("Séjour 5 étoile")}</span>
                     </div>
                   </div>
 
                   <div className="content-item-search relative">
                     <img className="image-hover-scale" src='/img/other/amsterdam.jpg' alt='' />
                     <div className="content-item-search-text">
-                      <span>Séjours haut de gamme</span>
+                      <span>{t("Séjours haut de gamme")}</span>
                     </div>
                   </div>
 
                   <div className="content-item-search relative">
                     <img className="image-hover-scale" src='/img/other/voyage.jpg' alt='' />
                     <div className="content-item-search-text">
-                      <span>Expériences de voyage exceptionnelles</span>
+                      <span>{t("Expériences de voyage exceptionnelles")}</span>
                     </div>
                   </div>
 
                   <div className="content-item-search relative">
                     <img src='/img/other/wifi.webp' className="image-hover-scale" alt='' />
                     <div className="content-item-search-text">
-                      <span>Wi-Fi gratuis</span>
+                      <span>{t("Wi-Fi gratuis")}</span>
                     </div>
                   </div>
 
                   <div className="content-item-search relative">
                     <img src='/img/other/chambre_luxe.jpg' className="image-hover-scale" alt='' />
                     <div className="content-item-search-text">
-                      <span>Note des voyageurs: trés bon</span>
+                      <span>{t("Note des voyageurs: trés bon")}</span>
                     </div>
                   </div>
 
                   <div className="content-item-search relative">
                     <img src='/img/other/chambre_luxe_2.jpg' className="image-hover-scale" alt='' />
                     <div className="content-item-search-text">
-                      <span>Séjours de luxe</span>
+                      <span>{t("Séjours de luxe")}</span>
                     </div>
                   </div>
 
@@ -181,7 +183,7 @@ const HotelsSearch = () => {
                     <img src='/img/other/plan.jpeg' alt='' />
                     <div className='text-map flex gap-5' onClick={() => setOpen(false)}>
                       <FaLocationArrow />
-                      <span>Plan</span>
+                      <span>{t("Plan")}</span>
                     </div>
                   </div>
                 )
@@ -191,14 +193,14 @@ const HotelsSearch = () => {
                 <div className='content-title-item'>
 
                   <div className="content-title-item-left">
-                    <p>Nous avons trouvé <b>49 </b>hôtels sur <b>272</b> sites</p>
+                    <p>{t("Nous avons trouvé")} <b>49 </b>{t("hôtels sur")} <b>272</b> {t("sites")}</p>
                   </div>
 
 
                   <div className="content-title-item-right">
-                    <span><b>Trier par</b></span>
+                    <span><b>{t("Trier par")}</b></span>
                     <div className='suggest flex'>
-                      <span>Nos suggestion</span>
+                      <span>{t("Nos suggestion")}</span>
                       <ChevronCompactDown />
                     </div>
                   </div>
@@ -214,8 +216,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />Hotel Radison</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("Hotel Radison")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -225,22 +227,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>
@@ -256,8 +258,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />Hotel Colbert</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("Hotel Colbert")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -267,22 +269,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>
@@ -299,8 +301,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />Carlton</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("Carlton")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -310,22 +312,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>
@@ -341,8 +343,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />NovoHotel</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("NovoHotel")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -352,22 +354,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>
@@ -383,8 +385,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />Hotel Androhy</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("Hotel Androhy")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -394,22 +396,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>
@@ -426,8 +428,8 @@ const HotelsSearch = () => {
                     </div>
                   </div>
                   <div className='caption'>
-                    <h4 className='flex gap-5 align-items-center'><FaHotel />Hotels</h4>
-                    <p>Antananarivo</p>
+                    <h4 className='flex gap-5 align-items-center'><FaHotel />{t("Hotels")}</h4>
+                    <p>{t("Antananarivo")}</p>
                     <div className='gems flex'>
                       <Rating
                         readonly
@@ -437,22 +439,22 @@ const HotelsSearch = () => {
                         emptySymbol={<img src="/img/icons/diamond_grey.png" className="icon rating-diamond-img" />}
                         fullSymbol={<img src="/img/icons/diamond.png" className="icon rating-diamond-img" />}
                       />
-                      <p>160 avis</p>
+                      <p>{t("160 avis")}</p>
                     </div>
                     <p><b>125 000 MGA</b></p>
                     <div className="item">
                       <ul className='flex '>
                         <li className='flex'>
                           <b><IoIosCafe /></b>
-                          <span>Petit-déjeuner</span>
+                          <span>{t("Petit-déjeuner")}</span>
                         </li>
                         <li className='flex'>
                           <Wifi />
-                          <span>Wifi</span>
+                          <span>{t("Wifi")}</span>
                         </li>
                         <li className='flex'>
                           <IoFastFoodOutline />
-                          <span>Cuisine</span>
+                          <span>{t("Cuisine")}</span>
                         </li>
 
                       </ul>

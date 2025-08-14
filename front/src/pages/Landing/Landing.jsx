@@ -1,8 +1,11 @@
 import React from 'react'
 import "./Landing.scss"
 import { Link, Tv } from 'react-bootstrap-icons'
+import { useTranslation } from 'react-i18next'
 
 const Landing = () => {
+    const { t } = useTranslation()
+
     return (
         <div id='landing-page'>
             <div className="top">
@@ -12,13 +15,12 @@ const Landing = () => {
                 <div className="center flex">
                     <div className='flex flex-column'>
                         
-                        <h1>Tous vos business,
-                            Une seule Plateforme</h1>
+                        <h1>{t("Tous vos business, Une seule Plateforme")}</h1>
 
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ad, sint mollitia ducimus tempora magni iste adipisci distinctio officia quae, quibusdam hic placeat qui, deleniti rerum quod molestiae natus alias.</p>
+                        <p>{t("Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem ad, sint mollitia ducimus tempora magni iste adipisci distinctio officia quae, quibusdam hic placeat qui, deleniti rerum quod molestiae natus alias.")}</p>
                         <div className="btns flex gap-20">
-                            <button className="btn btn-purple"><Tv /> Demarrer la version Web</button>
-                            <button className="btn btn-orange">Créer un compte</button>
+                            <button className="btn btn-purple"><Tv /> {t("Demarrer la version Web")}</button>
+                            <button className="btn btn-orange">{t("Créer un compte")}</button>
                         </div>
                     </div>
                     <div className="img">

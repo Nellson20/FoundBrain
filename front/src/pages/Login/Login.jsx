@@ -11,9 +11,10 @@ import { ColorRing } from 'react-loader-spinner'
 import { io } from 'socket.io-client';
 import SocketIOContext from '../../context/SocketIOContext'
 import { showToast } from '../../utils/toastUtils'
+import { useTranslation } from 'react-i18next';
 
 const Login = () => {
-
+    const { t } = useTranslation();
     const connectedUser = useSelector((store) => store.user.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -70,27 +71,27 @@ const Login = () => {
 
             </div>
             <form action="" className="login-form elevated-card" onSubmit={handleSubmit}>
-                <h3 style={{ marginBottom: 20 }} className='txt-1'>Connexion</h3>
+                <h3 style={{ marginBottom: 20 }} className='txt-1'>{t('Connexion')}</h3>
                 {
                     loginErrorMsg && <div className="login-error-message flex align-items-center justify-content-between">{loginErrorMsg} <ExclamationTriangleFill /></div>
                 }
 
                 <div className="form-group">
-                    <label htmlFor="">Adress Email ou télephone</label>
+                    <label htmlFor="">{t('Adress Email ou télephone')}</label>
                     <input type="text" className="inpt" placeholder='ex:contact@example.com' onChange={(e) => { setIdentifier(e.target.value) }} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="">Mot de passe</label>
-                    <input type="password" className="inpt" placeholder='Votre mot de passe' onChange={(e) => { setPassword(e.target.value) }} />
+                    <label htmlFor="">{t('Mot de passe')}</label>
+                    <input type="password" className="inpt" placeholder={t('Votre mot de passe')} onChange={(e) => { setPassword(e.target.value) }} />
                     <div className="flex justify-content-between align-items-center">
                         <div className='flex gap-10 py-5'>
-                            <input type="checkbox" name="" id="" /><label htmlFor="" style={{ fontWeight: "normal", margin: 0 }} >Afficher le mot de passe</label>
+                            <input type="checkbox" name="" id="" /><label htmlFor="" style={{ fontWeight: "normal", margin: 0 }} >{t('Afficher le mot de passe')}</label>
                         </div>
-                        <Link>Mot de passe oublié ?</Link>
+                        <Link>{t('Mot de passe oublié ?')}</Link>
                     </div>
                 </div>
                 <div className='flex gap-10'>
-                    <Link to='/inscription' type='button' className="btn-transparent flex-1">S'inscrire</Link>
+                    <Link to='/inscription' type='button' className="btn-transparent flex-1">{t("S'inscrire")}</Link>
                     <button ref={sumbitBtn} className='btn-purple flex flex-1' onClick={handleLogin}>
                         {
                             !isLoading ? "Se connecter" : <ColorRing
@@ -105,8 +106,8 @@ const Login = () => {
                         }
                     </button>
                 </div>
-                <div className="barred-text"><span>Ou</span><div></div></div>
-                <p className='text-center mb-5'>Se connecter avec</p>
+                <div className="barred-text"><span>{t('Ou')}</span><div></div></div>
+                <p className='text-center mb-5'>{t('Se connecter avec')}</p>
                 <div className="conn-method flex justify-content-center gap-10">
                     <span className='fb' onClick={connectFb}><Facebook size={22} /></span>
                     <span className='google' onClick={connectGoogle}><Google size={18} /></span>

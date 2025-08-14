@@ -10,7 +10,9 @@ import ColorPicker from '../../components/ColorPicker/ColorPicker'
 import { Link } from 'react-router-dom'
 import MediaContext from '../../context/MediaContext'
 import { SMARTPHONE } from '../../constants/MediaTypeConstants'
+import { useTranslation } from 'react-i18next';
 const CreateCv = () => {
+    const { t } = useTranslation();
     const { deviceType } = useContext(MediaContext)
     const [cvData, setCvData] = useState({
         personnalInfo: {
@@ -36,10 +38,10 @@ const CreateCv = () => {
                     <h2 className='mt-20 px-15'>Mon CV</h2>
 
                     <Accordion isOpen={true}>
-                        <h4>Informations personnels</h4>
+                        <h4>{t('Informations personnels')}</h4>
                         <div>
                             <div className="form-group">
-                                <label htmlFor="">Photo</label>
+                                <label htmlFor="">{t('Photo')}</label>
                                 <div className="photo-opts flex gap-10">
                                     <Avatar height={70} width={70} />
                                     <button className="change-photo-btn">
@@ -52,58 +54,58 @@ const CreateCv = () => {
                             </div>
                             <div className="flex gap-10">
                                 <div className="form-group">
-                                    <label htmlFor="">Nom</label>
+                                    <label htmlFor="">{t('Nom')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('firstName', e.target.value)
-                                    }} value={cvData.personnalInfo.firstName} placeholder='Votre nom' />
+                                    }} value={cvData.personnalInfo.firstName} placeholder={t('Votre nom')} />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Prenom</label>
+                                    <label htmlFor="">{t('Prénom')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('lastName', e.target.value)
-                                    }} value={cvData.personnalInfo.lastName} placeholder='Votre prenom' />
+                                    }} value={cvData.personnalInfo.lastName} placeholder={t('Votre prenom')} />
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Métier/Specialité</label>
+                                <label htmlFor="">{t('Métier/Specialité')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('speciality', e.target.value)
                                 }} value={cvData.personnalInfo.speciality} placeholder='Votre metier ou domaine' />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Description</label>
+                                <label htmlFor="">{t('Description')}</label>
                                 <TextEditor onChange={({ text, html }) => {
                                     setDescription(html)
                                 }} />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Adresse email</label>
+                                <label htmlFor="">{t('Adresse email')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('email', e.target.value)
                                 }} value={cvData.personnalInfo.email} placeholder='ex:gateafri@contact.com' />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Telephone</label>
+                                <label htmlFor="">{t('Telephone')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('telephone', e.target.value)
                                 }} value={cvData.personnalInfo.telephone} placeholder='ex:gateafri@contact.com' />
                             </div>
                             <div className="flex justify-content-stretch gap-10">
                                 <div className="form-group">
-                                    <label htmlFor="">Ville</label>
+                                    <label htmlFor="">{t('Ville')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('city', e.target.value)
                                     }} value={cvData.personnalInfo.city} placeholder='ex:gateafri@contact.com' />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Code Postal</label>
+                                    <label htmlFor="">{t('Code Postal')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('postalCode', e.target.value)
                                     }} value={cvData.personnalInfo.postalCode} placeholder='ex:gateafri@contact.com' />
                                 </div>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Adresse</label>
+                                <label htmlFor="">{t('Adresse')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('adress', e.target.value)
                                 }} value={cvData.personnalInfo.adress} placeholder='ex:gateafri@contact.com' />
@@ -113,39 +115,39 @@ const CreateCv = () => {
 
                     <div className="formation-sect">
                         <Accordion>
-                            <h4>Formation et études</h4>
+                            <h4>{t('Formation et études')}</h4>
                             <div className="experience-form p-10">
-                                <h4 className='py-5'>Diplôme/Certificat/Titre</h4>
+                                <h4 className='py-5'>{t('Diplôme/Certificat/Titre')}</h4>
                                 <div className="flex gap-10">
                                     <div className="form-group">
-                                        <label htmlFor="">Etablissement/Universitéggggg</label>
-                                        <input type="text" className="inpt" placeholder='Votre centre de formation' />
+                                        <label htmlFor="">{t('Etablissement/Universitée')}</label>
+                                        <input type="text" className="inpt" placeholder={t('Votre centre de formation')} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="">Ville</label>
-                                        <input type="text" className="inpt" placeholder="ville" />
+                                        <label htmlFor="">{t('Ville')}</label>
+                                        <input type="text" className="inpt" placeholder={t('Ville')} />
                                     </div>
                                 </div>
                                 <div>
                                     <div className="flex justify-content-between">
-                                        <h5>Dates</h5>
+                                        <h5>{t('Dates')}</h5>
                                         <div className='flex gap-5'>
-                                            <input type="checkbox" name="" id="" /> <label htmlFor="">Maintenant</label>
+                                            <input type="checkbox" name="" id="" /> <label htmlFor="">{t('Maintenant')}</label>
                                         </div>
                                     </div>
                                     <div className="flex gap-10">
                                         <div className="form-group">
-                                            <label htmlFor="">Début</label>
-                                            <input type="text" className="inpt" placeholder="Debut de travail" />
+                                            <label htmlFor="">{t('Début')}</label>
+                                            <input type="text" className="inpt" placeholder={t('Debut de travail')} />
                                         </div>
                                         <div className="form-group">
-                                            <label htmlFor="">Fin</label>
-                                            <input type="text" className="inpt" placeholder="Fin de travail" />
+                                            <label htmlFor="">{t('Fin')}</label>
+                                            <input type="text" className="inpt" placeholder={t('Fin de travail')} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Déscription de la formation</label>
+                                    <label htmlFor="">{t('Déscription de la formation')}</label>
                                     <TextEditor />
                                 </div>
                                 <div className='flex gap-10'>
@@ -158,39 +160,39 @@ const CreateCv = () => {
 
                     <section className="experience-sect">
                         <Accordion>
-                            <h4>Experience professionnelle</h4>
+                            <h4>{t('Experience professionnelle')}</h4>
                             <div className="experience-form p-10">
-                                <h4 className='py-5'>Poste occupé</h4>
+                                <h4 className='py-5'>{t('Poste occupé')}</h4>
                                 <div className="flex gap-10">
                                     <div className="form-group">
-                                        <label htmlFor="">Employeur/Entreprise</label>
-                                        <input type="text" className="inpt" placeholder='Votre employeur' />
+                                        <label htmlFor="">{t('Employeur/Entreprise')}</label>
+                                        <input type="text" className="inpt" placeholder={t('Votre employeur')} />
                                     </div>
                                     <div className="form-group">
-                                        <label htmlFor="">Localisation</label>
-                                        <input type="text" className="inpt" placeholder="Adresse de l'entreprise" />
+                                        <label htmlFor="">{t('Localisation')}</label>
+                                        <input type="text" className="inpt" placeholder={t("Adresse de l'entreprise")} />
                                     </div>
                                 </div>
                                 <div>
                                     <div className="flex justify-content-between">
-                                        <h5>Dates</h5>
+                                        <h5>{t('Dates')}</h5>
                                         <div className='flex gap-5'>
-                                            <input type="checkbox" name="" id="" /> <label htmlFor="">Maintenant</label>
+                                            <input type="checkbox" name="" id="" /> <label htmlFor="">{t('Maintenant')}</label>
                                         </div>
                                     </div>
                                     <div className="flex gap-10">
                                         <div className="form-group">
-                                            <label htmlFor="">Début</label>
-                                            <input type="text" className="inpt" placeholder="Debut de travail" />
+                                            <label htmlFor="">{t('Début')}</label>
+                                            <input type="text" className="inpt" placeholder={t('Debut de travail')} />
                                         </div>
                                         <div className="form-group">
                                             <label htmlFor="">Fin</label>
-                                            <input type="text" className="inpt" placeholder="Fin de travail" />
+                                            <input type="text" className="inpt" placeholder={t('Fin de travail')} />
                                         </div>
                                     </div>
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Déscription du poste</label>
+                                    <label htmlFor="">{t('Déscription du poste')}</label>
                                     <TextEditor />
                                 </div>
                                 <div className='flex gap-10'>
@@ -202,14 +204,14 @@ const CreateCv = () => {
                     </section>
                     <section className="skills-sect">
                         <Accordion>
-                            <h4>Skills</h4>
+                            <h4>{t('Skills')}</h4>
                             <div className="skill-form p-10">
                                 <div className="form-group">
-                                    <label htmlFor="">Competence</label>
-                                    <input type="text" className="inpt" placeholder='ex:Developpeur PHP' />
+                                    <label htmlFor="">{t('Competence')}</label>
+                                    <input type="text" className="inpt" placeholder={t('ex:Developpeur PHP')} />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Niveau</label>
+                                    <label htmlFor="">{t('Niveau')}</label>
                                     <input type="range" />
                                 </div>
                                 <div className='flex gap-10'>
@@ -221,14 +223,14 @@ const CreateCv = () => {
                     </section>
                     <section className="lang-sect">
                         <Accordion>
-                            <h4>Langues</h4>
+                            <h4>{t('Langues')}</h4>
                             <div className="lang-form p-10">
                                 <div className="form-group">
-                                    <label htmlFor="">Langue</label>
+                                    <label htmlFor="">{t('Langue')}</label>
                                     <input type="text" className="inpt" placeholder='ex:Malagasy' />
                                 </div>
                                 <div className="form-group">
-                                    <label htmlFor="">Niveau</label>
+                                    <label htmlFor="">{t('Niveau')}</label>
                                     <input type="range" />
                                 </div>
                                 <div className='flex gap-10'>
@@ -240,10 +242,10 @@ const CreateCv = () => {
                     </section>
                     <section className="hobby-sect">
                         <Accordion>
-                            <h4>Centres d'interêts</h4>
+                            <h4>{t("Centres d'interêts")}</h4>
                             <div className="hobby-form p-10">
                                 <div className="form-group">
-                                    <label htmlFor="">Interet</label>
+                                    <label htmlFor="">{t('Interet')}</label>
                                     <input type="text" className="inpt" placeholder='ex:Malagasy' />
                                 </div>
                                 <div className='flex gap-10'>
@@ -254,15 +256,15 @@ const CreateCv = () => {
                         </Accordion>
                     </section>
                     <div className="p-15">
-                        <button className="btn-orange"><Plus size={24} /> Nouvelle section</button>
+                        <button className="btn-orange"><Plus size={24} /> {t('Nouvelle section')}</button>
                     </div>
                 </div>
                 <div className="footer">
-                    <button className="btn-transparent">Annuler</button>
-                    <button className="btn-purple"><Save /> Enregistrer</button>
+                    <button className="btn-transparent">{t('Annuler')}</button>
+                    <button className="btn-purple"><Save /> {t('Enregistrer')}</button>
                     {
                         deviceType === SMARTPHONE ?
-                            <button className="btn-transparent"><Eye size={20} /> Voir</button>
+                            <button className="btn-transparent"><Eye size={20} /> {t('Voir')}</button>
                             : ""
                     }
                 </div>
@@ -289,7 +291,7 @@ const CreateCv = () => {
                                 <ChevronUp size={15} />
                             </button>
                             <div>
-                                <h3 className='p-10'>Taille du text</h3>
+                                <h3 className='p-10'>{t('Taille du text')}</h3>
                                 <ul>
                                     <li>
                                         <Link>XS</Link>

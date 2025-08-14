@@ -9,8 +9,11 @@ import PhoneNumberInput from '../../components/PhoneNumberInput/PhoneNumberInput
 import MultiInputs from '../../components/MultiInputs/MultiInputs';
 import MultiEmail from '../../components/MultiEmail/MultiEmail';
 import MultiPhone from '../../components/MultiPhone/MultiPhone';
+import { useTranslation } from 'react-i18next';
 
 const HotelIdentityForm = ({ formData, setFormData, initialFields, setInitialFields = () => { }, handleChange = () => { }, currentStepValues, currentStepErrors, touched }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     setInitialFields(currentStepValues)
   }, [currentStepValues])
@@ -22,26 +25,26 @@ const HotelIdentityForm = ({ formData, setFormData, initialFields, setInitialFie
     <div className='add-hotel-identity'>
 
       <div className="form-group">
-        <label htmlFor="">Nom de l'hotel</label>
-        <Field className="inpt" type="text" name='hotelName' placeholder='Quel est le nom de votre hotel ?' />
-        <small>Les utilisateurs verront ce nom lors de leur recherche</small>
+        <label htmlFor="">{t("Nom de l'hotel")}</label>
+        <Field className="inpt" type="text" name='hotelName' placeholder={t("Quel est le nom de votre hotel ?")} />
+        <small>{t("Les utilisateurs verront ce nom lors de leur recherche")}</small>
         <ErrorLabel error={currentStepErrors.hotelName} />
       </div>
       <div className="form-group">
-        <label htmlFor="">Déscription</label>
-        <Field className="inpt" as="textarea" name='hotelDescription' placeholder='Décrivez votre hotel' />
+        <label htmlFor="">{t("Déscription")}</label>
+        <Field className="inpt" as="textarea" name='hotelDescription' placeholder={t("Décrivez votre hotel")} />
         <ErrorLabel error={currentStepErrors.hotelDescription} />
       </div>
       <hr />
       <div className="form-group">
-        <label htmlFor="">Site web de votre hotel</label>
-        <Field name="hotelWebsite" className="inpt" placeholder="exemple.com" />
+        <label htmlFor="">{t("Site web de votre hotel")}</label>
+        <Field name="hotelWebsite" className="inpt" placeholder={t("exemple.com")} />
       </div>
       <div className="form-group">
-        <label htmlFor="">Coordonnées de votre hotel</label>
-        <small>Vous pouvez ajouter plusieurs adresses emails et téléphones pour chaque résponsables de votre Hotel.</small>
+        <label htmlFor="">{t("Coordonnées de votre hotel")}</label>
+        <small>{t("Vous pouvez ajouter plusieurs adresses emails et téléphones pour chaque résponsables de votre Hotel.")}</small>
         <div className="form-group">
-          <b className='txt-3'>Adresse emails</b>
+          <b className='txt-3'>{t("Adresse emails")}</b>
           <Field name="hotelEmails">
             {
               ({ field, form }) =>
@@ -57,7 +60,7 @@ const HotelIdentityForm = ({ formData, setFormData, initialFields, setInitialFie
 
         </div>
         <div className="form-group">
-          <b className='txt-3 mb-10'>Télephones</b>
+          <b className='txt-3 mb-10'>{t("Télephones")}</b>
           <Field name="hotelPhones">
             {
               ({ field, form }) =>
@@ -75,7 +78,7 @@ const HotelIdentityForm = ({ formData, setFormData, initialFields, setInitialFie
       </div>
       <hr />
       <div className="form-group">
-        <label htmlFor="">Portail de votre hotel</label>
+        <label htmlFor="">{t("Portail de votre hotel")}</label>
         <Field name="hotelPortal">
           {({ field, form, meta }) => (
             <AuthorSelector
@@ -90,42 +93,42 @@ const HotelIdentityForm = ({ formData, setFormData, initialFields, setInitialFie
       </div>
 
       <div className="form-group">
-        <label htmlFor="">Nombre d'étoiles</label>
+        <label htmlFor="">{t("Nombre d'étoiles")}</label>
         <ul className='stars-number'>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="null" />
-              <span>Non Applicable</span>
+              <span>{t("Non Applicable")}</span>
             </label>
           </li>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="1" checked={initialFields.hotelStars == "1"} />
-              <span>1 étoile</span><span><StarFill /></span>
+              <span>{t("1 étoile")}</span><span><StarFill /></span>
             </label>
           </li>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="2" checked={initialFields.hotelStars == "2"} />
-              <span>2 étoiles</span><span><StarFill /><StarFill /></span>
+              <span>{t("2 étoiles")}</span><span><StarFill /><StarFill /></span>
             </label>
           </li>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="3" checked={initialFields.hotelStars == "3"} />
-              <span>3 étoiles</span><span><StarFill /><StarFill /><StarFill /></span>
+              <span>{t("3 étoiles")}</span><span><StarFill /><StarFill /><StarFill /></span>
             </label>
           </li>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="4" checked={initialFields.hotelStars == "4"} />
-              <span>4 étoiles</span><span><StarFill /><StarFill /><StarFill /><StarFill /></span>
+              <span>{t("4 étoiles")}</span><span><StarFill /><StarFill /><StarFill /><StarFill /></span>
             </label>
           </li>
           <li className='flex align-items-center gap-5'>
             <label className='flex align-items-center gap-5'>
               <Field type="radio" name="hotelStars" value="5" checked={initialFields.hotelStars == "5"} />
-              <span>5 étoiles</span><span><StarFill /><StarFill /><StarFill /><StarFill /><StarFill /></span>
+              <span>{t("5 étoiles")}</span><span><StarFill /><StarFill /><StarFill /><StarFill /><StarFill /></span>
             </label>
           </li>
         </ul>

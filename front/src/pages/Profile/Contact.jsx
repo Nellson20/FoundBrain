@@ -1,16 +1,16 @@
 import React from 'react'
 import './Contact.scss'
 import { Envelope, Facebook, PlusLg, Telephone, ThreeDots } from 'react-bootstrap-icons'
+import { useTranslation } from 'react-i18next'
 
 const Contact = () => {
+    const { t } = useTranslation()
 
-
-    
     return (
         <>
             <section className='contacts'>
                 <div className="flex align-items-center justify-content-between">
-                    <h4>Contacts</h4>
+                    <h4>{t("Contacts")}</h4>
                     <button className="btn btn-transparent"><PlusLg size={16} /></button>
                 </div>
                 <ul>
@@ -18,7 +18,7 @@ const Contact = () => {
                         <div className="ico"><Telephone /></div>
                         <div className='flex-grow-1 flex gap-10'>
                             <div className='flex-grow-1'>
-                                <small>Telephone</small>
+                                <small>{t("Telephone")}</small>
                                 <p>+261 34 453 77</p>
                             </div>
                             <div>
@@ -30,7 +30,7 @@ const Contact = () => {
                         <div className="ico"><Envelope /></div>
                         <div className='flex-grow-1 flex gap-10'>
                             <div className='flex-grow-1'>
-                                <small>Email</small>
+                                <small>{t("Email")}</small>
                                 <p>example@mail.com</p>
                             </div>
                             <div>
@@ -43,7 +43,7 @@ const Contact = () => {
             <hr />
             <section className='websites'>
                 <div className="flex align-items-center justify-content-between">
-                    <h4>Sites web et réseaux sociaux</h4>
+                    <h4>{t("Sites web et réseaux sociaux")}</h4>
                     <button className="btn btn-transparent"><PlusLg size={16} /></button>
                 </div>
 
@@ -52,7 +52,7 @@ const Contact = () => {
                         <div className="ico"><Telephone /></div>
                         <div className='flex-grow-1 flex gap-10'>
                             <div className='flex-grow-1'>
-                                <small>Lien site web</small>
+                                <small>{t("Lien site web")}</small>
                                 <p>https://gatenew.africa</p>
                             </div>
                             <div>
@@ -64,7 +64,7 @@ const Contact = () => {
                         <div className="ico"><Facebook /></div>
                         <div className='flex-grow-1 flex gap-10'>
                             <div className='flex-grow-1'>
-                                <small>Facebook</small>
+                                <small>{t("Facebook")}</small>
                                 <p>Donnell Dev</p>
                             </div>
                             <div>

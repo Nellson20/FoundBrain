@@ -24,8 +24,11 @@ import { useSelector } from 'react-redux';
 import CurrencyContext from '../../context/CurrencyContext';
 import { convertCurrency } from '../../utils/currencyUtils';
 import RequireAuthOnClick from '../../components/RequireAuthOnclick/RequireAuthOnClick';
+import { useTranslation } from 'react-i18next';
+
 
 const Home = () => {
+   const { t } = useTranslation();
   const { user } = useSelector(store => store.user)
   const { deviceType } = useContext(MediaContext)
   const htmlToJsx = new Parser();
@@ -55,6 +58,7 @@ const Home = () => {
     <div className='home-page'>
       <WelcomeBanner />
       <HomeBannerSlider />
+     
       <main className="flex gap-20">
         {
           deviceType === DESKTOP ? <div className="left">
@@ -64,18 +68,18 @@ const Home = () => {
                 <Link><div className="ico">
                   <Building size={18} />
                 </div>
-                  <span className='text-ellipsis flex-grow-1'>Collectes de Dons</span></Link>
+                  <span className='text-ellipsis flex-grow-1'>{t('Collectes de Dons')}</span></Link>
               </li>
               <li>
                 <RequireAuthOnClick>
                   <Link to='/contacts'>
-                    <div className="ico"><Briefcase size={18} /></div><span className='text-ellipsis flex-grow-1'>Mes contacts</span>
+                    <div className="ico"><Briefcase size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Mes contacts')}</span>
                   </Link>
                 </RequireAuthOnClick>
               </li>
               <li>
                 <Link>
-                  <div className="ico"><Megaphone size={18} /></div><span className='text-ellipsis flex-grow-1'>Promotions</span>
+                  <div className="ico"><Megaphone size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Promotions')}</span>
                 </Link>
               </li>
             </ul>
@@ -110,12 +114,12 @@ const Home = () => {
                       <Avatar height={25} width={25} />
                       <span>MarieClaire</span>
                     </div>
-                    <Link to='https://gatenews.africa' className='flex align-items-center'>Voir plus<ChevronRight /></Link>
+                    <Link to='https://gatenews.africa' className='flex align-items-center'>{t('Voir plus')}<ChevronRight /></Link>
                   </div>
                 </div>
               }
               <div className="top-videos">
-                <h4>Videos populaires en Afrique</h4>
+                <h4>{t('Videos populaires en Afrique')}</h4>
                 <div className="popular-videos-slide-card">
                   <div className="top p-10">
                     <small>Afrimuz.com</small>

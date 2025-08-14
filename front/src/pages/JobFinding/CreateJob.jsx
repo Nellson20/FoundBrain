@@ -19,8 +19,11 @@ import CreateJobSkeleton from './CreateJobSkeleton'
 import Skeleton from '../../components/Skeleton/Skeleton'
 import AuthorSelector from '../../components/AuthorSelector/AuthorSelector'
 import CurrencyContext from '../../context/CurrencyContext'
+import { useTranslation } from 'react-i18next'
 
 const CreateJob = () => {
+  const { t } = useTranslation()
+
   const [initialData, setInitialData] = useState(null)
 
   const { user } = useSelector((store) => store.user)
@@ -100,7 +103,7 @@ const CreateJob = () => {
     <div className='create-job flex'>
       <div className="left">
         <div className="body">
-          <h2 className='mt-20 px-15'>Offre d'emplois</h2>
+          <h2 className='mt-20 px-15'>{t("Offre d'emplois")}</h2>
           {
             userCompaniesLoading ?
               <CreateJobSkeleton /> :
@@ -108,46 +111,31 @@ const CreateJob = () => {
                 (
                   <section className='about-sect'>
                     <Accordion isOpen={true}>
-                      <h4>A propos de poste</h4>
+                      <h4>{t("A propos de poste")}</h4>
                       <div className="about-form">
                         <div className="form-group">
 
-                          <label htmlFor="">Titre du poste</label>
-                          <input type="text" className='inpt' name='title' placeholder='Ajouter un titre' onChange={handleChangeInput} />
+                          <label htmlFor="">{t("Titre du poste")}</label>
+                          <input type="text" className='inpt' name='title' placeholder={t("Ajouter un titre")} onChange={handleChangeInput} />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Nom de l'entreprise</label>
+                          <label htmlFor="">{t("Nom de l'entreprise")}</label>
                           <AuthorSelector withUser={false} onSelect={(p) => {
                             setJobOffer(prev => ({ ...prev, author: p }))
                           }} />
-                          {/* {
-                            userCompanies && <SelectSearch
-                              searchFields={['name']}
-                              onChange={(p) => { setJobOffer(prev => ({ ...prev, author: p.value })) }}
-                              placeholder='Selectionner un portail'
-                              searchPlaceholder='Rechercher dans vos portails'
-                              query={(filters) => getUserCompanies(user.id)}
-                              repoName="userPortalsRepo"
-                              toPlaceholder={(elem) => elem.name}
-                              objectMapping={(p) => ({ name: p.name, value: `/companies/${p.id}` })}
-                              mapping={(p) => <Link>
-                                <span>{p.name}</span>
-                              </Link>}
-                            />
-                          } */}
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Experience</label>
-                          <input type="text" className='inpt' name='xp' onChange={handleChangeInput} placeholder='ex:2-3ans' />
+                          <label htmlFor="">{t("Experience")}</label>
+                          <input type="text" className='inpt' name='xp' onChange={handleChangeInput} placeholder={t("ex:2-3ans")} />
                         </div>
                         <div className="flex justify-content-stretch gap-10">
                           <div className="form-group">
-                            <label htmlFor="">Grade</label>
+                            <label htmlFor="">{t("Grade")}</label>
                             <SelectSearch
                               searchFields={['title']}
                               onChange={(g) => { setJobOffer(prev => ({ ...prev, grade: g })) }}
-                              placeholder='Selectionner un grade'
-                              searchPlaceholder='Rechercher un grade'
+                              placeholder={t("Selectionner un grade")}
+                              searchPlaceholder={t("Rechercher un grade")}
                               query={(filters) => getJobGrades()}
                               repoName="jobGradesRepo"
                               toPlaceholder={(elem) => elem.title}
@@ -158,12 +146,12 @@ const CreateJob = () => {
                             />
                           </div>
                           <div className="form-group">
-                            <label htmlFor="">Type</label>
+                            <label htmlFor="">{t("Type")}</label>
                             <SelectSearch
                               searchFields={['title']}
-                              onChange={(t) => { setJobOffer(prev => ({ ...prev, type: t })) }}
-                              placeholder='Selectionner un type'
-                              searchPlaceholder='Rechercher un type'
+                              onChange={(t_) => { setJobOffer(prev => ({ ...prev, type: t_ })) }}
+                              placeholder={t("Selectionner un type")}
+                              searchPlaceholder={t("Rechercher un type")}
                               query={(filters) => getJobTypes()}
                               repoName="jobTypesRepo"
                               toPlaceholder={(elem) => elem.title}
@@ -176,15 +164,15 @@ const CreateJob = () => {
 
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Début</label>
+                          <label htmlFor="">{t("Début")}</label>
                           <input type="date" />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Résumé</label>
+                          <label htmlFor="">{t("Résumé")}</label>
                           <textarea name="summary" onChange={handleChangeInput} className='inpt' id="" cols="30" rows="10"></textarea>
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Description du poste</label>
+                          <label htmlFor="">{t("Description du poste")}</label>
                           <TextEditor onChange={({ text, html, bbcode }) => {
                             console.log(bbcode, 'BBCODE')
                             setJobOffer(prev => ({ ...prev, description: html }))
@@ -194,39 +182,39 @@ const CreateJob = () => {
                       </div>
                     </Accordion>
                     <Accordion>
-                      <h4>Qualifications requises</h4>
+                      <h4>{t("Qualifications requises")}</h4>
                       <div className="about-form">
                         <div className="form-group">
-                          <label htmlFor="">Diplôme/Niveau d'études/Compétence</label>
-                          <MultiInputs onChange={(qualifications) => setJobOffer(prev => ({ ...prev, qualifications }))} placeholder="Diplôme ou compétence" />
+                          <label htmlFor="">{t("Diplôme/Niveau d'études/Compétence")}</label>
+                          <MultiInputs onChange={(qualifications) => setJobOffer(prev => ({ ...prev, qualifications }))} placeholder={t("Diplôme ou compétence")} />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Qualités et aptitudes</label>
-                          <MultiInputs onChange={(qualities) => setJobOffer(prev => ({ ...prev, qualities }))} placeholder='Qualité requise' />
+                          <label htmlFor="">{t("Qualités et aptitudes")}</label>
+                          <MultiInputs onChange={(qualities) => setJobOffer(prev => ({ ...prev, qualities }))} placeholder={t('Qualité requise')} />
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Exigences linguistiques</label>
-                          <MultiInputs onChange={(languages) => setJobOffer(prev => ({ ...prev, languages }))} placeholder='Langue' />
+                          <label htmlFor="">{t("Exigences linguistiques")}</label>
+                          <MultiInputs onChange={(languages) => setJobOffer(prev => ({ ...prev, languages }))} placeholder={t('Langue')} />
                         </div>
                       </div>
                     </Accordion>
                     <Accordion>
-                      <h4>Remuneration et avantages</h4>
+                      <h4>{t("Remuneration et avantages")}</h4>
                       <div className="about-form">
                         <div className="form-group salary-form">
 
-                          <label htmlFor="">Salaire</label>
+                          <label htmlFor="">{t("Salaire")}</label>
                           <SalaryInputs onChange={(salary) => setJobOffer(prev => ({ ...prev, salary }))} />
 
                         </div>
                         <div className="form-group">
-                          <label htmlFor="">Primes et endemnités</label>
+                          <label htmlFor="">{t("Primes et endemnités")}</label>
                           <ul className="check-grid">
-                            <li><CheckBox /> Primes</li>
-                            <li><CheckBox /> 13ème mois inclus</li>
-                            <li><CheckBox /> Pourboires</li>
-                            <li><CheckBox /> Commissions</li>
-                            <li><CheckBox /> Heures sup rémunérés</li>
+                            <li><CheckBox /> {t("Primes")}</li>
+                            <li><CheckBox /> {t("13ème mois inclus")}</li>
+                            <li><CheckBox /> {t("Pourboires")}</li>
+                            <li><CheckBox /> {t("Commissions")}</li>
+                            <li><CheckBox /> {t("Heures sup rémunérés")}</li>
                           </ul>
                           <div className="mt-10">
                             <button className="btn btn-orange"><PlusLg /></button>
@@ -234,13 +222,13 @@ const CreateJob = () => {
                         </div>
 
                         <div className="form-group">
-                          <label htmlFor="">Avantages</label>
+                          <label htmlFor="">{t("Avantages")}</label>
                           <ul className="check-grid">
-                            <li><CheckBox /> Transport</li>
-                            <li><CheckBox /> RTT</li>
-                            <li><CheckBox /> Déjeuner</li>
-                            <li><CheckBox /> Horaire très flexible</li>
-                            <li><CheckBox /> Vehicule à disposition</li>
+                            <li><CheckBox /> {t("Transport")}</li>
+                            <li><CheckBox /> {t("RTT")}</li>
+                            <li><CheckBox /> {t("Déjeuner")}</li>
+                            <li><CheckBox /> {t("Horaire très flexible")}</li>
+                            <li><CheckBox /> {t("Vehicule à disposition")}</li>
                           </ul>
                           <div className="mt-10">
                             <button className="btn btn-orange"><PlusLg /></button>
@@ -252,8 +240,8 @@ const CreateJob = () => {
                   </section>
                 ) : <div className='flex justify-content-center flex-column align-items-center flex-grow-1' style={{ textAlign: 'center', height: 'calc(100% - 50px)' }}>
                   <div className='flex justify-content-center flex-column align-items-center gap-15' style={{ maxWidth: '70%' }}>
-                    <h5>Vous devez creer un portail entreprise pour publier une offre d'emplois</h5>
-                    <button className="btn btn-purple">Créer un portail</button>
+                    <h5>{t("Vous devez creer un portail entreprise pour publier une offre d'emplois")}</h5>
+                    <button className="btn btn-purple">{t("Créer un portail")}</button>
                   </div>
                 </div>
           }
@@ -268,10 +256,10 @@ const CreateJob = () => {
               :
               userCompanies.length > 0 &&
               <>
-                <button className="btn-transparent">Annuler</button>
+                <button className="btn-transparent">{t("Annuler")}</button>
                 <button className="btn-purple" onClick={addJobOffer}>
                   {
-                    !addJobLoading ? "Publier" : <CircleLoader />
+                    !addJobLoading ? t("Publier") : <CircleLoader />
                   }
                 </button>
               </>

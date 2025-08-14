@@ -10,9 +10,10 @@ import { filtersToURL } from '../../functions'
 import PostCardSkeleton from '../../components/PostCard/PostCardSkeleton'
 import PostCard from '../../components/PostCard/PostCard'
 import PostModal from '../../components/PostModal/PostModal'
-
+import { useTranslation } from 'react-i18next';
 
 const Dashboard = () => {
+  const { t } = useTranslation();
   const { portalId } = useParams()
   const [filters, setFilters] = useState(null)
   const [openPostModal, setOpenPostModal] = useState(false)
@@ -56,8 +57,8 @@ const Dashboard = () => {
   return (
     <div id='dashboard'>
       <div className="top">
-        <h1>Bienvenue sur le tableau de bord de GateAfri</h1>
-        <p>Acceder facilement et rapidement aux information et outils pour promouvoir vos activités</p>
+        <h1>{t('Bienvenue sur le tableau de bord de GateAfri')}</h1>
+        <p>{t('Acceder facilement et rapidement aux information et outils pour promouvoir vos activités')}</p>
       </div>
       <div className='body flex flex-column gap-10'>
         <div className="stats-preview flex-column gap-10">
@@ -70,7 +71,7 @@ const Dashboard = () => {
 
               </div>
               <div className='left'>
-                <span className='text-ellipsis'>Vos abonnées</span>
+                <span className='text-ellipsis'>{t('Vos abonnées')}</span>
                 <p>300K</p>
               </div>
 
@@ -83,7 +84,7 @@ const Dashboard = () => {
 
               </div>
               <div className='left'>
-                <span className='text-ellipsis'>Reactions sur publications</span>
+                <span className='text-ellipsis'>{t('Reactions sur publications')}</span>
                 <p>300K</p>
               </div>
 
@@ -96,7 +97,7 @@ const Dashboard = () => {
 
               </div>
               <div className='left'>
-                <span className='text-ellipsis'>Nombre de vue</span>
+                <span className='text-ellipsis'>{t('Nombre de vue')}</span>
                 <p>300K</p>
               </div>
             </div>
@@ -108,20 +109,20 @@ const Dashboard = () => {
 
               </div>
               <div className='left'>
-                <span className='text-ellipsis'>Evaluations et avis</span>
+                <span className='text-ellipsis'>{t('Evaluations et avis')}</span>
                 <p>300K</p>
               </div>
 
             </div>
           </div>
-          <span className='flex gap-5 align-items-center'>Ce mois ci <CaretDownFill /></span>
+          <span className='flex gap-5 align-items-center'>{t('Ce mois ci')} <CaretDownFill /></span>
         </div>
         <div className="bottom flex gap-15">
           <div className="left">
             <div className="last-portal-posts">
               <div className="top flex justify-content-between">
                 <h2>Dernieres publications</h2>
-                <Link className="view-more flex gap-5 align-items-center">Voir Plus <ChevronRight /></Link>
+                <Link className="view-more flex gap-5 align-items-center">{t('Voir Plus')} <ChevronRight /></Link>
               </div>
               <div className="posts-slider">
                 {
@@ -164,9 +165,9 @@ const Dashboard = () => {
 
 
                     : <div className="empty-timeline" onClick={() => setOpenPostModal(true)}>
-                      <h1>Aucun post à afficher</h1>
-                      <p>Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique</p>
-                      <button className="btn btn-gradient">Créer un post</button>
+                      <h1>{t('Aucun post à afficher')}</h1>
+                      <p>{t("Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique")}</p>
+                      <button className="btn btn-gradient">{t('Créer un post')}</button>
                     </div>
                 }
                 {postsListFetchingNextPage

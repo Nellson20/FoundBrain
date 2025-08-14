@@ -13,9 +13,11 @@ import HotelPolicies from './HotelPolicies';
 import HotelLanguages from './HotelLanguages';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const AddHotel = () => {
-    const navigate=useNavigate()
+    const { t } = useTranslation()
+    const navigate = useNavigate()
     return (
         <div id='add-hotel-page'>
             <MultiStepForm
@@ -83,7 +85,7 @@ const AddHotel = () => {
                 }}
                 steps={[
                     {
-                        title: 'Informations sur votre hotel',
+                        title: t('Informations sur votre hotel'),
                         initialValues: {
                             hotelName: '',
                             hotelDescription: '',
@@ -95,35 +97,35 @@ const AddHotel = () => {
                         },
                         path: 'informations',
                         validationSchema: Yup.object().shape({
-                            hotelName: Yup.string().required('Le nom de l\'hotel est obligatoire'),
-                            hotelDescription: Yup.string().required('La déscription de l\'hotel est obligatoire'),
+                            hotelName: Yup.string().required(t('Le nom de l\'hotel est obligatoire')),
+                            hotelDescription: Yup.string().required(t('La déscription de l\'hotel est obligatoire')),
                             hotelPortal: Yup.object().shape({
-                                value: Yup.string().required('Veillez selectionner un portail')
-                            }).required('Veillez selectionner un portail'),
-                            hotelStars: Yup.string().required('Le nombre d\'étoile est obligatoire'),
+                                value: Yup.string().required(t('Veillez selectionner un portail'))
+                            }).required(t('Veillez selectionner un portail')),
+                            hotelStars: Yup.string().required(t('Le nombre d\'étoile est obligatoire')),
                             hotelEmails: Yup.array()
                                 .of(
                                     Yup.object().shape({
-                                        email: Yup.string().required('L\'adresse email ne doit pas être vide'),
+                                        email: Yup.string().required(t('L\'adresse email ne doit pas être vide')),
                                     })
                                 )
-                                .min(1, 'Le tableau doit contenir au moins un email')
-                                .required('Le champ doit être un tableau d\'objets email'),
+                                .min(1, t('Le tableau doit contenir au moins un email'))
+                                .required(t('Le champ doit être un tableau d\'objets email')),
                             hotelPhones: Yup.array()
                                 .of(
                                     Yup.object().shape({
                                         phoneNumber: Yup.object().shape({
-                                            number: Yup.string().required('Le numéro de téléphone est obligatoire'),
-                                            country: Yup.string().required('Le pays du numéro est obligatoire')
-                                        }).required('Le champ phoneNumber est obligatoire')
+                                            number: Yup.string().required(t('Le numéro de téléphone est obligatoire')),
+                                            country: Yup.string().required(t('Le pays du numéro est obligatoire'))
+                                        }).required(t('Le champ phoneNumber est obligatoire'))
                                     })
                                 )
-                                .min(1, 'Au moins un numéro de téléphone doit être fourni')
-                                .required('Au moins un numéro de téléphone doit être fourni'),
+                                .min(1, t('Au moins un numéro de téléphone doit être fourni'))
+                                .required(t('Au moins un numéro de téléphone doit être fourni')),
                         }),
                     },
                     {
-                        title: 'Localisation de votre hotel',
+                        title: t('Localisation de votre hotel'),
                         initialValues: {
                             hotelCity: {}, streetName: '', hotelLocation: {
                                 lat: '',
@@ -133,39 +135,35 @@ const AddHotel = () => {
                         path: 'localisation',
                         validationSchema: Yup.object().shape({
                             hotelCity: Yup.object().shape({
-                                value: Yup.string().required('La ville est requise')
-                            }).required('La ville est requise'),
-                            streetName: Yup.string().required('Le nom de la rue est requis'),
-                            // hotelLocation: Yup.object().shape({
-                            //     lat: Yup.string().required('La latitude est requise'),
-                            //     lng: Yup.string().required('La longitude est requise')
-                            // }),
+                                value: Yup.string().required(t('La ville est requise'))
+                            }).required(t('La ville est requise')),
+                            streetName: Yup.string().required(t('Le nom de la rue est requis')),
                         }),
                     },
                     {
-                        title: 'Équipements et services proposés par votre hotel',
+                        title: t('Équipements et services proposés par votre hotel'),
                         initialValues: { hotelEquipments: [], hotelServices: [] },
                         path: 'equipements-et-services',
                         validationSchema: Yup.object().shape({
                             hotelEquipments: Yup.array()
-                                .min(1, 'Veuillez sélectionner au moins 1 équipement')
-                                .required('Veuillez sélectionner au moins 1 équipement'),
+                                .min(1, t('Veuillez sélectionner au moins 1 équipement'))
+                                .required(t('Veuillez sélectionner au moins 1 équipement')),
                             hotelServices: Yup.array()
-                                .min(1, 'Veuillez sélectionner au moins 1 service')
-                                .required('Veuillez sélectionner au moins 1 service'),
+                                .min(1, t('Veuillez sélectionner au moins 1 service'))
+                                .required(t('Veuillez sélectionner au moins 1 service')),
                         }),
 
                     },
                     {
-                        title: 'Petit déjeuner',
+                        title: t('Petit déjeuner'),
                         initialValues: { includeBreakFast: "0", breakFastWithSupplement: "0", breakFastSupplement: '', breakFastTypes: [] },
                         path: 'petit-dejeuner',
                         validationSchema: Yup.object().shape({
                             breakFastSupplement: Yup.object().when('breakFastWithSupplement', (breakFastWithSupplement, schema) => {
                                 if (parseInt(breakFastWithSupplement) === 1) {
                                     return schema.shape({
-                                        value: Yup.number().min(1, 'Le tarif doit être supérieur à zéro')
-                                            .required('Le tarif ne doit pas être vide')
+                                        value: Yup.number().min(1, t('Le tarif doit être supérieur à zéro'))
+                                            .required(t('Le tarif ne doit pas être vide'))
                                     })
                                 }
                                 return schema.nullable()
@@ -173,19 +171,18 @@ const AddHotel = () => {
                         }),
                     },
                     {
-                        title: 'Ajouter des images de votre Hotel',
+                        title: t('Ajouter des images de votre Hotel'),
                         initialValues: {
                             hotelImages: []
                         },
                         validationSchema: Yup.object().shape({
                             hotelImages: Yup.array()
-                                .min(5, 'Selectinnez au moins 5 images')
-
+                                .min(5, t('Selectinnez au moins 5 images'))
                         }),
                         path: 'images',
                     },
                     {
-                        title: 'Le clients a-t-il accès à un parking/guarage ?',
+                        title: t('Le clients a-t-il accès à un parking/guarage ?'),
                         initialValues: {
                             includeParking: '0',
                             parkingWithSupplement: 0,
@@ -199,54 +196,52 @@ const AddHotel = () => {
                             parkingSupplement: Yup.object().when('parkingWithSupplement', (parkingWithSupplement, schema) => {
                                 if (parseInt(parkingWithSupplement) === 1) {
                                     return schema.shape({
-                                        value: Yup.number().min(1, 'Le tarif doit être supérieur à zéro')
-                                            .required('Le tarif ne doit pas être vide')
+                                        value: Yup.number().min(1, t('Le tarif doit être supérieur à zéro'))
+                                            .required(t('Le tarif ne doit pas être vide'))
                                     })
                                 }
                                 return schema.nullable()
                             }),
                             numberOfPlaces: Yup.string().when('includeParking', (includeParking, schema) => {
                                 if (parseInt(includeParking) === 1) {
-                                    return schema.required('Le nombre de place disponible est requis.')
+                                    return schema.required(t('Le nombre de place disponible est requis.'))
                                 }
                                 return schema.nullable()
                             }),
                             parkingLocation: Yup.string().when('includeParking', (includeParking, schema) => {
                                 if (parseInt(includeParking) === 1) {
-                                    return schema.required('L\'emplacement du parking est requis.')
+                                    return schema.required(t('L\'emplacement du parking est requis.'))
                                 }
                                 return schema.nullable()
                             }),
                             parkingType: Yup.string().when('includeParking', (includeParking, schema) => {
                                 if (parseInt(includeParking) === 1) {
-                                    return schema.required('Le type de parking est requis.')
+                                    return schema.required(t('Le type de parking est requis.'))
                                 }
                                 return schema.nullable()
                             })
                         }),
                     },
                     {
-                        title: 'Politiques et règles de votre hotel',
+                        title: t('Politiques et règles de votre hotel'),
                         initialValues: { cancellationPollicy: {}, petPollicy: {}, stayRules: {} },
                         path: 'politiques-et-regles',
                     },
                     {
-                        title: 'Langues parlés dans votre Hotel',
+                        title: t('Langues parlés dans votre Hotel'),
                         initialValues: { hotelLanguages: [] },
                         validationSchema: Yup.object().shape({
                             hotelLanguages: Yup.array()
                                 .of(
                                     Yup.object().shape({
-                                        value: Yup.string().required('La propriété value est requise'),
+                                        value: Yup.string().required(t('La propriété value est requise')),
                                     })
                                 )
-                                .min(1, 'Le tableau doit contenir au moins un objet')
-                                .required('Le champ doit être un tableau d\'objets'),
+                                .min(1, t('Le tableau doit contenir au moins un objet'))
+                                .required(t('Le champ doit être un tableau d\'objets')),
                         }),
                         path: 'langues',
                     },
-
-
                 ]}
             >
                 <HotelIdentityForm />

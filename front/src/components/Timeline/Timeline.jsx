@@ -15,8 +15,9 @@ import DomainsSelector from '../DomainsSelector/DomainsSelector';
 import PostModal from '../PostModal/PostModal';
 import RequireAuthOnClick from '../RequireAuthOnclick/RequireAuthOnClick';
 import useInfiniteScroll from '../../Hooks/useInfiniteScroll';
+import { useTranslation } from 'react-i18next';
 const Timeline = () => {
-
+    const { t } = useTranslation();
     const { user } = useSelector(store => store.user)
     const [posts, setPosts] = useState([])
     const [filters, setFilters] = useState(null)
@@ -162,10 +163,10 @@ const Timeline = () => {
                         </React.Fragment>
 
                     )) : <div className="empty-timeline" onClick={() => setOpenPostModal(true)}>
-                        <h1>Aucun post à afficher</h1>
-                        <p>Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique</p>
+                        <h1>{t('Aucun post à afficher')}</h1>
+                        <p>{t("Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique")}</p>
                         <RequireAuthOnClick>
-                            <button className="btn btn-gradient">Créer un post</button>
+                            <button className="btn btn-gradient">{t('Créer un post')}</button>
                         </RequireAuthOnClick>
                     </div>)
                 }

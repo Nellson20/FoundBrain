@@ -16,7 +16,9 @@ import { ChevronLeft, Person } from 'react-bootstrap-icons';
 import Avatar from '../../components/Avatar/Avatar';
 import { useSelector } from 'react-redux';
 import CurrencySelector from '../../components/CurrencySelector/CurrencySelector';
+import { useTranslation } from 'react-i18next';
 const ExplorerNavBar = () => {
+    const { t } = useTranslation();
     const [openRightbar, setOpenRightbar] = useState(false)
     const [top, setTop] = useState(true)
     const { user } = useSelector(store => store.user)
@@ -51,7 +53,7 @@ const ExplorerNavBar = () => {
                         <div className='svg-container'>
                             <DoNavLink className='svg' activeClass='active' to='/'>
                                 <HouseDoor size={22} />
-                                <span className='whitespace-pre'>Accueil</span>
+                                <span className='whitespace-pre'>{t('Accueil')}</span>
                             </DoNavLink>
                         </div>
                     </div>
@@ -60,7 +62,7 @@ const ExplorerNavBar = () => {
                         <div className='svg-container'>
                             <DoNavLink className='svg' activeClass='active' end={false} to='/explorer'>
                                 <GlobeEuropeAfrica size={22} />
-                                <span className='whitespace-pre'>Explorer</span>
+                                <span className='whitespace-pre'>{t('Explorer')}</span>
                             </DoNavLink>
                         </div>
                     </div>
@@ -69,7 +71,7 @@ const ExplorerNavBar = () => {
                         <div className='svg-container'>
                             <DoNavLink className='svg' activeClass='active' end={false} to='/hotels'>
                                 <GiCableStayedBridge size={22} />
-                                <span className='whitespace-pre'>Hotels</span>
+                                <span className='whitespace-pre'>{t('Hotels')}</span>
                             </DoNavLink>
                         </div>
                     </div>

@@ -30,8 +30,10 @@ import MusiquesListSkeleton from "./MusiquesListSkeleton";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import Rating from "react-rating";
 import { getUsers } from "../../api/users";
+import { useTranslation } from 'react-i18next'
 
 const Search = () => {
+  const { t } = useTranslation()
   const [searchParams, setSearchParams] = useSearchParams();
   const htmlToJsx = new Parser();
   const [filters, setFilters] = useState({
@@ -247,80 +249,80 @@ const Search = () => {
       <div className="left">
         <StickySideBar top={63}>
           <div className="search-nav">
-            <h2>100 Resultats pour "{searchParams.get("k")}"</h2>
-            <ul>
-              <li>
-                <Link className="active">Entreprises</Link>
-              </li>
-              <li>
-                <Link>Investissements</Link>
-              </li>
-              <li>
-                <Link>Personnes</Link>
-              </li>
-              <li>
-                <Link>Actualités</Link>
-              </li>
-              <li>
-                <Link>Artistes</Link>
-              </li>
-              <li>
-                <Link>Musiques</Link>
-              </li>
-              <li>
-                <Link>Hôtels</Link>
-              </li>
-              <li>
-                <Link>Attractions</Link>
-              </li>
-            </ul>
+            <h2>{t('100 Resultats pour "{{search}}"', { search: searchParams.get("k") })}</h2>
+              <ul>
+                <li>
+                  <Link className="active">{t("Entreprises")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Investissements")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Personnes")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Actualités")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Artistes")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Musiques")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Hôtels")}</Link>
+                </li>
+                <li>
+                  <Link>{t("Attractions")}</Link>
+                </li>
+              </ul>
           </div>
         </StickySideBar>
       </div>
       <div className="center">
-        {
-          (!portalsLoading && portals.length > 0) &&
-          <div className="portals-results">
-            {portalsLoading ? (
-              <PortalsListSkeleton />
-            ) : (
-              <>
-                <div className="top">
-                  <h2>Entreprises</h2>
-                </div>
-                <ul className="body">
-                  {portals &&
-                    portals.map((p, i) => (
-                      <li key={i} className="flex">
-                        <div className="left">
-                          <Avatar
-                            src={p.activeLogo?.fileUrl}
-                            height={50}
-                            width={50}
-                          />
-                        </div>
-                        <div className="center">
-                          <h1 className="portal-name">
-                            <Link to={`/portail/${p.id}`}>{p.name}</Link>
-                          </h1>
-                          <span className="portal-domains">
-                            {p.domains.map((d) => d.title).join(",")}
-                          </span>
-                          <small>{htmlToJsx.parse(p.description)}</small>
-                        </div>
-                        <div className="right flex gap-10">
-                          <buttton className="btn-purple">Contacter</buttton>
-                        </div>
-                      </li>
-                    ))}
-                </ul>
-                <div className="footer">
-                  <button className="btn btn-transparent">Voir plus</button>
-                </div>
-              </>
-            )}
-          </div>
-        }
+    {
+      (!portalsLoading && portals.length > 0) &&
+      <div className="portals-results">
+        {portalsLoading ? (
+          <PortalsListSkeleton />
+        ) : (
+          <>
+            <div className="top">
+              <h2>{t("Entreprises")}</h2>
+            </div>
+            <ul className="body">
+              {portals &&
+                portals.map((p, i) => (
+                  <li key={i} className="flex">
+                    <div className="left">
+                      <Avatar
+                        src={p.activeLogo?.fileUrl}
+                        height={50}
+                        width={50}
+                      />
+                    </div>
+                    <div className="center">
+                      <h1 className="portal-name">
+                        <Link to={`/portail/${p.id}`}>{p.name}</Link>
+                      </h1>
+                      <span className="portal-domains">
+                        {p.domains.map((d) => d.title).join(",")}
+                      </span>
+                      <small>{htmlToJsx.parse(p.description)}</small>
+                    </div>
+                    <div className="right flex gap-10">
+                      <button className="btn-purple">{t("Contacter")}</button>
+                    </div>
+                  </li>
+                ))}
+            </ul>
+            <div className="footer">
+              <button className="btn btn-transparent">{t("Voir plus")}</button>
+            </div>
+          </>
+        )}
+      </div>        
+      }
 
 
         {
@@ -328,7 +330,7 @@ const Search = () => {
           (
             <div className="persons-results ">
               <div className="top">
-                <h2>Personnes</h2>
+                <h2>{t("Personnes")}</h2>
               </div>
               <div className="persons-results-list flex flex-column">
                 {
@@ -345,8 +347,8 @@ const Search = () => {
                         </div>
                       </div>
                       <div className="right flex gap-10">
-                        <buttton className="btn-purple">Contacter</buttton>
-                        <buttton className="btn-outline-yellow">Recruter</buttton>
+                        <buttton className="btn-purple">{t("Contacter")}</buttton>
+                        <buttton className="btn-outline-yellow">{t("Recruter")}</buttton>
                       </div>
                     </Link>
                   ))
@@ -361,24 +363,24 @@ const Search = () => {
         {investsLoading ? (
           <InvestListSkeleton />
         ) : (
-          invests.length > 0 && (
-            <div className="invests-results">
-              <div className="top">
-                <h2>Investissements</h2>
-              </div>
+         invests.length > 0 && (
+          <div className="invests-results">
+            <div className="top">
+              <h2>{t("Investissements")}</h2>
+            </div>
 
-              {invests?.reverse().map((d, i) => (
-                <FundingCard key={i} data={d} />
-              ))}
-              <div className="bottom">
-                <b>
-                  Voir plus d'investissements liés à "{searchParams.get("k")}"
-                </b>
-                <div className="arrow">
-                  <ArrowRight size={20} />
-                </div>
+            {invests?.reverse().map((d, i) => (
+              <FundingCard key={i} data={d} />
+            ))}
+            <div className="bottom">
+              <b>
+                {t('Voir plus d\'investissements liés à "{searchParams.get(\\"k\\")}"')}
+              </b>
+              <div className="arrow">
+                <ArrowRight size={20} />
               </div>
             </div>
+          </div>
           )
         )}
         {postsLoading ? (
@@ -387,7 +389,7 @@ const Search = () => {
           <div className="actualites-results">
             <>
               <div className="top flex align-items-center">
-                <h2>Actualités</h2>
+                <h2>{t("Actualités")}</h2>
               </div>
               <div className="posts-results-list flex flex-column gap-10">
                 {posts?.map((p, i) => (
@@ -395,7 +397,10 @@ const Search = () => {
                 ))}
               </div>
               <div className="footer flex align-items-center justify-content-center">
-                <Link className="flex align-items-center gap-5 purple-txt"><span>Voir plus</span><ArrowRightShort size={28}/></Link>
+                <Link className="flex align-items-center gap-5 purple-txt">
+                  <span>{t("Voir plus")}</span>
+                  <ArrowRightShort size={28} />
+                </Link>
               </div>
             </>
           </div>
@@ -403,7 +408,7 @@ const Search = () => {
 
         <div className="artists-results">
           <div className="top">
-            <h2>Artistes</h2>
+            <h2>{t("Artistes")}</h2>
           </div>
           <div className="artists-results-slider">
             <Slider {...settings}>
@@ -438,13 +443,13 @@ const Search = () => {
             </Slider>
           </div>
           <div className="footer">
-            <button className="btn btn-transparent">Voir plus</button>
+            <button className="btn btn-transparent">{t("Voir plus")}</button>
           </div>
         </div>
 
         <div className="musiques-results">
           <div className="top">
-            <h2>Musiques</h2>
+            <h2>{t("Musiques")}</h2>
           </div>
           <div className="musiques-results-list flex flex-column gap-15">
             {videosData.map((videoData, i) => (
@@ -580,25 +585,25 @@ const Search = () => {
               </div>
               <div className="hotel-detail flex flex-column justify-content-between">
                 <div className="top">
-                  <span>Hôte professionnel</span>
+                  <span>{t("Hôte professionnel")}</span>
                   <h3>Le Grand Mellis Hôtel & Spa</h3>
                   <span className="flex align-items-center gap-5">
                     <GeoAlt />
-                    Antananarivo
+                    {t("Antananarivo")}
                   </span>
                   <div className="flex">
                     <div className="flex gap-15">
                       <small className="flex align-items-center gap-5 py-5">
                         <CupHot />
-                        Petit déjeuner
+                        {t("Petit déjeuner")}
                       </small>
                       <small className="flex align-items-center gap-5">
                         <Wifi />
-                        Wi-Fi inclus
+                        {t("Wi-Fi inclus")}
                       </small>
                       <small className="flex align-items-center gap-5">
                         <Water />
-                        Piscine
+                        {t("Piscine")}
                       </small>
                     </div>
                   </div>
@@ -607,10 +612,11 @@ const Search = () => {
                   <div className="left ">
                     <div className="cumule flex align-items-center gap-5">
                       <Award size={18} className="icon" />
-                      <p>Cumulez des vignettes</p>
+                      <p>{t("Cumulez des vignettes")}</p>
                     </div>
                     <div className="avis flex align-items-center gap-5">
-                      <div className="note">5.6</div>7 avis
+                      <div className="note">5.6</div>
+                      {t("7 avis")}
                     </div>
                   </div>
                   <div className="right flex align-items-end flex-column">
@@ -619,66 +625,65 @@ const Search = () => {
                       <p>129 €</p>
                       <h4>93 €</h4>
                     </div>
-                    <small>pour 2 nuits</small>
-                    <small>taxes et frais compris</small>
+                    <small>{t("pour 2 nuits")}</small>
+                    <small>{t("taxes et frais compris")}</small>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-          <div className="footer">
-            <button className="btn btn-transparent">Voir plus</button>
-          </div>
-        </div>
-        <div className="attractions-results">
-          <div className="top">
-            <h2>Attractions</h2>
-          </div>
-          <div className="attractions-results-list mt-10">
-            <Slider {...settings}>
-              {attractionsData.map((a, i) => (
-                <div className="attraction" key={i}>
-                  <div className="attraction-image">
-                    <img src={a.URLImage} alt={a.name} />
+                </div>
+                </div>
+                </div>
+                <div className="footer">
+                <button className="btn btn-transparent">{t("Voir plus")}</button>
+                </div>
+                </div>
+                <div className="attractions-results">
+                <div className="top">
+                  <h2>{t("Attractions")}</h2>
+                </div>
+                <div className="attractions-results-list mt-10">
+                  <Slider {...settings}>
+                    {attractionsData.map((a, i) => (
+                      <div className="attraction" key={i}>
+                        <div className="attraction-image">
+                          <img src={a.URLImage} alt={a.name} />
+                        </div>
+                        <div className="attraction-text">
+                          <h3>{a.name}</h3>
+                          <span className="location flex align-items-center gap-5">
+                            <GeoAlt /> {a.location}
+                          </span>
+                          <p>{a.type}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </Slider>
+                </div>
+                <div className="footer">
+                  <button className="btn btn-transparent">{t("Voir plus")}</button>
                   </div>
-                  <div className="attraction-text">
-                    <h3>{a.name}</h3>
-                    <span className="location flex align-items-center gap-5">
-                      <GeoAlt /> {a.location}
-                    </span>
-                    <p>{a.type}</p>
                   </div>
                 </div>
-              ))}
-            </Slider>
-          </div>
-          <div className="footer">
-            <button className="btn btn-transparent">Voir plus</button>
-          </div>
-        </div>
-      </div>
 
-      <div className="right">
-        <StickySideBar top={63}>
-          <div className="suggest-search-invest">
-            <h2>
-              Où investir en <br />
-              Afrique ?
-            </h2>
-            <span>
-              Trouver des placements sûr pour Investir rapidement et facilement
-              dans un continent à fort potentiel.
-            </span>
-            <img src="/img/other/afrique2.png" alt="" />
-            <Link to="/investissements" className="btn btn-gradient">
-              Commencer
-            </Link>
-          </div>
-          <div className="square-ad">
-            <img src="/img/ads/ad1.png" alt="" />
-          </div>
-        </StickySideBar>
-      </div>
+      <div className="right"> 
+      <StickySideBar top={63}>
+        <div className="suggest-search-invest">
+          <h2>
+            {t("Where to invest in")} <br />
+            {t("Africa ?")}
+          </h2>
+          <span>
+            {t("Find safe investments to invest quickly and easily in a continent with great potential.")}
+          </span>
+          <img src="/img/other/afrique2.png" alt="" />
+          <Link to="/investissements" className="btn btn-gradient">
+            {t("Start")}
+          </Link>
+        </div>
+        <div className="square-ad">
+          <img src="/img/ads/ad1.png" alt="" />
+        </div>
+      </StickySideBar>
+    </div>
     </div>
   );
 };

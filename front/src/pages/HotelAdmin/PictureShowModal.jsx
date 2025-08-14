@@ -2,22 +2,31 @@ import { ChevronLeft, ChevronRight, X } from "react-bootstrap-icons";
 import "./PictureShowModal.scss";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const PictureShowModal = ({ srcImg, handleCloseModal }) => {
-    const [inputValue, setInputValue] = useState('');
-  const [keywordsList, setKeywordsList] = useState(["Chambre", "Cuisine", "Television et multimedia"]);
+  const { t } = useTranslation();
+  const [inputValue, setInputValue] = useState('');
+  const [keywordsList, setKeywordsList] = useState([
+    t("Bedroom"), 
+    t("Kitchen"), 
+    t("Television and multimedia")
+  ]);
+
   const handleSubmitKeyWord = (e) => {
     e.preventDefault()
     setKeywordsList([...keywordsList, inputValue]);
     setInputValue('');
- };
- const handleDeleteKeyword = (index) => {
+  };
+
+  const handleDeleteKeyword = (index) => {
     setKeywordsList(list => {
-        const newList = [...list]; // Créez une copie du tableau d'origine
-        newList.splice(index, 1); // Supprimez l'élément à l'index spécifié
-        return newList; // Mettez à jour l'état avec le nouveau tableau
+      const newList = [...list];
+      newList.splice(index, 1);
+      return newList;
     });
-};
+  };
+
   return (
     <div className="picture-show-modal elevated-card">
       <div className="left">
@@ -45,43 +54,46 @@ const PictureShowModal = ({ srcImg, handleCloseModal }) => {
           <div className="flex gap-5">
             <CheckBox checked={true} />
             <label htmlFor="">
-              Inclure cette photo dans ma galerie principale{" "}
+              {t("Include this photo in my main gallery")}
             </label>
           </div>
           <div className="keywords mt-15">
             <h3>
-              Associez des mots-clés à cette image pour la décrire au mieux
+              {t("Associate keywords with this image to best describe it")}
             </h3>
             <form className="input" onSubmit={handleSubmitKeyWord}>
               <input
                 type="text"
-                placeholder="ex: Cuisine, Bibliotheque, Chambre,..."
+                placeholder={t("e.g.: Kitchen, Library, Bedroom,...")}
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)} 
+                onChange={(e) => setInputValue(e.target.value)}
               />
             </form>
             <div className="list mt-15">
               <ul>
                 {keywordsList.map((keyword, i) => (
-                  <li key={i}><X size={25} onClick={()=>handleDeleteKeyword(i)}/> <span>{keyword}</span></li>
+                  <li key={i}>
+                    <X size={25} onClick={() => handleDeleteKeyword(i)} />{" "}
+                    <span>{keyword}</span>
+                  </li>
                 ))}
               </ul>
             </div>
           </div>
           <div className="accommodation-type mt-15">
-            <h3>Sélectionnez l'hébergement que la photo représente</h3>
+            <h3>{t("Select the accommodation this photo represents")}</h3>
             <div className="flex gap-5">
               <CheckBox />
-              <label htmlFor="">Chambre Double</label>
+              <label htmlFor="">{t("Double Room")}</label>
             </div>
             <div className="flex gap-5">
               <CheckBox />
-              <label htmlFor="">Chambre Simple</label>
+              <label htmlFor="">{t("Single Room")}</label>
             </div>
           </div>
         </div>
         <div className="bottom">
-          <button className="btn-purple">Terminer</button>
+          <button className="btn-purple">{t("Finish")}</button>
         </div>
       </div>
     </div>

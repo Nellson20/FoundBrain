@@ -14,15 +14,18 @@ import {
 import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import DropDown from "../../components/DropDown/DropDown";
+import { useTranslation } from "react-i18next";
 
 const Formulaire = ({ isRecommander = false, setOpen }) => {
+  const { t } = useTranslation();
+
   return (
     <form>
       <div className="head flex justify-content-between">
         <h3 className="titre">
           {isRecommander
-            ? "Rédiger une recommandation pour Harena"
-            : "Demandez à Harena de vous recommander"}
+            ? t("Write a recommendation for Harena")
+            : t("Ask Harena to recommend you")}
         </h3>
         <div className="close" onClick={() => setOpen(false)}>
           <div className="close">
@@ -33,26 +36,26 @@ const Formulaire = ({ isRecommander = false, setOpen }) => {
       <div className="body">
         <span>
           {isRecommander
-            ? "Cette recommandation s’affichera sur le profil de Harena"
-            : "Personnaliser votre demande"}
+            ? t("This recommendation will be displayed on Harena's profile")
+            : t("Customize your request")}
         </span>
-        <small>Tout les champs sont obligatoir</small>
-        {!isRecommander && <h2>Comment connaissez vous Harena ?</h2>}
+        <small>{t("All fields are required")}</small>
+        {!isRecommander && <h2>{t("How do you know Harena?")}</h2>}
         <div className="relation">
-          <label>Niveau de relation</label>
+          <label>{t("Level of relationship")}</label>
           <div
             tabIndex={0}
             className="select flex justify-content-between align-items-center"
           >
-            <span>Veuiller sélectionner</span>
+            <span>{t("Please select")}</span>
             <ChevronDown />
           </div>
         </div>
         {!isRecommander && (
           <div className="poste">
-            <label>Poste à l'époque</label>
+            <label>{t("Position at the time")}</label>
             <div tabIndex={0} className="select flex justify-content-between">
-              <span>Veuiller sélectionner</span>
+              <span>{t("Please select")}</span>
               <ChevronDown />
             </div>
           </div>
@@ -60,24 +63,24 @@ const Formulaire = ({ isRecommander = false, setOpen }) => {
         <div className="message">
           <label htmlFor="message">
             {isRecommander
-              ? "Ajouter une recommandation"
-              : "Redige votre message"}
+              ? t("Add a recommendation")
+              : t("Write your message")}
           </label>
           <textarea
             name="message"
             id="message"
             placeholder={
-              isRecommander ? "Rédigez votre recommandation ici ..." : ""
+              isRecommander ? t("Write your recommendation here ...") : ""
             }
           >
             {isRecommander
               ? ""
-              : "Bonjour Harena, pourriez-vous m’écrire une recommandation ?"}
+              : t("Hello Harena, could you please write me a recommendation?")}
           </textarea>
         </div>
       </div>
       <div className="footer">
-        <button className="btn-purple">Envoyer</button>
+        <button className="btn-purple">{t("Send")}</button>
       </div>
     </form>
   );
@@ -90,7 +93,7 @@ const ModalRecommander = () => {
       <li onClick={() => setOpen(true)}>
         <Link>
           <ChatDots size={20} />
-          Recommander
+          {t("Recommend")}
         </Link>
       </li>
       <Modal open={open} className="modal-recommandations">
@@ -106,7 +109,7 @@ const ModalSolliciter = () => {
       <li onClick={() => setOpen(true)}>
         <Link>
           <PencilSquare size={20} />
-          Solliciter une recommandation
+          {t("Request a recommendation")}
         </Link>
       </li>
       <Modal open={open} className="modal-recommandations">
@@ -116,10 +119,12 @@ const ModalSolliciter = () => {
   );
 };
 const ProfileRecommandation = () => {
+  const { t } = useTranslation();
+
   return (
     <div id="profile-recommandation">
       <div className="top flex justify-content-between align-items-center">
-        <h3>Recommandations</h3>
+        <h3>{t("Recommendations")}</h3>
         <DropDown>
           <div className="three-dots">
             <ThreeDots size={25} />
@@ -135,26 +140,29 @@ const ProfileRecommandation = () => {
           <Tab
             title={
               <>
-                <span>Reçues (10)</span>
+                <span>{t("Received (10)")}</span>
               </>
             }
           >
             {Array.from({ length: 10 }, (_, index) => index + 1).map(
-              (number,i) => (
+              (number, i) => (
                 <div className="recommandation-tabs" key={i}>
                   <div className="recommandation-item flex gap-5">
                     <div className="left flex gap-5">
                       <Avatar width={50} height={50} />
                       <div className="info">
-                        <h4>John Doe</h4>
-                        <span>Administateur Reseau</span>
+                        <h4>{t("John Doe")}</h4>
+                        <span>{t("Network Administrator")}</span>
                         <small>
-                          8 fevrier 2023, John Doe etait un client de Harena
+                          {t(
+                            "February 8, 2023, John Doe was a client of Harena"
+                          )}
                         </small>
                       </div>
                     </div>
                     <div className="right">
                       <TextViewMore>
+                        
                         Lorem ipsum dolor, sit amet consectetur adipisicing
                         elit. Doloribus, reprehenderit qui! Natus facilis
                         aliquam eveniet in id eligendi unde totam aperiam quis.
@@ -183,21 +191,23 @@ const ProfileRecommandation = () => {
           <Tab
             title={
               <>
-                <span>Données (2)</span>
+                <span>{t("Given (2)")}</span>
               </>
             }
           >
             {Array.from({ length: 10 }, (_, index) => index + 1).map(
-              (_,number) => (
+              (_, number) => (
                 <div className="recommandation-tabs" key={number}>
                   <div className="recommandation-item flex gap-5">
                     <div className="left flex gap-5">
                       <Avatar width={50} height={50} />
                       <div className="info">
-                        <h4>John Doe</h4>
-                        <span>Administateur Reseau</span>
+                        <h4>{t("John Doe")}</h4>
+                        <span>{t("Network Administrator")}</span>
                         <small>
-                          8 fevrier 2023, John Doe etait un client de Harena
+                          {t(
+                            "February 8, 2023, John Doe was a client of Harena"
+                          )}
                         </small>
                       </div>
                     </div>

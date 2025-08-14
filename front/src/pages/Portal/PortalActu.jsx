@@ -6,14 +6,13 @@ import PostCardSkeleton from '../../components/PostCard/PostCardSkeleton'
 import { filtersToURL } from '../../functions'
 import { useInfiniteQuery } from '@tanstack/react-query'
 import PostModal from '../../components/PostModal/PostModal'
+import { useTranslation } from 'react-i18next';
 
 const PageActu = () => {
+  const { t } = useTranslation();
   const { portalId } = useParams()
   const [filters, setFilters] = useState(null)
   const [openPostModal, setOpenPostModal] = useState(false)
-  /**
-     * Recuperation des posts
-     */
 
   const fetchPosts = ({ pageParam = 1 }) => {
     return axios({
@@ -56,7 +55,7 @@ const PageActu = () => {
               <PostCardSkeleton />
             </>
           ) : error ? (
-            <p>Error: {error.message}</p>
+            <p>{t("Error")}: {error.message}</p>
           ) : postsList?.pages?.length > 0 ?
 
 
@@ -76,9 +75,9 @@ const PageActu = () => {
 
 
             : <div className="empty-timeline" onClick={() => setOpenPostModal(true)}>
-              <h1>Aucun post à afficher</h1>
-              <p>Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique</p>
-              <button className="btn btn-gradient">Créer un post</button>
+              <h1>{t('Aucun post à afficher')}</h1>
+              <p>{t("Nous vous invitons à créer un premier post pour commencer vos activités et intéragir avec d'autres opérateurs économiques en Afrique")}</p>
+              <button className="btn btn-gradient">{t('Créer un post')}</button>
             </div>
         }
         {postsListFetchingNextPage

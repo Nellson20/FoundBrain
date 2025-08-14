@@ -1,4 +1,4 @@
-import {
+import { 
   BoxArrowInLeft,
   BoxArrowInRight,
   ChevronDown,
@@ -11,8 +11,11 @@ import "./HotelAdminHome.scss";
 import Tabs from "../../components/Tabs/Tabs";
 import Tab from "../../components/Tabs/Tab";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HotelAdminHome = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="hotel-admin-home flex gap-15">
       <div className="left">
@@ -24,8 +27,8 @@ const HotelAdminHome = () => {
                   <BoxArrowInRight size={23} />
                 </div>
                 <div>
-                  <h4>Arrivées</h4>
-                  <span>Cette semaine</span>
+                  <h4>{t("Arrivées")}</h4>
+                  <span>{t("Cette semaine")}</span>
                 </div>
               </div>
               <span>54</span>
@@ -38,8 +41,8 @@ const HotelAdminHome = () => {
                   <Luggage size={23} />
                 </div>
                 <div>
-                  <h4>Départs</h4>
-                  <span>Cette semaine</span>
+                  <h4>{t("Départs")}</h4>
+                  <span>{t("Cette semaine")}</span>
                 </div>
               </div>
               <span>12</span>
@@ -49,7 +52,7 @@ const HotelAdminHome = () => {
             <div className="head flex align-items-center gap-5">
               <span>80%</span>
               <h4>
-                Chambres <br /> occupées
+                {t("Chambres")} <br /> {t("occupées")}
               </h4>
             </div>
             <span>50</span>
@@ -57,15 +60,15 @@ const HotelAdminHome = () => {
         </div>
         <div className="reservation elevated-card mt-15">
           <div className="reservation-head flex align-items-center">
-            <h3>Reservations</h3>
+            <h3>{t("Reservations")}</h3>
             <div className="search">
               <div className="icon-search">
                 <Search size={16} />
               </div>
-              <input type="text" placeholder="Recherche chambre ou nom" />
+              <input type="text" placeholder={t("Recherche chambre ou nom")} />
             </div>
             <div className="period flex align-items-center gap-10">
-              <span>Aujourd'hui</span>
+              <span>{t("Aujourd'hui")}</span>
               <ChevronDown />
             </div>
           </div>
@@ -74,7 +77,7 @@ const HotelAdminHome = () => {
               <Tab
                 title={
                   <>
-                    <span>Arrivées</span>
+                    <span>{t("Arrivées")}</span>
                   </>
                 }
               >
@@ -89,8 +92,8 @@ const HotelAdminHome = () => {
                     </div>
                     <div className="center">
                       <span>21 mars 2024 - 25 mars 2024</span>
-                      <span>Arrivée: 11:00 - 12:00</span>
-                      <span>4 nuits - 2 clients</span>
+                      <span>{t("Arrivée")}: 11:00 - 12:00</span>
+                      <span>4 {t("nuits")} - 2 {t("clients")}</span>
                     </div>
                     <div className="right">
                       <span className="coins">$ 150</span>
@@ -107,8 +110,8 @@ const HotelAdminHome = () => {
                     </div>
                     <div className="center">
                       <span>21 mars 2024 - 25 mars 2024</span>
-                      <span>Arrivée: 11:00 - 12:00</span>
-                      <span>4 nuits - 2 clients</span>
+                      <span>{t("Arrivée")}: 11:00 - 12:00</span>
+                      <span>4 {t("nuits")} - 2 {t("clients")}</span>
                     </div>
                     <div className="right">
                       <span className="argent">$ 150</span>
@@ -120,31 +123,31 @@ const HotelAdminHome = () => {
               <Tab
                 title={
                   <>
-                    <span>Départs</span>
+                    <span>{t("Départs")}</span>
                   </>
                 }
               ></Tab>
               <Tab
                 title={
                   <>
-                    <span>Séjours en cours</span>
+                    <span>{t("Séjours en cours")}</span>
                   </>
                 }
               ></Tab>
               <Tab
                 title={
                   <>
-                    <span>Demandes des clients</span>
+                    <span>{t("Demandes des clients")}</span>
                   </>
                 }
               ></Tab>
             </Tabs>
-          <button className="btn-purple">Voir toutes les réservations</button>
+          <button className="btn-purple">{t("Voir toutes les réservations")}</button>
           </div>
         </div>
 
         <div className="reservation-current elevated-card mt-10">
-          <h3>Reservations les plus récentes</h3>
+          <h3>{t("Reservations les plus récentes")}</h3>
           <div className="reservation-container ">
             <div className="item flex justify-content-between">
               <div className="left">
@@ -156,8 +159,8 @@ const HotelAdminHome = () => {
               </div>
               <div className="center">
                 <span>21 mars 2024 - 25 mars 2024</span>
-                <span>Arrivée: 11:00 - 12:00</span>
-                <span>4 nuits - 2 clients</span>
+                <span>{t("Arrivée")}: 11:00 - 12:00</span>
+                <span>4 {t("nuits")} - 2 {t("clients")}</span>
               </div>
               <div className="right">
                 <span className="argent">$ 150</span>
@@ -174,8 +177,8 @@ const HotelAdminHome = () => {
               </div>
               <div className="center">
                 <span>21 mars 2024 - 25 mars 2024</span>
-                <span>Arrivée: 11:00 - 12:00</span>
-                <span>4 nuits - 2 clients</span>
+                <span>{t("Arrivée")}: 11:00 - 12:00</span>
+                <span>4 {t("nuits")} - 2 {t("clients")}</span>
               </div>
               <div className="right">
                 <span className="argent">$ 150</span>
@@ -186,7 +189,7 @@ const HotelAdminHome = () => {
         </div>
 
         <div className="messages elevated-card p-15 mt-15">
-          <h3>Messages en attente d'une réponse</h3>
+          <h3>{t("Messages en attente d'une réponse")}</h3>
           <div className="messages-container flex justify-content-between">
             <div className="name flex align-items-center gap-5">
               <img src="/img/flags/Flag_of_Madagascar.svg" alt="" />
@@ -197,11 +200,11 @@ const HotelAdminHome = () => {
             </div>
             <span className="date">19 mars</span>
           </div>
-          <button className="btn-purple">Voir tout les messages</button>
+          <button className="btn-purple">{t("Voir tout les messages")}</button>
         </div>
 
         <div className="comment elevated-card p-15 mt-15">
-            <h3>Commentaires récents</h3>
+            <h3>{t("Commentaires récents")}</h3>
             <div className="comment-container flex justify-content-between">
             <div className="name flex align-items-center gap-5">
               <img src="/img/flags/Flag_of_Madagascar.svg" alt="" />
@@ -212,64 +215,64 @@ const HotelAdminHome = () => {
             </div>
             <span className="date">19 mars</span>
           </div>
-          <button className="btn-purple">Voir tout les commentaires</button>
+          <button className="btn-purple">{t("Voir tout les commentaires")}</button>
 
         </div>
       </div>
       <div className="right ">
         <div className="todays elevated-card p-15 mb-5">
-          <h3>Activitées aujourd'hui</h3>
+          <h3>{t("Activitées aujourd'hui")}</h3>
           <div className="flex justify-content-center gap-10">
             <div className="reservation">
               <span>5</span>
-              <p>Reservation</p>
+              <p>{t("Reservation")}</p>
             </div>
             <div className="guest">
               <span>22</span>
-              <p>Client qui séjourne</p>
+              <p>{t("Client qui séjourne")}</p>
             </div>
             <div className="income">
               <span>165 €</span>
-              <p>Revenue</p>
+              <p>{t("Revenue")}</p>
             </div>
           </div>
         </div>
         <div className="notes elevated-card p-15 mb-5">
-          <h3>Vos notes</h3>
+          <h3>{t("Vos notes")}</h3>
           <div>
             <div className="flex justify-content-between">
-                <p>Score de la page de l'établissement</p>
+                <p>{t("Score de la page de l'établissement")}</p>
                 <p>21%</p>
             </div>
             <div className="bar">
                 <div className="bar-progress"></div>
             </div>
           </div>
-          <small>Moyenne de destination: 90%</small>
+          <small>{t("Moyenne de destination")}: 90%</small>
         </div>
         <div className="performance elevated-card p-15 mb-5">
-            <h3>Votre performance</h3>
-            <span>Au cours des 30 dernier jours</span>
+            <h3>{t("Votre performance")}</h3>
+            <span>{t("Au cours des 30 dernier jours")}</span>
             <div>
-                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>Prix moyen</p>
+                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>{t("Prix moyen")}</p>
                 <span>$ 100</span>
-                <small>Moyenne de la destination: $ 64,74</small>
+                <small>{t("Moyenne de la destination")}: $ 64,74</small>
             </div>
             <div>
-                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>Taux d'annulation</p>
+                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>{t("Taux d'annulation")}</p>
                 <span>0%</span>
-                <small>Moyenne de la destination: 64,74%</small>
+                <small>{t("Moyenne de la destination")}: 64,74%</small>
             </div>
             <div>
-                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>Revenus</p>
+                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>{t("Revenus")}</p>
                 <span>$ 100</span>
             </div>
             <div>
-                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>Nuitées effectuées</p>
+                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>{t("Nuitées effectuées")}</p>
                 <span>5</span>
             </div>
             <div>
-                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>Reservations recues</p>
+                <p className="flex align-items-center gap-5"><CircleFill size={10} className="icon"/>{t("Reservations recues")}</p>
                 <span>25</span>
             </div>
         </div>

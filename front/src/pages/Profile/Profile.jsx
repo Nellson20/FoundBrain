@@ -21,17 +21,17 @@ import ProfilePictureSelectorModal from '../../components/ProfilePictureSelector
 import MediaContext from '../../context/MediaContext'
 import { DESKTOP } from '../../constants/MediaTypeConstants'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 
 const Profile = () => {
+    const { t } = useTranslation();
     const currentUser = useSelector((store) => store.user.user)
     const { userId } = useParams()
     const { deviceType } = useContext(MediaContext)
     const [posts, setPosts] = useState([])
     const [postsLoading, setPostsLoading] = useState(false)
     const [tmpProfilePicture, setTmpProfilePicture] = useState(null)
-    /**
-     * Recuperation de l'user
-     */
+
     const {
         isLoading: userLoading,
         error: userError,
@@ -41,10 +41,8 @@ const Profile = () => {
         queryFn: () => getUser(userId)
     })
 
-
     return (
         <div id='profile-page'>
-
             {
                 userLoading ? <h1></h1> :
                     user ?
@@ -53,7 +51,7 @@ const Profile = () => {
                                 <div className="content">
                                     <div className="top">
                                         <div className="profile-banner">
-                                            <button className=""><PencilSquare /> Modifier la bannier</button>
+                                            <button className=""><PencilSquare /> {t("Modifier la bannier")}</button>
                                         </div>
                                         <div className="profile-user flex gap-20">
                                             <Avatar width={90} height={90} editable={true} onChange={(e) => {
@@ -68,13 +66,13 @@ const Profile = () => {
                                                         {
                                                             user.job ?
                                                                 user.job :
-                                                                currentUser?.id == user?.id && <span className='add-job flex align-items-center gap-5 purple-txt pointer'>Ajouter un metier <Pencil /></span>
+                                                                currentUser?.id == user?.id && <span className='add-job flex align-items-center gap-5 purple-txt pointer'>{t("Ajouter un metier")} <Pencil /></span>
                                                         }
                                                     </span>
                                                 </div>
                                                 <div className="btns flex gap-10">
-                                                    <div className="btn btn-purple">Contacter</div>
-                                                    <div className="btn btn-outline-yellow">Recruter</div>
+                                                    <div className="btn btn-purple">{t("Contacter")}</div>
+                                                    <div className="btn btn-outline-yellow">{t("Recruter")}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -82,45 +80,42 @@ const Profile = () => {
                                             {
                                                 user.biography ?
                                                     <p>{user.biography}</p> :
-                                                    currentUser?.id == user?.id && <span className='add-job flex align-items-center gap-5 purple-txt pointer'>Ajouter une biographie <Pencil /></span>
+                                                    currentUser?.id == user?.id && <span className='add-job flex align-items-center gap-5 purple-txt pointer'>{t("Ajouter une biographie")} <Pencil /></span>
                                             }
                                         </div>
                                         <div className="profile-nav elevated-card">
                                             <ul>
                                                 <li className='active'>
                                                     <House size={16} />
-                                                    <small>Actualite</small>
+                                                    <small>{t("Actualite")}</small>
                                                 </li>
                                                 <li>
                                                     <ExclamationCircle />
-                                                    <small>A propos</small>
+                                                    <small>{t("A propos")}</small>
                                                 </li>
                                                 <li>
                                                     <Gem />
-                                                    <small>Recommender</small>
+                                                    <small>{t("Recommender")}</small>
                                                 </li>
                                                 <li>
                                                     <FileEarmarkPerson />
-                                                    <small>CV</small>
+                                                    <small>{t("CV")}</small>
                                                 </li>
                                                 <li>
                                                     <House />
-                                                    <small>Domaines</small>
+                                                    <small>{t("Domaines")}</small>
                                                 </li>
                                                 <li>
                                                     <Building />
-                                                    <small>Entreprises</small>
+                                                    <small>{t("Entreprises")}</small>
                                                 </li>
                                             </ul>
                                         </div>
-
                                     </div>
                                     <div className="bottom flex gap-5">
-
                                         <div className="left flex-grow-1">
                                             <Timeline />
                                         </div>
-
                                         <div className="right py-15">
                                             <StickySideBar top={68}>
                                                 <PlanSlider />
@@ -128,7 +123,6 @@ const Profile = () => {
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             {
                                 deviceType === DESKTOP &&
@@ -139,7 +133,7 @@ const Profile = () => {
                                 </div>
                             }
                         </>
-                        : <h1>Cet user n'existe pas</h1>
+                        : <h1>{t("Cet user n'existe pas")}</h1>
             }
             <ProfilePictureSelectorModal file={tmpProfilePicture} />
         </div>

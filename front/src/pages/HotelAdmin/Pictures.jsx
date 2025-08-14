@@ -4,7 +4,11 @@ import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import PictureShowModal from "./PictureShowModal";
 import { AddPictureCard, PictureCard } from "../../components/PictureCard/PictureCard";
+import { useTranslation } from "react-i18next";
+
 const Pictures = () => {
+  const { t } = useTranslation();
+
   const [states, setStates] = useState({
     doubleRoom: [
       { path: "/img/other/chambre_0.jpg", checked: false },
@@ -36,20 +40,17 @@ const Pictures = () => {
   return (
     <div id="galery-pictures">
       <Modal open={openModal.open}>
-        <PictureShowModal
-          srcImg={openModal.src}
-          handleCloseModal={setOpenModal}
-        />
+        <PictureShowModal srcImg={openModal.src} handleCloseModal={setOpenModal} />
       </Modal>
-      <h2 className="py-15">Photos de l'établissement</h2>
+      <h2 className="py-15">{t("Photos de l'établissement")}</h2>
       <div className="elevated-card p-15">
         <div className="head">
-          <h3>Galerie principale</h3>
+          <h3>{t("Galerie principale")}</h3>
           <div className="menu">
             <ul>
-              <li>Sélectionner tout</li>
-              <li>Désélectionner tout</li>
-              <li>Supprimer</li>
+              <li>{t("Sélectionner tout")}</li>
+              <li>{t("Désélectionner tout")}</li>
+              <li>{t("Supprimer")}</li>
             </ul>
           </div>
         </div>
@@ -72,12 +73,12 @@ const Pictures = () => {
       </div>
       <div className="elevated-card mt-15 p-15">
         <div className="head">
-          <h3>Chambre Double</h3>
+          <h3>{t("Chambre Double")}</h3>
           <div className="menu">
             <ul>
-              <li>Sélectionner tout</li>
-              <li>Désélectionner tout</li>
-              <li>Supprimer</li>
+              <li>{t("Sélectionner tout")}</li>
+              <li>{t("Désélectionner tout")}</li>
+              <li>{t("Supprimer")}</li>
             </ul>
           </div>
         </div>
@@ -91,14 +92,13 @@ const Pictures = () => {
             />
           ))}
           {states.doubleRoom.length < 4 ? (
-            Array.from(
-              { length: 4 - states.doubleRoom.length },
-              (_, index) => index
-            ).map((_,number) => (
-              <React.Fragment key={number}>
-                <AddPictureCard />
-              </React.Fragment>
-            ))
+            Array.from({ length: 4 - states.doubleRoom.length }, (_, index) => index).map(
+              (_, number) => (
+                <React.Fragment key={number}>
+                  <AddPictureCard />
+                </React.Fragment>
+              )
+            )
           ) : (
             <AddPictureCard />
           )}
@@ -106,12 +106,12 @@ const Pictures = () => {
       </div>
       <div className="elevated-card mt-15 p-15">
         <div className="head">
-          <h3>Chambre Simple</h3>
+          <h3>{t("Chambre Simple")}</h3>
           <div className="menu">
             <ul>
-              <li>Sélectionner tout</li>
-              <li>Désélectionner tout</li>
-              <li>Supprimer</li>
+              <li>{t("Sélectionner tout")}</li>
+              <li>{t("Désélectionner tout")}</li>
+              <li>{t("Supprimer")}</li>
             </ul>
           </div>
         </div>
@@ -125,14 +125,13 @@ const Pictures = () => {
             />
           ))}
           {states.singleRoom.length < 4 ? (
-            Array.from(
-              { length: 4 - states.singleRoom.length },
-              (_, index) => index
-            ).map((_,number) => (
-              <React.Fragment key={number}>
-                <AddPictureCard />
-              </React.Fragment>
-            ))
+            Array.from({ length: 4 - states.singleRoom.length }, (_, index) => index).map(
+              (_, number) => (
+                <React.Fragment key={number}>
+                  <AddPictureCard />
+                </React.Fragment>
+              )
+            )
           ) : (
             <AddPictureCard />
           )}

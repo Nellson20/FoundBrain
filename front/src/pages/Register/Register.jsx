@@ -9,8 +9,10 @@ import moment from 'moment';
 import RegisterSuccessModal from '../../components/RegisterSuccessModal/RegisterSuccessModal'
 import { ColorRing } from 'react-loader-spinner'
 import { showToast } from '../../utils/toastUtils'
+import { useTranslation } from 'react-i18next';
 
 const Register = () => {
+    const { t } = useTranslation();
     const navigate = useNavigate()
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -67,7 +69,7 @@ const Register = () => {
             setPassword('')
             setPasswordConfirm('')
             setIsLoading(false)
-            showToast({content:<span>Inscription réussie</span>})
+            showToast({content:<span>{t('Inscription réussie')}</span>})
         }).catch((err) => {
             console.log(err)
             setIsLoading(false)
@@ -114,24 +116,24 @@ const Register = () => {
             <div className='register-page'>
                 <div className="register-form p-10">
                     <h3>Inscription</h3>
-                    <p className='mb-15'>Inscrivez vous gratuitement et facilement et commencez à promouvoir les activités de votre entreprise</p>
+                    <p className='mb-15'>{t('Inscrivez vous gratuitement et facilement et commencez à promouvoir les activités de votre entreprise')}</p>
                     <form action="">
                         <div className="flex gap-10">
                             <div className="form-group">
-                                <label htmlFor="">Nom</label>
+                                <label htmlFor="">{t('Nom')}</label>
                                 <Input
                                     type="text"
-                                    placeholder="Votre nom"
+                                    placeholder={t('Votre nom')}
                                     value={firstName}
                                     error={firstNameError}
                                     onChange={(e) => { setFirstName(e.target.value) }}
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">Prénom</label>
+                                <label htmlFor="">{t('Prénom')}</label>
                                 <Input
                                     type="text"
-                                    placeholder="Votre prenom"
+                                    placeholder={t('Votre prenom')}
                                     value={lastName}
                                     error={lastNameError}
                                     onChange={(e) => { setLastName(e.target.value) }}
@@ -139,10 +141,10 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="">Email</label>
+                            <label htmlFor="">{t('Email')}</label>
                             <Input
                                 type="text"
-                                placeholder="Votre adresse email"
+                                placeholder={t('Votre adresse email')}
                                 value={email}
                                 error={emailError}
                                 onChange={(e) => { setEmail(e.target.value) }}
@@ -150,7 +152,7 @@ const Register = () => {
                         </div>
                         <div className="flex gap-10">
                             <div className="form-group">
-                                <label htmlFor="">genre</label>
+                                <label htmlFor="">{t('Genre')}</label>
                                 <select onChange={(e) => {
                                     setGenderUri(e.target.value)
                                 }}>
@@ -161,10 +163,10 @@ const Register = () => {
                                 </select>
                             </div>
                             <div className="form-group">
-                                <label htmlFor="">date de naissance</label>
+                                <label htmlFor="">{t('Date de naissance')}</label>
                                 <Input
                                     type="date"
-                                    placeholder="Votre date de naissance"
+                                    placeholder={t('Votre date de naissance')}
                                     value={birthDate}
                                     error={birthDateError}
                                     onChange={formatBirthDate}
@@ -172,20 +174,20 @@ const Register = () => {
                             </div>
                         </div>
                         <div className="form-group">
-                            <label htmlFor="">Mot de passe</label>
+                            <label htmlFor="">{t('Mot de passe')}</label>
                             <Input
                                 type="password"
-                                placeholder="Votre mot de passe"
+                                placeholder={t('Votre mot de passe')}
                                 value={password}
                                 error={passwordError}
                                 onChange={(e) => { setPassword(e.target.value) }}
                             />
                         </div>
                         <div className="flex gap-10 register-form-btns">
-                            <button className="btn btn-transparent">Vider</button>
+                            <button className="btn btn-transparent">{t('Vider')}</button>
                             <button className="btn btn-purple" onClick={handleRegister}>
                                 {
-                                    !isLoading ? <>S'inscrire <ChevronRight /></> : <ColorRing
+                                    !isLoading ? <>{t("S'inscrire")} <ChevronRight /></> : <ColorRing
                                         visible={true}
                                         height="25"
                                         width="25"
@@ -198,7 +200,7 @@ const Register = () => {
                             </button>
                         </div>
                     </form>
-                    <span className='register-to-login-link'>Vous avez déjà un compte ? <Link to='/connexion' className="purple-txt">Connectez-vous</Link></span>
+                    <span className='register-to-login-link'>{t('Vous avez déjà un compte ?')} <Link to='/connexion' className="purple-txt">{t('Connectez-vous')}</Link></span>
                 </div>
             </div>
             <RegisterSuccessModal setIsOpen={setIsOpen} open={isOpen} onClose={() => { navigate('/', { replace: true }) }} />

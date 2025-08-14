@@ -9,8 +9,11 @@ import { useQuery } from '@tanstack/react-query';
 import CheckBox from '../../components/CheckBox/CheckBox';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import { getRandomNumber } from '../../functions';
+import { useTranslation } from 'react-i18next';
 
 const BreakFastForm = ({ formData: { includeBreakFast, breakFastWithSupplement }, initialFields, setFormData, currentStepErrors, currentStepValues, setInitialFields }) => {
+    const { t } = useTranslation();
+
     useEffect(() => {
         setInitialFields(prev => ({ ...prev, includeBreakFast: "0", breakFastWithSupplement: '0' }))
     }, [currentStepValues])
@@ -33,65 +36,34 @@ const BreakFastForm = ({ formData: { includeBreakFast, breakFastWithSupplement }
     return (
         <div className='breakfast-form'>
             <div className="form-group">
-                <label>Proposez-vous un petit déjeuner ?</label>
+                <label>{t("Proposez-vous un petit déjeuner ?")}</label>
                 <label className='flex align-items-center gap-5'>
                     <Field type="radio" value={1} checked={initialFields.includeBreakFast == "1"} name='includeBreakFast' />
-                    {/* <input
-                        
-                        value='1'
-                        checked={includeBreakFast === '1'}
-                        onChange={(e) => { setFormData(prev => ({ ...prev, includeBreakFast: e.target.value })) }}
-                        name='includeBreakFast'
-                    /> */}
-                    <span>Oui</span>
+                    <span>{t("Oui")}</span>
                 </label>
                 <label className='flex align-items-center gap-5'>
                     <Field type="radio" value={0} checked={initialFields.includeBreakFast == "0"} name='includeBreakFast' />
-                    {/* <input
-                        type="radio"
-                        value='0'
-                        checked={includeBreakFast === '0'}
-                        onChange={(e) => { setFormData(prev => ({ ...prev, includeBreakFast: e.target.value })) }}
-                        name='includeBreakFast'
-                        defaultChecked
-                    /> */}
-                    <span>Non</span>
+                    <span>{t("Non")}</span>
                 </label>
             </div>
             {
                 currentStepValues.includeBreakFast == 1 &&
                 <>
                     <div className="form-group">
-                        <label>Est-il inclus dans le tarif ?</label>
+                        <label>{t("Est-il inclus dans le tarif ?")}</label>
                         <label className='flex align-items-center gap-5'>
                             <Field type="radio" value={0} checked={initialFields.breakFastWithSupplement == "0"} name='breakFastWithSupplement' />
-                            {/* <input
-                                type="radio"
-                                value='0'
-                                checked={breakFastWithSupplement === '0'}
-                                onChange={(e) => { setFormData(prev => ({ ...prev, breakFastWithSupplement: e.target.value })) }}
-                                name='breakFastWithSupplement'
-                                defaultChecked
-                            /> */}
-                            <span>Oui</span>
+                            <span>{t("Oui")}</span>
                         </label>
                         <label className='flex align-items-center gap-5'>
                             <Field type="radio" value={1} checked={initialFields.breakFastWithSupplement == "1"} name='breakFastWithSupplement' />
-                            {/* <input
-                                type="radio"
-                                value='1'
-                                checked={breakFastWithSupplement === '1'}
-                                onChange={(e) => { setFormData(prev => ({ ...prev, breakFastWithSupplement: e.target.value })) }}
-                                name='withSupplement'
-                                defaultChecked
-                            /> */}
-                            <span>Non, avec un suplément</span>
+                            <span>{t("Non, avec un suplément")}</span>
                         </label>
 
                         {
                             currentStepValues.breakFastWithSupplement == 1 &&
                             <div className='form-group'>
-                                <label htmlFor="">Tarif petit déjeuner par personne par jour</label>
+                                <label htmlFor="">{t("Tarif petit déjeuner par personne par jour")}</label>
                                 <div className="">
                                     <Field name="breakFastSupplement">
                                         {({ field, form, meta }) => (
@@ -109,14 +81,14 @@ const BreakFastForm = ({ formData: { includeBreakFast, breakFastWithSupplement }
                     {
                         breakfastTypesLoading ?
                             <div className="brakfast-types mt-15 mb-15">
-                                {[...new Array(10)].map((_,i) => <Skeleton key={i} radius={2} height={10} width={`${getRandomNumber(30, 80)}%`} />)}
+                                {[...new Array(10)].map((_, i) => <Skeleton key={i} radius={2} height={10} width={`${getRandomNumber(30, 80)}%`} />)}
                             </div>
                             :
                             (breakfastTypes && breakfastTypes.length > 0) &&
                             <>
                                 <hr />
                                 <div className="form-group">
-                                    <label>Type de petit déjeuner</label>
+                                    <label>{t("Type de petit déjeuner")}</label>
                                     <div className="brakfast-types mt-15">
                                         {
                                             breakfastTypes?.map((b, i) => (

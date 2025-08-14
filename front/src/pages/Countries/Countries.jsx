@@ -10,13 +10,14 @@ import { Link, useLocation } from 'react-router-dom';
 import useInfiniteScroll from '../../Hooks/useInfiniteScroll';
 import { useEffect } from 'react';
 import CountryCardSkeleton from './CountryCardSkeleton';
+import { useTranslation } from 'react-i18next';
 
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement);
 
 
 const Countries = () => {
     const { deviceType } = useContext(MediaContext)
-
+    const { t } = useTranslation();
     const { data: countriesList,
         flatData: countriesListFlat,
         error,
@@ -48,11 +49,11 @@ const Countries = () => {
                     <div className="bg2"></div>
 
                     <div className="capt gap-10">
-                        <h2>Decouvrez l'<font className='orange-txt'>Afrique</font> <br /><small>Un continent doté de diverses cultures</small></h2>
+                        <h2>{t("Decouvrez l'")}<font className='orange-txt'>{t('Afrique')}</font> <br /><small>{t('Un continent doté de diverses cultures')}</small></h2>
                         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. porro eligendi natus a aut incidunt magni</p>
                         <div className="coutries-searchbar flex align-items-center gap-15">
                             <Search />
-                            <input type="text" placeholder='Quel pays recherchez vous ?' />
+                            <input type="text" placeholder={t('Quel pays recherchez vous ?')} />
                         </div>
                     </div>
                 </div>

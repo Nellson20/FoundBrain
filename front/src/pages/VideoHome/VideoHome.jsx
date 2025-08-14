@@ -6,8 +6,11 @@ import Avatar from '../../components/Avatar/Avatar'
 import Searchbar from '../../components/Searchbar/Searchbar'
 import MediaContext from '../../context/MediaContext'
 import { DESKTOP, SMARTPHONE } from '../../constants/MediaTypeConstants'
+import { useTranslation } from 'react-i18next'
+
 const VideoHome = () => {
   const { deviceType } = useContext(MediaContext)
+  const { t } = useTranslation()
   return (
     <div id='video-home-page'>
       <div className="top">
@@ -63,7 +66,7 @@ const VideoHome = () => {
                     <Avatar height={20} width={20} />
                     <img src="/img/flags/Flag_of_Madagascar.svg" alt="" width={30} />
                   </div>
-                  <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                  <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                 </div>
               </div>
               <div className="play-btn"><PlayFill size={30} /></div>
@@ -81,7 +84,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_Madagascar.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -98,7 +101,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_Côte_d'Ivoire.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -116,7 +119,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_Algeria.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -133,7 +136,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -146,14 +149,14 @@ const VideoHome = () => {
         <div className="left">
           <nav className='floatting-nav'>
             <ul className='flex'>
-              <li className='active'>Tous</li>
-              <li>Actualités</li>
-              <li>Industrie</li>
-              <li>Politique</li>
-              <li>Technologie</li>
-              <li>Science</li>
-              <li>Education</li>
-              <li>Tourisme</li>
+              <li className='active'>{t("Tous")}</li>
+              <li>{t("Actualités")}</li>
+              <li>{t("Industrie")}</li>
+              <li>{t("Politique")}</li>
+              <li>{t("Technologie")}</li>
+              <li>{t("Science")}</li>
+              <li>{t("Education")}</li>
+              <li>{t("Tourisme")}</li>
             </ul>
           </nav>
           <div className="mansonry-vid">
@@ -171,7 +174,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -189,7 +192,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -207,7 +210,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -225,7 +228,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -243,7 +246,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -261,7 +264,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -279,7 +282,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -297,7 +300,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -315,7 +318,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -333,7 +336,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -351,7 +354,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -369,7 +372,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -387,7 +390,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -405,7 +408,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -423,7 +426,7 @@ const VideoHome = () => {
                       <Avatar height={20} width={20} />
                       <img src="/img/flags/Flag_of_the_Sahrawi_Arab_Democratic_Republic.svg" alt="" width={30} />
                     </div>
-                    <div className="description text-ellipsis">Live : Maitre Gims en show case à Madagascar</div>
+                    <div className="description text-ellipsis">{t("Live : Maitre Gims en show case à Madagascar")}</div>
                   </div>
                   <div className="play-btn"><PlayFill size={20} /></div>
                 </div>
@@ -433,48 +436,46 @@ const VideoHome = () => {
         </div>
         <div className="right">
           <div className="sponsored-videos">
-            <div className="top flex align-items-center justify-content-between">
-              <h5>Sponsorisés</h5>
-              <ThreeDots />
-            </div>
-            <div className="sponsored-videos-slider">
-              <Slider {...{
-                dots: true,
-                arrows: false,
-                speed: 500,
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                variableWidth: true,
-                infinite: false,
-              }}>
-                <div className="slide sponsored-video-slide">
-                  <Newspaper size={22} />
-                  <b>News</b>
-                </div>
-                <div className="slide sponsored-video-slide">
-                  <Vinyl />
-                  <b>Live</b>
-                </div>
-                <div className="slide sponsored-video-slide">
-                  <Headset size={22} />
-                  <b>Podcast</b>
-                </div>
-                <div className="slide sponsored-video-slide">
-                  <Headset size={22} />
-                  <b>Podcast</b>
-                </div>
-                <div className="slide sponsored-video-slide">
-                  <Headset size={22} />
-                  <b>Podcast</b>
-                </div>
-
-              </Slider>
-            </div>
-            <div className="bottom relative">
-              <span className="flex align-items-center">Voir plus <ChevronRight /></span>
-            </div>
+          <div className="top flex align-items-center justify-content-between">
+            <h5>{t("Sponsorisés")}</h5>
+            <ThreeDots />
           </div>
-
+          <div className="sponsored-videos-slider">
+            <Slider {...{
+              dots: true,
+              arrows: false,
+              speed: 500,
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              variableWidth: true,
+              infinite: false,
+            }}>
+              <div className="slide sponsored-video-slide">
+                <Newspaper size={22} />
+                <b>{t("News")}</b>
+              </div>
+              <div className="slide sponsored-video-slide">
+                <Vinyl />
+                <b>{t("Live")}</b>
+              </div>
+              <div className="slide sponsored-video-slide">
+                <Headset size={22} />
+                <b>{t("Podcast")}</b>
+              </div>
+              <div className="slide sponsored-video-slide">
+                <Headset size={22} />
+                <b>{t("Podcast")}</b>
+              </div>
+              <div className="slide sponsored-video-slide">
+                <Headset size={22} />
+                <b>{t("Podcast")}</b>
+              </div>
+            </Slider>
+          </div>
+          <div className="bottom relative">
+            <span className="flex align-items-center">{t("Voir plus")} <ChevronRight /></span>
+          </div>
+        </div>
         </div>
       </div>
     </div>

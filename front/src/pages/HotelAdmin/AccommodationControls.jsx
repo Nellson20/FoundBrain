@@ -4,8 +4,11 @@ import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import CheckBox from "../../components/CheckBox/CheckBox";
+import { useTranslation } from 'react-i18next'; 
 
 const AccommodationControls = () => {
+  const { t } = useTranslation();  
+
   const [isSrPricingPlanSelected, setIsSrPricingPlanSelected] =
     useState("false");
   const [isDrPricingPlanSelected, setIsDrPricingPlanSelected] =
@@ -29,11 +32,10 @@ const AccommodationControls = () => {
   }, [isDrPricingPlanSelected]);
   return (
     <div className="accommodation-controls mt-15">
-      <h2 className="mt-15">Ouvrir/fermer des hébergements</h2>
+      <h2 className="mt-15">{t("Ouvrir/fermer des hébergements")}</h2>
       <div className="date elevated-card p-15 mt-15">
         <h3>
-          Indiquez les dates auxquelles vous souhaitez apporter des
-          modifications.
+          {t("Indiquez les dates auxquelles vous souhaitez apporter des modifications.")}
         </h3>
         <DateRangePicker
           className="mt-15"
@@ -56,51 +58,51 @@ const AccommodationControls = () => {
         <div className="week flex gap-20">
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Lun.</span>
+            <span>{t("Lun.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Mar.</span>
+            <span>{t("Mar.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Mer.</span>
+            <span>{t("Mer.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Jeu.</span>
+            <span>{t("Jeu.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Ven.</span>
+            <span>{t("Ven.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Sam.</span>
+            <span>{t("Sam.")}</span>
           </div>
           <div className="flex gap-5">
             <CheckBox checked={true} />
-            <span>Dim.</span>
+            <span>{t("Dim.")}</span>
           </div>
         </div>
       </div>
       <div className="accommodation-type elevated-card mt-15 p-15">
         <h3>
-        Indiquez les types d'hébergements que vous souhaitez ouvrir ou fermer pour votre établissement.
+          {t("Indiquez les types d'hébergements que vous souhaitez ouvrir ou fermer pour votre établissement.")}
         </h3>
         <div className="accommodation-type-item mt-15">
-          <h4>Double Room</h4>
+          <h4>{t("Double Room")}</h4>
           <div className="flex">
             <div>
               <input
                 type="radio"
                 name="doubleRoom"
                 id="drEntireAccommodation"
-                value="L'hébergement entier"
+                value={t("L'hébergement entier")}
                 onChange={handleDrPricingPlanChange}
               />
               <label htmlFor="drEntireAccommodation">
-                L'hébergement entier
+                {t("L'hébergement entier")}
               </label>
             </div>
             <div>
@@ -108,32 +110,31 @@ const AccommodationControls = () => {
                 type="radio"
                 name="doubleRoom"
                 id="drPricingPlan"
-                value="Des plans tarifaires spécifiques"
+                value={t("Des plans tarifaires spécifiques")}
                 onChange={handleDrPricingPlanChange}
               />
               <label htmlFor="drPricingPlan">
-                Des plans tarifaires spécifiques
+                {t("Des plans tarifaires spécifiques")}
               </label>
             </div>
           </div>
-          {isDrPricingPlanSelected === "Des plans tarifaires spécifiques" && (
+          {isDrPricingPlanSelected === t("Des plans tarifaires spécifiques") && (
             <div className="pricing-plan">
               <span>
-                Veuillez indiquer les plans tarifaires auxquels vous souhaitez
-                appliquer les modifications.
+                {t("Veuillez indiquer les plans tarifaires auxquels vous souhaitez appliquer les modifications.")}
               </span>
               <div className="flex gap-20 mt-10">
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Standard Rate</label>
+                  <label>{t("Standard Rate")}</label>
                 </div>
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Non-refundable Rate</label>
+                  <label>{t("Non-refundable Rate")}</label>
                 </div>
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Weekly Rate</label>
+                  <label>{t("Weekly Rate")}</label>
                 </div>
               </div>
             </div>
@@ -141,18 +142,18 @@ const AccommodationControls = () => {
         </div>
         <hr />
         <div className="accommodation-type-item">
-          <h4>Single Room</h4>
+          <h4>{t("Single Room")}</h4>
           <div className="flex">
             <div>
               <input
                 type="radio"
                 name="singleRoom"
                 id="srEntireAccommodation"
-                value="L'hébergement entier"
+                value={t("L'hébergement entier")}
                 onChange={handleSrPricingPlanChange}
               />
               <label htmlFor="srEntireAccommodation">
-                L'hébergement entier
+                {t("L'hébergement entier")}
               </label>
             </div>
             <div>
@@ -160,32 +161,31 @@ const AccommodationControls = () => {
                 type="radio"
                 name="singleRoom"
                 id="srPricingPlan"
-                value="Des plans tarifaires spécifiques"
+                value={t("Des plans tarifaires spécifiques")}
                 onChange={handleSrPricingPlanChange}
               />
               <label htmlFor="srPricingPlan">
-                Des plans tarifaires spécifiques
+                {t("Des plans tarifaires spécifiques")}
               </label>
             </div>
           </div>
-          {isSrPricingPlanSelected === "Des plans tarifaires spécifiques" && (
+          {isSrPricingPlanSelected === t("Des plans tarifaires spécifiques") && (
             <div className="pricing-plan">
               <span>
-                Veuillez indiquer les plans tarifaires auxquels vous souhaitez
-                appliquer les modifications.
+                {t("Veuillez indiquer les plans tarifaires auxquels vous souhaitez appliquer les modifications.")}
               </span>
               <div className="flex gap-20 mt-10">
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Standard Rate</label>
+                  <label>{t("Standard Rate")}</label>
                 </div>
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Non-refundable Rate</label>
+                  <label>{t("Non-refundable Rate")}</label>
                 </div>
                 <div className="flex gap-5">
                   <CheckBox />
-                  <label>Weekly Rate</label>
+                  <label>{t("Weekly Rate")}</label>
                 </div>
               </div>
             </div>
@@ -193,19 +193,19 @@ const AccommodationControls = () => {
         </div>
       </div>
       <div className="status elevated-card mt-15 p-15">
-        <h3>Deffinir le statut de votre hébergement</h3>
+        <h3>{t("Deffinir le statut de votre hébergement")}</h3>
         <div className="flex">
           <div>
-            <input type="radio" name="status" id="status" value="Ouvert" />
-            <label htmlFor="status">Ouvert</label>
+            <input type="radio" name="status" id="status" value={t("Ouvert")} />
+            <label htmlFor="status">{t("Ouvert")}</label>
           </div>
           <div>
-            <input type="radio" name="status" id="status" value="Fermé" />
-            <label htmlFor="status">Fermé</label>
+            <input type="radio" name="status" id="status" value={t("Fermé")} />
+            <label htmlFor="status">{t("Fermé")}</label>
           </div>
         </div>
       </div>
-      <button className="btn-purple mt-15">Enregistrer</button>
+      <button className="btn-purple mt-15">{t("Enregistrer")}</button>
     </div>
   );
 };

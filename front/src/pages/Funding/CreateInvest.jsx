@@ -13,8 +13,10 @@ import MediasSelector from '../../components/MediaSelector/MediasSelector'
 import ErrorLabel from '../../components/Labels/ErrorAlert'
 import FundingCard from '../../components/FundingCard/FundingCard'
 import AuthorSelector from '../../components/AuthorSelector/AuthorSelector'
+import { useTranslation } from 'react-i18next';
 
 const CreateInvest = () => {
+    const { t } = useTranslation();
     const { user } = useSelector(store => store.user)
     const navigate = useNavigate()
     const [invest, setInvest] = useState({
@@ -93,46 +95,46 @@ const CreateInvest = () => {
         <div id='create-invest'>
             <div className="formulaire">
                 <div className="top">
-                    <h2>Nouvel investissement</h2>
-                    <small>La collecte de fonds consiste à solliciter des contributions financières pour soutenir une cause, organisation, projet, ou événement spécifique.</small>
+                    <h2>{t('Nouvel investissement')}</h2>
+                    <small>{t('La collecte de fonds consiste à solliciter des contributions financières pour soutenir une cause, organisation, projet, ou événement spécifique.')}</small>
                 </div>
                 <hr style={{ margin: '20px 10px 0 10px' }} />
                 <div className="bottom">
                     <div className="form-group">
-                        <label htmlFor="">Nom de l'entreprise</label>
+                        <label htmlFor="">{t("Nom de l'entreprise")}</label>
                         <AuthorSelector onStart={(author)=>setInvest(prev => ({ ...prev, author }))} onSelect={(author)=>setInvest(prev => ({ ...prev, author }))}/>
                         <ErrorLabel title={errors.author} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Titre</label>
-                        <input onChange={(e) => setInvest(prev => ({ ...prev, title: e.target.value }))} type="text" className="inpt" placeholder='titre de votre collecte de fonds' />
+                        <label htmlFor="">{t('Titre')}</label>
+                        <input onChange={(e) => setInvest(prev => ({ ...prev, title: e.target.value }))} type="text" className="inpt" placeholder={t('titre de votre collecte de fonds')} />
                         <ErrorLabel title={errors.title} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Description</label>
-                        <textarea onChange={(e) => setInvest(prev => ({ ...prev, description: e.target.value }))} type="text" className="inpt" placeholder='Description de votre collecte de fonds'></textarea>
+                        <label htmlFor="">{t('Description')}</label>
+                        <textarea onChange={(e) => setInvest(prev => ({ ...prev, description: e.target.value }))} type="text" className="inpt" placeholder={t('Description de votre collecte de fonds')}></textarea>
                         <ErrorLabel title={errors.description} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Besoin</label>
+                        <label htmlFor="">{t('Besoin')}</label>
                         <AmountInput onChange={(amount) => {
                             setInvest(prev => ({ ...prev, need: parseInt(amount?.value), currency: amount?.currency }))
-                        }} placeholder='Votre besoin' />
+                        }} placeholder={t('Votre besoin')} />
                         <ErrorLabel title={errors.need} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Colléctés</label>
+                        <label htmlFor="">{t('Colléctés')}</label>
                         <AmountInput onChange={(amount) => {
                             setInvest(prev => ({ ...prev, collected: parseInt(amount?.value), currency: amount?.currency }))
-                        }} currency={invest.currency?.code} readOnlyCurrency={true} placeholder='Déjà colléctés' />
+                        }} currency={invest.currency?.code} readOnlyCurrency={true} placeholder={t('Déjà colléctés')} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="">Domaines</label>
+                        <label htmlFor="">{t('Domaines')}</label>
                         <div className="right">
                             <MultiSelectSearch
                                 onChange={(sel) => { setInvest(prev => ({ ...prev, domains: sel.map((s) => s?.value || null) })) }}
-                                placeholder='Choisir un domaine'
-                                searchPlaceholder='Rechercher un domaine'
+                                placeholder={t('Choisir un domaine')}
+                                searchPlaceholder={t('Rechercher un domaine')}
                                 query={getDomains}
                                 repoName="domainsListRepo"
                                 objectMapping={(d) => ({ title: d.title, value: `/domains/${d.id}` })} />
@@ -141,8 +143,8 @@ const CreateInvest = () => {
                     </div>
                     <div className="form-group">
                         <div className="mb-15">
-                            <label htmlFor="">Joindre des images</label>
-                            <small>Ajouter des images pour donner un apercu ou échantillon</small>
+                            <label htmlFor="">{t('Joindre des images')}</label>
+                            <small>{t('Ajouter des images pour donner un apercu ou échantillon')}</small>
                         </div>
                         <MediasSelector col={4} setMediasState={setInvestMedias} />
                     </div>
@@ -150,7 +152,7 @@ const CreateInvest = () => {
                 </div>
 
                 <div className="footer flex justify-content-end align-items-center gap-10">
-                    <button className="btn btn-transparent">Annuler</button>
+                    <button className="btn btn-transparent">{t('Annuler')}</button>
                     <button className="btn btn-purple" onClick={addInvest}>
                         {
                             addInvestLoading ?

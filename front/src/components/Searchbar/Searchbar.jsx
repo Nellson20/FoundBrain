@@ -4,10 +4,12 @@ import { Search } from 'react-bootstrap-icons'
 import useClickOutside from '../../Hooks/useClickOutside'
 import useInfiniteScroll from '../../Hooks/useInfiniteScroll'
 import CircleLoader from '../CircleLoader/CircleLoader'
+import { useTranslation } from 'react-i18next';
+
 
 
 const Searchbar = ({
-  placeholder = 'Rechercher sur GateAFRI',
+  placeholder,
   expandable = false,
   suggestUrl = null,
   queryKey = [],
@@ -17,7 +19,11 @@ const Searchbar = ({
   onSubmit = () => { },
   mapSuggests = () => { }
 }) => {
+  const { t } = useTranslation();
 
+   const finalPlaceholder = placeholder ?? t('Rechercher sur GateAFRI')
+
+  
   const [expand, setExpand] = useState(false)
   const [enableSuggest, setEnableSuggest] = useState(false)
   const [hasSuggests, setHasSuggests] = useState(false)
@@ -76,10 +82,16 @@ const Searchbar = ({
     }} className={`searchbar flex flex-column align-items-center${expandable ? ' expandable' : ''}${expand ? ' expanded' : ''}${results?.pages[0]?.totalItems > 0 ? ' has-suggests' : ''}`}>
       <div className="input flex align-items-center">
         <div className="icon-left"><Search /></div>
-        <input onChange={(e) => {
-          onChange(e.target.value)
-          setKeyword(e.target.value)
-        }} type="text" ref={inpt} placeholder={placeholder} onKeyUp={handleEnterKey} />
+         <input
+          onChange={(e) => {
+            onChange(e.target.value)
+            setKeyword(e.target.value)
+          }}
+          type="text"
+          ref={inpt}
+          placeholder={finalPlaceholder}
+          onKeyUp={handleEnterKey}
+        />
         {
           (resultsFetching || isLoading) &&
           <div className="spiner">

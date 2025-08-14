@@ -16,7 +16,9 @@ import { useEffect } from 'react'
 import { filtersToURL } from '../../functions'
 import { getDomains, searchDomains } from '../../api/domain'
 import AfricaMap from '../../components/AfricaMap/AfricaMap'
+import { useTranslation } from 'react-i18next';
 const Funding = () => {
+  const { t } = useTranslation();
   const { deviceType } = useContext(MediaContext)
   const position = [-8.783195, 34.508523]
 
@@ -74,27 +76,27 @@ const Funding = () => {
         deviceType === DESKTOP ?
           <div className="left p-15">
             <StickySideBar top={73}>
-              <h2>Investissements</h2>
-              <small>Trouvez de potentiels investissements en Afrique</small>
+              <h2>{t('Investissements')}</h2>
+              <small>{t('Trouvez de potentiels investissements en Afrique')}</small>
               <div className="form-group">
-                <SortableList allowSearch={true} query={(keyword) => searchDomains(keyword)} mapping={(d) => <><CheckBox id={d.title} value={d.title} name='companyDomains' onChange={(e) => { handleChange(e) }} /> <label htmlFor={d.title}>{d.title}</label></>} repoName='repoDomains' title={<label htmlFor="">Domaines</label>} />
+                <SortableList allowSearch={true} query={(keyword) => searchDomains(keyword)} mapping={(d) => <><CheckBox id={d.title} value={d.title} name='companyDomains' onChange={(e) => { handleChange(e) }} /> <label htmlFor={d.title}>{d.title}</label></>} repoName='repoDomains' title={<label htmlFor="">{t('Domaines')}</label>} />
               </div>
 
               <div className="form-group">
 
 
-                <SortableList allowSearch={true} query={(keyword) => getCompanyTypes(keyword)} mapping={(ct) => <><CheckBox id={ct.type} value={ct.type} name='companyTypeTitles' onChange={(e) => { handleChange(e) }} /> <label htmlFor={ct.type}>{ct.type}</label></>} repoName='repoCompTypes' title={<label htmlFor="">Type d'entreprise</label>} />
+                <SortableList allowSearch={true} query={(keyword) => getCompanyTypes(keyword)} mapping={(ct) => <><CheckBox id={ct.type} value={ct.type} name='companyTypeTitles' onChange={(e) => { handleChange(e) }} /> <label htmlFor={ct.type}>{ct.type}</label></>} repoName='repoCompTypes' title={<label htmlFor="">{t("Type d'entreprise")}</label>} />
 
               </div>
               <div className="form-group">
 
 
-                <SortableList allowSearch={false} query={() => getCompanySizes()} mapping={(cs) => <><CheckBox id={cs.Size} value={cs.id} name='companySizes' onChange={(e) => { handleChange(e) }} /> <label htmlFor={cs.Size}>{cs.Size}</label></>} repoName='repoCompSizes' title={<label htmlFor="">Taille d'entreprise</label>} />
+                <SortableList allowSearch={false} query={() => getCompanySizes()} mapping={(cs) => <><CheckBox id={cs.Size} value={cs.id} name='companySizes' onChange={(e) => { handleChange(e) }} /> <label htmlFor={cs.Size}>{cs.Size}</label></>} repoName='repoCompSizes' title={<label htmlFor="">{t("Taille d'entreprise")}</label>} />
 
               </div>
               <div className="form-group">
-                <label htmlFor="">Budget</label>
-                <input type="text" className="inpt" placeholder='Mon budget' />
+                <label htmlFor="">{t('Budget')}</label>
+                <input type="text" className="inpt" placeholder={t('Mon budget')} />
               </div>
             </StickySideBar>
 
@@ -103,10 +105,10 @@ const Funding = () => {
       <div className="center flex-grow-1">
         <div className="top flex align-items-center justify-content-between px-15 gap-10">
           <select name="order-inpt" id="" className="inpt">
-            <option value="">Date</option>
-            <option value="">Domaine</option>
-            <option value="">Pays</option>
-            <option value="">Chiffres</option>
+            <option value="">{t('Date')}</option>
+            <option value="">{t('Domaine')}</option>
+            <option value="">{t('Pays')}</option>
+            <option value="">{t('Chiffres')}</option>
           </select>
           <div className="layout-btns flex align-items-center gap-5">
             <button className='btn-outline-light'>
