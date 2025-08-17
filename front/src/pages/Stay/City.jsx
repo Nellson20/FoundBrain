@@ -1,6 +1,7 @@
 import React from "react";
 import "./City.scss";
 import Slider from "react-slick";
+import { useTranslation } from 'react-i18next'
 import { MapContainer, TileLayer, UseMap, Marker, Popup } from "react-leaflet";
 import {
   Alarm,
@@ -35,6 +36,7 @@ import Rating from "react-rating";
 import StickySideBar from "./../../components/StickySideBar/StickySideBar";
 
 const AttractionSlider = () => {
+  
   const attractionSlider = useRef();
   return (
     <div className="relative">
@@ -116,6 +118,7 @@ const attractionData = [
 ]
 
 const Attraction = ({ data }) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
 
   return (
@@ -154,38 +157,38 @@ const Attraction = ({ data }) => {
             <div>
               <img src="/img/other/antananarivo.jpg" alt="" />
               <div className="text-img">
-                <span>Analakely</span>
+                <span>{t("Analakely")}</span>
               </div>
             </div>
             <div>
               <img src="/img/other/baobab.jpg" alt="" />
               <div className="text-img">
-                <span>Tsimbazaza</span>
+                <span>{t("Tsimbazaza")}</span>
               </div>
             </div>
 
             <div>
               <img src="/img/other/madagascar_antananarivo.jpg" alt="" />
               <div className="text-img">
-                <span>Rova Manjakamiadana</span>
+                <span>{t("Rova Manjakamiadana")}</span>
               </div>
             </div>
             <div>
               <img src="/img/other/maki.jpg" alt="" />
               <div className="text-img">
-                <span>Tsimbazaza</span>
+                <span>{t("Tsimbazaza")}</span>
               </div>
             </div>
             <div>
               <img src="/img/other/maki_2.png" alt="" />
               <div className="text-img">
-                <span>Tsimbazaza</span>
+                <span>{t("Tsimbazaza")}</span>
               </div>
             </div>
             <div>
               <img src="/img/other/nosybe.jpg" alt="" />
               <div className="text-img">
-                <span>Tsimbazaza</span>
+                <span>{t("Tsimbazaza")}</span>
               </div>
             </div>
           </div>
@@ -198,8 +201,8 @@ const Attraction = ({ data }) => {
             <div className="center-right">
               <div className="top flex ">
                 <div className="top-left">
-                  <h1>Musée de la pirate de Madagascar</h1>
-                  <p>Traivasion</p>
+                  <h1>{t("Musée de la pirate de Madagascar")}</h1>
+                  <p>{t("Traivasion")}</p>
                 </div>
                 <div className="top-right">
                   <Gem />
@@ -207,47 +210,39 @@ const Attraction = ({ data }) => {
               </div>
 
               <div className="body">
-                <section className="attraction-description">
-                  <p>
-                    Learn about pirates and their particular way of life at
-                    Pirate Museum of Antananarivo. Read stories, view
-                    photographs, and listen to the myths of these fearless
-                    people that once ruled the area. Inspect the modest array of
-                    artifacts showcasing the pirates' weapons, treasures, and
-                    tools used during raids. A few ship models recreate their
-                    vessels, giving a sense of how massive and powerful they
-                    were.
-                  </p>
-                </section>
-                <section className="attraction-info">
-                  <ul>
-                    <li className="flex align-items-center gap-15">
-                      <GeoAlt />
-                      <span>103, rue de Liège, Antananarivo</span>
-                    </li>
-                    <li className="flex align-items-center gap-15">
-                      <Phone />
-                      <span>+261 20 22 625 27</span>
-                    </li>
-                    <li className="flex align-items-center gap-15">
-                      <Globe />
-                      <span>www.test.com</span>
-                    </li>
-                    <li className="flex align-items-center gap-15">
-                      <Alarm />
-                      <span>
-                        Horraire <b>Jeudi</b>
-                      </span>
-                      <span>8:00 AM - 15:00 PM</span>
-                    </li>
-                  </ul>
-                </section>
-
+              <section className="attraction-description">
+                <p>
+                  {t("Learn about pirates and their particular way of life at Pirate Museum of Antananarivo. Read stories, view photographs, and listen to the myths of these fearless people that once ruled the area. Inspect the modest array of artifacts showcasing the pirates' weapons, treasures, and tools used during raids. A few ship models recreate their vessels, giving a sense of how massive and powerful they were.")}
+                </p>
+              </section>
+              <section className="attraction-info">
+                <ul>
+                  <li className="flex align-items-center gap-15">
+                    <GeoAlt />
+                    <span>{t("103, rue de Liège, Antananarivo")}</span>
+                  </li>
+                  <li className="flex align-items-center gap-15">
+                    <Phone />
+                    <span>{t("+261 20 22 625 27")}</span>
+                  </li>
+                  <li className="flex align-items-center gap-15">
+                    <Globe />
+                    <span>{t("www.test.com")}</span>
+                  </li>
+                  <li className="flex align-items-center gap-15">
+                    <Alarm />
+                    <span>
+                      {t("Horraire")} <b>{t("Jeudi")}</b>
+                    </span>
+                    <span>{t("8:00 AM - 15:00 PM")}</span>
+                  </li>
+                </ul>
+              </section>
                 <section className="attraction-tabs">
                   <div className="top flex align-items-center">
                     <ul className="flex align-items-center gap-15">
-                      <li>Avis/Commentaires</li>
-                      <li>Articles</li>
+                      <li>{t("Avis/Commentaires")}</li>
+                      <li>{t("Articles")}</li>
                     </ul>
                   </div>
 
@@ -255,7 +250,7 @@ const Attraction = ({ data }) => {
                     <div className="attraction-notice">
                       <div className="top">
                         <div className="note flex gap-15">
-                          <h1>3.0</h1>
+                          <h1>{t("3.0")}</h1>
                           <div className="gems">
                             <Rating
                               readonly
@@ -275,56 +270,56 @@ const Attraction = ({ data }) => {
                                 />
                               }
                             />
-                            <p>237 evaluations</p>
+                            <p>{t("237 evaluations")}</p>
                           </div>
                         </div>
 
                         <div className="evaluation-cart">
                           <ul>
                             <li className="flex gap-10 align-items-center">
-                              <span>5 étoile</span>
+                              <span>{t("5 étoile")}</span>
                               <div className="evaluation-progres">
                                 <div></div>
                               </div>
-                              <span>18%</span>
+                              <span>{t("18%")}</span>
                             </li>
 
                             <li className="flex gap-10 align-items-center">
-                              <span>5 étoile</span>
+                              <span>{t("5 étoile")}</span>
                               <div className="evaluation-progres">
                                 <div></div>
                               </div>
-                              <span>18%</span>
+                              <span>{t("18%")}</span>
                             </li>
 
                             <li className="flex gap-10 align-items-center">
-                              <span>5 étoile</span>
+                              <span>{t("5 étoile")}</span>
                               <div className="evaluation-progres">
                                 <div></div>
                               </div>
-                              <span>18%</span>
+                              <span>{t("18%")}</span>
                             </li>
 
                             <li className="flex gap-10 align-items-center">
-                              <span>5 étoile</span>
+                              <span>{t("5 étoile")}</span>
                               <div className="evaluation-progres">
                                 <div></div>
                               </div>
-                              <span>18%</span>
+                              <span>{t("18%")}</span>
                             </li>
 
                             <li className="flex gap-10 align-items-center">
-                              <span>5 étoile</span>
+                              <span>{t("5 étoile")}</span>
                               <div className="evaluation-progres">
                                 <div></div>
                               </div>
-                              <span>18%</span>
+                              <span>{t("18%")}</span>
                             </li>
                           </ul>
                         </div>
 
                         <div className="article-cart py-10">
-                          <h1>Gourmand2021bis</h1>
+                          <h1>{t("Gourmand2021bis")}</h1>
                           <div className="article-item flex align-items-center gap-15 py-10">
                             <Rating
                               readonly
@@ -344,23 +339,18 @@ const Attraction = ({ data }) => {
                                 />
                               }
                             />
-                            <span>August 23, 2023</span>
+                            <span>{t("August 23, 2023")}</span>
                           </div>
                           <div className="description-article">
                             <p>
-                              Immense parc floral au cœur de la ville, avec des
-                              plantes magnifiques et c’est l’endroit dans lequel
-                              les familles jouent et viennent pique-niquer ! Des
-                              groupes d’amis viennent chanter et jouer de la
-                              musique. Plus que le zoo, c’est la joie de vivre
-                              au sein de ce parc qui est magnifique !
+                              {t("Immense parc floral au cœur de la ville, avec des plantes magnifiques et c’est l’endroit dans lequel les familles jouent et viennent pique-niquer ! Des groupes d’amis viennent chanter et jouer de la musique. Plus que le zoo, c’est la joie de vivre au sein de ce parc qui est magnifique !")}
                             </p>
-                            <span>Avis complet</span>
+                            <span>{t("Avis complet")}</span>
                           </div>
                         </div>
 
                         <div className="article-cart py-10">
-                          <h1>nadlotus</h1>
+                          <h1>{t("nadlotus")}</h1>
                           <div className="article-item flex align-items-center gap-15 py-10">
                             <Rating
                               readonly
@@ -380,25 +370,20 @@ const Attraction = ({ data }) => {
                                 />
                               }
                             />
-                            <span>August 23, 2023</span>
+                            <span>{t("August 23, 2023")}</span>
                           </div>
                           <div className="description-article">
                             <p>
-                              ILe guide ne parlait pas bien le français et ne
-                              donnait pas suffisamment d’explication durant
-                              notre visite. L’éclairage dans le vivarium était
-                              défectueux. Pensez à prendre un anti-moustique.
-                              Cependant très intéressant avec une faune et une
-                              flore diversifiées. Une très belle expérience qui
-                              permet une immersion!
+                              {t("ILe guide ne parlait pas bien le français et ne donnait pas suffisamment d’explication durant notre visite. L’éclairage dans le vivarium était défectueux. Pensez à prendre un anti-moustique. Cependant très intéressant avec une faune et une flore diversifiées. Une très belle expérience qui permet une immersion!")}
                             </p>
-                            <span>Avis complet</span>
+                            <span>{t("Avis complet")}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </section>
+
               </div>
             </div>
           </div>
@@ -426,6 +411,7 @@ const Attraction = ({ data }) => {
 };
 
 const City = () => {
+  const { t } = useTranslation();
   const citySlider = useRef();
   const setting = {
     arrows: false,
@@ -437,83 +423,74 @@ const City = () => {
   };
   return (
     <div id="city-page">
-      <div className="city-slider relative">
-        <Slider arrows={false} fade={true}>
-          <div className="city-slider-container">
-            <img src="/img/other/antananarivo.jpg" alt="image" />
-
-            <div className="city-slider-text">
-              <h1>Antananarivo</h1>
-              {/* <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit rem earum nesciunt dolorem aperiam consequatur numquam amet quaerat modi nihil....</p> */}
-            </div>
-          </div>
-          <div className="city-slider-container">
-            <img src="/img/other/madagascar_antananarivo.jpg" alt="" />
-            <div className="city-slider-text">
-              <h1>Antananarivo</h1>
-              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis consequuntur harum a, ratione ut quisquam maxime maiores assumenda nemo. Tempore.....</p> */}
-            </div>
-          </div>
-
-          <div className="city-slider-container">
-            <img src="/img/other/paysage_4.jpg" alt="image" />
-            <div className="city-slider-text">
-              <h1>Antananarivo</h1>
-              {/* <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores omnis facere autem aperiam dolor eaque soluta repellat neque natus eos?....</p> */}
-            </div>
-          </div>
-        </Slider>
+  <div className="city-slider relative">
+    <Slider arrows={false} fade={true}>
+      <div className="city-slider-container">
+        <img src="/img/other/antananarivo.jpg" alt="image" />
+        <div className="city-slider-text">
+          <h1>{t("Antananarivo")}</h1>
+          {/* <p>{t("Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit rem earum nesciunt dolorem aperiam consequatur numquam amet quaerat modi nihil....")}</p> */}
+        </div>
       </div>
+      <div className="city-slider-container">
+        <img src="/img/other/madagascar_antananarivo.jpg" alt="" />
+        <div className="city-slider-text">
+          <h1>{t("Antananarivo")}</h1>
+          {/* <p>{t("Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis consequuntur harum a, ratione ut quisquam maxime maiores assumenda nemo. Tempore.....")}</p> */}
+        </div>
+      </div>
+      <div className="city-slider-container">
+        <img src="/img/other/paysage_4.jpg" alt="image" />
+        <div className="city-slider-text">
+          <h1>{t("Antananarivo")}</h1>
+          {/* <p>{t("Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores omnis facere autem aperiam dolor eaque soluta repellat neque natus eos?....")}</p> */}
+        </div>
+      </div>
+    </Slider>
+  </div>
 
-      <div className="city-content">
-        <div className="description ">
-          <div className="description-text">
-            <h1>À propos de cet endroit</h1>
-            <p>
-              Antananarivo ou Tananarive dans sa version francisée est la
-              capitale économique et politique de Madagascar, de la province
-              d'Antananarivo et de la région Analamanga. Ses habitants
-              s'appellent les Antananariviens, ou Tananariviens. Sa population
-              dépasse 1,6 millions d'habitants, et son agglomération approche
-              les 3,6 millions d'habitants. La ville est divisée en six
-              arrondissements et 192 fokontanyz.
-            </p>
-          </div>
-          <div className="description-map">
-            <MapContainer
-              center={[51.505, -0.09]}
-              zoom={13}
-              scrollWheelZoom={false}
-            >
-              <TileLayer
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-              <Marker position={[51.505, -0.09]}></Marker>
-            </MapContainer>
+  <div className="city-content">
+    <div className="description ">
+      <div className="description-text">
+        <h1>{t("À propos de cet endroit")}</h1>
+        <p>
+          {t("Antananarivo ou Tananarive dans sa version francisée est la capitale économique et politique de Madagascar, de la province d'Antananarivo et de la région Analamanga. Ses habitants s'appellent les Antananariviens, ou Tananariviens. Sa population dépasse 1,6 millions d'habitants, et son agglomération approche les 3,6 millions d'habitants. La ville est divisée en six arrondissements et 192 fokontanyz.")}
+        </p>
+      </div>
+      <div className="description-map">
+        <MapContainer
+          center={[51.505, -0.09]}
+          zoom={13}
+          scrollWheelZoom={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[51.505, -0.09]}></Marker>
+        </MapContainer>
+      </div>
+    </div>
+
+      <div className="center-container">
+        <div className="inscription">
+          <div className="inscription-image relative">
+            <div className="image">
+              <img src="/img/other/vacances.jpg" alt="" />
+            </div>
+            <div className="inscription">
+              <h1>{t("GateAfri")}</h1>
+              <p>
+                {t("Inscrivez vous dès maintenant pour explorer un continent,ville pour savoir les cultures des pays")}
+              </p>
+
+              <button className="btn-outline-white">{t("S'incrire")}</button>
+            </div>
           </div>
         </div>
 
-        <div className="center-container">
-          <div className="inscription">
-            <div className="inscription-image relative">
-              <div className="image">
-                <img src="/img/other/vacances.jpg" alt="" />
-              </div>
-              <div className="inscription">
-                <h1>GateAfri</h1>
-                <p>
-                  Inscrivez vous dès maintenant pour explorer un continent,ville
-                  pour savoir les cultures des pays
-                </p>
-
-                <button className="btn-outline-white">S'incrire</button>
-              </div>
-            </div>
-          </div>
-
           <div className="divertissement">
-            <h1>Divertissement</h1>
+            <h1>{t("Divertissement")}</h1>
             <div className="slider-divertissement relative">
               <Slider
                 {...{
@@ -560,8 +537,8 @@ const City = () => {
 
           <div className="hotels">
             <div className="header-hotels">
-              <h1>Hotels</h1>
-              <p>Voir plus</p>
+              <h1>{t("Hotels")}</h1>
+              <p>{t("Voir plus")}</p>
             </div>
 
             <div className="slider-hotels relative">
@@ -612,13 +589,13 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
-                        <p>Hotel Carlton</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
+                        <p>{t("Hotel Carlton")}</p>
                       </li>
                       <li className="body">
                         <p>Anosy</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -636,14 +613,14 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
                       <li className="body">
                         <p>Anosy</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -660,14 +637,14 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
                       <li className="body">
                         <p>Anosy</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -684,14 +661,14 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
                       <li className="body">
                         <p>Anosy</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -708,14 +685,14 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
                       <li className="body">
                         <p>Anosy</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -732,14 +709,14 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
                       <li className="body">
-                        <p>Anosy</p>
+                        <p>{t("Anosy")}</p>
                         <p>400 000 MGA</p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -756,7 +733,7 @@ const City = () => {
                   <div className="hoteltext">
                     <ul>
                       <li className="header">
-                        <p>8.8/10 Execption (avis)</p>
+                        <p>{t("8.8/10 Execption (avis)")}</p>
                         <p>Hotel Carlton</p>
                       </li>
 
@@ -765,7 +742,7 @@ const City = () => {
                         <p>
                           <b>400 000 MGA</b>
                         </p>
-                        <p>Par nuit</p>
+                        <p>{t("Par nuit")}</p>
                       </li>
                     </ul>
                   </div>
@@ -775,7 +752,7 @@ const City = () => {
           </div>
 
           <div className="destination">
-            <h1>Destination populaire et en vogue</h1>
+            <h1>{t("Destination populaire et en vogue")}</h1>
             <div className="destination-caroseul relative">
               <Slider
                 {...{
@@ -820,8 +797,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Analakely</p>
-                    <p>Tsena Analakely</p>
+                    <p>{t("Analakely")}</p>
+                    <p>{t("Tsena Analakely")}</p>
                   </div>
                 </div>
 
@@ -833,10 +810,9 @@ const City = () => {
                       alt=""
                     />
                   </div>
-
                   <div className="destination-caroseul-text">
-                    <p>Ankadibaoka</p>
-                    <p>Hakanto</p>
+                    <p>{t("Ankadibaoka")}</p>
+                    <p>{t("Hakanto")}</p>
                   </div>
                 </div>
 
@@ -848,10 +824,9 @@ const City = () => {
                       alt=""
                     />
                   </div>
-
                   <div className="destination-caroseul-text">
-                    <p>Parc national</p>
-                    <p>Tsimbazaza</p>
+                    <p>{t("Parc national")}</p>
+                    <p>{t("Tsimbazaza")}</p>
                   </div>
                 </div>
 
@@ -863,10 +838,9 @@ const City = () => {
                       alt=""
                     />
                   </div>
-
                   <div className="destination-caroseul-text">
-                    <p>Andohalo</p>
-                    <p>Rova Manjakamiadana</p>
+                    <p>{t("Andohalo")}</p>
+                    <p>{t("Rova Manjakamiadana")}</p>
                   </div>
                 </div>
 
@@ -879,8 +853,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Itasy</p>
-                    <p>Mantasoa</p>
+                    <p>{t("Itasy")}</p>
+                    <p>{t("Mantasoa")}</p>
                   </div>
                 </div>
 
@@ -893,8 +867,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Antaninarenina</p>
-                    <p>Antanananarivo</p>
+                    <p>{t("Antaninarenina")}</p>
+                    <p>{t("Antanananarivo")}</p>
                   </div>
                 </div>
 
@@ -907,8 +881,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Parc national</p>
-                    <p>Tsimbazaza</p>
+                    <p>{t("Parc national")}</p>
+                    <p>{t("Tsimbazaza")}</p>
                   </div>
                 </div>
 
@@ -921,8 +895,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Parc national</p>
-                    <p>Tsimbazaza</p>
+                    <p>{t("Parc national")}</p>
+                    <p>{t("Tsimbazaza")}</p>
                   </div>
                 </div>
 
@@ -935,8 +909,8 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Parc national</p>
-                    <p>Tsimbazaza</p>
+                    <p>{t("Parc national")}</p>
+                    <p>{t("Tsimbazaza")}</p>
                   </div>
                 </div>
 
@@ -949,13 +923,14 @@ const City = () => {
                     />
                   </div>
                   <div className="destination-caroseul-text">
-                    <p>Parc national</p>
-                    <p>Tsimbazaza</p>
+                    <p>{t("Parc national")}</p>
+                    <p>{t("Tsimbazaza")}</p>
                   </div>
                 </div>
               </Slider>
             </div>
           </div>
+
 
           <div className="suggest">
             <div className="suggest-header">
@@ -963,8 +938,8 @@ const City = () => {
                 <img src="/img/other/hotelLogo.jpg" alt="" />
               </div>
               <div className="suggest-title">
-                <h1>Découvrée Hotel Tsingy</h1>
-                <p>Découvre Hotel tsingy situe aux centre de la capital</p>
+                <h1>{t("Découvrée Hotel Tsingy")}</h1>
+                <p>{t("Découvre Hotel tsingy situe aux centre de la capital")}</p>
               </div>
             </div>
             <div className="suggest-image">
@@ -975,7 +950,7 @@ const City = () => {
                   alt=""
                 />
                 <div className="item-image-text">
-                  <span>Piscine</span>
+                  <span>{t("Piscine")}</span>
                 </div>
               </div>
 
@@ -986,7 +961,7 @@ const City = () => {
                   alt=""
                 />
                 <div className="item-image-text">
-                  <span>Chambre</span>
+                  <span>{t("Chambre")}</span>
                 </div>
               </div>
 
@@ -997,7 +972,7 @@ const City = () => {
                   alt=""
                 />
                 <div className="item-image-text">
-                  <span>Hotel</span>
+                  <span>{t("Hotel")}</span>
                 </div>
               </div>
             </div>
@@ -1013,7 +988,7 @@ const City = () => {
             <div className="footer-body">
               <div className="footer-content">
                 <h4 className="py-5">
-                  <b>Autres produits GateAfri</b>
+                  <b>{t("Autres produits GateAfri")}</b>
                 </h4>
 
                 <ul className="flex gap-10">
@@ -1028,42 +1003,42 @@ const City = () => {
 
               <div className="footer-content">
                 <h4 className="py-5">
-                  <b>Destination</b>
+                  <b>{t("Destination")}</b>
                 </h4>
 
                 <ul>
-                  <li>Cape Town : notre choix d’hôtels</li>
-                  <li>Le Caire : notre choix d’hôtels</li>
-                  <li>Le Cap : notre choix d’hôtels</li>
-                  <li>Dakar : notre choix d’hôtels</li>
-                  <li>Tunis : notre choix d’hôtels</li>
-                  <li>Nairobi : notre choix d’hôtels</li>
-                  <li>Dar es Salaam : notre choix d’hôtels</li>
-                  <li>Antananarivo : notre choix d’hôtels</li>
-                  <li>Accra : notre choix d’hôtels</li>
-                  <li>Lagos : notre choix d’hôtels</li>
-                  <li>Gaborone : notre choix d’hôtels</li>
+                  <li>{t("Cape Town : notre choix d’hôtels")}</li>
+                  <li>{t("Le Caire : notre choix d’hôtels")}</li>
+                  <li>{t("Le Cap : notre choix d’hôtels")}</li>
+                  <li>{t("Dakar : notre choix d’hôtels")}</li>
+                  <li>{t("Tunis : notre choix d’hôtels")}</li>
+                  <li>{t("Nairobi : notre choix d’hôtels")}</li>
+                  <li>{t("Dar es Salaam : notre choix d’hôtels")}</li>
+                  <li>{t("Antananarivo : notre choix d’hôtels")}</li>
+                  <li>{t("Accra : notre choix d’hôtels")}</li>
+                  <li>{t("Lagos : notre choix d’hôtels")}</li>
+                  <li>{t("Gaborone : notre choix d’hôtels")}</li>
                 </ul>
               </div>
 
               <div className="footer-content">
                 <h4 className="py-5">
-                  <b>Pays et régions principaux</b>
+                  <b>{t("Pays et régions principaux")}</b>
                 </h4>
 
                 <ul>
-                  <li>Afrique du Sud : notre choix d’hôtels</li>
-                  <li>Maroc : notre choix d’hôtels</li>
-                  <li>Égypte : notre choix d’hôtels</li>
-                  <li>Île Maurice : notre choix d’hôtels</li>
-                  <li>Sénégal : notre choix d’hôtels</li>
-                  <li>Tunisie : notre choix d’hôtels</li>
-                  <li>Kenya : notre choix d’hôtels</li>
-                  <li>Tanzanie : notre choix d’hôtels</li>
-                  <li>Madagascar : notre choix d’hôtels</li>
-                  <li>Ghana : notre choix d’hôtels</li>
-                  <li>Nigeria : notre choix d’hôtels</li>
-                  <li>Botswana : notre choix d’hôtels</li>
+                  <li>{t("Afrique du Sud : notre choix d’hôtels")}</li>
+                  <li>{t("Maroc : notre choix d’hôtels")}</li>
+                  <li>{t("Égypte : notre choix d’hôtels")}</li>
+                  <li>{t("Île Maurice : notre choix d’hôtels")}</li>
+                  <li>{t("Sénégal : notre choix d’hôtels")}</li>
+                  <li>{t("Tunisie : notre choix d’hôtels")}</li>
+                  <li>{t("Kenya : notre choix d’hôtels")}</li>
+                  <li>{t("Tanzanie : notre choix d’hôtels")}</li>
+                  <li>{t("Madagascar : notre choix d’hôtels")}</li>
+                  <li>{t("Ghana : notre choix d’hôtels")}</li>
+                  <li>{t("Nigeria : notre choix d’hôtels")}</li>
+                  <li>{t("Botswana : notre choix d’hôtels")}</li>
                 </ul>
               </div>
 
@@ -1073,19 +1048,19 @@ const City = () => {
                 </h4>
 
                 <ul>
-                  <li>Conditions générales d'utilisation</li>
-                  <li>Politique de remboursement</li>
-                  <li>Politique de cookies</li>
-                  <li>Politique de sécurité des données</li>
+                  <li>{t("Conditions générales d'utilisation")}</li>
+                  <li>{t("Politique de remboursement")}</li>
+                  <li>{t("Politique de cookies")}</li>
+                  <li>{t("Politique de sécurité des données")}</li>
                 </ul>
               </div>
 
               <div className='footer-content'>
-                <h4 className='py-5'><b>Autres informations</b></h4>
+                <h4 className='py-5'><b>{t("Autres informations")}</b></h4>
                 <ul>
-                  <li>Qui sommes-nous ?</li>
-                  <li>Emplois</li>
-                  <li>Guides de voyage</li>
+                  <li>{t("Qui sommes-nous ?")}</li>
+                  <li>{t("Emplois")}</li>
+                  <li>{t("Guides de voyage")}</li>
                 </ul>
               </div>
             </div>

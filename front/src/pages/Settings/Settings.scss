@@ -1,0 +1,109 @@
+@import "../../style.scss";
+
+.layout {
+  @include themify($themes) {
+    display: flex;
+    height: 100vh;
+    background: themed("background", 0);
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      width: 260px;
+      background: themed("background", 3);
+      color: themed("text", 0);
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      border-right: 1px solid themed("border", 2);
+
+      /* Header de la sidebar */
+      .sidebar-header {
+        padding: 16px;
+        font-size: 14px;
+        font-weight: bold;
+        border-bottom: 1px solid themed("border", 2);
+        color: themed("text", 1);
+      }
+
+      /* Menu principal */
+      .sidebar-menu {
+        flex: 1;
+        overflow-y: auto;
+
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 8px;
+
+          li {
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: themed("text", 2);
+
+            &:hover {
+              background: themed("background", 2);
+            }
+
+            &.active {
+              background: themed("background", 3);
+              font-weight: bold;
+            }
+
+            svg {
+              flex-shrink: 0;
+              color: themed("text", 1);
+            }
+          }
+        }
+      }
+
+      /* Footer de la sidebar */
+      .sidebar-footer {
+        padding: 12px;
+        border-top: 1px solid themed("border", 2);
+        color: themed("text", 3);
+      }
+    }
+
+    /* Section principale */
+    .content {
+      flex: 1;
+      background: themed("background", 0);
+      padding: 20px;
+      overflow-y: auto;
+      color: themed("text", 0);
+
+      /* Pour le LanguageSelector si tu l'injectes ici */
+      .language-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          padding: 8px 12px;
+          cursor: pointer;
+          border-radius: 6px;
+          transition: background 0.2s;
+          margin-bottom: 4px;
+          color: themed("text", 2);
+
+          &:hover {
+            background: themed("background", 2);
+          }
+
+          &.active {
+            font-weight: bold;
+            background: themed("background", 3);
+          }
+        }
+      }
+    }
+  }
+}
