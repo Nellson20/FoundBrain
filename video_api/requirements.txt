@@ -1,0 +1,7 @@
+fastapi
+pydantic_settings
+uvicorn[standard]
+python-multipart
+moviepy
+imageio
+imageio-ffmpeg
