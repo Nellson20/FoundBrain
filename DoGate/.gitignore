@@ -8,7 +8,7 @@
 /var/
 /vendor/
 /migrations/
-/public/
+/public/upload/*
 /src/Command/
 /phploc.phar/
 /.gitignore/
