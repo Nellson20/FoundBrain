@@ -9,6 +9,7 @@
 /vendor/
 /migrations/
 /public/upload/*
+/public/bundles/
 /src/Command/
 /phploc.phar/
 /.gitignore/
