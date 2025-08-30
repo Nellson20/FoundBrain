@@ -2,10 +2,11 @@ import React, { Fragment, useState, useRef, useEffect } from 'react';
 import './MediasSelector.scss';
 import SelectorMedia from '../selectorMedia/SelectorMedia';
 import { FileEarmarkImage } from 'react-bootstrap-icons';
+import { useTranslation } from 'react-i18next';
 
 const MediasSelector = ({ gap = 10, col = 5, setMediasState = () => { },onChange=()=>{}, defaultState = [], animate = true, selectorBtn = null, hiddenIfEmpty = false }) => {
     const [tmpMediasList, setTmpMediasList] = useState(defaultState.map((s, i) => ({ type: s.type, url: URL.createObjectURL(s), file: s, delay: i, index: i })));
-
+    const { t } = useTranslation();
     useEffect(() => {
         setMediasState(tmpMediasList.map(tmp => tmp.file))
         onChange(tmpMediasList)
@@ -68,7 +69,7 @@ const MediasSelector = ({ gap = 10, col = 5, setMediasState = () => { },onChange
                     <div onClick={clickMediasInput} className="fake-image-selector-input" style={{ minWidth: 0 }}>
                         <div>
                             <div><FileEarmarkImage /></div>
-                            <span>Selectionner</span>
+                            <span>{t('Selectionner')}</span>
                         </div>
 
                     </div>

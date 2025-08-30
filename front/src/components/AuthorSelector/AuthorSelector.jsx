@@ -8,8 +8,10 @@ import { useSelector } from 'react-redux'
 import { getUserCompanies } from '../../api/company'
 import CircleLoader from '../CircleLoader/CircleLoader'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next';
 
 const AuthorSelector = ({ withUser = true, defaultAuthor = null, onSelect = () => { }, onStart = () => { } }) => {
+    const { t } = useTranslation();
     const [open, setOpen] = useState(false)
     const { user } = useSelector(store => store.user)
     const [selected, setSelected] = useState(defaultAuthor ?? (withUser ? user : null))
@@ -34,7 +36,7 @@ const AuthorSelector = ({ withUser = true, defaultAuthor = null, onSelect = () =
                                     <Avatar height={25} width={25} src={selected?.activeLogo?.fileUrl || selected?.activeProfilePicture?.fileUrl} />
                                     <span>{selected?.name || `${selected?.firstName}${selected?.lastName ? ' ' + selected?.lastName : ''}`}</span>
                                 </> :
-                                <span>Selectionner un portail</span>
+                                <span>{t("Selectionner un portail")}</span>
                         }
                     </div>
                     <div className="caret">
@@ -50,8 +52,8 @@ const AuthorSelector = ({ withUser = true, defaultAuthor = null, onSelect = () =
                             !loadingPortals ?
                                 withUser || portals?.length > 0 ?
                                     <><div className="top relative">
-                                        <h2>Publier en tant que</h2>
-                                        <span>Choisir un autheur pour effectuer cette action</span>
+                                        <h2>{t("Publier en tant que")}</h2>
+                                        <span>{t("Choisir un autheur pour effectuer cette action")}</span>
 
                                     </div>
                                         <div className="body">
@@ -94,9 +96,9 @@ const AuthorSelector = ({ withUser = true, defaultAuthor = null, onSelect = () =
 
                                         </div></> :
                                     <div className="empty-portal-list flex flex-column justify-content-center align-items-center flex-grow-1 gap-5">
-                                        <h4>Aucun portail disponible</h4>
-                                        <p className='mb-10'>Veillez créer votre premier portail pour lier votre hotel</p>
-                                        <Link className='btn btn-gradient' to='/portail/nouveau'>Créer un portail</Link>
+                                        <h4>{t("Aucun portail disponible")}</h4>
+                                        <p className='mb-10'>{t("Veillez créer votre premier portail pour lier votre hotel")}</p>
+                                        <Link className='btn btn-gradient' to='/portail/nouveau'>{t("Créer un portail")}</Link>
                                     </div>
                                 : <div className="empty-portal-list flex flex-column justify-content-center align-items-center flex-grow-1 gap-5">
                                     <CircleLoader height={30} colors={null} width={30} />

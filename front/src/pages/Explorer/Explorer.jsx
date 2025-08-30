@@ -814,7 +814,7 @@ const Explorer = () => {
             <p>{t('Politique')}</p>
           </div>
           <div className="nav-bar-item flex justify-content-center align-items-center">
-            <p>{t('société')}</p>
+            <p>{t("société")}</p>
           </div>
 
         </Slider>

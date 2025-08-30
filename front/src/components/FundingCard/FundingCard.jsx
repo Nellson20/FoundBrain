@@ -4,9 +4,11 @@ import { ChevronRight, GeoAlt } from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
 import millify from 'millify'
 import Slider from 'react-slick'
+import { useTranslation } from 'react-i18next';
 
 
 const FundingCard = ({ data = null }) => {
+    const { t } = useTranslation();
     const { title, collected, need, author, investPictures } = data;
     useEffect(() => {
         console.log(data, 'TMPDATA')
@@ -46,7 +48,7 @@ const FundingCard = ({ data = null }) => {
                     }
                     <div>
                         {
-                            title && <p className='funding-card-title'><strong>Titre</strong> : {title}</p>
+                            title && <p className='funding-card-title'><strong>{t('Titre')}</strong> : {title}</p>
                         }
                     </div>
                 </div>
@@ -77,7 +79,7 @@ const FundingCard = ({ data = null }) => {
             </div>
             <hr style={{ margin: '8px 0' }} />
             <div className="ca">
-                <h5>Chiffre d'affaire</h5>
+                <h5>{t("Chiffre d'affaire")}</h5>
                 <table>
                     <tr>
                         <td><strong>2022</strong></td>
@@ -100,12 +102,12 @@ const FundingCard = ({ data = null }) => {
                     {
                         need &&
                         <div className="flex align-items-center justify-content-between">
-                            <h5>Besoin de l'entreprise</h5>
-                            <span className='orange-txt'>{millify(parseInt(need?.value))} {need?.currency?.code} pour {Math.floor(Math.random() * (30 - 5 + 1)) + 5}%</span>
+                            <h5>{t("Besoin de l'entreprise")}</h5>
+                            <span className='orange-txt'>{millify(parseInt(need?.value))} {need?.currency?.code} {t('pour')} {Math.floor(Math.random() * (30 - 5 + 1)) + 5}%</span>
                         </div>
                     }
                     <div className="collected flex align-items-center gap-10">
-                        <h5>Collecté</h5>
+                        <h5>{t('Collecté')}</h5>
                         <div className="collect-progress flex-grow-1">
                             <div>
                                 <div className="state">
@@ -115,7 +117,7 @@ const FundingCard = ({ data = null }) => {
                         </div>
                     </div>
                 </div>
-                <Link className='invest-plus-info flex align-items-center gap-5 btn btn-purple'>En savoir plus <ChevronRight /></Link>
+                <Link className='invest-plus-info flex align-items-center gap-5 btn btn-purple'>{t('En savoir plus')} <ChevronRight /></Link>
             </div>
         </div>
     )

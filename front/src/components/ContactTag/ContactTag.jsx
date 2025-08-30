@@ -3,7 +3,11 @@ import { X } from 'react-bootstrap-icons'
 import Avatar from '../Avatar/Avatar'
 import Searchbar from '../Searchbar/Searchbar'
 import './ContactTag.css'
+import { useTranslation } from 'react-i18next'
+
+
 const ContactTag = () => {
+  const { t } = useTranslation();
   return (
     <div className='contact-tag'>
       <div className="top" style={{position:'sticky !important',top:0}}>
@@ -11,7 +15,7 @@ const ContactTag = () => {
       </div>
       <div className="content">
         <div className="tagged">
-          <h4 className='mb-10'>Tagués</h4>
+          <h4 className='mb-10'>{t('Tagués')}</h4>
           <ul>
             <li className='flex gap-10 justify-content-between align-items-center'>
               <div className="left flex gap-10 align-items-center">

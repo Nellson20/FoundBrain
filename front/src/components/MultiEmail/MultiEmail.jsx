@@ -2,8 +2,10 @@ import React,{useState,useEffect} from 'react'
 import './MultiEmail.scss'
 import MultiEmailOption from './MultiEmailOption'
 import { PlusLg } from 'react-bootstrap-icons'
+import { useTranslation } from 'react-i18next';
 
 const MultiEmail = ({ onChange = () => { },validationErrors=[],values=[],errors=[]}) => {
+    const { t } = useTranslation();
     const [options, setOptions] = useState([{}])
     const addOption = () => {
         setOptions([...options, {}])
@@ -24,7 +26,7 @@ const MultiEmail = ({ onChange = () => { },validationErrors=[],values=[],errors=
             {
                 options.map((o,i)=><MultiEmailOption key={i} error={validationErrors[i]} options={options} value={o} setOptions={setOptions} removeOption={removeOption} index={i}/>)
             }
-            <button type='button' className="add-input-option btn btn-orange flex-grow-1" onClick={addOption}><PlusLg /> <span>Ajouter une adresse mail</span></button>
+            <button type='button' className="add-input-option btn btn-orange flex-grow-1" onClick={addOption}><PlusLg /> <span>{t('Ajouter une adresse mail')}</span></button>
         </div>
     )
 }

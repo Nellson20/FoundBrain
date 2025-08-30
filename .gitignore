@@ -1,3 +1,8 @@
 /hls/*
 /media/thumbnails/*
 /audio/*
+
+.env
+
+node_modules/
+dist/

@@ -3,8 +3,11 @@ import DropDown from '../DropDown/DropDown'
 import './AuthorSelect.scss'
 import { Link } from 'react-router-dom'
 import Avatar from '../Avatar/Avatar'
+import { useTranslation } from 'react-i18next'
 
 const AuthorSelect = ({ options = [{ title: 'Option1', value: 1 }, { title: 'Option2', value: 2 }, { title: 'Option3', value: 3 }],onSelect=()=>{} }) => {
+    
+    const { t } = useTranslation();
     const [active, setActive] = useState({ title: 'Choisir un portail' })
 
     return (
@@ -14,8 +17,8 @@ const AuthorSelect = ({ options = [{ title: 'Option1', value: 1 }, { title: 'Opt
                     <input type="hidden" value={active.value} /></div>
                 <div>
                     <div className="heading">
-                        <h3>Publier en tant que</h3>
-                        <span>Choisir un portail où publier votre offre</span>
+                        <h3>{t('Publier en tant que')}</h3>
+                        <span>{t('Choisir un portail où publier votre offre')}</span>
                     </div>
                     <ul className="select-options">
                         {

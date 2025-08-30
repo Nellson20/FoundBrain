@@ -14,9 +14,11 @@ import { convertCurrency } from '../../utils/currencyUtils'
 import { Link } from 'react-router-dom'
 import Logo from '../Logo/Logo'
 import { useAmounts, useFromTo } from '../../Hooks/currencyHooks'
+import { useTranslation } from 'react-i18next';
 
 
 const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, salary, grade, type } }) => {
+  const { t } = useTranslation();
   const { currency } = useContext(CurrencyContext)
   const htmlToJsx = new Parser()
   const {from,to}=useFromTo(salary?.currency.code)
@@ -42,26 +44,26 @@ const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, 
             />
           </span><span className='text-ellipsis'>| {author?.adress}</span></p>
         </div>
-        <Link to={author?.name ? `/portail/${author?.id}` : `/profil/${author?.id}`} className="btn btn-outline-purple">Consulter <ChevronRight /></Link>
+        <Link to={author?.name ? `/portail/${author?.id}` : `/profil/${author?.id}`} className="btn btn-outline-purple">{t('Consulter')} <ChevronRight /></Link>
       </div>
       <div className="job-requirements flex justify-content-between">
         {
           xp && <div className='flex flex-column'>
-            <span>EXPERIENCE</span>
+            <span>{t('EXPERIENCE')}</span>
             <b>{xp}</b>
           </div>
         }
         {
-          grade &&
+          t('grade') &&
           <div className='flex flex-column'>
-            <span>GRADE</span>
+            <span>{t('GRADE')}</span>
             <b>{grade.title}</b>
           </div>
         }
         {
-          type &&
+          t('type') &&
           <div className='flex flex-column'>
-            <span>TYPE</span>
+            <span>{t('TYPE')}</span>
             <b>{type.title}</b>
           </div>
         }
@@ -69,7 +71,7 @@ const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, 
           {
             (salary && ((!isNaN(salary?.min) && !isNaN(salary?.max) && salary?.min > 0 && salary?.max > 0) || (!isNaN(salary?.amount) && salary?.amount > 0))) &&
             <>
-              <span>SALAIRE</span>
+              <span>{t('SALAIRE')}</span>
               {
                 (from && to) ?
                 <b>{(salary?.min && salary?.max) ? millify(convertCurrency(salary?.min, from, to)) + "-" + millify(convertCurrency(salary?.max, from, to)) : millify(convertCurrency(salary.amount, from, to))} {currency?.code}</b>
@@ -85,19 +87,19 @@ const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, 
       <div className="role">
 
         {
-          summary &&
+          t('summary') &&
           <>
-            <h4>Résumé du poste</h4>
-            <p>{summary}</p>
+            <h4>{t('Résumé du poste')}</h4>
+            <p>{t('summary')}</p>
           </>
         }
       </div>
 
 
       {
-        description &&
+        t('description') &&
         <div className="role">
-          <h4>Description détaillé du poste</h4>
+          <h4>{t('Description détaillé du poste')}</h4>
           <p className='inset-list'>{htmlToJsx.parse(description)}</p>
         </div>
       }

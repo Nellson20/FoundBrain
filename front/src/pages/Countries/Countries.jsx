@@ -111,7 +111,7 @@ const Countries = () => {
                                             </div>
                                             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab aliquid aliquam nulla amet optio</p>
                                             <div className="flex mt-10">
-                                                <Link to={`pays/${c.id}`} className="btn-transparent flex-1">Explorer</Link>
+                                                <Link to={`pays/${c.id}`} className="btn-transparent flex-1">{t('Explorer')}</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +133,7 @@ const Countries = () => {
                             <div className="clr orange"></div><span>PNB</span>
                         </div>
                         <div className="flex align-items-center gap-10">
-                            <div className="clr red"></div><span>Nombre d'habitant</span>
+                            <div className="clr red"></div><span>{t("Nombre d'habitant")}</span>
                         </div>
                     </div>
                 </div>
@@ -141,8 +141,8 @@ const Countries = () => {
                     deviceType === DESKTOP ?
                         <div className="right flex-1">
                             <div className="top-3-country p-15">
-                                <h4>Top 3</h4>
-                                <span>Des pays producteur du pétrole en <b>Afrique</b><br />En nombre de baril par jour</span>
+                                <h4>{t('Top 3')}</h4>
+                                <span>{t('Des pays producteur du pétrole en')}<b>Afrique</b><br />{t('En nombre de baril par jour')}</span>
                                 <Bar
 
                                     plugins={

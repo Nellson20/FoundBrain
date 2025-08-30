@@ -6,6 +6,7 @@ import SelectSearch from './SelectSearch'
 import { PlusLg, Trash } from 'react-bootstrap-icons'
 import { Link } from 'react-router-dom'
 import ErrorLabel from '../ErrorLabel/ErrorLabel'
+import { useTranslation } from 'react-i18next';
 
 const MultiSelectSearch = ({
   query,
@@ -21,6 +22,7 @@ const MultiSelectSearch = ({
   defaultValues = [],
   onInit=()=>{}
 }) => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState(defaultValues.length > 0 ? defaultValues : [{}]);
 
   useEffect(()=>{
@@ -83,7 +85,7 @@ const MultiSelectSearch = ({
       ))}
       <div className='flex'>
         <button className="btn btn-orange add-select-search" onClick={addOption}>
-          <PlusLg /> Ajouter
+          <PlusLg /> {t('Ajouter')}
         </button>
       </div>
     </>

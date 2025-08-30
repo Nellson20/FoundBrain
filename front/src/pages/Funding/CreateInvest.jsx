@@ -157,7 +157,7 @@ const CreateInvest = () => {
                         {
                             addInvestLoading ?
                                 <CircleLoader />
-                                : 'Publier'
+                                : t('Publier')
                         }
                     </button>
                 </div>

@@ -16,9 +16,11 @@ import CurrencyContext from '../../context/CurrencyContext'
 import NavigableList from '../Input/NavigableList/NavigableList'
 import LanguageSelector from '../../components/LanguageSelector';
 import Settings from '../../pages/Settings/Settings'
+import { useTranslation } from 'react-i18next'
 
 import millify from 'millify'
 const Topbar = ({ setOpenRightbar = () => { } }) => {
+  const { t } = useTranslation()
   const [openPostModal, setOpenPostModal] = useState(false)
   const { user, socket } = useSelector(state => state.user)
   const navigate = useNavigate()
@@ -74,11 +76,11 @@ const Topbar = ({ setOpenRightbar = () => { } }) => {
                     e.preventDefault()
                     setOpenPostModal(true)
                   }}>Publication</Link>
-                  <Link to='/portail/nouveau'>Portail</Link>
-                  <Link to='/investissements/nouveau'>Investissement</Link>
-                  <Link to='/emplois/cv'>CV</Link>
-                  <Link to='/emplois/nouveau'>Offre Démplois</Link>
-                  <Link to='/hotels/nouveau'>Hotel</Link>
+                  <Link to='/portail/nouveau'>{t("Portail")}</Link>
+                  <Link to='/investissements/nouveau'>{t("Investissement")}</Link>
+                  <Link to='/emplois/cv'>{t("CV")}</Link>
+                  <Link to='/emplois/nouveau'>{t("Offre Démplois")}</Link>
+                  <Link to='/hotels/nouveau'>{t("Hotel")}</Link>
                 </NavigableList>
               </DropDown>
             </li>

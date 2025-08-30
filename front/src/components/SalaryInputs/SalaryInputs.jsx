@@ -4,11 +4,17 @@ import { useEffect } from 'react'
 import AmountInput from '../AmountInput/AmountInput'
 import './SalaryInputs.scss'
 import Select from '../Input/Select'
+import { useTranslation } from 'react-i18next'
 
-const EXACT = "Montant exact"
-const INTERVAL = "Fourchette"
+    
 
 const SalaryInputs = ({onChange=()=>{}}) => {
+
+    const { t } = useTranslation()
+
+    const EXACT = t("Montant exact")
+    const INTERVAL = t("Fourchette")
+
     const [salary, setSalary] = useState({
         amount:null,
         currency:null
@@ -26,7 +32,7 @@ const SalaryInputs = ({onChange=()=>{}}) => {
         <div className='salary-inputs'>
             <div className="flex gap-10 flex-wrap">
                 <div>
-                    <span>Afficher par</span>
+                    <span>{t("Afficher par")}</span>
                     <Select selectList={[
                         {title:EXACT},
                         {title:INTERVAL}
@@ -35,17 +41,17 @@ const SalaryInputs = ({onChange=()=>{}}) => {
                 {
                     layout === INTERVAL ? <div className='flex gap-10' style={{ width: '100%' }}>
                         <div className="form-group">
-                            <span>Minimum</span>
-                            <AmountInput onChange={({value,currency})=>setSalary(prev=>({...prev,min:parseInt(value),currency}))} placeholder='Salaire minimum'/>
+                            <span>{t("Minimum")}</span>
+                            <AmountInput onChange={({value,currency})=>setSalary(prev=>({...prev,min:parseInt(value),currency}))} placeholder={t('Salaire minimum')}/>
                         </div>
                         <div className="form-group">
-                            <span>Maximum</span>
-                            <AmountInput onChange={({value,currency})=>setSalary(prev=>({...prev,max:parseInt(value),currency}))} placeholder='Salaire maximale'/>
+                            <span>{t("Maximum")}</span>
+                            <AmountInput onChange={({value,currency})=>setSalary(prev=>({...prev,max:parseInt(value),currency}))} placeholder={t('Salaire maximale')}/>
                         </div>
                     </div> :
                         <div className="form-group">
-                            <span>Montant</span>
-                            <AmountInput onChange={({value,currency})=>setSalary({amount:parseInt(value),currency})} placeholder='Montant du salaire'/>
+                            <span>{t("Montant")}</span>
+                            <AmountInput onChange={({value,currency})=>setSalary({amount:parseInt(value),currency})} placeholder={t('Montant du salaire')}/>
                         </div>
                 }
 

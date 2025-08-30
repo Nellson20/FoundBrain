@@ -12,8 +12,10 @@ import { useNavigate } from 'react-router-dom'
 import SocketIOContext from '../../context/SocketIOContext'
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher'
 import { showToast } from '../../utils/toastUtils'
+import { useTranslation } from 'react-i18next';
 
 const RightSidebar = ({ opened = false, setOpened = () => { } }) => {
+  const { t } = useTranslation();
   const { user } = useSelector(state => state.user)
   const { socket } = useContext(SocketIOContext)
   const { deviceType } = useContext(MediaContext)
@@ -39,25 +41,25 @@ const RightSidebar = ({ opened = false, setOpened = () => { } }) => {
       <div className="body p-10">
         <ul>
           <li>
-            <Link onClick={() => { setOpened(false) }} to={`profil/${user?.id}`}>Mon profil</Link>
+            <Link onClick={() => { setOpened(false) }} to={`profil/${user?.id}`}>{t('Mon profil')}</Link>
           </li>
           {
             deviceType === SMARTPHONE ?
               <>
-                <li>Messages</li>
-                <li>Notifications</li>
+                <li>{t('Messages')}</li>
+                <li>{t('Notifications')}</li>
               </>
               : ""
           }
-          <li onClick={() => { setOpened(false) }}>Entreprises</li>
-          <li onClick={() => { setOpened(false) }}>Placements</li>
-          <li onClick={() => { setOpened(false) }}>Levée de fonds</li>
-          <li onClick={() => { setOpened(false) }}>GateAfri business</li>
+          <li onClick={() => { setOpened(false) }}>{t('Entreprises')}</li>
+          <li onClick={() => { setOpened(false) }}>{t('Placements')}</li>
+          <li onClick={() => { setOpened(false) }}>{t('Levée de fonds')}</li>
+          <li onClick={() => { setOpened(false) }}>{t('GateAfri business')}</li>
           <li className='justify-content-between'>
-            <span>Mode sombre</span>
+            <span>{t('Mode sombre')}</span>
             <ThemeSwitcher />
           </li>
-          <li onClick={() => { setOpened(false) }}>Aide</li>
+          <li onClick={() => { setOpened(false) }}>{t('Aide')}</li>
         </ul>
       </div>
       <div className="footer flex align-items-center gap-10">
@@ -65,7 +67,7 @@ const RightSidebar = ({ opened = false, setOpened = () => { } }) => {
         <button className='btn-transparent flex-grow-1' onClick={() => {
           setOpened(false)
           disconnect()
-        }}>Deconnexion</button>
+        }}>{t('Deconnexion')}</button>
       </div>
     </div>
   )

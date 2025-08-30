@@ -668,15 +668,14 @@ const Search = () => {
       <StickySideBar top={63}>
         <div className="suggest-search-invest">
           <h2>
-            {t("Where to invest in")} <br />
-            {t("Africa ?")}
+            {t("Où investir en Afrique?")} <br />
           </h2>
           <span>
-            {t("Find safe investments to invest quickly and easily in a continent with great potential.")}
+            {t("Trouver des placements sûr pour Investir rapidement et facilement dans un continent à fort potentiel.")}
           </span>
           <img src="/img/other/afrique2.png" alt="" />
           <Link to="/investissements" className="btn btn-gradient">
-            {t("Start")}
+            {t("Début")}
           </Link>
         </div>
         <div className="square-ad">

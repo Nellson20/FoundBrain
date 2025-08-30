@@ -9,8 +9,10 @@ import CaretInput from '../CaretInput/CaretInput'
 import Skeleton from '../Skeleton/Skeleton'
 import CurrencyContext from '../../context/CurrencyContext'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next';
 
 const CurrencySelector = () => {
+  const { t } = useTranslation();
   const { currency, setCurrency } = useContext(CurrencyContext)
   const [openModal, setOpenModal] = useState(false)
   const [isEnabled, setIsEnabled] = useState(false);
@@ -55,8 +57,8 @@ const CurrencySelector = () => {
       <Modal className='currency-selector-modal' open={openModal}>
         <div className='flex flex-column'>
           <div className="top relative">
-            <h4>Selectionner votre dévise</h4>
-            <p>Choisissez dans quel devise afficher les montants sur GateAfri</p>
+            <h4>{t('Selectionner votre dévise')}</h4>
+            <p>{t('Choisissez dans quel devise afficher les montants sur GateAfri')}</p>
             <div className="close-modal" onClick={() => { setOpenModal(false) }}>
               <X size={28} />
             </div>

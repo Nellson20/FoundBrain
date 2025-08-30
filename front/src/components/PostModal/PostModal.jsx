@@ -22,9 +22,12 @@ import Toast from '../Toast/Toast'
 import { showToast } from '../../utils/toastUtils'
 import SocketIOContext from '../../context/SocketIOContext'
 import { addPostNotification } from '../../api/notification'
+import { useTranslation } from 'react-i18next'
 
 
 const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
+
+  const { t } = useTranslation();
 
   const { user } = useSelector(store => store.user)
   const { socket } = useContext(SocketIOContext)
@@ -87,7 +90,7 @@ const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
         })
       }).catch((err) => console.log(err.response))
 
-      showToast({ content: <span>Votre post a été ajouté avec succès</span>, type: 'success' })
+      showToast({ content: <span>{t('Votre post a été ajouté avec succès')}</span>, type: 'success' })
 
 
     }).catch((err) => {
@@ -106,7 +109,7 @@ const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
     <Modal open={isOpen} onClose={(open) => setIsOpen(open)} className='post-modal'>
       <div>
         <div className="header flex align-items-center justify-content-between">
-          <h3>Publication</h3>
+          <h3>{t('Publication')}</h3>
           <XLg onClick={() => {
             setIsOpen(false)
           }} />
@@ -144,14 +147,14 @@ const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
           }>
             <Tab title={<>
               <BodyText size={18} />
-              <span>Text</span>
+              <span>{t('Text')}</span>
             </>}>
-              <div contentEditable={true} onKeyUp={(e) => { setPostContent(e.target.innerText) }}>Votre texte Ici</div>
+              <div contentEditable={true} onKeyUp={(e) => { setPostContent(e.target.innerText) }}>{t('Votre texte Ici')}</div>
             </Tab>
             <Tab enabled={isEmptySurvey()} title={<div className='li flex flex-column align-items-center'>
               <FileEarmarkImage size={18} />
 
-              <span className='text-ellipsis' style={{ width: '100%' }}>Images/Videos</span>
+              <span className='text-ellipsis' style={{ width: '100%' }}>{t('Images/Videos')}</span>
             </div>
             }>
 
@@ -160,21 +163,21 @@ const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
             </Tab>
             <Tab enabled={isEmptyPostMedias()} title={<>
               <BarChart size={18} />
-              <span>Sondage</span>
+              <span>{t('Sondage')}</span>
             </>}>
               <Survey onChange={(survey) => setSurvey(survey)} />
             </Tab>
             <Tab title={<>
               <Hash size={18} />
-              <span>Tags</span>
+              <span>{t('Tags')}</span>
             </>}>
               <ContactTag />
             </Tab>
             <Tab title={<>
               <CupHot size={18} />
-              <span>domaines</span>
+              <span>{t('domaines')}</span>
             </>}>
-              activity
+              {t('activity')}
             </Tab>
             {/* <Tab title={
             <>
@@ -188,9 +191,9 @@ const PostModal = ({ isOpen = false, setIsOpen = () => { } }) => {
 
         </div>
         <div className="footer flex align-items-center justify-content-end gap-10">
-          <button className="btn-transparent" style={{ width: 120 }}>Annuler</button>
+          <button className="btn-transparent" style={{ width: 120 }}>{t('Annuler')}</button>
           <button className="btn-purple" disabled={isLoading} style={{ width: 120 }} onClick={publishPost}>{
-            !isLoading ? "Publier" : <ColorRing
+            !isLoading ? t("Publier") : <ColorRing
               visible={true}
               height="25"
               width="25"
