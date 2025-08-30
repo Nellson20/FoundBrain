@@ -2,7 +2,12 @@
 /media/thumbnails/*
 /audio/*
 
+
 .env
 
 node_modules/
 dist/
+
+__pycache__/
+*.pyc
+
