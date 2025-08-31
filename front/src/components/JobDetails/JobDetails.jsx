@@ -54,17 +54,17 @@ const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, 
           </div>
         }
         {
-          t('grade') &&
+          grade &&
           <div className='flex flex-column'>
             <span>{t('GRADE')}</span>
-            <b>{grade.title}</b>
+            <b>{grade?.title}</b>
           </div>
         }
         {
-          t('type') &&
+          type &&
           <div className='flex flex-column'>
             <span>{t('TYPE')}</span>
-            <b>{type.title}</b>
+            <b>{type?.title}</b>
           </div>
         }
         <div className='flex flex-column'>
@@ -87,10 +87,10 @@ const JobDetails = ({ data: { title, author, Domaine, summary, description, xp, 
       <div className="role">
 
         {
-          t('summary') &&
+          summary &&
           <>
             <h4>{t('Résumé du poste')}</h4>
-            <p>{t('summary')}</p>
+            <p>{summary}</p>
           </>
         }
       </div>
