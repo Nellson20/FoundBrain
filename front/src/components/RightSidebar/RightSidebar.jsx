@@ -52,7 +52,7 @@ const RightSidebar = ({ opened = false, setOpened = () => { } }) => {
           <li onClick={() => { setOpened(false) }}>Entreprises</li>
           <li onClick={() => { setOpened(false) }}>Placements</li>
           <li onClick={() => { setOpened(false) }}>Levée de fonds</li>
-          <li onClick={() => { setOpened(false) }}>GateAfri business</li>
+          <li onClick={() => { setOpened(false) }}>FoundBrain business</li>
           <li className='justify-content-between'>
             <span>Mode sombre</span>
             <ThemeSwitcher />

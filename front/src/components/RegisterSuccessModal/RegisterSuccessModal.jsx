@@ -11,8 +11,8 @@ const RegisterSuccessModal = ({open,setIsOpen=()=>{},onClose=()=>{}}) => {
                 <div className="top relative">
                     <img src="/img/wired-flat-1103-confetti.gif" alt="" />
                     <h3>Inscription réussi</h3>
-                    <span>Bravo vous êtes maintenant membre de GateAfri, on vous invite pour commencer à vous connecter pour commencer à intéragir avec d'autre acteurs économique partout en Afrique</span>
-                     <small>&bull; Par défaut <strong>GateAfri</strong> vous suggère les domaines les plus populaires sur votre fil d'actualité</small>
+                    <span>Bravo vous êtes maintenant membre de FoundBrain, on vous invite pour commencer à vous connecter pour commencer à intéragir avec d'autre acteurs économique partout en Afrique</span>
+                     <small>&bull; Par défaut <strong>FoundBrain</strong> vous suggère les domaines les plus populaires sur votre fil d'actualité</small>
                     <div className='close-modal' onClick={()=>{
                         setIsOpen(false)
                         onClose()

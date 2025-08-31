@@ -34,7 +34,8 @@ RUN chown -R www-data:www-data /var/www/symfony/ \
 
 COPY composer.json .
 
-RUN composer install
+RUN composer install && \
+    php bin/console lexik:jwt:generate-keypair --overwrite
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh

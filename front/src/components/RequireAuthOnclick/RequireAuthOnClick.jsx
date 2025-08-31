@@ -59,7 +59,7 @@ const RequireAuthOnClick = ({ children }) => {
                                 <strong>Note:</strong><span>{t('vous devez vous authentifier pour acceder à cette fonctionnalité.')}</span>
                             </p>
                             <Link to="/connexion" className="auth-with-gate-btn" onClick={() => { setModalOpen(false) }}>
-                                <img src="/img/logo/GATEAFR.png" height={25} alt="" /> {t('Utiliser un compte GateAfri')}
+                                <img src="/img/logo/GATEAFR.png" height={25} alt="" /> {t('Utiliser un compte FoundBrain')}
                             </Link>
                             <div className="conn-method flex justify-content-center gap-10">
                                 <Link className='fb' to={`${process.env.REACT_APP_API_DOMAIN}/connect/facebook`}><Facebook size={22} /></Link>

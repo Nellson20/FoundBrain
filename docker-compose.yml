@@ -7,7 +7,7 @@ services:
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: passwords
-            MYSQL_DATABASE: newgate
+            MYSQL_DATABASE: foundbrain_db
             MYSQL_USER: donnellson
             MYSQL_PASSWORD: passwords
         volumes:
@@ -29,13 +29,13 @@ services:
         networks:
             - symfony
     php:
-        build: ./DoGate
+        build: ./main_api
         volumes:
-            - ./DoGate:/var/www/symfony
+            - ./main_api:/var/www/symfony
             - /var/www/symfony/vendor
             - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
         environment:
-            DB_NAME: newgate
+            DB_NAME: foundbrain_db
             DB_USER: root
             DB_PASSWORD: passwords
         depends_on:
@@ -84,7 +84,7 @@ services:
             DOMAIN: ${DOMAIN}
             API_DOMAIN: ${API_DOMAIN}
         volumes:
-            - ./DoGate:/var/www/symfony
+            - ./main_api:/var/www/symfony
             - ./hls:/usr/share/nginx/html/hls
             - ./audio:/usr/share/nginx/html/audio
         depends_on:

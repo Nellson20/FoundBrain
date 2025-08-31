@@ -25,7 +25,8 @@ echo "Table count: $TABLE_COUNT"
 
 # Si aucune table, alors on lance migrations + fixtures
 if [ "$TABLE_COUNT" -eq 0 ]; then
-    echo "Empty database detected: running migrations and loading fixtures..."
+    echo "Running migrations and loading fixtures..."
+    php bin/console make:migration --no-interaction
     php bin/console doctrine:migrations:migrate --no-interaction
     php bin/console doctrine:fixtures:load --no-interaction
 else

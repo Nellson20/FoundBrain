@@ -12,7 +12,7 @@ const NotFound = () => {
         <div className="ico">
           <img src='/img/link.gif'/>
         </div>
-        <h4>{t("Cette page n'éxiste pas sur GateAfri")}</h4>
+        <h4>{t("Cette page n'éxiste pas sur FoundBrain")}</h4>
         <p>{t("cette page n'est pas disponible ou a été supprimé")}</p>
         <Link to='/' className='btn btn-gradient'>{t("Revenir à la page d'accueil")}</Link>
       </div>

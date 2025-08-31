@@ -40,7 +40,7 @@ const Home = () => {
     queryKey: ['repoGateNews'],
     queryFn: () => {
       return axios({
-        url: `${process.env.REACT_APP_GATENEWS_LAST_POSTS_URL}`,
+        url: `${process.env.REACT_APP_NEWS_LAST_POSTS_URL}`,
         method: 'get'
       }).then((res) => res.data)
     }

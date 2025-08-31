@@ -82,33 +82,33 @@ const CreateCv = () => {
                                 <label htmlFor="">{t('Adresse email')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('email', e.target.value)
-                                }} value={cvData.personnalInfo.email} placeholder='ex:gateafri@contact.com' />
+                                }} value={cvData.personnalInfo.email} placeholder='ex:FoundBrain@contact.com' />
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">{t('Telephone')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('telephone', e.target.value)
-                                }} value={cvData.personnalInfo.telephone} placeholder='ex:gateafri@contact.com' />
+                                }} value={cvData.personnalInfo.telephone} placeholder='ex:FoundBrain@contact.com' />
                             </div>
                             <div className="flex justify-content-stretch gap-10">
                                 <div className="form-group">
                                     <label htmlFor="">{t('Ville')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('city', e.target.value)
-                                    }} value={cvData.personnalInfo.city} placeholder='ex:gateafri@contact.com' />
+                                    }} value={cvData.personnalInfo.city} placeholder='ex:FoundBrain@contact.com' />
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="">{t('Code Postal')}</label>
                                     <input type="text" className='inpt' onChange={(e) => {
                                         changeInputValue('postalCode', e.target.value)
-                                    }} value={cvData.personnalInfo.postalCode} placeholder='ex:gateafri@contact.com' />
+                                    }} value={cvData.personnalInfo.postalCode} placeholder='ex:FoundBrain@contact.com' />
                                 </div>
                             </div>
                             <div className="form-group">
                                 <label htmlFor="">{t('Adresse')}</label>
                                 <input type="text" className='inpt' onChange={(e) => {
                                     changeInputValue('adress', e.target.value)
-                                }} value={cvData.personnalInfo.adress} placeholder='ex:gateafri@contact.com' />
+                                }} value={cvData.personnalInfo.adress} placeholder='ex:FoundBrain@contact.com' />
                             </div>
                         </div>
                     </Accordion>

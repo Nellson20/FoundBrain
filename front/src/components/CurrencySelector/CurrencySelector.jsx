@@ -56,7 +56,7 @@ const CurrencySelector = () => {
         <div className='flex flex-column'>
           <div className="top relative">
             <h4>Selectionner votre dévise</h4>
-            <p>Choisissez dans quel devise afficher les montants sur GateAfri</p>
+            <p>Choisissez dans quel devise afficher les montants sur FoundBrain</p>
             <div className="close-modal" onClick={() => { setOpenModal(false) }}>
               <X size={28} />
             </div>

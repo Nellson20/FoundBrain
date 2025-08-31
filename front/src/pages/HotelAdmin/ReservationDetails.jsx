@@ -48,7 +48,7 @@ const ReservationDetails = () => {
                 </div>
               </div>
               <div>
-                <Link>johnDoe.265@gateAfri.com</Link>
+                <Link>johnDoe.265@FoundBrain.com</Link>
                 <Link>+261 32 69 566 35</Link>
               </div>
               <div>
