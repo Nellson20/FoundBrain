@@ -14,8 +14,10 @@ import MediaContext from '../context/MediaContext'
 import SortableList from '../components/SortableList/SortableList'
 import { getCompanies } from '../api/company'
 import DoNavLink from '../components/DoNavLink/DoNavLink'
+import { useTranslation } from 'react-i18next';
 
 const PortalDashboardLayout = () => {
+    const { t } = useTranslation();
     const { deviceType } = useContext(MediaContext)
     const { user } = useSelector(store => store.user)
     const { data: userCompanies, error: userCompaniesError, isLoading: userCompaniesLoading } = useQuery({
@@ -33,16 +35,16 @@ const PortalDashboardLayout = () => {
                     <div className="top flex gap-10">
 
                         <div className='flex flex-column gap-5'>
-                            <h3>Mes portails</h3>
+                            <h3>{t('Mes portails')}</h3>
                             {/* <p>Un portail vous permet de mettre en avant votre entreprise et informer de vos activités</p> */}
                         </div>
                     </div>
                     <div className='bottom'>
-                        <DoNavLink activeClass='active' to='/portail/nouveau' className="btn btn-transparent create-btn"><PlusLg size={18} /> Créer un portail</DoNavLink>
+                        <DoNavLink activeClass='active' to='/portail/nouveau' className="btn btn-transparent create-btn"><PlusLg size={18} /> {t('Créer un portail')}</DoNavLink>
                     </div>
                     <SortableList className='my-portals' emptyPlaceholder={<div className='empty-placeholder flex flex-column align-items-center justify-content-center gap-10'>
-                        <h5>Aucun portail disponible</h5>
-                        <span>Veuillez créer votre premier portail pour promouvoir vos activités</span>
+                        <h5>{t('Aucun portail disponible')}</h5>
+                        <span>{t('Veuillez créer votre premier portail pour promouvoir vos activités')}</span>
                     </div>} query={(keyword) => user ? getUserCompanies(user.id, keyword) : getCompanies({ filters: keyword ? `name=${keyword}` : null })} mapping={
                         (c) => (
 
