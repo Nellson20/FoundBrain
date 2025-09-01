@@ -87,6 +87,7 @@ const Formulaire = ({ isRecommander = false, setOpen }) => {
 };
 
 const ModalRecommander = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -103,6 +104,7 @@ const ModalRecommander = () => {
   );
 };
 const ModalSolliciter = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   return (
     <>

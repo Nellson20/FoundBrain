@@ -1,55 +1,45 @@
+import React, { useMemo } from 'react';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+import HTML2BBCodeLib from 'html2bbcode';
 
-import React, { useEffect, useState } from 'react';
-import "./TextEditor.scss"
-import { useQuill } from 'react-quilljs';
-import htmlbbcode from 'htmlbbcode'
+var HTML2BBCode = HTML2BBCodeLib.HTML2BBCode;
 
-// or const { useQuill } = require('react-quilljs');
+const TextEditor = ({ onChange = () => {}, value = '' }) => {
+  const converter = new HTML2BBCode();
 
-import 'quill/dist/quill.snow.css'; // Add css for snow theme
-// or import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
-var HTML2BBCode = require('html2bbcode').HTML2BBCode
+  const modules = useMemo(() => ({
+    toolbar: [
+      ['bold', 'italic'],
+      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+    ],
+  }), []);
 
-const TextEditor = ({onChange=()=>{},value=''}) => {
-    const theme = 'snow';
-    // const theme = 'bubble';
-    
-    const [modules,setModules] = useState({
-      toolbar: [
-        ['bold', 'italic'],
-        [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-      ],
-    })
-  
-    const [formats,setFormats] = useState([
-      'bold', 'italic', 'underline', 'strike',
-      'list', 'bullet', 'indent',
-     
-    ])
-  
-    const placeholder = 'La déscription du poste...';
-  
-  
-  
-    const { quill,quillRef } = useQuill({ theme, modules, formats, placeholder });
+  const formats = [
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet', 'indent',
+  ];
 
-
-    useEffect(() => {
-        var converter = new HTML2BBCode()
-        if (quill) {
-          quill.on('text-change', (delta, oldDelta, source) => {
-            
-            onChange({text:quill.getText(),html:quill.root.innerHTML,bbcode:converter.convert(converter.parse(quill.root.innerHTML))})
-          });
-        }
-      }, [quill]);
-    
-
+  const handleChange = (html, delta, source, editor) => {
+    onChange({
+      text: editor.getText(),
+      html: html,
+      bbcode: converter.convert(converter.parse(html))
+    });
+  };
 
   return (
-    <div className='text-editor' style={{borderRadius:5}}>
-      <div ref={quillRef} />
+    <div className="text-editor" style={{ borderRadius: 5 }}>
+      <ReactQuill
+        theme="snow"
+        value={value}
+        onChange={handleChange}
+        modules={modules}
+        formats={formats}
+        placeholder="La description du poste..."
+      />
     </div>
   );
 };
-export default TextEditor
+
+export default TextEditor;
