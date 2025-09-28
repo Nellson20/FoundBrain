@@ -9,8 +9,10 @@ import Slider from 'react-slick'
 import Avatar from '../../components/Avatar/Avatar'
 import MediaContext from '../../context/MediaContext'
 import VideoPlayer from '../../components/VideoPlayer/VideoPlayer'
+import { useTranslation } from 'react-i18next'
 
 const Video = () => {
+    const { t } = useTranslation()
     const { deviceType } = useContext(MediaContext)
     return (
         <div id='video-page' className='flex'>
@@ -32,19 +34,19 @@ const Video = () => {
                         {/* <video src="https://localhost:3000/vid/vid2.mp4" autoPlay infinite></video> */}
                         <div className="vid-controllers p-10">
                             <div className="top flex align-items-center gap-10">
-                                <div className="elapsed-time"><span>0:00</span></div>
+                                <div className="elapsed-time"><span>{t("0:00")}</span></div>
                                 <div className="timeline flex-grow-1">
                                     <div className="wrapper">
                                         <div className="thumb"></div>
                                     </div>
                                 </div>
-                                <div className="total-time"><span>2:00</span></div>
+                                <div className="total-time"><span>{t("2:00")}</span></div>
                             </div>
                             <div className="bottom flex align-items-center gap-10 mt-10">
                                 <div className="left flex-grow-1 flex gap-10">
                                     <div className="btn flex gap-5" style={{ width: 60 }}>
                                         <Gem strokeWidth={0.15} stroke='black' size={20} />
-                                        <span><b>3.5</b></span>
+                                        <span><b>{t("3.5")}</b></span>
                                     </div>
                                     <div className="btn">
                                         <ChatLeft strokeWidth={0.15} stroke='black' size={18} />
@@ -89,14 +91,14 @@ const Video = () => {
                                 </div>
                             </div>
                             <div className="video-player-capt mt-5">
-                                <h1 className='video-ttl flex align-items-center gap-5'>M. Pokora - Qui on est (Clip officiel) <ChevronDown strokeWidth={0.5} stroke='black' /></h1>
+                                <h1 className='video-ttl flex align-items-center gap-5'>
+                                  {t("M. Pokora - Qui on est (Clip officiel)")} <ChevronDown strokeWidth={0.5} stroke='black' />
+                                </h1>
                             </div>
                         </div>
                     </div>
                     <div className="video-capt">
-
                     </div>
-
                 </div>
                 <div className="video-comment-list p-10 mt-15">
                     <CommentList />
@@ -104,12 +106,12 @@ const Video = () => {
             </div>
             <div className="right p-10">
                 <div className="add-video-banner flex align-items-center justify-content-between py-10 mb-10">
-                    <h4>Ajouter une video</h4>
-                    <button className="btn-purple"><Plus size={20} /> Ajouter</button>
+                    <h4>{t("Ajouter une video")}</h4>
+                    <button className="btn-purple"><Plus size={20} /> {t("Ajouter")}</button>
                 </div>
                 <section>
                     <div className="flex align-items-center justify-content-between">
-                        <h4>Explorer</h4>
+                        <h4>{t("Explorer")}</h4>
                         <div className="flex align-items-center gap-10">
                             <button className="floating-btn"><ChevronLeft size={21} /></button>
                             <button className="floating-btn"><ChevronRight size={21} /></button>
@@ -127,92 +129,92 @@ const Video = () => {
                         }}>
                             <div className="slide news-slide">
                                 <Newspaper size={22} />
-                                <b>News</b>
+                                <b>{t("News")}</b>
                             </div>
                             <div className="slide live-slide">
                                 <Vinyl />
-                                <b>Live</b>
+                                <b>{t("Live")}</b>
                             </div>
                             <div className="slide podcast-slide">
                                 <Headset size={22} />
-                                <b>Podcast</b>
+                                <b>{t("Podcast")}</b>
                             </div>
                         </Slider>
                     </div>
                 </section>
                 <section className='mt-20 mb-15'>
-                    <h4>Voir aussi</h4>
+                    <h4>{t("Voir aussi")}</h4>
                 </section>
                 <section className='video-list mt-10'>
                     <div className="video-list-item flex gap-10">
                         <div className="poster relative aspect-ratio-16-9">
                             <img className='absolute' src="/img/video/gims.jpeg" alt="" />
-                            <span className="video-duration">4:30</span>
+                            <span className="video-duration">{t("4:30")}</span>
                         </div>
                         <div className="capt">
-                            <h1 className="video-ttl">M. Gims en live show case à madagascar</h1>
+                            <h1 className="video-ttl">{t("M. Gims en live show case à madagascar")}</h1>
                             <div className="flex align-items-center gap-10">
                                 <Avatar height={20} width={20} />
                                 <p className='text-secondary'>Afrimuz.com</p>
                             </div>
                             <div className="infos flex gap-5">
-                                <span>2,3K gems</span>
-                                <span>3K vues</span>
-                                <span>4,6k partages</span>
+                                <span>{t("2,3K gems")}</span>
+                                <span>{t("3K vues")}</span>
+                                <span>{t("4,6k partages")}</span>
                             </div>
                         </div>
                     </div>
                     <div className="video-list-item flex gap-10">
                         <div className="poster relative aspect-ratio-16-9">
                             <img className='absolute' src="https://media.istockphoto.com/id/1399756394/fr/photo/le-l%C3%A9murien-%C3%A0-queue-annel%C3%A9e-est-un-grand-primate-strepsirrhinien-connu-sous-le-nom-de-maky.jpg?s=612x612&w=0&k=20&c=BaCDWQwhkBQY7ejFXDdONmYb49r1QtFk85_noh_aY0Q=" alt="" />
-                            <span className="video-duration">4:30</span>
+                            <span className="video-duration">{t("4:30")}</span>
                         </div>
                         <div className="capt">
-                            <h1 className="video-ttl">Decouvrez la splendeur de l'ile tropicale Madagascar</h1>
+                            <h1 className="video-ttl">{t("Decouvrez la splendeur de l'ile tropicale Madagascar")}</h1>
                             <div className="flex align-items-center gap-10">
                                 <Avatar height={20} width={20} />
                                 <p className='text-secondary'>Next travel</p>
                             </div>
                             <div className="infos flex gap-5">
-                                <span>2,3K gems</span>
-                                <span>3K vues</span>
-                                <span>4,6k partages</span>
+                                <span>{t("2,3K gems")}</span>
+                                <span>{t("3K vues")}</span>
+                                <span>{t("4,6k partages")}</span>
                             </div>
                         </div>
                     </div>
                     <div className="video-list-item flex gap-10">
                         <div className="poster relative aspect-ratio-16-9">
                             <img className='absolute' src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvgpQVkvJg39EaXeT1HrmE57mhHcRHSpUw-0yj-6_V3XAHFBr7EMsGV6SCWVESYwSBxfA&usqp=CAU" alt="" />
-                            <span className="video-duration">4:30</span>
+                            <span className="video-duration">{t("4:30")}</span>
                         </div>
                         <div className="capt">
-                            <h1 className="video-ttl">Présentation du projet Silicon Valley</h1>
+                            <h1 className="video-ttl">{t("Présentation du projet Silicon Valley")}</h1>
                             <div className="flex align-items-center gap-10">
                                 <Avatar height={20} width={20} />
                                 <p className='text-secondary'>Gate Company</p>
                             </div>
                             <div className="infos flex gap-5">
-                                <span>2,3K gems</span>
-                                <span>3K vues</span>
-                                <span>4,6k partages</span>
+                                <span>{t("2,3K gems")}</span>
+                                <span>{t("3K vues")}</span>
+                                <span>{t("4,6k partages")}</span>
                             </div>
                         </div>
                     </div>
                     <div className="video-list-item flex gap-10">
                         <div className="poster relative aspect-ratio-16-9">
                             <img className='absolute' src="/img/video/gims.jpeg" alt="" />
-                            <span className="video-duration">4:30</span>
+                            <span className="video-duration">{t("4:30")}</span>
                         </div>
                         <div className="capt">
-                            <h1 className="video-ttl">M. Gims en live show case à madagascar</h1>
+                            <h1 className="video-ttl">{t("M. Gims en live show case à madagascar")}</h1>
                             <div className="flex align-items-center gap-10">
                                 <Avatar height={20} width={20} />
                                 <p className='text-secondary'>Ambiance Tour</p>
                             </div>
                             <div className="infos flex gap-5">
-                                <span>2,3K gems</span>
-                                <span>3K vues</span>
-                                <span>4,6k partages</span>
+                                <span>{t("2,3K gems")}</span>
+                                <span>{t("3K vues")}</span>
+                                <span>{t("4,6k partages")}</span>
                             </div>
                         </div>
                     </div>

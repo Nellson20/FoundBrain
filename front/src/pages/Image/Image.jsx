@@ -23,8 +23,10 @@ import CommentList from '../../components/commentList/CommentList'
 import EvaluationList from '../../components/Evaluation/EvaluationList'
 import { getImage } from '../../api/Image'
 import { usePaginated } from '../../Hooks/queryHooks'
+import { useTranslation } from 'react-i18next'
 
 const Image = ({ closeFn = () => { } }) => {
+    const { t } = useTranslation()
     const { image_id } = useParams()
     const { user } = useSelector(store => store.user)
     const navigate = useNavigate()
@@ -148,10 +150,10 @@ const Image = ({ closeFn = () => { } }) => {
                         {
                             editDescription && (user?.id === post?.author.id || post?.author.author?.id) ?
                                 <div className='description-edit-inpt'>
-                                    <textarea className="mb-10 inpt" placeholder="Description de l'image" onChange={(e) => setTmpDescription(e.target.value)} name="" value={tmpDescription} id="" cols="30" rows="10"></textarea>
+                                    <textarea className="mb-10 inpt" placeholder={t("Description de l'image")} onChange={(e) => setTmpDescription(e.target.value)} name="" value={tmpDescription} id="" cols="30" rows="10"></textarea>
                                     <button className="btn btn-purple" onClick={sendTmpDescription}>
                                         {
-                                            !loadingSendDescription ? 'Publier' :
+                                            !loadingSendDescription ? t('Publier') :
                                                 <CircleLoader />
                                         }
                                     </button>
@@ -166,12 +168,12 @@ const Image = ({ closeFn = () => { } }) => {
                                         </div>
                                         {
                                             (user?.id === post?.author.id || user?.id === post?.author.author?.id) &&
-                                            <button className="btn btn-transparent" onClick={() => setEditDescription(true)}><PencilSquare /> Modifier la déscription</button>
+                                            <button className="btn btn-transparent" onClick={() => setEditDescription(true)}><PencilSquare /> {t('Modifier la déscription')}</button>
                                         }
                                     </>
                                     :
                                     (user?.id === post?.author.id || user?.id === post?.author.author?.id) &&
-                                    <button className="btn btn-transparent" onClick={() => setEditDescription(true)}><PencilSquare /> Ajouter une déscription</button>
+                                    <button className="btn btn-transparent" onClick={() => setEditDescription(true)}><PencilSquare /> {t('Ajouter une déscription')}</button>
                                 : ''
                         }
                     </div>
@@ -183,14 +185,14 @@ const Image = ({ closeFn = () => { } }) => {
                     </div>
                     <div className="post-comments p-10">
                         <Tabs className='post-comments-tabs'>
-                            <Tab title={<span className='flex align-items-center gap-5'><span>Commentaires</span>{image?.commentsCount > 0 ? ` (${millify(image?.commentsCount)})` : ''}</span>}>
+                            <Tab title={<span className='flex align-items-center gap-5'><span>{t('Commentaires')}</span>{image?.commentsCount > 0 ? ` (${millify(image?.commentsCount)})` : ''}</span>}>
                                 <CommentList
                                     queryKey={['imageComments', image_id]}
                                     url={`${process.env.REACT_APP_API_DOMAIN}/commentable_entities/${image_id}/comments`}
                                 />
                             </Tab>
-                            <Tab title={<span className='flex align-items-center gap-5'><span>Evaluations</span>{image?.evaluationCount > 0 ? ` (${millify(image?.evaluationCount)})` : ''}</span>}>
-                                <h4 className='mb-10'>Evaluations</h4>
+                            <Tab title={<span className='flex align-items-center gap-5'><span>{t('Evaluations')}</span>{image?.evaluationCount > 0 ? ` (${millify(image?.evaluationCount)})` : ''}</span>}>
+                                <h4 className='mb-10'>{t('Evaluations')}</h4>
                                 <EvaluationList url={`${process.env.REACT_APP_API_DOMAIN}/images/${image_id}/evaluations`} queryQuery={['imageEvaluations', image_id]} scrollingElement={scrollingElement} />
 
                             </Tab>
@@ -214,7 +216,7 @@ const Image = ({ closeFn = () => { } }) => {
                                     <Gem size={21} />
                                     {image?.evaluationCount > 0 ? <div className="badge">{millify(image?.evaluationCount)}</div> : ''}
                                 </div>
-                                <span>Evaluer</span>
+                                <span>{t('Evaluer')}</span>
                             </span>
                         </RequireAuthOnClick>
                         <RequireAuthOnClick>
@@ -223,7 +225,7 @@ const Image = ({ closeFn = () => { } }) => {
                                     <ChatLeft size={21} />
                                     {image?.commentsCount > 0 ? <div className="badge">{millify(image?.commentsCount)}</div> : ''}
                                 </div>
-                                <span>Commenter</span>
+                                <span>{t('Commenter')}</span>
                             </span>
                         </RequireAuthOnClick>
                         <RequireAuthOnClick>
@@ -232,7 +234,7 @@ const Image = ({ closeFn = () => { } }) => {
                                     <Share size={21} />
                                     <div className="badge">50</div>
                                 </div>
-                                <span>Partager</span>
+                                <span>{t('Partager')}</span>
                             </span>
                         </RequireAuthOnClick>
                     </div>

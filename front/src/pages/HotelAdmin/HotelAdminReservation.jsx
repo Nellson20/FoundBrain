@@ -1,51 +1,54 @@
-import { ChevronDown } from "react-bootstrap-icons";
+import { ChevronDown } from "react-bootstrap-icons"; 
 import "./HotelAdminReservation.scss";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const HotelAdminReservation = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="hotel-admin-reservation mt-15">
-      <h2>Réservations</h2>
+      <h2>{t("Réservations")}</h2>
       <div className="container elevated-card">
         <form action="" className="search flex p-15 gap-15 mt-15">
           <div className="trie">
-            <label htmlFor="">Date de</label>
+            <label htmlFor="">{t("Date de")}</label>
             <div className="flex align-items-center gap-20">
-              <p>Arrivées</p>
+              <p>{t("Arrivées")}</p>
               <ChevronDown size={13} />
             </div>
           </div>
           <div>
-            <label htmlFor="start">Du</label>
+            <label htmlFor="start">{t("Du")}</label>
             <input type="date" name="start" id="start" />
           </div>
           <div>
-            <label htmlFor="end">Au</label>
+            <label htmlFor="end">{t("Au")}</label>
             <input type="date" name="end" id="end" />
           </div>
-          <div className="btn-purple">Voir</div>
+          <div className="btn-purple">{t("Voir")}</div>
         </form>
         <div className="reservation-lists px-15 mt-5">
           <table>
             <tr className="title">
-              <th>Nom du client</th>
-              <th>Arivée</th>
-              <th>Depart</th>
-              <th>Hébergements</th>
-              <th>Réservé le</th>
-              <th>Status</th>
-              <th>Tarif</th>
-              <th>Commission</th>
-              <th>Numéro de reservation</th>
+              <th>{t("Nom du client")}</th>
+              <th>{t("Arivée")}</th>
+              <th>{t("Depart")}</th>
+              <th>{t("Hébergements")}</th>
+              <th>{t("Réservé le")}</th>
+              <th>{t("Status")}</th>
+              <th>{t("Tarif")}</th>
+              <th>{t("Commission")}</th>
+              <th>{t("Numéro de reservation")}</th>
             </tr>
             <tr>
               <td>
                 <Link>John Doe</Link>
-                <span>2 personnes</span>
+                <span>{t("2 personnes")}</span>
               </td>
               <td>19 mars 2024</td>
               <td>21 mars 2024</td>
-              <td>Chambre double</td>
+              <td>{t("Chambre double")}</td>
               <td>17 mars 2024</td>
               <td className="status">OK</td>
               <td>$ 150</td>
@@ -57,11 +60,11 @@ const HotelAdminReservation = () => {
             <tr>
               <td>
                 <Link>John Doe</Link>
-                <span>2 personnes</span>
+                <span>{t("2 personnes")}</span>
               </td>
               <td>19 mars 2024</td>
               <td>21 mars 2024</td>
-              <td>Chambre double</td>
+              <td>{t("Chambre double")}</td>
               <td>17 mars 2024</td>
               <td className="status">OK</td>
               <td>$ 150</td>
@@ -74,8 +77,8 @@ const HotelAdminReservation = () => {
         </div>
       </div>
       <div className="bottom elevated-card p-15">
-        <span>Commission : $ 57,50</span>
-        <span className="total">Montant total : $ 506</span>
+        <span>{t("Commission")} : $ 57,50</span>
+        <span className="total">{t("Montant total")} : $ 506</span>
       </div>
     </div>
   );

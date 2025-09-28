@@ -5,8 +5,11 @@ import Modal from '../Modal/Modal'
 import './RequireAuthOnClick.scss'
 import { Facebook, Google, Linkedin, XLg } from 'react-bootstrap-icons'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next';
+
 
 const RequireAuthOnClick = ({ children }) => {
+    const { t } = useTranslation();
     const { user } = useSelector(state => state.user)
 
     const [isModalOpen, setModalOpen] = useState(false);
@@ -46,17 +49,17 @@ const RequireAuthOnClick = ({ children }) => {
                 }}>
                     <div className="disconnectedModal">
                         <div className="top p-15">
-                            <h2>Connectez vous !</h2>
+                            <h2>{t('Connectez vous !')}</h2>
                             <div className="close-modal" onClick={() => { setModalOpen(false) }}>
                                 <XLg />
                             </div>
                         </div>
                         <div className="body p-15">
                             <p>
-                                <strong>Note:</strong><span> vous devez vous authentifier pour acceder à cette fonctionnalité.</span>
+                                <strong>Note:</strong><span>{t('vous devez vous authentifier pour acceder à cette fonctionnalité.')}</span>
                             </p>
                             <Link to="/connexion" className="auth-with-gate-btn" onClick={() => { setModalOpen(false) }}>
-                                <img src="/img/logo/GATEAFR.png" height={25} alt="" /> Utiliser un compte GateAfri
+                                <img src="/img/logo/GATEAFR.png" height={25} alt="" /> {t('Utiliser un compte FoundBrain')}
                             </Link>
                             <div className="conn-method flex justify-content-center gap-10">
                                 <Link className='fb' to={`${process.env.REACT_APP_API_DOMAIN}/connect/facebook`}><Facebook size={22} /></Link>
@@ -65,7 +68,7 @@ const RequireAuthOnClick = ({ children }) => {
                             </div>
                         </div>
                         <div className="bottom p-15">
-                            <p>Si vous n'avez pas de compte <b><Link to="inscription" onClick={() => { setModalOpen(false) }}>S'inscrire</Link></b></p>
+                            <p>{t("Si vous n'avez pas de compte")} <b><Link to="inscription" onClick={() => { setModalOpen(false) }}>{t("S'inscrire")}</Link></b></p>
                         </div>
 
                     </div>

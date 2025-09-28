@@ -106,6 +106,8 @@ import ArtistDashboard from "../../pages/Artist/ArtistDashboard";
 import SocketIOContext from '../../context/SocketIOContext'
 import { addNotification } from "../../redux/actions/userActions";
 
+import Settings from "../../pages/Settings/Settings";
+
 const AppRoutes = ({ pageLoading, setPageLoading }) => {
     const location = useLocation();
     const background = location.state && location.state.background;
@@ -129,7 +131,7 @@ const AppRoutes = ({ pageLoading, setPageLoading }) => {
                 <Route element={<Default />}>
                     {!pageLoading && (
                         <>
-
+                            <Route path="/settings" element={<Settings />}/>
                             <Route path="/landing" element={<Landing />} />
                             <Route path="/" element={<Home />} />
                             <Route
@@ -392,12 +394,12 @@ const AppRoutes = ({ pageLoading, setPageLoading }) => {
                         </>
                     )}
 
-                    {/* <Route path="teams" element={<Teams />}>
-              <Route path=":teamId" element={<Team />} />
-              <Route path=":teamId/edit" element={<EditTeam />} />
-              <Route path="new" element={<NewTeamForm />} />
-              <Route index element={<LeagueStandings />} />
-            </Route> */}
+                        {/* <Route path="teams" element={<Teams />}>
+                <Route path=":teamId" element={<Team />} />
+                <Route path=":teamId/edit" element={<EditTeam />} />
+                <Route path="new" element={<NewTeamForm />} />
+                <Route index element={<LeagueStandings />} />
+                </Route> */}
 
                     <Route path="/explorer" element={<Countries />} />
 

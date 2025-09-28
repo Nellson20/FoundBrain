@@ -6,9 +6,10 @@ import { getHotelEquipments, getHotelServices } from '../../api/hotel';
 import Skeleton from '../../components/Skeleton/Skeleton';
 import { getRandomNumber } from '../../functions'
 import CheckBox from '../../components/CheckBox/CheckBox';
+import { useTranslation } from 'react-i18next';
 
 const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStepErrors, currentStepValues, setInitialFields }) => {
-
+    const { t } = useTranslation();
 
     //get equipments list
     const {
@@ -42,16 +43,13 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
     return (
         <div className='hotel-equipments-form'>
             <div className="form-group">
-                <label htmlFor="">Équipements</label>
+                <label htmlFor="">{t("Équipements")}</label>
             </div>
             <div className="form-group" role="group" aria-labelledby="checkbox-group">
-
-
                 {
                     hotelEquipmentsLoading ?
                         [...new Array(20)].map((_,i) => <Skeleton key={i} radius={2} height={10} width={`${getRandomNumber(30, 80)}%`} />)
                         :
-
                         hotelEquipments?.map((e, i) => (
                             <div key={i}>
                                 <label className="flex align-items-center gap-5">
@@ -68,9 +66,7 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
                                                         form.setFieldValue(field.name, newValue);
                                                     }} />
                                             )
-                                        }
-
-                                        }
+                                        }}
                                     </Field>
                                     <span>{e.equipmentTitle}</span>
                                 </label>
@@ -83,20 +79,16 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
             </div>
             <hr />
             <div className="form-group">
-                <label htmlFor="">Services</label>
+                <label htmlFor="">{t("Services")}</label>
             </div>
             <div className="form-group" role="group" aria-labelledby="checkbox-group">
-
                 {
                     hotelServicesLoading ?
                         [...new Array(20)].map((_,i) => <Skeleton key={i} radius={2} height={10} width={`${getRandomNumber(30, 80)}%`} />)
                         :
-
                         hotelServices?.map((s, i) => (
                             <div key={i}>
                                 <label className="flex align-items-center gap-5">
-
-
                                     <Field type="checkbox" name="hotelServices" value={`/hotel_services/${s.id}`} >
                                         {({ field, form }) => {
                                             const isChecked = form.values.hotelServices?.includes(`/hotel_services/${s.id}`);
@@ -109,9 +101,7 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
                                                         form.setFieldValue(field.name, newValue);
                                                     }} />
                                             )
-                                        }
-
-                                        }
+                                        }}
                                     </Field>
                                     <span>{s.title}</span>
                                 </label>
@@ -122,7 +112,6 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
             <div className="mb-15">
                 <ErrorLabel error={currentStepErrors.hotelServices} />
             </div>
-
         </div >
     )
 }

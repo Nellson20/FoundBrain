@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Trash } from "react-bootstrap-icons";
 import SquareRadio from "../../components/Input/SquareRadio";
 import Select from "../../components/Input/Select";
+import { useTranslation } from 'react-i18next';
 
 const AccommodationInformationForm = ({
   formData,
@@ -15,6 +16,7 @@ const AccommodationInformationForm = ({
   currentStepErrors,
   touched,
 }) => {
+  const { t } = useTranslation();
   const [bedList, setBedList] = useState([{ bedType: "", bedNumber: "" }]);
 
   const addBed = () => {
@@ -36,17 +38,17 @@ const AccommodationInformationForm = ({
 
         <div className="flex gap-10">
           <div className="select-container">
-            <label htmlFor="">Type d'hébergement</label>
+            <label htmlFor="">{t("Type d'hébergement")}</label>
             <Field name="accommodationType">
               {
                 ({ field, form }) => (
-                  <Select selectedValue={formData.accommodationType} onChange={(selected) => form.setFieldValue(field.name, selected)} placeholder="Selectionner votre type d'hébergement" selectList={[
-                    { title: "Double", value: "double" },
-                    { title: "Simple", value: "simple" },
-                    { title: "Familiale", value: "familial" },
-                    { title: "Triple", value: "triple" },
-                    { title: "Bungalow", value: "bungalow" },
-                    { title: "Chalet", value: "chalet" }
+                  <Select selectedValue={formData.accommodationType} onChange={(selected) => form.setFieldValue(field.name, selected)} placeholder={t("Selectionner votre type d'hébergement")} selectList={[
+                    { title: t("Double"), value: "double" },
+                    { title: t("Simple"), value: "simple" },
+                    { title: t("Familiale"), value: "familial" },
+                    { title: t("Triple"), value: "triple" },
+                    { title: t("Bungalow"), value: "bungalow" },
+                    { title: t("Chalet"), value: "chalet" }
                   ]} />
                 )
               }
@@ -54,7 +56,7 @@ const AccommodationInformationForm = ({
             <ErrorLabel error={currentStepErrors.accommodationType} />
           </div>
           <div className="form-group">
-            <label htmlFor="">Nombre d'hébergement de ce type</label>
+            <label htmlFor="">{t("Nombre d'hébergement de ce type")}</label>
             <Field type="number" className="inpt" name="accommodationNumber" />
             <ErrorLabel error={currentStepErrors.accommodationNumber} />
           </div>
@@ -70,15 +72,15 @@ const AccommodationInformationForm = ({
               <div className="select-container">
                 <div className="flex align-items-center justify-content-between">
                   <label>
-                    {index > 0 ? "Autre Type de lit" : "Type de lit"}
+                    {index > 0 ? t("Autre Type de lit") : t("Type de lit")}
                   </label>
                 </div>
                 <Field name={`beds[${index}].bedType`}>
                   {
                     ({ field, form }) => (
-                      <Select selectedValue={formData.beds ? formData.beds[index]?.bedType : null} onChange={(selected) => form.setFieldValue(field.name, selected)} placeholder="Sélectionner un type de lit" selectList={[
-                        { title: "Lit(s) simple(s)", value: "1" },
-                        { title: "Lit(s) double(s)", value: "2" },
+                      <Select selectedValue={formData.beds ? formData.beds[index]?.bedType : null} onChange={(selected) => form.setFieldValue(field.name, selected)} placeholder={t('Sélectionner un type de lit')} selectList={[
+                        { title: t("Lit(s) simple(s)"), value: "1" },
+                        { title: t("Lit(s) double(s)"), value: "2" },
                       ]} />
                     )
                   }
@@ -96,7 +98,7 @@ const AccommodationInformationForm = ({
                 />
               </div>
               <div>
-                <label>Nombre de lits de ce type</label>
+                <label>{t('Nombre de lits de ce type')}</label>
                 <Field type="number" name={`beds[${index}].bedNumber`} />
                 <ErrorLabel
                   error={
@@ -121,12 +123,12 @@ const AccommodationInformationForm = ({
             </div>
           ))}
           <button className="btn-orange mt-10" type="button" onClick={addBed}>
-            Ajouter un autre type de lit
+           {t(' Ajouter un autre type de lit')}
           </button>
         </div>
         <hr />
         <div className="form-group">
-          <label htmlFor="">Nombre maximum de personnes</label>
+          <label htmlFor="">{t('Nombre maximum de personnes')}</label>
           <Field type="number" className="inpt" name="occupation" />
           <ErrorLabel error={currentStepErrors.occupation} />
         </div>

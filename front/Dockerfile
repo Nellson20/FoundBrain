@@ -1,24 +1,19 @@
-# Use the latest LTS version of Node.js
+# Utilise Node.js LTS
 FROM node:20
- 
-# Set the working directory inside the container
+
+# Dossier de travail
 WORKDIR /app
- 
-# Copy package.json and package-lock.json
+
+# Copier package.json + package-lock.json
 COPY package*.json ./
- 
-# Install dependencies
+
+# Installer les dépendances
 RUN npm install
 
+# Copier tout le code après install
+COPY . .
 
-CMD [ "npm","start" ]
+# Lancer l'app
+CMD ["npm", "start"]
 
 EXPOSE 3000
-
- 
-# Copy the rest of your application files
-
- 
-# Expose the port your app runs on
- 
-# Define the command to run your app

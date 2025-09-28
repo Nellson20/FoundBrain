@@ -22,9 +22,10 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { deleteDiscussion, getDiscussions } from '../../api/discussion'
 import useInfiniteScroll from '../../Hooks/useInfiniteScroll'
 import { useSelector } from 'react-redux'
+import { useTranslation } from 'react-i18next'
+
 const Messages = () => {
-
-
+    const { t } = useTranslation()
     const { deviceType } = useContext(MediaContext)
 
     const { discuId } = useParams()
@@ -81,21 +82,21 @@ const Messages = () => {
                     <div>
                         <div className="top">
                             <div className='flex justify-content-between mb-15'>
-                                <h2>Messages</h2>
+                                <h2>{t("Messages")}</h2>
                                 <DropDown>
                                     <div className="post-plus-btn"><Plus size={28} style={{ display: 'block' }} /></div>
                                     <ul>
                                         <li>
-                                            <Link to='/'>Modifier la publication</Link>
+                                            <Link to='/'>{t("Modifier la publication")}</Link>
                                         </li>
                                         <li>
-                                            <Link to='/'>Suprimer</Link>
+                                            <Link to='/'>{t("Suprimer")}</Link>
                                         </li>
                                         <li>
-                                            <Link to='/'>Enregistrer</Link>
+                                            <Link to='/'>{t("Enregistrer")}</Link>
                                         </li>
                                         <li>
-                                            <Link to='/'>Alerter les activités</Link>
+                                            <Link to='/'>{t("Alerter les activités")}</Link>
                                         </li>
                                     </ul>
                                 </DropDown>
@@ -105,7 +106,7 @@ const Messages = () => {
                         {
                             (onlineContactsFetching && !onlineContactsFetchingNextPage) || onlineContacts?.pages[0]?.data?.length > 0 ?
                                 <div className="messages-online-contacts">
-                                    <h5>Disponible</h5>
+                                    <h5>{t("Disponible")}</h5>
                                     <div className="flex gap-5">
                                         {
                                             (onlineContactsFetching && !onlineContactsFetchingNextPage) ? (
@@ -115,7 +116,7 @@ const Messages = () => {
                                                     <Skeleton width={35} height={8} radius={2}/>
                                                 </div>)
                                             ) : error ? (
-                                                <p>Error: {error.message}</p>
+                                                <p>{t("Error")}: {error.message}</p>
                                             ) : (onlineContacts?.pages?.map((group, i) =>
                                                 <React.Fragment key={i}>
                                                 {group.data.map(({ requester, receiver }, i) => {
@@ -144,10 +145,10 @@ const Messages = () => {
                         }
 
                         <Tabs className='post-comments-tabs'>
-                            <Tab title={<span>Discussions {(discuList?.pages[0]?.totalItems && discuList?.pages[0]?.totalItems>0) ? `(${discuList?.pages[0]?.totalItems})` : ''}</span>}>
+                            <Tab title={<span>{t("Discussions")} {(discuList?.pages[0]?.totalItems && discuList?.pages[0]?.totalItems>0) ? `(${discuList?.pages[0]?.totalItems})` : ''}</span>}>
                                 <div className="discussion-list">
 
-                                    <span className='order-discussion flex align-items-center gap-5 px-10 py-5'>Les plus reçents <ChevronDown /></span>
+                                    <span className='order-discussion flex align-items-center gap-5 px-10 py-5'>{t("Les plus reçents")} <ChevronDown /></span>
 
                                     {
                                         (discuListFetching && !discuListFetchingNextPage) ? (
@@ -160,7 +161,7 @@ const Messages = () => {
                                                     <DiscussionSkeleton /></>
                                             </>
                                         ) : error ? (
-                                            <p>Error: {error.message}</p>
+                                            <p>{t("Error")}: {error.message}</p>
                                         ) : (discuList?.pages[0]?.data?.length > 0 ? discuList?.pages?.map((group, i) => (
                                             <React.Fragment key={i}>
                                                 {group.data.map((d, i) => (
@@ -170,8 +171,8 @@ const Messages = () => {
 
 
                                         )) : <div className="empty-job flex flex-column justify-content-center align-items-center gap-5">
-                                            <h4>Aucune discussion disponible</h4>
-                                            <p className='text-center'>Nous vous invitons à prendre contact avec d'autres personnes ou entités pour demarrer une discussion</p>
+                                            <h4>{t("Aucune discussion disponible")}</h4>
+                                            <p className='text-center'>{t("Nous vous invitons à prendre contact avec d'autres personnes ou entités pour demarrer une discussion")}</p>
                                         </div>)
                                     }
                                     {discuListFetchingNextPage
@@ -185,8 +186,8 @@ const Messages = () => {
 
                                 </div>
                             </Tab>
-                            <Tab title={<span>Contacts</span>}>
-                                contenu
+                            <Tab title={<span>{t("Contacts")}</span>}>
+                                {t("contenu")}
                             </Tab>
                         </Tabs>
                     </div>
@@ -201,7 +202,7 @@ const Messages = () => {
                             <Messenger discuId={discuId} discu={activeDiscu} />
                             : <div className="empty-msg flex flex-column align-items-center">
                                 <img src="/img/wired-flat-981-consultation.gif" alt="" />
-                                <h4>Sélectionnez une Discussion</h4>
+                                <h4>{t("Sélectionnez une Discussion")}</h4>
                             </div>
 
                     }

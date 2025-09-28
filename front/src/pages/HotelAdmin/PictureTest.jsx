@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState } from "react"; 
 import { CardImage, Eye, ThreeDots } from "react-bootstrap-icons";
 import "./Pictures.scss";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import { Link } from "react-router-dom";
 import DropDown from "../../components/DropDown/DropDown";
+import { useTranslation } from "react-i18next";
 
 const PictureCard = ({ path, checked, onChange }) => {
- return (
+  const { t } = useTranslation();
+  return (
     <div className="picture">
       <div className="banner"></div>
       <div className="img">
-        <img src={path} alt="chambre" />
+        <img src={path} alt={t("room")} />
       </div>
       <div className="actions">
         <div className="top">
@@ -23,13 +25,13 @@ const PictureCard = ({ path, checked, onChange }) => {
             </Link>
             <ul>
               <li>
-                <Link>Modifier</Link>
+                <Link>{t("Edit")}</Link>
               </li>
               <li>
-                <Link>Definir comme photo d'accroche préférée</Link>
+                <Link>{t("Set as preferred cover photo")}</Link>
               </li>
               <li>
-                <Link>Supprimer</Link>
+                <Link>{t("Delete")}</Link>
               </li>
             </ul>
           </DropDown>
@@ -39,11 +41,12 @@ const PictureCard = ({ path, checked, onChange }) => {
         </div>
       </div>
     </div>
- );
+  );
 };
 
 const Pictures = () => {
- const [checkedStates, setCheckedStates] = useState({
+  const { t } = useTranslation();
+  const [checkedStates, setCheckedStates] = useState({
     doubleRoom: [
       { path: "/img/other/chambre_0.jpg", checked: false },
       { path: "/img/other/chambre_1.jpg", checked: false },
@@ -56,30 +59,30 @@ const Pictures = () => {
       { path: "/img/other/chambre_6.jpg", checked: false },
       { path: "/img/other/chambre_7.jpg", checked: false },
     ],
- });
+  });
 
- const handleCheckChange = (type, index) => {
+  const handleCheckChange = (type, index) => {
     setCheckedStates(prevState => {
       const newState = { ...prevState };
       newState[type][index].checked = !newState[type][index].checked;
       return newState;
     });
- };
+  };
 
- return (
+  return (
     <div id="galery-pictures">
-      <h2 className="py-15">Photos de l'établissement</h2>
+      <h2 className="py-15">{t("Establishment photos")}</h2>
       <div className="elevated-card p-15">
-        <h3>Galerie principale</h3>
+        <h3>{t("Main gallery")}</h3>
         <div className="Gallery-container flex flex-wrap gap-15 mt-15">
           {Object.entries(checkedStates).map(([key, value]) => (
             <React.Fragment key={key}>
               {value.map((image, index) => (
                 <PictureCard
-                 key={index}
-                 path={image.path}
-                 checked={image.checked}
-                 onChange={() => handleCheckChange(key, index)}
+                  key={index}
+                  path={image.path}
+                  checked={image.checked}
+                  onChange={() => handleCheckChange(key, index)}
                 />
               ))}
             </React.Fragment>
@@ -89,7 +92,7 @@ const Pictures = () => {
       </div>
       {/* Reste du code */}
     </div>
- );
+  );
 };
 
 export default Pictures;

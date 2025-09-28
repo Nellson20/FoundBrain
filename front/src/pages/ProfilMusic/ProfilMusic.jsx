@@ -1,77 +1,57 @@
-import React from 'react'
-import { ChevronLeft, ChevronRight, MenuButton, MenuDown, PlayFill, SignDeadEnd, SignDoNotEnterFill, SignNoLeftTurnFill, Spotify, ThreeDotsVertical } from 'react-bootstrap-icons'
+import React, { useRef } from 'react'
+import { ChevronLeft, ChevronRight, ThreeDotsVertical, PlayFill } from 'react-bootstrap-icons'
 import './ProfilMusic.scss'
 import Slider from 'react-slick'
 import Avatar from '../../components/Avatar/Avatar'
 import VideoCard from '../../components/VideoCard/VideoCard'
-import { useRef } from 'react';
-import { TfiAlignJustify } from "react-icons/tfi";
 import SliderNav from '../../components/SliderNav/SliderNav'
+import { useTranslation } from 'react-i18next'
+
 const ProfilMusic = () => {
+    const { t } = useTranslation()
     const caroseul = useRef()
     const data = [
         {
             img: '/img/video/tsota.PNG',
             title: 'Tsota',
-            user: {
-                name: 'Antema'
-            },
+            user: { name: 'Antema' },
             duration: '03:15'
         },
         {
             img: '/img/video/smaven.PNG',
             title: 'Smaven',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '04:15'
-
         },
         {
             img: '/img/video/rimka.PNG',
             title: 'Rimka',
-            user: {
-                name: 'Donnel'
-            }
-            ,
+            user: { name: 'Donnel' },
             duration: '02:15'
-
         },
         {
             img: '/img/video/lion.PNG',
             title: 'Lion Hill',
-            user: {
-                name: 'Hira Gasy'
-            },
+            user: { name: 'Hira Gasy' },
             duration: '05:30'
-
         },
         {
             img: '/img/video/gims.jpeg',
             title: 'Maitre Gims',
-            user: {
-                name: 'Gasy tia Hira'
-            },
+            user: { name: 'Gasy tia Hira' },
             duration: '04:30'
-
         },
         {
             img: '/img/video/fes.jpg',
             title: 'Twooki',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '05:00'
-
         },
         {
             img: '/img/other/shopping.jpg',
             title: 'test',
-            user: {
-                name: 'antema'
-            },
+            user: { name: 'antema' },
             duration: '05:00'
-
         },
     ]
 
@@ -79,65 +59,44 @@ const ProfilMusic = () => {
         {
             img: '/img/video/fes.jpg',
             title: 'Twooki',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '05:00'
-
         },
         {
             img: '/img/video/gims.jpeg',
             title: 'Maitre Gims',
-            user: {
-                name: 'Gasy tia Hira'
-            },
+            user: { name: 'Gasy tia Hira' },
             duration: '04:30'
-
         },
         {
             img: '/img/video/lion.PNG',
             title: 'Lion Hill',
-            user: {
-                name: 'Hira Gasy'
-            },
+            user: { name: 'Hira Gasy' },
             duration: '05:30'
-
         },
         {
             img: '/img/video/lion.PNG',
             title: 'Lion Hill',
-            user: {
-                name: 'Hira Gasy'
-            },
+            user: { name: 'Hira Gasy' },
             duration: '05:30'
-
         },
         {
             img: '/img/video/gims.jpeg',
             title: 'Maitre Gims',
-            user: {
-                name: 'Gasy tia Hira'
-            },
+            user: { name: 'Gasy tia Hira' },
             duration: '04:30'
-
         },
         {
             img: '/img/video/fes.jpg',
             title: 'Twooki',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '05:00'
-
         },
         {
             img: '/img/other/shopping.jpg',
             title: 'test',
-            user: {
-                name: 'antema'
-            },
+            user: { name: 'antema' },
             duration: '05:00'
-
         },
     ]
 
@@ -145,65 +104,44 @@ const ProfilMusic = () => {
         {
             img: '/img/video/big_mj.jpg',
             title: 'Lion Hill feat Big mij',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '05:00'
-
         },
         {
             img: '/img/video/nina.jpg',
             title: 'Lion Hill feat LJO',
-            user: {
-                name: 'Gasy tia Hira'
-            },
+            user: { name: 'Gasy tia Hira' },
             duration: '04:30'
-
         },
         {
             img: '/img/video/maxresdefault.jpg',
             title: 'Lion Hill feat Boy Black',
-            user: {
-                name: 'Hira Gasy'
-            },
+            user: { name: 'Hira Gasy' },
             duration: '05:30'
-
         },
         {
             img: '/img/video/lion.PNG',
             title: 'Lion Hill',
-            user: {
-                name: 'Hira Gasy'
-            },
+            user: { name: 'Hira Gasy' },
             duration: '05:30'
-
         },
         {
             img: '/img/video/lion_2.jpg',
             title: 'Lion Hill feat Denise',
-            user: {
-                name: 'Gasy tia Hira'
-            },
+            user: { name: 'Gasy tia Hira' },
             duration: '04:30'
-
         },
         {
             img: '/img/video/lion_hill_3.jpg',
             title: 'Lion Hill feat LAULE JOBIE',
-            user: {
-                name: 'Nirina'
-            },
+            user: { name: 'Nirina' },
             duration: '05:00'
-
         },
         {
             img: '/img/video/a.jpg',
             title: 'Lion Hill feat Christo',
-            user: {
-                name: 'antema'
-            },
+            user: { name: 'antema' },
             duration: '05:00'
-
         },
     ]
 
@@ -232,15 +170,15 @@ const ProfilMusic = () => {
                         <Avatar src={'/img/artists/5.png'} height={120} width={120} online={false} />
                     </div>
                     <div className='card-right'>
-                        <p className='title'>Artiste</p>
+                        <p className='title'>{t("Artiste")}</p>
                         <div className='artiste'>
-                            <h1>Lion hill</h1>
+                            <h1>{t("Lion hill")}</h1>
                         </div>
-                        <p className='content'>Ataovo tonga, lofi vibes, new tracks every week...</p>
+                        <p className='content'>{t("Ataovo tonga, lofi vibes, new tracks every week...")}</p>
                         <div className='item-card flex gap-10 justify-content-between' style={{ color: 'white' }}>
                             <div className='span'>
-                                <span><b>• 3,09 k abonnés </b></span>
-                                <span><b>• 25 vidéos</b></span>
+                                <span><b>{t("• 3,09 k abonnés")}</b></span>
+                                <span><b>{t("• 25 vidéos")}</b></span>
                             </div>
                             <div className='span-2'>
                                 <ThreeDotsVertical size={20} />
@@ -251,23 +189,22 @@ const ProfilMusic = () => {
 
                 <div className="music-top-nav flex gap-20">
                     <div className="flex-grow-1">
-                    <SliderNav>
-                        <span onClick={() => { }}>Accueil</span>
-                        <span onClick={() => { }}>Clips</span>
-                        <span onClick={() => { }}>Playlists</span>
-                        <span onClick={() => { }}>Evenements</span>
-                        <span onClick={() => { }}>À propos</span>
-                    </SliderNav>
+                        <SliderNav>
+                            <span onClick={() => { }}>{t("Accueil")}</span>
+                            <span onClick={() => { }}>{t("Clips")}</span>
+                            <span onClick={() => { }}>{t("Playlists")}</span>
+                            <span onClick={() => { }}>{t("Evenements")}</span>
+                            <span onClick={() => { }}>{t("À propos")}</span>
+                        </SliderNav>
                     </div>
                     <div>
-                        <button className="btn btn-purple"><PlayFill size={20}/> Regarder</button>
+                        <button className="btn btn-purple"><PlayFill size={20} /> {t("Regarder")}</button>
                     </div>
-
                 </div>
 
                 <div className='all-music p-15'>
                     <div className='heading flex justify-content-between'>
-                        <h1>Populaires en ce moment</h1>
+                        <h1>{t("Populaires en ce moment")}</h1>
                         <div className='arows flex align-items-center gap-5'>
                             <div className='left flex align-items-center justify-content-center'>
                                 <ChevronLeft
@@ -301,7 +238,7 @@ const ProfilMusic = () => {
 
                 <div className='playlist p-15'>
                     <div className='heading flex justify-content-between'>
-                        <h1>Videos récentes</h1>
+                        <h1>{t("Videos récentes")}</h1>
                         <div className='arows flex align-items-center gap-5'>
                             <div className='left flex align-items-center justify-content-center'>
                                 <ChevronLeft />
@@ -311,7 +248,6 @@ const ProfilMusic = () => {
                             </div>
                         </div>
                     </div>
-
 
                     <Slider {...{
                         slidesToShow: 5,
@@ -328,7 +264,7 @@ const ProfilMusic = () => {
 
                 <div className='album'>
                     <div className='heading'>
-                        <h1>Albums</h1>
+                        <h1>{t("Albums")}</h1>
                     </div>
                     <div className='album-carousel'>
                         <Slider
@@ -347,8 +283,8 @@ const ProfilMusic = () => {
                                     <img src='/img/video/ambila.jpg' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>Ambila</p>
-                                    <p>Dernière • Album</p>
+                                    <p>{t("Ambila")}</p>
+                                    <p>{t("Dernière • Album")}</p>
                                 </div>
                             </div>
 
@@ -357,39 +293,36 @@ const ProfilMusic = () => {
                                     <img src='/img/video/angala.jpg' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>Angala Fitia</p>
-                                    <p>2019 • Album</p>
+                                    <p>{t("Angala Fitia")}</p>
+                                    <p>{t("2019 • Album")}</p>
                                 </div>
                             </div>
                             <div className='album-item'>
                                 <div className='img'>
-
                                     <img src='/img/video/the_holliday.png' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>The Holliday</p>
-                                    <p>2018 • Album</p>
+                                    <p>{t("The Holliday")}</p>
+                                    <p>{t("2018 • Album")}</p>
                                 </div>
                             </div>
                             <div className='album-item'>
                                 <div className='img'>
-
                                     <img src='/img/video/miangavy.jpg' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>Miangavy</p>
-                                    <p>2020 • Album</p>
+                                    <p>{t("Miangavy")}</p>
+                                    <p>{t("2020 • Album")}</p>
                                 </div>
                             </div>
 
                             <div className='album-item'>
                                 <div className='img'>
-
                                     <img src='/img/video/Hikeo.jpg' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>Hikeo</p>
-                                    <p>2017 • Album</p>
+                                    <p>{t("Hikeo")}</p>
+                                    <p>{t("2017 • Album")}</p>
                                 </div>
                             </div>
 
@@ -398,8 +331,8 @@ const ProfilMusic = () => {
                                     <img src='/img/video/Paradisako.jpg' alt='' />
                                 </div>
                                 <div className='album-content flex'>
-                                    <p>Paradisako</p>
-                                    <p>2019 • Album</p>
+                                    <p>{t("Paradisako")}</p>
+                                    <p>{t("2019 • Album")}</p>
                                 </div>
                             </div>
                         </Slider>
@@ -410,8 +343,9 @@ const ProfilMusic = () => {
                 <div className='Featuring'>
                     <div className="playlist-title flex">
                         <div className='header'>
-                            <h1>Featuring</h1>
-                        </div>                        <div className='arows flex align-items-center gap-5'>
+                            <h1>{t("Featuring")}</h1>
+                        </div>
+                        <div className='arows flex align-items-center gap-5'>
                             <div className='left flex align-items-center justify-content-center'>
                                 <ChevronLeft />
                             </div>
@@ -437,7 +371,7 @@ const ProfilMusic = () => {
                 <div className='show'>
                     <div className="show-title">
                         <div className='heading'>
-                            <h1>show</h1>
+                            <h1>{t("show")}</h1>
                         </div>
                     </div>
 
@@ -456,80 +390,61 @@ const ProfilMusic = () => {
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_2.webp' alt='' />
-
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_3.jpeg' alt='' />
-
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_3.jpg' alt='' />
-
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_4.jpeg' alt='' />
-
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_6.jpg' alt='' />
-
                             </div>
                             <div className='show-item'>
                                 <img src='/img/video/affiche_7.jpg' alt='' />
-
                             </div>
-
                         </Slider>
                     </div>
                 </div>
 
                 <div className="tops-artist-slider">
                     <div className="heading">
-                        <h1>Artistes similaire</h1>
+                        <h1>{t("Artistes similaire")}</h1>
                     </div>
                     <Slider {...settings}>
                         <div className="top-artist-slide relative" style={{ width: 150 }}>
-
                             <div className="flag-avatar">
                                 <Avatar width={100} height={100} src='/img/artists/5.png' />
                                 <img src='/img/flags/Flag_of_Madagascar.svg' />
                             </div>
-                            <h1>Rema-En live</h1>
-
+                            <h1>{t("Rema-En live")}</h1>
                         </div>
                         <div className="top-artist-slide relative" style={{ width: 150 }}>
-
                             <div className="flag-avatar">
                                 <Avatar width={100} height={100} src='/img/artists/3.png' />
                                 <img src='/img/flags/Flag_of_Madagascar.svg' />
                             </div>
-                            <h1>Rema-En live</h1>
-
+                            <h1>{t("Rema-En live")}</h1>
                         </div>
                         <div className="top-artist-slide relative" style={{ width: 150 }}>
-
                             <div className="flag-avatar">
                                 <Avatar width={100} height={100} src='/img/artists/2.png' />
                                 <img src='/img/flags/Flag_of_Madagascar.svg' />
                             </div>
-                            <h1>Rema-En live</h1>
-
+                            <h1>{t("Rema-En live")}</h1>
                         </div>
                         <div className="top-artist-slide relative" style={{ width: 150 }}>
-
                             <div className="flag-avatar">
                                 <Avatar width={100} height={100} src='/img/artists/1.png' />
                                 <img src='/img/flags/Flag_of_Madagascar.svg' />
                             </div>
-                            <h1>Rema-En live</h1>
-
+                            <h1>{t("Rema-En live")}</h1>
                         </div>
-
                     </Slider>
                 </div>
-
-
-
             </div>
         </div>
     )

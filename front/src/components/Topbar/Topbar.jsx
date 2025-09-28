@@ -14,6 +14,9 @@ import CaretInput from '../CaretInput/CaretInput'
 import CurrencySelector from '../CurrencySelector/CurrencySelector'
 import CurrencyContext from '../../context/CurrencyContext'
 import NavigableList from '../Input/NavigableList/NavigableList'
+import LanguageSelector from '../../components/LanguageSelector';
+import Settings from '../../pages/Settings/Settings'
+
 import millify from 'millify'
 const Topbar = ({ setOpenRightbar = () => { } }) => {
   const [openPostModal, setOpenPostModal] = useState(false)
@@ -57,6 +60,7 @@ const Topbar = ({ setOpenRightbar = () => { } }) => {
                 <img src='/img/logo/afrimuz2.png' />
               </DoNavLink>
             </li>
+             
             <li className='flex-grow-1'>
               <Searchbar onSubmit={(e) => navigate(`/recherche?k=${e.target.value}`)} />
             </li>
@@ -80,7 +84,9 @@ const Topbar = ({ setOpenRightbar = () => { } }) => {
             </li>
           </ul>
         </nav>
+        
         <div className="right flex px-15 align-items-center justify-content-end">
+          <Link to="/settings"><img src="/img/icons/parametres.png" alt="" width={22} height={22}/></Link>
           <RequireAuthOnClick>
             <Link to="/messages"><ChatSquareQuote size={22} /></Link>
           </RequireAuthOnClick>
@@ -104,6 +110,7 @@ const Topbar = ({ setOpenRightbar = () => { } }) => {
               :
               <Link to="/connexion"><Person size={23} /></Link>
           }
+          
         </div>
       </header>
       <PostModal isOpen={openPostModal} setIsOpen={setOpenPostModal} />

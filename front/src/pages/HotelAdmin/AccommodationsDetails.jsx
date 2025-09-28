@@ -1,20 +1,23 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import CheckBox from "../../components/CheckBox/CheckBox";
 import "./AccommodationsDetails.scss";
 
 const AccommodationsDetails = () => {
+  const { t } = useTranslation();
+
   const equipmentRoomList = ["ventilateur", "cheminée", "chauffage", "dressing"];
-  const equipmentBathList = ["Peignoir","Baignoire","Toilettes","Shampoing"]
+  const equipmentBathList = ["Peignoir", "Baignoire", "Toilettes", "Shampoing"];
 
   const [activeOptionsRoom, setActiveOptionsRoom] = useState(
     equipmentRoomList.reduce((acc, equipment) => {
-      acc[equipment]= 2
+      acc[equipment] = 2;
       return acc;
     }, {})
   );
   const [activeOptionsBath, setActiveOptionsBath] = useState(
     equipmentBathList.reduce((acc, equipment) => {
-      acc[equipment]= 2
+      acc[equipment] = 2;
       return acc;
     }, {})
   );
@@ -34,13 +37,14 @@ const AccommodationsDetails = () => {
 
   return (
     <div id="accommodations-details">
-      <h2 className="mt-15">Détails des hébergements</h2>
-      <p>Merci de vérifier les informations à compléter.</p>
+      <h2 className="mt-15">{t("Détails des hébergements")}</h2>
+      <p>{t("Merci de vérifier les informations à compléter.")}</p>
+
       <div className="size elevated-card p-15 mt-15">
-        <h3>Superficie de votre/vos hébergement(s)</h3>
+        <h3>{t("Superficie de votre/vos hébergement(s)")}</h3>
         <div className="container flex flex-wrap gap-15  mt-15">
           <div className="item">
-            <label htmlFor="doubleRoom">Chambre Double</label>
+            <label htmlFor="doubleRoom">{t("Chambre Double")}</label>
             <div className="input-container">
               <input type="number" name="doubleRoom" id="doubleRoom" />
               <div className="unity">
@@ -49,7 +53,7 @@ const AccommodationsDetails = () => {
             </div>
           </div>
           <div className="item">
-            <label htmlFor="simpleRoom">Chambre Simple</label>
+            <label htmlFor="simpleRoom">{t("Chambre Simple")}</label>
             <div className="input-container">
               <input type="number" name="simpleRoom" id="simpleRoom" />
               <div className="unity">
@@ -59,31 +63,32 @@ const AccommodationsDetails = () => {
           </div>
         </div>
       </div>
+
       <div className="equipment elevated-card mt-15">
-        <h3>Équipements en chambre</h3>
+        <h3>{t("Équipements en chambre")}</h3>
         <div className="container">
-          {equipmentRoomList.map((equipment, index) => (
+          {equipmentRoomList.map((equipment) => (
             <div key={equipment} className="item">
-              <h4>{equipment}</h4>
+              <h4>{t(equipment)}</h4>
               <div className="options">
                 <ul>
                   <li
                     onClick={() => handleOptionRoomClick(equipment, 0)}
                     className={activeOptionsRoom[equipment] === 0 ? "active" : ""}
                   >
-                    Tout les hébergements
+                    {t("Tous les hébergements")}
                   </li>
                   <li
                     onClick={() => handleOptionRoomClick(equipment, 1)}
                     className={activeOptionsRoom[equipment] === 1 ? "active" : ""}
                   >
-                    Certains hébergements
+                    {t("Certains hébergements")}
                   </li>
                   <li
                     onClick={() => handleOptionRoomClick(equipment, 2)}
                     className={activeOptionsRoom[equipment] === 2 ? "active" : ""}
                   >
-                    Aucun(e)
+                    {t("Aucun(e)")}
                   </li>
                 </ul>
                 <div
@@ -93,11 +98,11 @@ const AccommodationsDetails = () => {
                 >
                   <div className="room">
                     <CheckBox />
-                    <label htmlFor="">Chambre Double</label>
+                    <label htmlFor="">{t("Chambre Double")}</label>
                   </div>
                   <div className="room">
                     <CheckBox />
-                    <label htmlFor="">Chambre Simple</label>
+                    <label htmlFor="">{t("Chambre Simple")}</label>
                   </div>
                 </div>
               </div>
@@ -105,31 +110,32 @@ const AccommodationsDetails = () => {
           ))}
         </div>
       </div>
+
       <div className="equipment elevated-card mt-15">
-        <h3>Salle de bains</h3>
+        <h3>{t("Salle de bains")}</h3>
         <div className="container">
-          {equipmentBathList.map((equipment, index) => (
+          {equipmentBathList.map((equipment) => (
             <div key={equipment} className="item">
-              <h4>{equipment}</h4>
+              <h4>{t(equipment)}</h4>
               <div className="options">
                 <ul>
                   <li
                     onClick={() => handleOptionBathClick(equipment, 0)}
                     className={activeOptionsBath[equipment] === 0 ? "active" : ""}
                   >
-                    Tout les hébergements
+                    {t("Tous les hébergements")}
                   </li>
                   <li
                     onClick={() => handleOptionBathClick(equipment, 1)}
                     className={activeOptionsBath[equipment] === 1 ? "active" : ""}
                   >
-                    Certains hébergements
+                    {t("Certains hébergements")}
                   </li>
                   <li
                     onClick={() => handleOptionBathClick(equipment, 2)}
                     className={activeOptionsBath[equipment] === 2 ? "active" : ""}
                   >
-                    Aucun(e)
+                    {t("Aucun(e)")}
                   </li>
                 </ul>
                 <div
@@ -139,11 +145,11 @@ const AccommodationsDetails = () => {
                 >
                   <div className="room">
                     <CheckBox />
-                    <label htmlFor="">Chambre Double</label>
+                    <label htmlFor="">{t("Chambre Double")}</label>
                   </div>
                   <div className="room">
                     <CheckBox />
-                    <label htmlFor="">Chambre Simple</label>
+                    <label htmlFor="">{t("Chambre Simple")}</label>
                   </div>
                 </div>
               </div>
@@ -151,7 +157,8 @@ const AccommodationsDetails = () => {
           ))}
         </div>
       </div>
-      <div className="btn-purple mt-15">Enregistrer</div>
+
+      <div className="btn-purple mt-15">{t("Enregistrer")}</div>
     </div>
   );
 };

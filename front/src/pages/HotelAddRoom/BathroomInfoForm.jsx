@@ -2,6 +2,8 @@ import { Field, ErrorMessage } from "formik";
 import ErrorLabel from "../../components/ErrorLabel/ErrorLabel";
 import { useEffect } from "react";
 import SquareRadio from "../../components/Input/SquareRadio";
+import { useTranslation } from "react-i18next";
+
 const BathroomInfoForm = ({
   formData,
   currentStepValues,
@@ -9,6 +11,8 @@ const BathroomInfoForm = ({
   setInitialFields,
   currentStepErrors
 }) => {
+  const { t } = useTranslation();
+
   useEffect(() => {
     setInitialFields(prev => ({ ...prev, ...currentStepValues }))
   }, [currentStepValues])
@@ -18,7 +22,7 @@ const BathroomInfoForm = ({
   return (
     <div className="bathroom-info">
       <div className="form-group">
-        <label htmlFor="">Type de salle de bains.</label>
+        <label htmlFor="">{t('Type de salle de bains.')}</label>
         <div className="form-group">
           <div className="flex gap-10">
             <Field name="bathroomType">
@@ -26,24 +30,22 @@ const BathroomInfoForm = ({
                 ({ form, field }) => (
                   <>
                     <SquareRadio className="flex-1" checked={parseInt(initialFields.bathroomType) === 0} value={0} onChange={(e) => form.setFieldValue(field.name, e.target.value)} name="bathroomType">
-                      <span>Privée</span>
+                      <span>{t('Privée')}</span>
                     </SquareRadio>
                     <SquareRadio className="flex-1" checked={parseInt(initialFields.bathroomType) === 1} value={1} onChange={(e) => form.setFieldValue(field.name, e.target.value)} name="bathroomType">
-                      <span>Partagé</span>
+                      <span>{t('Partagé')}</span>
                     </SquareRadio>
                   </>
                 )
               }
             </Field>
-
           </div>
-
         </div>
         <ErrorLabel error={currentStepErrors.bathroomType} />
-
       </div>
+
       <div className="form-group">
-        <label htmlFor="">Equipements disponibles</label>
+        <label htmlFor="">{t('Equipements disponibles')}</label>
         <div
           className="form-group grid"
           role="group"
@@ -52,65 +54,61 @@ const BathroomInfoForm = ({
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="Papier toilette" />
-              <span>Papier toilette</span>
+              <span>{t('Papier toilette')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
-              <Field
-                type="checkbox"
-                name="bathroomEquipments"
-                value="Douche"
-              />
-              <span>Douche</span>
+              <Field type="checkbox" name="bathroomEquipments" value="Douche" />
+              <span>{t('Douche')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="1" />
-              <span>Toilettes</span>
+              <span>{t('Toilettes')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="2" />
-              <span>Sèche-cheveux</span>
+              <span>{t('Sèche-cheveux')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="3" />
-              <span>Baignoire</span>
+              <span>{t('Baignoire')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="4" />
-              <span>Articles de toilette gratuits</span>
+              <span>{t('Articles de toilette gratuits')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="5" />
-              <span>Bidet</span>
+              <span>{t('Bidet')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="6" />
-              <span>Chaussons</span>
+              <span>{t('Chaussons')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="7" />
-              <span>Peignoir</span>
+              <span>{t('Peignoir')}</span>
             </label>
           </div>
           <div>
             <label className="flex align-items-center gap-5">
               <Field type="checkbox" name="bathroomEquipments" value="8" />
-              <span>Baignoire spa</span>
+              <span>{t('Baignoire spa')}</span>
             </label>
           </div>
         </div>

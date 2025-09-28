@@ -4,6 +4,7 @@ import './Music.scss'
 import Slider from 'react-slick'
 import Avatar from '../../components/Avatar/Avatar'
 import VideoCard from '../../components/VideoCard/VideoCard'
+import { useTranslation } from 'react-i18next'
 
 const last = [
   {
@@ -49,6 +50,7 @@ const last = [
 ]
 
 const Music = () => {
+  const { t } = useTranslation()
 
   const settings = {
     infinite: true,
@@ -117,25 +119,22 @@ const Music = () => {
     ],
   };
 
-
-
-
   return (
     <div className='music-home'>
       <div className="top">
         <div className="music-top-nav">
           <SliderNav>
-            <span onClick={() => { }}>Tous</span>
-            <span onClick={() => { }}>Populaires</span>
-            <span onClick={() => { }}>Nouveaux</span>
-            <span onClick={() => { }}>Tous</span>
-            <span onClick={() => { }}>Ma musique</span>
-            <span onClick={() => { }}>Tous</span>
+            <span onClick={() => { }}>{t("Tous")}</span>
+            <span onClick={() => { }}>{t("Populaires")}</span>
+            <span onClick={() => { }}>{t("Nouveaux")}</span>
+            <span onClick={() => { }}>{t("Tous")}</span>
+            <span onClick={() => { }}>{t("Ma musique")}</span>
+            <span onClick={() => { }}>{t("Tous")}</span>
           </SliderNav>
         </div>
         <div className="top-music-slider mb-5">
           <div className="heading">
-            <h1>Afrimuz top 10</h1>
+            <h1>{t("Afrimuz top 10")}</h1>
           </div>
           <Slider {...settings}>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -145,8 +144,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -156,8 +155,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/3.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -167,8 +166,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/1.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -178,8 +177,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -189,8 +188,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -200,8 +199,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -211,8 +210,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -222,8 +221,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
             <div className="top-musique-slide relative" style={{ width: 400, aspectRatio: '16/9' }}>
@@ -233,8 +232,8 @@ const Music = () => {
                   <Avatar width={40} height={40} src='/img/artists/5.png' />
                   <img src='/img/flags/Flag_of_Madagascar.svg' />
                 </div>
-                <h1>Rema-En live</h1>
-                <span className='text-ellipsis'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.</span>
+                <h1>{t("Rema-En live")}</h1>
+                <span className='text-ellipsis'>{t("Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga nihil atque explicabo ex dolor voluptates vero, nostrum voluptatem eius, itaque numquam cum illum? Fugit cumque aliquam minima, quaerat numquam vel.")}</span>
               </div>
             </div>
           </Slider>
@@ -243,7 +242,7 @@ const Music = () => {
 
       <div className="last-music-slider mb-5">
         <div className="heading">
-          <h1>Les plus réscents</h1>
+          <h1>{t("Les plus réscents")}</h1>
         </div>
         <Slider {...settings2}>
           {
@@ -253,56 +252,44 @@ const Music = () => {
               </div>
             ))
           }
-
-
         </Slider>
       </div>
 
       <div className="top-artist-slider">
         <div className="heading">
-          <h1>Artistes similaire</h1>
+          <h1>{t("Artistes similaire")}</h1>
         </div>
         <Slider {...settings}>
           <div className="top-artist-slide relative" style={{ width: 150 }}>
-
             <div className="flag-avatar">
               <Avatar width={100} height={100} src='/img/artists/5.png' />
               <img src='/img/flags/Flag_of_Madagascar.svg' />
             </div>
-            <h1>Rema-En live</h1>
-
+            <h1>{t("Rema-En live")}</h1>
           </div>
           <div className="top-artist-slide relative" style={{ width: 150 }}>
-
             <div className="flag-avatar">
               <Avatar width={100} height={100} src='/img/artists/3.png' />
               <img src='/img/flags/Flag_of_Madagascar.svg' />
             </div>
-            <h1>Rema-En live</h1>
-
+            <h1>{t("Rema-En live")}</h1>
           </div>
           <div className="top-artist-slide relative" style={{ width: 150 }}>
-
             <div className="flag-avatar">
               <Avatar width={100} height={100} src='/img/artists/2.png' />
               <img src='/img/flags/Flag_of_Madagascar.svg' />
             </div>
-            <h1>Rema-En live</h1>
-
+            <h1>{t("Rema-En live")}</h1>
           </div>
           <div className="top-artist-slide relative" style={{ width: 150 }}>
-
             <div className="flag-avatar">
               <Avatar width={100} height={100} src='/img/artists/1.png' />
               <img src='/img/flags/Flag_of_Madagascar.svg' />
             </div>
-            <h1>Rema-En live</h1>
-
+            <h1>{t("Rema-En live")}</h1>
           </div>
-
         </Slider>
       </div>
-
     </div>
   )
 }

@@ -9,9 +9,10 @@ import { useSelector } from 'react-redux'
 import SliderNav from '../../components/SliderNav/SliderNav'
 import Tab from '../../components/Tabs/Tab'
 import Tabs from '../../components/Tabs/Tabs'
+import { useTranslation } from 'react-i18next';
 
 const Contacts = () => {
-
+    const { t } = useTranslation();
     const { user } = useSelector(store => store.user)
 
     const { data: contactsList,
@@ -44,16 +45,16 @@ const Contacts = () => {
         <div id='contacts-page'>
             <div className="left">
                 <div className="top mt-5">
-                    <h3>Mes contacts</h3>
+                    <h3>{t('Mes contacts')}</h3>
                 </div>
                 <div className="bottom">
                     <Tabs className='post-comments-tabs'>
-                        <Tab title={<span>Tous ({contactsList?.pages[0]?.totalItems})</span>}>
+                        <Tab title={<span>{t('Tous ')}({contactsList?.pages[0]?.totalItems})</span>}>
                             <ul className='contact-list'>
                                 {
                                     contactsListFetching ? (
                                         <>
-                                            <h1>Loading</h1>
+                                            <h1>{t('Loading')}</h1>
                                         </>
                                     ) : contactsListErr ? (
                                         <p>Error: {contactsListErr.message}</p>
@@ -67,7 +68,7 @@ const Contacts = () => {
                                                             <Link className='contact-name text-ellipsis' to={`${c.requester.name ? `portail/${c.requester.id}` : `profil/${c.requester.id}`}`}>{c.requester.name ? c.requester.name : `${c.requester.firstName} ${c.requester.lastName}`}</Link>
                                                             <span className="contact-date">23j</span>
                                                         </div>
-                                                        <span className='text-ellipsis'>2 contacts commun</span>
+                                                        <span className='text-ellipsis'>{t('2 contacts commun')}</span>
                                                     </div>
                                                     <div className="right flex gap-5">
                                                         <button className="btn btn-transparent"><Check2 size={22} /></button>
@@ -79,13 +80,13 @@ const Contacts = () => {
 
 
                                     )) : <div className="empty-job flex flex-column justify-content-center align-items-center gap-5">
-                                        <h4>Aucun contact en attente</h4>
-                                        <p className='text-center'>Nous vous invitons à créer une première offre d'emplois pour commencer le recrutement pour votre entreprise</p>
-                                        <Link to='/emplois/nouveau' className="btn btn-gradient">Prendre contact</Link>
+                                        <h4>{t('Aucun contact en attente')}</h4>
+                                        <p className='text-center'>{t("Nous vous invitons à créer une première offre d'emplois pour commencer le recrutement pour votre entreprise")}</p>
+                                        <Link to='/emplois/nouveau' className="btn btn-gradient">{t('Prendre contact')}</Link>
                                     </div>)
                                 }
                                 {contactsListFetchingNextPage
-                                    ? <h1>Loading</h1>
+                                    ? <h1>{t('Loading')}</h1>
                                     : contactsListNextPage
                                         ? ''
                                         : ''}
@@ -93,7 +94,7 @@ const Contacts = () => {
 
                             </ul>
                         </Tab>
-                        <Tab title={<span>Contacts</span>}>
+                        <Tab title={<span>{t('Contacts')}</span>}>
                             contenu
                         </Tab>
                     </Tabs>

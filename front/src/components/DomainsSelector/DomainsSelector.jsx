@@ -74,7 +74,7 @@ const DomainsSelector = ({ open, onClose }) => {
                 </div>
                 <div className="body">
                     <p className='text-center'><span>Ajoutez vos domaines préférés pour être au courant des dernières actualités concernant ces domaines </span>
-                        <small>&bull; Par défaut <strong>GateAfri</strong> vous suggère les domaines les plus populaires</small></p>
+                        <small>&bull; Par défaut <strong>FoundBrain</strong> vous suggère les domaines les plus populaires</small></p>
                     <div className='searchbar-sticky'>
                         <Searchbar placeholder='Rechercher un domaine' />
                     </div>

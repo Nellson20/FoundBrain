@@ -11,11 +11,13 @@ import StickySideBar from "../../components/StickySideBar/StickySideBar";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useTranslation } from 'react-i18next';
 
 
 const ReservationCarouseulSlide = ({ imagesUrls, priceReservation = null }) => {
+  
   const carouseulItem = useRef()
-
+  
   const settingsItemCarouseul = {
     arrows: false,
     dots: false,
@@ -50,6 +52,7 @@ const ReservationCarouseulSlide = ({ imagesUrls, priceReservation = null }) => {
 }
 
 const Explorer = () => {
+  const { t } = useTranslation();
   const devertisementSlide = useRef()
   const villeSlide = useRef()
   const videoSlide = useRef()
@@ -214,7 +217,7 @@ const Explorer = () => {
         <div className="invest">
           <StickySideBar top={20}>
             <div className="invest-content">
-              <h3>Pourquoi investir à {country?.name}?</h3>
+              <h3>{t('Pourquoi investir à')} {country?.name}?</h3>
 
               <div className="invest-gride">
 
@@ -223,54 +226,54 @@ const Explorer = () => {
                   <div className="invest-gride-svg">
                     <Bank />
                   </div>
-                  <p>Paysage diversifié, opportunités d'affaires, secteur touristique en plein essor.</p>
+                  <p>{t("Paysage diversifié, opportunités d'affaires, secteur touristique en plein essor.")}</p>
                 </div>
 
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Coin />
                   </div>
-                  <p>Réglementation favorable, stabilité politique, facilité d'accès aux marchés régionaux.</p>
+                  <p>{t("Réglementation favorable, stabilité politique, facilité d'accès aux marchés régionaux.")}</p>
                 </div>
 
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Wallet />
                   </div>
-                  <p>Main-d'œuvre qualifiée, coûts compétitifs, infrastructures en développement constant.</p>
+                  <p>{t("Main-d'œuvre qualifiée, coûts compétitifs, infrastructures en développement constant.")}</p>
                 </div>
 
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Wallet />
                   </div>
-                  <p>Programme gouvernemental pour attirer les investissements étrangers, climat d'investissement positif.</p>
+                  <p>{t("Programme gouvernemental pour attirer les investissements étrangers, climat d'investissement positif.")}</p>
                 </div>
 
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Safe />
                   </div>
-                  <p>Culture diversifiée et riche, destination touristique prisée, opportunités dans l'industrie hôtelière.</p>
+                  <p>{t("Culture diversifiée et riche, destination touristique prisée, opportunités dans l'industrie hôtelière.")}</p>
                 </div>
 
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Safe />
                   </div>
-                  <p>Avantages fiscaux, incitations gouvernementales, zones franches attractives pour les entreprises.</p>
+                  <p>{t('Avantages fiscaux, incitations gouvernementales, zones franches attractives pour les entreprises.')}</p>
                 </div>
                 <div className="invest-gride-item">
                   <div className="invest-gride-svg">
                     <Safe />
                   </div>
-                  <p>Accords commerciaux internationaux, hub maritime stratégique dans la région.</p>
+                  <p>{t('Accords commerciaux internationaux, hub maritime stratégique dans la région.')}</p>
                 </div>
               </div>
             </div>
 
             <div className="invest-text">
-              <h1>7 BONNES RAISONS DE CHOISIR MADAGASCAR</h1>
+              <h1>{t('7 BONNES RAISONS DE CHOISIR MADAGASCAR')}</h1>
 
               <div className="invest-text-content">
                 <div className="invest-text-item">
@@ -280,9 +283,9 @@ const Explorer = () => {
                       <img src="/img/other/un.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}
                         </h1>
-                        <p>{country?.name} est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale</p>
+                        <p>{country?.name} {t("est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale")}</p>
                       </div>
                     </li>
 
@@ -290,9 +293,9 @@ const Explorer = () => {
                       <img src="/img/other/deux.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}
                         </h1>
-                        <p>{country?.name} est doté d’un potentiel minier, agricole, énergétique, de pêche. Particulièrement dense et variée, qui doit être exploitée. L’unicité et la richesse de sa biodiversité (le taux de biodiversité est de 90% (n ° 1 en Afrique) et le taux d’endémicité est le plus élevé au monde) sont également un atout pour les investissements touristiques.</p>
+                        <p>{country?.name} {t("est doté d’un potentiel minier, agricole, énergétique, de pêche. Particulièrement dense et variée, qui doit être exploitée. L’unicité et la richesse de sa biodiversité (le taux de biodiversité est de 90% (n ° 1 en Afrique) et le taux d’endémicité est le plus élevé au monde) sont également un atout pour les investissements touristiques.")}</p>
                       </div>
                     </li>
 
@@ -301,10 +304,10 @@ const Explorer = () => {
                       <img src="/img/other/trois.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}
                         </h1>
 
-                        <p>L’éligibilité de Madagascar à la Loi sur la croissance et les opportunités en Afrique (AGOA) avec les États-Unis et la signature de l’accord de partenariat économique (EPA) avec l’Union européenne permettent aux entreprises du pays d’exporter vers ces marchés sans droits de douane. Cela se reflète dans une forte dynamique commerciale entre Madagascar et les deux pays, les exportations de Madagascar vers les États-Unis augmentant de 12,8% en 2016 et de l’Union européenne de 44,6% en 2016.</p>
+                        <p>{t("L’éligibilité de Madagascar à la Loi sur la croissance et les opportunités en Afrique (AGOA) avec les États-Unis et la signature de l’accord de partenariat économique (EPA) avec l’Union européenne permettent aux entreprises du pays d’exporter vers ces marchés sans droits de douane. Cela se reflète dans une forte dynamique commerciale entre Madagascar et les deux pays, les exportations de Madagascar vers les États-Unis augmentant de 12,8% en 2016 et de l’Union européenne de 44,6% en 2016.")}</p>
                       </div>
                     </li>
 
@@ -313,8 +316,8 @@ const Explorer = () => {
                       <img src="/img/other/quatre.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS</h1>
-                        <p>{country?.name} met en œuvre des réformes juridiques, procédurales et administratives importantes visant à faciliter les pratiques commerciales et à encourager les investissements locaux et étrangers. D’ici 2016, plus de 20 réformes ont été mises en œuvre dans les domaines du droit des affaires, la justice commerciale, import-export, le démarrage d’une entreprise, la facilitation du crédit, la fiscalité, etc. Diverses lois favorisant les investissements ont été promulgués, notamment la loi sur les Free Zones and Companies, qui permet aux sociétés à part entière de bénéficier d’exonérations de droits de douane et de TVA sur les importations; et les impôts sur le revenu pour les 15 premières années.
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}</h1>
+                        <p>{country?.name} {t("met en œuvre des réformes juridiques, procédurales et administratives importantes visant à faciliter les pratiques commerciales et à encourager les investissements locaux et étrangers. D’ici 2016, plus de 20 réformes ont été mises en œuvre dans les domaines du droit des affaires, la justice commerciale, import-export, le démarrage d’une entreprise, la facilitation du crédit, la fiscalité, etc. Diverses lois favorisant les investissements ont été promulgués, notamment la loi sur les Free Zones and Companies, qui permet aux sociétés à part entière de bénéficier d’exonérations de droits de douane et de TVA sur les importations; et les impôts sur le revenu pour les 15 premières années.")}
 
                         </p>
                       </div>
@@ -325,8 +328,8 @@ const Explorer = () => {
                       <img src="/img/other/cinq.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS</h1>
-                        <p>{country?.name} est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale</p>
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}</h1>
+                        <p>{country?.name} {t("est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale")}</p>
                       </div>
                     </li>
 
@@ -335,8 +338,8 @@ const Explorer = () => {
                       <img src="/img/other/six.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS</h1>
-                        <p>{country?.name} est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale</p>
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}</h1>
+                        <p>{country?.name} {t("est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale")}</p>
                       </div>
                     </li>
 
@@ -344,8 +347,8 @@ const Explorer = () => {
                       <img src="/img/other/sept.png" alt="image" />
                       <div>
                         <h1 className="purple-text-gradient">
-                          ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS</h1>
-                        <p>{country?.name} est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale</p>
+                          {t('ACCÈS POTENTIEL À UN MARCHÉ DE 600 MILLIONS DE CONSOMMATEURS')}</h1>
+                        <p>{country?.name} {t("est membre de la Communauté de développement de l’Afrique australe (SADC), COMESA (Marché commun pour l’Afrique orientale et australe) et la COI (Commission de l’océan Indien), des organisations régionales de libre-échange totalisant plus de 600 millions de consommateurs potentiels. Investir à Madagascar donnera aux investisseurs un accès – en plus des avantages concurrentiels du pays – à ces zones de libre-échange à fort potentiel. En juillet, Madagascar a signé l’Accord tripartite de libre-échange (TFTA), qui combine SADC, COMESA et la Communauté de l’Afrique de l’Est (EAC), qui comprend 57% de la population africaine totale")}</p>
                       </div>
                     </li>
 
@@ -363,8 +366,8 @@ const Explorer = () => {
 
           <StickySideBar top={20} bottom={5}>
             <div className="top-destination">
-              <h3>Découvrez des destinations qui éveilleront vos sens</h3>
-              <p><a href="#">Afficher plus</a></p>
+              <h3>{t('Découvrez des destinations qui éveilleront vos sens')}</h3>
+              <p><a href="#">{t('Afficher plus')}</a></p>
               <div className="travel-caroseul relative">
                 <CarreSlider donneSlider={[
                   {
@@ -412,10 +415,10 @@ const Explorer = () => {
 
               <div className="ville-title">
                 <div>
-                  <h3>Trouvez des idées pour votre prochain voyage</h3>
+                  <h3>{t('Trouvez des idées pour votre prochain voyage')}</h3>
                 </div>
                 <div>
-                  <p><a href="#">Plus</a></p>
+                  <p><a href="#">{t('Plus')}</a></p>
                 </div>
               </div>
               <div className="ville-carouseul relative">
@@ -425,22 +428,22 @@ const Explorer = () => {
                   <div className="ville-item-premier relative">
                     <img src="/img/other/baobab.webp" alt="image" />
                     <div >
-                      <p>Explorez la beauté unique de Morondava à Madagascar</p>
+                      <p>{t('Explorez la beauté unique de Morondava à Madagascar')}</p>
                     </div>
                   </div>
 
                   <div className="ville-item relative">
                     <img src="/img/other/tamatave_4.jpg" alt="image" />
                     <div>
-                      <p>Explorez Tamatave, un joyau côtier de Madagascar</p>
-                      <p>Découvrez la beauté côtière de Tamatave, une destination exceptionnelle à Madagascar...</p>
+                      <p>{t('Explorez Tamatave, un joyau côtier de Madagascar')}</p>
+                      <p>{t('Découvrez la beauté côtière de Tamatave, une destination exceptionnelle à Madagascar...')}</p>
                     </div>
                   </div>
                   <div className="ville-item relative">
                     <img src="/img/other/antananarivo.jpg" alt="image" />
                     <div>
-                      <p>Fianarantsoa est une charmante ville de Madagascar, nichée au cœur des collines.</p>
-                      <p>Explorez les ruelles pittoresques, découvrez l'histoire captivant...</p>
+                      <p>{t('Fianarantsoa est une charmante ville de Madagascar, nichée au cœur des collines.')}</p>
+                      <p>{t("Explorez les ruelles pittoresques, découvrez l'histoire captivant..")}.</p>
 
                     </div>
                   </div>
@@ -481,7 +484,7 @@ const Explorer = () => {
 
             <div className="nature">
               <div className="nature-title">
-                <h3>Explorez nos catégories de voyages</h3>
+                <h3>{t('Explorez nos catégories de voyages')}</h3>
               </div>
 
               <div class="grille-item-nature">
@@ -489,7 +492,7 @@ const Explorer = () => {
                 <div class="grille-item">
                   <img src="/img/other/paysage_3.png" alt="image" />
                   <div className="grille-item-content">
-                    <p>la beauté de la faune</p>
+                    <p>{t('la beauté de la faune')}</p>
                   </div>
                 </div>
 
@@ -497,13 +500,13 @@ const Explorer = () => {
                 <div class="grille-item">
                   <img src="/img/other/vue-du-ciel-calypso-tamatave.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Les plus belles plages.</p>
+                    <p>{t('Les plus belles plages.')}</p>
                   </div>
                 </div>
                 <div class="grille-item">
                   <img src="/img/other/nosybe.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Plage et iles.</p>
+                    <p>{t('Plage et iles.')}</p>
                   </div>
                 </div>
 
@@ -511,21 +514,21 @@ const Explorer = () => {
                 <div class="grille-item">
                   <img src="/img/other/antananarivo.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Romantique.</p>
+                    <p>{t('Romantique.')}</p>
                   </div>
                 </div>
 
                 <div class="grille-item">
                   <img src="/img/other/paysage_8.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Paysage.</p>
+                    <p>{t('Paysage.')}</p>
                   </div>
                 </div>
 
                 <div class="grille-item">
                   <img src="/img/other/paysage_10.webp" alt="image" />
                   <div className="grille-item-content">
-                    <p>Faune et flore.</p>
+                    <p>{t('Faune et flore.')}</p>
                   </div>
 
                 </div>
@@ -533,14 +536,14 @@ const Explorer = () => {
                 <div class="grille-item">
                   <img src="/img/other/plage.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Aventure.</p>
+                    <p>{t('Aventure.')}</p>
                   </div>
                 </div>
 
                 <div class="grille-item">
                   <img src="/img/other/paysage_4.jpg" alt="image" />
                   <div className="grille-item-content">
-                    <p>Coucher de soleil.</p>
+                    <p>{t('Coucher de soleil.')}</p>
                   </div>
                 </div>
 
@@ -550,10 +553,10 @@ const Explorer = () => {
             <div className="video">
               <div className="video-title">
                 <div>
-                  <h3>Videos/Court metrage</h3>
+                  <h3>{t('Videos/Court metrage')}</h3>
                 </div>
                 <div>
-                  <p><a href="#">Plus</a></p>
+                  <p><a href="#">{t('Plus')}</a></p>
                 </div>
               </div>
               <div className="video-carouseul relative">
@@ -655,8 +658,8 @@ const Explorer = () => {
             <div className="reservation">
 
               <div className="reservation-title">
-                <h3>Réservation d'Hôtel</h3>
-                <p><a href="#">Afficher plus</a></p>
+                <h3>{t("Réservation d'Hôtel")}</h3>
+                <p><a href="#">{t('Afficher plus')}</a></p>
               </div>
 
               <div className="reservation-content">
@@ -664,8 +667,8 @@ const Explorer = () => {
                 <div className="reservation-item-left">
                   <div>
                     <PlayFill size={50} style={{ color: "white" }} />
-                    <h1>Réservez des hôtels pour rester.</h1>
-                    <p>pendant que vous êtes à Madagascar</p>
+                    <h1>{t('Réservez des hôtels pour rester.')}</h1>
+                    <p>{t('pendant que vous êtes à Madagascar')}</p>
                   </div>
                 </div>
 
@@ -799,19 +802,19 @@ const Explorer = () => {
         >
 
           <div className="nav-bar-item flex justify-content-center align-items-center active">
-            <p>A propos</p>
+            <p>{t('A propos')}</p>
           </div>
           <div className="nav-bar-item flex justify-content-center align-items-center">
-            <p>Géographie</p>
+            <p>{t('Géographie')}</p>
           </div>
           <div className="nav-bar-item flex justify-content-center align-items-center">
-            <p>Histoire</p>
+            <p>{t('Histoire')}</p>
           </div>
           <div className="nav-bar-item flex justify-content-center align-items-center">
-            <p>Politique</p>
+            <p>{t('Politique')}</p>
           </div>
           <div className="nav-bar-item flex justify-content-center align-items-center">
-            <p>société</p>
+            <p>{t('société')}</p>
           </div>
 
         </Slider>
@@ -820,37 +823,37 @@ const Explorer = () => {
       <div className="country-details">
         <div className="country-details-section-right">
           <StickySideBar top={75}>
-            <div className="country-details-heading">Sommaire</div>
+            <div className="country-details-heading">{t('Sommaire')}</div>
             <div className="country-details-list">
               <ul>
                 <li>
                   <div className="country-details-item">
                     <InfoSquare />
                   </div>
-                  A propos
+                  {t('A propos')}
                 </li>
 
                 <li>
                   <div className="country-details-item">
                     <Globe />
                   </div>
-                  Géographie
+                  {t('Géographie')}
                 </li>
                 <li>
                   <div className="country-details-item">
                     <Hourglass />
                   </div>
-                  Histoire
+                  {t('Histoire')}
                 </li>
                 <li>
                   <div className="country-details-item">
                     <Signpost />
-                  </div>Politique
+                  </div>{t('Politique')}
                 </li>
                 <li>
                   <div className="country-details-item">
                     <Signpost />
-                  </div>Société
+                  </div>{t('Société')}
                 </li>
               </ul>
             </div>
@@ -861,7 +864,7 @@ const Explorer = () => {
           {
             country?.description &&
             <section className="country-details-navbar-item">
-              <h1>À propos</h1>
+              <h1>{t('A propos')}</h1>
               <p>{country?.description}</p>
             </section>
           }
@@ -880,7 +883,7 @@ const Explorer = () => {
 
           <div className="geographie-detail-content">
             <div className="geographie-detail-title">
-              <h1> Géographie
+              <h1> {t('Géographie')}
               </h1>
             </div>
 
@@ -888,20 +891,20 @@ const Explorer = () => {
               <div className="geographie-detail-left">
 
                 <div className="geographie-detail-left-item">
-                  <h3>Toponymie</h3>
+                  <h3>{t('Toponymie')}</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quaerat natus rerum nam velit eaque laudantium tempore eius nesciunt suscipit perferendis sequi in facere, doloremque quo, quod eveniet. Explicabo provident, nihil exercitationem beatae aspernatur ducimus quos natus rem rerum, aliquid amet eum molestiae? Ex ullam a explicabo rerum obcaecati, perferendis deleniti reiciendis iusto. Reprehenderit, voluptatibus ducimus deleniti eaque quas perferendis. Natus nam molestias aliquid numquam aut facilis suscipit, mollitia ducimus, dicta, minus totam rerum laudantium vero laborum labore explicabo? Libero asperiores natus quisquam illo ab animi veniam omnis ea veritatis in, corporis voluptates placeat officiis, provident officia aperiam magnam dolorum?
                   </p>
                 </div>
 
                 <div className="geographie-detail-left-item">
-                  <h3>Situation, délimitation</h3>
+                  <h3>{t('Situation, délimitation')}</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quaerat natus rerum nam velit eaque laudantium tempore eius nesciunt suscipit perferendis sequi in facere, doloremque quo, quod eveniet. Explicabo provident, nihil exercitationem beatae aspernatur ducimus quos natus rem rerum, aliquid amet eum molestiae? Ex ullam a explicabo rerum obcaecati, perferendis deleniti reiciendis iusto. Reprehenderit, voluptatibus ducimus deleniti eaque quas perferendis. Natus nam molestias aliquid numquam aut facilis suscipit, mollitia ducimus, dicta, minus totam rerum laudantium vero laborum labore explicabo? Libero asperiores natus quisquam illo ab animi veniam omnis ea veritatis in, corporis voluptates placeat officiis, provident officia aperiam magnam dolorum?
                   </p>
                 </div>
                 <div className="geographie-detail-left-item">
-                  <h3>Relief</h3>
+                  <h3>{t('Relief')}</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea quaerat natus rerum nam velit eaque laudantium tempore eius nesciunt suscipit perferendis sequi in facere, doloremque quo, quod eveniet. Explicabo provident, nihil exercitationem beatae aspernatur ducimus quos natus rem rerum, aliquid amet eum molestiae? Ex ullam a explicabo rerum obcaecati, perferendis deleniti reiciendis iusto. Reprehenderit, voluptatibus ducimus deleniti eaque quas perferendis. Natus nam molestias aliquid numquam aut facilis suscipit, mollitia ducimus, dicta, minus totam rerum laudantium vero laborum labore explicabo? Libero asperiores natus quisquam illo ab animi veniam omnis ea veritatis in, corporis voluptates placeat officiis, provident officia aperiam magnam dolorum?
                   </p>

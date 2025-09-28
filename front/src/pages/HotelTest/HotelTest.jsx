@@ -7,7 +7,10 @@ import { useState, useRef } from 'react';
 import { CloseButton } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { HashRouter } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
+
 const HotelTest = () => {
+    const { t } = useTranslation()
     const [openMenu, setOpenMenu] = useState(false)
     const [opentest, setOpenTest] = useState(false)
     const [openAccordeon, setAccordeon] = useState(false)
@@ -44,65 +47,60 @@ const HotelTest = () => {
         <main className='relative'>
             <nav className='testa'>
                 <ul className='flex relative'>
-                    <li>Acceui</li>
-                    <li>Profil</li>
-                    <li>Contact</li>
-                    <li>Emplacement</li>
+                    <li>{t('Acceui')}</li>
+                    <li>{t('Profil')}</li>
+                    <li>{t('Contact')}</li>
+                    <li>{t('Emplacement')}</li>
                     <li className={`menu ${openMenu ? 'test' : ''}`} onClick={() => setOpenMenu(true)} >
                         <GiHamburgerMenu />
                     </li>
                 </ul>
             </nav>
 
-
-
-
             <div className={`side-nav absolute${openMenu ? ' open' : ''}`}>
                 <ul>
-                    <li onClick={() => setOpenMenu(false)}>Close</li>
-                    <li>Acceui</li>
-                    <li>Profil</li>
-                    <li>Contact</li>
-                    <li>Emplacement</li>
+                    <li onClick={() => setOpenMenu(false)}>{t('Close')}</li>
+                    <li>{t('Acceui')}</li>
+                    <li>{t('Profil')}</li>
+                    <li>{t('Contact')}</li>
+                    <li>{t('Emplacement')}</li>
                 </ul>
             </div>
             <p onClick={testRef}>a</p>
             <div className='content-test' ref={refTest}>
 
-                <p>Ceci est une test</p>
-                <p onClick={() => setOpenTest(true)}>Plus</p>
+                <p>{t('Ceci est une test')}</p>
+                <p onClick={() => setOpenTest(true)}>{t('Plus')}</p>
 
                 <div className={`contenu-item ${opentest ? ' azert' : ''}`}>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem voluptatibus accusantium adipisci provident nihil exercitationem tenetur illum quas fugit quibusdam.
-                    </p>
+                    <p>{t('Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem voluptatibus accusantium adipisci provident nihil exercitationem tenetur illum quas fugit quibusdam.')}</p>
                 </div>
             </div>
 
             <div>
                 <div ref={myRef}>
-                    <p>Ceci est mon composant</p>
+                    <p>{t('Ceci est mon composant')}</p>
                 </div>
-                <button onClick={handleClick}>Afficher les propriétés</button>
+                <button onClick={handleClick}>{t('Afficher les propriétés')}</button>
             </div>
 
             <div className='accordeon '>
                 <div className="accordeon-title flex algin-items-center gap-15">
-                    <p>Accordion 1</p>
+                    <p>{t('Accordion 1')}</p>
                     <div onClick={() => { setAccordeon(true) }}>
                         <GiTopHat />
                     </div>
 
                 </div>
                 <div className={`accordeon-content${openAccordeon ? ' open' : ''}`}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates neque perferendis corporis facilis id voluptate corrupti ipsum veritatis ullam velit.
-                    <p onClick={() => setAccordeon(false)}>--</p>
+                    {t('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates neque perferendis corporis facilis id voluptate corrupti ipsum veritatis ullam velit.')}
+                    <p onClick={() => setAccordeon(false)}>{t('--')}</p>
                 </div>
 
             </div>
 
-
-            <div class="img">
-                <div class="hover-container">
+            <div className="img">
+                <div className="hover-container">
                     <img src='/img/other/chambre_0.jpg' alt='' />
                 </div>
             </div>

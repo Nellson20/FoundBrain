@@ -7,10 +7,12 @@ import { ChatSquareQuote, Bell, ChevronLeft, Person } from 'react-bootstrap-icon
 import Avatar from '../../components/Avatar/Avatar'
 import { useSelector } from 'react-redux'
 import RightSidebar from '../../components/RightSidebar/RightSidebar'
-
+import { useTranslation } from 'react-i18next'
 
 const MusicTop = ({ setOpenRightbar = () => { } }) => {
   const { user } = useSelector(store => store.user)
+  const { t } = useTranslation()
+
   return (
     <>
       <div id='music-top' className='flex align-items-center'>
@@ -18,7 +20,7 @@ const MusicTop = ({ setOpenRightbar = () => { } }) => {
           <Link to='/musique'><img src='/img/logo/afrimuzlogo.png'/></Link>
         </div>
         <div className="center">
-          <Searchbar placeholder='Rechercher une musique sur Afrimuz' />
+          <Searchbar placeholder={t('Rechercher une musique sur Afrimuz')} />
         </div>
         <div className="right flex gap-5">
           <RequireAuthOnClick>
@@ -36,11 +38,10 @@ const MusicTop = ({ setOpenRightbar = () => { } }) => {
                 <ChevronLeft size={16} />
               </span>
               :
-              <Link to="/connexion"><Person size={23} /> Se connecter</Link>
+              <Link to="/connexion"><Person size={23} /> {t('Se connecter')}</Link>
           }
         </div>
       </div>
-      
     </>
   )
 }

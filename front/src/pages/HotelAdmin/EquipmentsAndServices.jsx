@@ -7,47 +7,49 @@ import {
 } from "../../components/PictureCard/PictureCard";
 import { useState } from "react";
 import { PlusCircle } from "react-bootstrap-icons";
+import { useTranslation } from 'react-i18next';
 
 const EquipmentsAndServices = () => {
+  const { t } = useTranslation();
+
   const [pool, setPool] = useState(null);
   const [restaurant, setRestarant] = useState(null);
   const [roomService, setRoomService] = useState(null);
   return (
     <div id="equipment-service">
-      <h2 className="mt-15">Equipements et services</h2>
+      <h2 className="mt-15">{t("Equipements et services")}</h2>
       <p>
-        Assurez-vous de répertorier et de tenir à jour vos équipements dans
-        cette section.{" "}
+        {t("Assurez-vous de répertorier et de tenir à jour vos équipements dans cette section.")}{" "}
       </p>
       <div className="info-container elevated-card">
-        <h3>Informations sur le bâtiment</h3>
+        <h3>{t("Informations sur le bâtiment")}</h3>
         <div className="mt-15">
-          <label htmlFor="">Nombre d'etage du bâtiment</label>
+          <label htmlFor="">{t("Nombre d'etage du bâtiment")}</label>
           <input type="number" />
         </div>
         <div className="mt-15">
-          <label htmlFor="">Nombre total d'hébergements dans cet établissement</label>
+          <label htmlFor="">{t("Nombre total d'hébergements dans cet établissement")}</label>
           <input type="number" />
         </div>
       </div>
       <div className="container elevated-card">
-        <h3>Les meilleurs équipements</h3>
+        <h3>{t("Les meilleurs équipements")}</h3>
         <div className="item">
           <div className="head">
-            <h4>Piscine</h4>
+            <h4>{t("Piscine")}</h4>
             <div className="options">
               <ul>
                 <li
                   className={pool === true ? "active" : ""}
                   onClick={() => setPool(true)}
                 >
-                  Oui
+                  {t("Oui")}
                 </li>
                 <li
                   className={pool === false ? "active" : ""}
                   onClick={() => setPool(false)}
                 >
-                  Non
+                  {t("Non")}
                 </li>
               </ul>
             </div>
@@ -57,132 +59,132 @@ const EquipmentsAndServices = () => {
               <div className="complement mt-15">
                 <Accordion isOpen={true}>
                   <div className="complement-head">
-                    <h3>Piscine 1</h3>
+                    <h3>{t("Piscine 1")}</h3>
                   </div>
                   <div className="complement-body">
                     <div className="box">
-                      <h4>Nom</h4>
+                      <h4>{t("Nom")}</h4>
                       <input type="text" defaultValue="Piscine 1"/>
                     </div>
                     <div className="box">
-                      <h4>Type</h4>
+                      <h4>{t("Type")}</h4>
                       <div className=" input-container flex">
                         <div className="flex gap-5">
                           <input type="radio" name="type" id="inside" />
-                          <label htmlFor="inside">Intérieur</label>
+                          <label htmlFor="inside">{t("Intérieur")}</label>
                         </div>
                         <div className="flex gap-5">
                           <input type="radio" name="type" id="outside" />
-                          <label htmlFor="outside">Extérieur</label>
+                          <label htmlFor="outside">{t("Extérieur")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Payant</h4>
+                      <h4>{t("Payant")}</h4>
                       <div className="input-container flex">
                         <div className="flex gap-5">
                           <input type="radio" name="paying" id="free" />
-                          <label htmlFor="free">Gratuit</label>
+                          <label htmlFor="free">{t("Gratuit")}</label>
                         </div>
                         <div className="flex gap-5">
                           <input type="radio" name="paying" id="paid" />
-                          <label htmlFor="paid">Payant</label>
+                          <label htmlFor="paid">{t("Payant")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Restriction d'âge</h4>
+                      <h4>{t("Restriction d'âge")}</h4>
                       <div className="input-container flex">
                         <div className="flex gap-5">
                           <input type="radio" name="age" id="all" />
-                          <label htmlFor="all">Pour tous les âges</label>
+                          <label htmlFor="all">{t("Pour tous les âges")}</label>
                         </div>
                         <div className="flex gap-5">
                           <input type="radio" name="age" id="kids" />
-                          <label htmlFor="kids">Pour les enfants</label>
+                          <label htmlFor="kids">{t("Pour les enfants")}</label>
                         </div>
                         <div className="flex gap-5">
                           <input type="radio" name="age" id="adults" />
-                          <label htmlFor="adults">Pour les adultes</label>
+                          <label htmlFor="adults">{t("Pour les adultes")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Caractéristiques de la piscine</h4>
+                      <h4>{t("Caractéristiques de la piscine")}</h4>
                       <div className="input-container checkbox flex">
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Sur le toit</label>
+                          <label htmlFor="">{t("Sur le toit")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Espace peu profond</label>
+                          <label htmlFor="">{t("Espace peu profond")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">A débordement</label>
+                          <label htmlFor="">{t("A débordement")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Chauffée</label>
+                          <label htmlFor="">{t("Chauffée")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Eau salée</label>
+                          <label htmlFor="">{t("Eau salée")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Vue imprenable</label>
+                          <label htmlFor="">{t("Vue imprenable")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Petite piscine</label>
+                          <label htmlFor="">{t("Petite piscine")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Équipements</h4>
+                      <h4>{t("Équipements")}</h4>
                       <div className="input-container checkbox flex">
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Chaises Longues</label>
+                          <label htmlFor="">{t("Chaises Longues")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Toboggan aquatique</label>
+                          <label htmlFor="">{t("Toboggan aquatique")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Bar dans la piscine</label>
+                          <label htmlFor="">{t("Bar dans la piscine")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Couverture de piscine</label>
+                          <label htmlFor="">{t("Couverture de piscine")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Serviettes</label>
+                          <label htmlFor="">{t("Serviettes")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Jouets</label>
+                          <label htmlFor="">{t("Jouets")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Parasols</label>
+                          <label htmlFor="">{t("Parasols")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Barrière de sécurité</label>
+                          <label htmlFor="">{t("Barrière de sécurité")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Horaires d'ouverture</h4>
+                      <h4>{t("Horaires d'ouverture")}</h4>
                       <div className="input-container">
                         <div className="hour flex gap-15">
                           <div>
-                            <label htmlFor="startHours">À partir de:</label>
+                            <label htmlFor="startHours">{t("À partir de:")}</label>
                             <input
                               type="time"
                               name="startHours"
@@ -190,44 +192,44 @@ const EquipmentsAndServices = () => {
                             />
                           </div>
                           <div>
-                            <label htmlFor="endHours">À:</label>
+                            <label htmlFor="endHours">{t("À:")}</label>
                             <input type="time" name="endHours" id="endHours" />
                           </div>
                         </div>
                         <div className="week flex gap-20 mt-10">
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Lun.</span>
+                            <span>{t("Lun.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Mar.</span>
+                            <span>{t("Mar.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Mer.</span>
+                            <span>{t("Mer.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Jeu.</span>
+                            <span>{t("Jeu.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Ven.</span>
+                            <span>{t("Ven.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Sam.</span>
+                            <span>{t("Sam.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Dim.</span>
+                            <span>{t("Dim.")}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="photos box">
-                      <h4>Photos</h4>
+                      <h4>{t("Photos")}</h4>
                       <div className="flex flex-wrap gap-15 mt-5">
                         <PictureCard path="/img/other/hotelbanner.jpg" />
                         <AddPictureCard />
@@ -237,27 +239,28 @@ const EquipmentsAndServices = () => {
                 </Accordion>
               </div>
               <button className="btn-orange mt-15">
-                <PlusCircle size={20} /> Ajouter
+                <PlusCircle size={20} /> {t("Ajouter")}
               </button>
             </>
           )}
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Restaurant</h4>
+            <h4>{t("Restaurant")}</h4>
             <div className="options">
               <ul>
                 <li
                   className={restaurant === true ? "active" : ""}
                   onClick={() => setRestarant(true)}
                 >
-                  Oui
+                  {t("Oui")}
                 </li>
                 <li
                   className={restaurant === false ? "active" : ""}
                   onClick={() => setRestarant(false)}
                 >
-                  Non
+                  {t("Non")}
                 </li>
               </ul>
             </div>
@@ -267,123 +270,116 @@ const EquipmentsAndServices = () => {
               <div className="complement mt-15">
                 <Accordion isOpen={true}>
                   <div className="complement-head">
-                    <h3>Restaurant 1</h3>
+                    <h3>{t("Restaurant 1")}</h3>
                   </div>
                   <div className="complement-body">
                     <div className="box">
-                      <h4>Nom</h4>
-                      <input type="text" defaultValue="Restaurant 1"/>
+                      <h4>{t("Nom")}</h4>
+                      <input type="text" defaultValue={t("Restaurant 1")} />
                     </div>
                     <div className="box">
-                      <h4>Type de menu</h4>
+                      <h4>{t("Type de menu")}</h4>
                       <div className=" input-container checkbox flex">
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="carte">A la carte</label>
+                          <label htmlFor="carte">{t("A la carte")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="buffet">Buffet</label>
+                          <label htmlFor="buffet">{t("Buffet")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Caractéristiques du restaurant</h4>
+                      <h4>{t("Caractéristiques du restaurant")}</h4>
                       <div className="input-container checkbox flex">
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">
-                            Réservé exclusivement aux clients séjournant dans
-                            l'établissement
-                          </label>
+                          <label htmlFor="">{t("Réservé exclusivement aux clients séjournant dans l'établissement")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Résérvation acceptée</label>
+                          <label htmlFor="">{t("Résérvation acceptée")}</label>
                         </div>
                         <div className="flex gap-5">
                           <CheckBox />
-                          <label htmlFor="">Table a l'extérieur</label>
+                          <label htmlFor="">{t("Table a l'extérieur")}</label>
                         </div>
                       </div>
                     </div>
                     <div className="box select">
                       <div>
-                        <label htmlFor="">Cuisine</label>
+                        <label htmlFor="">{t("Cuisine")}</label>
                         <select name="" id="">
-                          <option value="">Choisir</option>
+                          <option value="">{t("Choisir")}</option>
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="">Régimes alimentaires</label>
+                        <label htmlFor="">{t("Régimes alimentaires")}</label>
                         <select name="" id="">
-                          <option value="">Choisir</option>
+                          <option value="">{t("Choisir")}</option>
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="">Ambiance</label>
+                        <label htmlFor="">{t("Ambiance")}</label>
                         <select name="" id="">
-                          <option value="">Choisir</option>
+                          <option value="">{t("Choisir")}</option>
                         </select>
                       </div>
                       <div>
-                        <label htmlFor="">Ouvert pour</label>
+                        <label htmlFor="">{t("Ouvert pour")}</label>
                         <select name="" id="">
-                          <option value="">Choisir</option>
+                          <option value="">{t("Choisir")}</option>
                         </select>
                       </div>
                     </div>
                     <div className="box">
-                      <h4>Horaires d'ouverture</h4>
+                      <h4>{t("Horaires d'ouverture")}</h4>
                       <div className="input-container">
                         <div className="hour flex gap-15">
                           <div>
-                            <label htmlFor="startHours">À partir de:</label>
-                            <input
-                              type="time"
-                              name="startHours"
-                              id="startHours"
-                            />
+                            <label htmlFor="startHours">{t("À partir de:")}</label>
+                            <input type="time" name="startHours" id="startHours" />
                           </div>
                           <div>
-                            <label htmlFor="endHours">À:</label>
+                            <label htmlFor="endHours">{t("À:")}</label>
                             <input type="time" name="endHours" id="endHours" />
                           </div>
                         </div>
                         <div className="week flex gap-20 mt-10">
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Lun.</span>
+                            <span>{t("Lun.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Mar.</span>
+                            <span>{t("Mar.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Mer.</span>
+                            <span>{t("Mer.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Jeu.</span>
+                            <span>{t("Jeu.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Ven.</span>
+                            <span>{t("Ven.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Sam.</span>
+                            <span>{t("Sam.")}</span>
                           </div>
                           <div className="flex gap-5">
                             <CheckBox checked={true} />
-                            <span>Dim.</span>
+                            <span>{t("Dim.")}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="photos box">
-                      <h4>Photos</h4>
+                      <h4>{t("Photos")}</h4>
                       <div className="flex flex-wrap gap-15 mt-5">
                         <PictureCard path="/img/other/restaurant.jpg" />
                         <AddPictureCard />
@@ -393,27 +389,27 @@ const EquipmentsAndServices = () => {
                 </Accordion>
               </div>
               <button className="btn-orange mt-15">
-                <PlusCircle size={20} /> Ajouter
+                <PlusCircle size={20} /> {t("Ajouter")}
               </button>
             </>
           )}
         </div>
         <div className="item">
           <div className="head">
-            <h4>Service d'étage</h4>
+            <h4>{t("Service d'étage")}</h4>
             <div className="options">
               <ul>
                 <li
                   className={roomService === true ? "active" : ""}
                   onClick={() => setRoomService(true)}
                 >
-                  Oui
+                  {t("Oui")}
                 </li>
                 <li
                   className={roomService === false ? "active" : ""}
                   onClick={() => setRoomService(false)}
                 >
-                  Non
+                  {t("Non")}
                 </li>
               </ul>
             </div>
@@ -421,540 +417,293 @@ const EquipmentsAndServices = () => {
           {roomService && (
             <div className="complement mt-15">
               <div className="box">
-                <h4>Payant</h4>
+                <h4>{t("Payant")}</h4>
                 <div className=" input-container flex">
                   <div className="flex gap-5">
                     <input type="radio" name="roomServicePaying" id="free" />
-                    <label htmlFor="free">Gratuit</label>
+                    <label htmlFor="free">{t("Gratuit")}</label>
                   </div>
                   <div className="flex gap-5">
                     <input type="radio" name="roomServicePaying" id="paid" />
-                    <label htmlFor="paid">Payant</label>
+                    <label htmlFor="paid">{t("Payant")}</label>
                   </div>
                 </div>
               </div>
             </div>
           )}
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Bar</h4>
+            <h4>{t("Bar")}</h4>
             <div className="options">
               <ul>
-                <li>Oui</li>
-                <li>Non</li>
+                <li>{t("Oui")}</li>
+                <li>{t("Non")}</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Réception ouverte 24h/24</h4>
+            <h4>{t("Réception ouverte 24h/24")}</h4>
             <div className="options">
               <ul>
-                <li>Oui</li>
-                <li>Non</li>
+                <li>{t("Oui")}</li>
+                <li>{t("Non")}</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Sauna</h4>
+            <h4>{t("Sauna")}</h4>
             <div className="options">
               <ul>
-                <li>Oui</li>
-                <li>Non</li>
+                <li>{t("Oui")}</li>
+                <li>{t("Non")}</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Centre de remise en forme</h4>
+            <h4>{t("Centre de remise en forme")}</h4>
             <div className="options">
               <ul>
-                <li>Oui</li>
-                <li>Non</li>
+                <li>{t("Oui")}</li>
+                <li>{t("Non")}</li>
               </ul>
             </div>
           </div>
         </div>
+
         <div className="item">
           <div className="head">
-            <h4>Jardin</h4>
+            <h4>{t("Jardin")}</h4>
             <div className="options">
               <ul>
-                <li>Oui</li>
-                <li>Non</li>
+                <li>{t("Oui")}</li>
+                <li>{t("Non")}</li>
               </ul>
             </div>
           </div>
         </div>
       </div>
+
       <div className="container elevated-card">
-        <h3>Les meilleurs équipements</h3>
+        <h3>{t("Les meilleurs équipements")}</h3>
         <div className="item">
           <div className="head">
-            <h4>Piscine</h4>
+            <h4>{t("Piscine")}</h4>
             <div className="options">
               <ul>
                 <li
                   className={pool === true ? "active" : ""}
                   onClick={() => setPool(true)}
                 >
-                  Oui
+                  {t("Oui")}
                 </li>
                 <li
                   className={pool === false ? "active" : ""}
                   onClick={() => setPool(false)}
                 >
-                  Non
+                  {t("Non")}
                 </li>
               </ul>
             </div>
           </div>
           {pool && (
-            <>
-              <div className="complement mt-15">
-                <Accordion isOpen={true}>
-                  <div className="complement-head">
-                    <h3>Piscine 1</h3>
-                  </div>
-                  <div className="complement-body">
-                    <div className="box">
-                      <h4>Nom</h4>
-                      <input type="text" />
-                    </div>
-                    <div className="box">
-                      <h4>Type</h4>
-                      <div className=" input-container flex">
-                        <div className="flex gap-5">
-                          <input type="radio" name="type" id="inside" />
-                          <label htmlFor="inside">Intérieur</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <input type="radio" name="type" id="outside" />
-                          <label htmlFor="outside">Extérieur</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Payant</h4>
-                      <div className="input-container flex">
-                        <div className="flex gap-5">
-                          <input type="radio" name="paying" id="free" />
-                          <label htmlFor="free">Gratuit</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <input type="radio" name="paying" id="paid" />
-                          <label htmlFor="paid">Payant</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Restriction d'âge</h4>
-                      <div className="input-container flex">
-                        <div className="flex gap-5">
-                          <input type="radio" name="age" id="all" />
-                          <label htmlFor="all">Pour tous les âges</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <input type="radio" name="age" id="kids" />
-                          <label htmlFor="kids">Pour les enfants</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <input type="radio" name="age" id="adults" />
-                          <label htmlFor="adults">Pour les adultes</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Caractéristiques de la piscine</h4>
-                      <div className="input-container checkbox flex">
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Sur le toit</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Espace peu profond</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">A débordement</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Chauffée</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Eau salée</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Vue imprenable</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Petite piscine</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Équipements</h4>
-                      <div className="input-container checkbox flex">
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Chaises Longues</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Toboggan aquatique</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Bar dans la piscine</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Couverture de piscine</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Serviettes</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Jouets</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Parasols</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Barrière de sécurité</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Horaires d'ouverture</h4>
-                      <div className="input-container">
-                        <div className="hour flex gap-15">
-                          <div>
-                            <label htmlFor="startHours">À partir de:</label>
-                            <input
-                              type="time"
-                              name="startHours"
-                              id="startHours"
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="endHours">À:</label>
-                            <input type="time" name="endHours" id="endHours" />
-                          </div>
-                        </div>
-                        <div className="week flex gap-20 mt-10">
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Lun.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Mar.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Mer.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Jeu.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Ven.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Sam.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Dim.</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="photos box">
-                      <h4>Photos</h4>
-                      <div className="flex flex-wrap gap-15 mt-5">
-                        <PictureCard path="/img/other/hotelbanner.jpg" />
-                        <AddPictureCard />
-                      </div>
-                    </div>
-                  </div>
-                </Accordion>
-              </div>
-              <button className="btn-orange mt-15">
-                <PlusCircle size={20} /> Ajouter
-              </button>
-            </>
-          )}
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Restaurant</h4>
-            <div className="options">
-              <ul>
-                <li
-                  className={restaurant === true ? "active" : ""}
-                  onClick={() => setRestarant(true)}
-                >
-                  Oui
-                </li>
-                <li
-                  className={restaurant === false ? "active" : ""}
-                  onClick={() => setRestarant(false)}
-                >
-                  Non
-                </li>
-              </ul>
-            </div>
-          </div>
-          {restaurant && (
-            <>
-              <div className="complement mt-15">
-                <Accordion isOpen={true}>
-                  <div className="complement-head">
-                    <h3>Restaurant 1</h3>
-                  </div>
-                  <div className="complement-body">
-                    <div className="box">
-                      <h4>Nom</h4>
-                      <input type="text" />
-                    </div>
-                    <div className="box">
-                      <h4>Type de menu</h4>
-                      <div className=" input-container checkbox flex">
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="carte">A la carte</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="buffet">Buffet</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Caractéristiques du restaurant</h4>
-                      <div className="input-container checkbox flex">
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">
-                            Réservé exclusivement aux clients séjournant dans
-                            l'établissement
-                          </label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Résérvation acceptée</label>
-                        </div>
-                        <div className="flex gap-5">
-                          <CheckBox />
-                          <label htmlFor="">Table a l'extérieur</label>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="box select">
-                      <div>
-                        <label htmlFor="">Cuisine</label>
-                        <select name="" id="">
-                          <option value="">Choisir</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="">Régimes alimentaires</label>
-                        <select name="" id="">
-                          <option value="">Choisir</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="">Ambiance</label>
-                        <select name="" id="">
-                          <option value="">Choisir</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label htmlFor="">Ouvert pour</label>
-                        <select name="" id="">
-                          <option value="">Choisir</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div className="box">
-                      <h4>Horaires d'ouverture</h4>
-                      <div className="input-container">
-                        <div className="hour flex gap-15">
-                          <div>
-                            <label htmlFor="startHours">À partir de:</label>
-                            <input
-                              type="time"
-                              name="startHours"
-                              id="startHours"
-                            />
-                          </div>
-                          <div>
-                            <label htmlFor="endHours">À:</label>
-                            <input type="time" name="endHours" id="endHours" />
-                          </div>
-                        </div>
-                        <div className="week flex gap-20 mt-10">
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Lun.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Mar.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Mer.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Jeu.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Ven.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Sam.</span>
-                          </div>
-                          <div className="flex gap-5">
-                            <CheckBox checked={true} />
-                            <span>Dim.</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="photos box">
-                      <h4>Photos</h4>
-                      <div className="flex flex-wrap gap-15 mt-5">
-                        <PictureCard path="/img/other/restaurant.jpg" />
-                        <AddPictureCard />
-                      </div>
-                    </div>
-                  </div>
-                </Accordion>
-              </div>
-              <button className="btn-orange mt-15">
-                <PlusCircle size={20} /> Ajouter
-              </button>
-            </>
-          )}
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Service d'étage</h4>
-            <div className="options">
-              <ul>
-                <li
-                  className={roomService === true ? "active" : ""}
-                  onClick={() => setRoomService(true)}
-                >
-                  Oui
-                </li>
-                <li
-                  className={roomService === false ? "active" : ""}
-                  onClick={() => setRoomService(false)}
-                >
-                  Non
-                </li>
-              </ul>
-            </div>
-          </div>
-          {roomService && (
             <div className="complement mt-15">
-              <div className="box">
-                <h4>Payant</h4>
-                <div className=" input-container flex">
-                  <div className="flex gap-5">
-                    <input type="radio" name="roomServicePaying" id="free" />
-                    <label htmlFor="free">Gratuit</label>
+              <Accordion isOpen={true}>
+                <div className="complement-head">
+                  <h3>{t("Piscine 1")}</h3>
+                </div>
+                <div className="complement-body">
+                  <div className="box">
+                    <h4>{t("Nom")}</h4>
+                    <input type="text" />
                   </div>
-                  <div className="flex gap-5">
-                    <input type="radio" name="roomServicePaying" id="paid" />
-                    <label htmlFor="paid">Payant</label>
+                  <div className="box">
+                    <h4>{t("Type")}</h4>
+                    <div className=" input-container flex">
+                      <div className="flex gap-5">
+                        <input type="radio" name="type" id="inside" />
+                        <label htmlFor="inside">{t("Intérieur")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <input type="radio" name="type" id="outside" />
+                        <label htmlFor="outside">{t("Extérieur")}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <h4>{t("Payant")}</h4>
+                    <div className="input-container flex">
+                      <div className="flex gap-5">
+                        <input type="radio" name="paying" id="free" />
+                        <label htmlFor="free">{t("Gratuit")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <input type="radio" name="paying" id="paid" />
+                        <label htmlFor="paid">{t("Payant")}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <h4>{t("Restriction d'âge")}</h4>
+                    <div className="input-container flex">
+                      <div className="flex gap-5">
+                        <input type="radio" name="age" id="all" />
+                        <label htmlFor="all">{t("Pour tous les âges")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <input type="radio" name="age" id="kids" />
+                        <label htmlFor="kids">{t("Pour les enfants")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <input type="radio" name="age" id="adults" />
+                        <label htmlFor="adults">{t("Pour les adultes")}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <h4>{t("Caractéristiques de la piscine")}</h4>
+                    <div className="input-container checkbox flex">
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Sur le toit")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Espace peu profond")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("A débordement")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Chauffée")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Eau salée")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Vue imprenable")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Petite piscine")}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <h4>{t("Équipements")}</h4>
+                    <div className="input-container checkbox flex">
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Chaises Longues")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Toboggan aquatique")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Bar dans la piscine")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Couverture de piscine")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Serviettes")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Jouets")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Parasols")}</label>
+                      </div>
+                      <div className="flex gap-5">
+                        <CheckBox />
+                        <label htmlFor="">{t("Barrière de sécurité")}</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="box">
+                    <h4>{t("Horaires d'ouverture")}</h4>
+                    <div className="input-container">
+                      <div className="hour flex gap-15">
+                        <div>
+                          <label htmlFor="startHours">{t("À partir de:")}</label>
+                          <input
+                            type="time"
+                            name="startHours"
+                            id="startHours"
+                          />
+                        </div>
+                        <div>
+                          <label htmlFor="endHours">{t("À:")}</label>
+                          <input type="time" name="endHours" id="endHours" />
+                        </div>
+                      </div>
+                      <div className="week flex gap-20 mt-10">
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Lun.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Mar.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Mer.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Jeu.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Ven.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Sam.")}</span>
+                        </div>
+                        <div className="flex gap-5">
+                          <CheckBox checked={true} />
+                          <span>{t("Dim.")}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="photos box">
+                    <h4>{t("Photos")}</h4>
+                    <div className="flex flex-wrap gap-15 mt-5">
+                      <PictureCard path="/img/other/hotelbanner.jpg" />
+                      <AddPictureCard />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Accordion>
             </div>
           )}
         </div>
-        <div className="item">
-          <div className="head">
-            <h4>Bar</h4>
-            <div className="options">
-              <ul>
-                <li>Oui</li>
-                <li>Non</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Réception ouverte 24h/24</h4>
-            <div className="options">
-              <ul>
-                <li>Oui</li>
-                <li>Non</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Sauna</h4>
-            <div className="options">
-              <ul>
-                <li>Oui</li>
-                <li>Non</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Centre de remise en forme</h4>
-            <div className="options">
-              <ul>
-                <li>Oui</li>
-                <li>Non</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div className="item">
-          <div className="head">
-            <h4>Jardin</h4>
-            <div className="options">
-              <ul>
-                <li>Oui</li>
-                <li>Non</li>
-              </ul>
-            </div>
-          </div>
-        </div>
       </div>
-      <div className="btn-purple mt-15">Enregistrer</div>
+
+      <div className="btn-purple mt-15">{t("Enregistrer")}</div>
     </div>
   );
 };

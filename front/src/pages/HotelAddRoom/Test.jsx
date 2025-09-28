@@ -1,6 +1,7 @@
 import { Formik, Form, Field, FieldArray } from "formik";
 import ErrorLabel from "../../components/ErrorLabel/ErrorLabel";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";   // <-- ajouté
 
 const AccommodationInformationForm = ({
   formData,
@@ -12,6 +13,8 @@ const AccommodationInformationForm = ({
   currentStepErrors,
   touched,
 }) => {
+  const { t } = useTranslation();  // <-- ajouté
+
   const [bedList, setBedList] = useState([{ bedType: "", bedNumber: null }]);
 
   const addBed = () => {
@@ -39,18 +42,18 @@ setInitialFields(currentStepValues);
     <>
       <div className="add-accommodation-info">
         <div className="form-group">
-          <label htmlFor="">Type d'hébergement</label>
+          <label htmlFor="">{/* t('Accommodation type') */}Type d'hébergement</label>
           <Field className="select" as="select" name="accommodationType">
-            <option value="">Sélectionner votre type d'hébergement</option>
-            <option value="double">Double</option>
-            <option value="simple">Simple</option>
-            <option value="familiale">Familiale</option>
-            <option value="triple">Triple</option>
+            <option value="">{/* t('Select your accommodation type') */}Sélectionner votre type d'hébergement</option>
+            <option value="double">{/* t('Double') */}Double</option>
+            <option value="simple">{/* t('Simple') */}Simple</option>
+            <option value="familiale">{/* t('Family') */}Familiale</option>
+            <option value="triple">{/* t('Triple') */}Triple</option>
           </Field>
           <ErrorLabel error={currentStepErrors.accommodationType} />
         </div>
         <div className="form-group">
-          <label htmlFor="">Nombre d'hébergement de ce type</label>
+          <label htmlFor="">{/* t('Number of accommodations') */}Nombre d'hébergement de ce type</label>
           <Field type="number" name="accommodationNumber" />
           <ErrorLabel error={currentStepErrors.accommodationNumber} />
         </div>
@@ -61,7 +64,7 @@ setInitialFields(currentStepValues);
               <div>
                 <div className="flex align-items-center justify-content-between">
                   <label>
-                    {index > 0 ? "Autre Type de lit" : "Type de lit"}
+                    {index > 0 ? t("Other bed type") : t("Bed type")}
                   </label>
                   {index > 0 && (
                     <span
@@ -69,7 +72,7 @@ setInitialFields(currentStepValues);
                       type="button"
                       onClick={() => removeBed(index)}
                     >
-                      Supprimer
+                      {t("Delete")}
                     </span>
                   )}
                 </div>
@@ -77,24 +80,10 @@ setInitialFields(currentStepValues);
                   as="select"
                   name={`beds[${index}].bedType`}
                   value={bed.bedType}  
-                //   onChange={(e) => {
-                //     const newBedList = [...bedList];
-                //     newBedList[index].bedType = e.target.value;
-                //     setBedList(newBedList);
-                //   }}
                 >
-                  {/* <select
-                  value={bed.bedType}
-                  onChange={(e) => {
-                      const newBedList = [...bedList];
-                      newBedList[index].bedType = e.target.value;
-                      setBedList(newBedList);
-                    }}
-                > */}
-                  <option value="">Sélectionner un type de lit</option>
-                  <option value="simple">Lit(s) simple(s)</option>
-                  <option value="double">Lit(s) double(s)</option>
-                  {/* </select> */}
+                  <option value="">{t("Select a bed type")}</option>
+                  <option value="simple">{t("Single bed(s)")}</option>
+                  <option value="double">{t("Double bed(s)")}</option>
                 </Field>
                 <ErrorLabel
                   error={
@@ -104,26 +93,12 @@ setInitialFields(currentStepValues);
                 />
               </div>
               <div className="mt-10">
-                <label>Nombre de lits de ce type</label>
+                <label>{t("Number of beds of this type")}</label>
                 <Field
                   type="number"
                   name={`beds[${index}].bedNumber`}
                   value={bed.bedNumber}
-                //   onChange={(e) => {
-                //     const newBedList = [...bedList];
-                //     newBedList[index].bedNumber = e.target.value;
-                //     setBedList(newBedList);
-                //   }}
                 />
-                {/* <input
-                  type="number"
-                  value={bed.bedNumber}
-                  onChange={(e) => {
-                    const newBedList = [...bedList];
-                    newBedList[index].bedNumber = e.target.value;
-                    setBedList(newBedList);
-                  }}
-                /> */}
                 <ErrorLabel
                   error={
                     currentStepErrors.beds &&
@@ -134,12 +109,12 @@ setInitialFields(currentStepValues);
             </div>
           ))}
           <button className="btn-orange mt-10" type="button" onClick={addBed}>
-            Ajouter un autre type de lit
+            {t("Add another bed type")}
           </button>
         </div>
         <hr />
         <div className="form-group">
-          <label htmlFor="">Nombre maximum de personnes</label>
+          <label htmlFor="">{t("Maximum number of guests")}</label>
           <Field type="number" name="occupation" />
           <ErrorLabel error={currentStepErrors.occupation} />
         </div>

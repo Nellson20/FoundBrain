@@ -12,7 +12,7 @@ import { useState } from "react";
 import Modal from "../../components/Modal/Modal";
 import StickySideBar from "../../components/StickySideBar/StickySideBar";
 
-const PortalFaq = () => {
+const PortalFaq = ({ t }) => {
   const questionsReponses = [
     {
       question: "Pouvez-vous me parler de la culture d'entreprise ?",
@@ -111,12 +111,12 @@ const PortalFaq = () => {
           <textarea
             name="question"
             id="question"
-            placeholder="Saisissez votre question ici..."
+            placeholder={t("Saisissez votre question ici...")}
           ></textarea>
         </div>
         <div className="foot flex justify-content-end">
           <button className="btn-" onClick={(e) => e.preventDefault()}>
-            Poser ma question
+            {t("Poser ma question")}
           </button>
         </div>
       </form>
@@ -127,11 +127,11 @@ const PortalFaq = () => {
     return (
       <>
         <button className="btn-gradient" onClick={() => setOpen(true)}>
-          Poser une question
+          {t("Poser une question")}
         </button>
         <Modal open={open} className="modal-question">
           <Formulaire
-            titre={"Posez votre question"}
+            titre={t("Posez votre question")}
             sousTitre={
               "Nous vous encourageons à poser des questions claires et spécifiques pour obtenir les meilleures réponses possibles. Veuillez remplir les champs ci-dessous avec autant de détails que possible."
             }
@@ -145,10 +145,10 @@ const PortalFaq = () => {
     const [open, setOpen] = useState(false);
     return (
       <>
-        <div className="btn-" onClick={() => setOpen(true)}><ArrowReturnRight />  Repondre</div>
+        <div className="btn-" onClick={() => setOpen(true)}><ArrowReturnRight />  {t("Repondre")}</div>
         <Modal open={open} className="modal-reponse">
           <Formulaire
-            titre={"Publier une reponse"}
+            titre={t("Publier une reponse")}
             sousTitre={
               "Votre contribution est précieuse pour aider les autres et enrichir la communauté. Veuillez remplir les champs ci-dessous avec des réponses claires, utiles et pertinentes."
             }
@@ -166,21 +166,21 @@ const PortalFaq = () => {
         <div className="questions-list">
         <div className="head elevated-card px-15 pb-15 mb-15">
         <div className="heading2  ">
-          <h3>Questions et Reponses</h3>
+          <h3>{t("Questions et Reponses")}</h3>
         </div>
         <div className="category-question">
-          <p>Voir les questions sur les categories suivants :</p>
+          <p>{t("Voir les questions sur les categories suivants :")}</p>
           <ul className="list-category">
-            <li className="active">Tous</li>
-            <li>Salaire</li>
-            <li>Horaire de travail</li>
-            <li>Avantage</li>
-            <li>Processus de recrutement</li>
-            <li>Teletravail</li>
-            <li>Emplois</li>
-            <li>Temps partiel</li>
-            <li>Ambiance de travail</li>
-            <li>culture d'entreprise</li>
+            <li className="active">{t("Tous")}</li>
+            <li>{t("Salaire")}</li>
+            <li>{t("Horaire de travail")}</li>
+            <li>{t("Avantage")}</li>
+            <li>{t("Processus de recrutement")}</li>
+            <li>{t("Teletravail")}</li>
+            <li>{t("Emplois")}</li>
+            <li>{t("Temps partiel")}</li>
+            <li>{t("Ambiance de travail")}</li>
+            <li>{t("culture d'entreprise")}</li>
           </ul>
         </div>
       </div>
@@ -189,7 +189,7 @@ const PortalFaq = () => {
               <Accordion>
                 <div className="question">
                   <h3>{item.question}</h3>
-                  <small>posée le {item.datePublication}</small>
+                  <small>{t("posée le")} {item.datePublication}</small>
                 </div>
                 <div className="reponse">
                   {item.reponses.map((res, index) => (
@@ -208,7 +208,7 @@ const PortalFaq = () => {
         <div className="left">
           <StickySideBar top={63}>
             <aside className="question-btn p-15">
-              <h5>Voulez vous poser une question concernant Donnell ?</h5>
+              <h5>{t("Voulez vous poser une question concernant Donnell ?")}</h5>
               <ModalQuestion />
             </aside>
           </StickySideBar>

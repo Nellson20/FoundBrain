@@ -7,7 +7,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: ["https://front.donnell.local"],
+        origin: ["https://foundbrain.local"],
         
     }
 });

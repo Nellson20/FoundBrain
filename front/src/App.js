@@ -40,9 +40,14 @@ import CurrencyContext from "./context/CurrencyContext";
 import { media } from "./functions";
 import MediaContext from "./context/MediaContext";
 
+import './i18n';
+
+
 import AppRoutes from './components/AppRoutes/AppRoutes'
 
 function App() {
+  
+
   
 
   const { user } = useSelector((store) => store.user);

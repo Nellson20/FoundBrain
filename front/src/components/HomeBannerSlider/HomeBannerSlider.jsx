@@ -9,8 +9,9 @@ import GoodDealCardSkeleton from '../GoodDealCard/GoodDealCardSkeleton';
 import { Link } from 'react-router-dom';
 import RequireAuthOnClick from '../RequireAuthOnclick/RequireAuthOnClick';
 import { useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 const HomeBannerSlider = () => {
-
+     const { t } = useTranslation();
     const self = useRef();
 
     const {
@@ -40,7 +41,7 @@ const HomeBannerSlider = () => {
             <div>
                 <div className="home-banner-top flex align-items-center justify-content-between">
                     <div className='heading'>
-                        <h1>Les bonnes Affaires</h1>
+                        <h1>{t('Les bonnes Affaires')}</h1>
                     </div>
                     <div className="flex align-items-center gap-10">
                         <button className="floating-btn" onClick={self.current?.slickPrev}><ChevronLeft size={21} /></button>
@@ -65,7 +66,7 @@ const HomeBannerSlider = () => {
                                             <div>
                                                 <div>
                                                     <div className="ico"><PlusLg size={22} /></div>
-                                                    <span>Créer un Investissement</span>
+                                                    <span>{t('Créer un Investissement')}</span>
                                                 </div>
                                             </div>
                                         </Link>
