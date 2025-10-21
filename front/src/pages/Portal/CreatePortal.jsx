@@ -162,7 +162,7 @@ const CreatePortal = () => {
                                                 searchPlaceholder={t('Rechercher un domaine')}
                                                 query={getDomains}
                                                 repoName="domainsListRepo"
-                                                objectMapping={(d) => ({ title: d.title, value: `/domains/${d.id}` })} />
+                                                objectMapping={(d) => ({ title: t(`domain.${d.title}`), value: `/domains/${d.id}` })} />
                                         </div>
                                     </div>
                                     <div className="form-group flex gap-10">
@@ -253,7 +253,7 @@ const CreatePortal = () => {
                                         <div className="right">
                                             <select name="companyType" id="" onChange={handleChangeInput} className="inpt">
                                                 {
-                                                    companyTypes?.map((ct, i) => <option value={`/company_types/${ct.id}`} key={i}>{ct.type}</option>)
+                                                    companyTypes?.map((ct, i) => <option value={`/company_types/${ct.id}`} key={i}>{t(`companyType.${ct.type}`)}</option>)
                                                 }
                                             </select>
                                         </div>

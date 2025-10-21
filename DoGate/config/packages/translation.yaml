@@ -1,0 +1,15 @@
+framework:
+    default_locale: fr
+    translator:
+        enabled: true
+        fallbacks:
+            - fr
+            - en
+            - ml
+        providers:
+            crowdin:
+                dsn: '%env(CROWDIN_DSN)%'
+            lokalise:
+                dsn: '%env(LOKALISE_DSN)%'
+            loco:
+                dsn: '%env(LOCO_DSN)%'

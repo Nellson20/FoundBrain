@@ -137,7 +137,8 @@ const CreateInvest = () => {
                                 searchPlaceholder={t('Rechercher un domaine')}
                                 query={getDomains}
                                 repoName="domainsListRepo"
-                                objectMapping={(d) => ({ title: d.title, value: `/domains/${d.id}` })} />
+                                objectMapping={(d) => ({ title: t(`domain.${d.title}`), value: `/domains/${d.id}` })} />
+                                
                             <ErrorLabel title={errors.domains} />
                         </div>
                     </div>

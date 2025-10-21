@@ -10,7 +10,9 @@ import axios from 'axios'
 import { useSelector } from 'react-redux'
 import CircleLoader from '../CircleLoader/CircleLoader'
 import ChipsCheckbox from '../ChipsCheckbox/ChipsCheckbox'
+import { useTranslation } from 'react-i18next'
 const DomainsSelector = ({ open, onClose }) => {
+    const { t } = useTranslation()
     const { user } = useSelector(store => store.user)
     const [isOpen, setIsOpen] = useState(false)
     const [selected, setSelected] = useState([])
@@ -66,7 +68,7 @@ const DomainsSelector = ({ open, onClose }) => {
         <Modal open={isOpen} className="domains-selector-modal">
             <div>
                 <div className="top">
-                    <h1>Domaines</h1>
+                    <h1>{t('Domaines')}</h1>
                     <div className="close" onClick={() => {
                         onClose()
                         setIsOpen(false)
@@ -93,7 +95,7 @@ const DomainsSelector = ({ open, onClose }) => {
                                                 }
                                                 
                                             }
-                                        }>{d.title}</ChipsCheckbox>
+                                        }>{t(`domain.${d.title}`) || d.title}</ChipsCheckbox>
                                     </li>)
                             }
                         </ul>
@@ -101,9 +103,9 @@ const DomainsSelector = ({ open, onClose }) => {
                 </div>
                 <div className="footer">
                     <div className='bottom flex justify-content-end gap-10'>
-                        <button className="btn btn-transparent">Annuler</button>
+                        <button className="btn btn-transparent">{t('Annuler')}</button>
                         <button className="btn btn-purple" onClick={saveDomains}>{
-                            !onSave ? 'Enregistrer' : <CircleLoader />
+                            !onSave ? t('Enregistrer') : <CircleLoader />
                         }</button>
                     </div>
                 </div>
