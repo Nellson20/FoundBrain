@@ -99,8 +99,13 @@ const Register = () => {
             url: `${process.env.REACT_APP_API_DOMAIN}/genders`,
             method: 'get',
         }).then((res) => {
-            setGenders(res?.data);
-
+            const gendersList = res?.data['hydra:member'] || res?.data;
+            setGenders(gendersList);
+            // Définir le premier genre par défaut si disponible
+            if (gendersList && gendersList.length > 0) {
+                setGenderUri(gendersList[0].id);
+                console.log('🎭 Genre par défaut sélectionné:', gendersList[0].title);
+            }
         }).catch((err) => {
             console.log(err.response?.data)
         })
@@ -153,12 +158,17 @@ const Register = () => {
                         <div className="flex gap-10">
                             <div className="form-group">
                                 <label htmlFor="">{t('Genre')}</label>
-                                <select onChange={(e) => {
-                                    setGenderUri(e.target.value)
-                                }}>
+                                <select 
+                                    value={gender ? gender.replace('/genders/', '') : ''}
+                                    onChange={(e) => {
+                                        setGenderUri(e.target.value);
+                                        console.log('🎭 Genre sélectionné:', e.target.value);
+                                    }}
+                                >
                                     {
                                         genders.length > 0 ?
-                                            genders.map((g, i) => <option key={i} value={g.id}>{g.title}</option>) : ""
+                                            genders.map((g, i) => <option key={i} value={g.id}>{g.title}</option>) : 
+                                            <option value="">{t('Chargement...')}</option>
                                     }
                                 </select>
                             </div>

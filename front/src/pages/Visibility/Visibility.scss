@@ -1,0 +1,367 @@
+@import "../../style.scss";
+
+.visibility {
+  @include themify($themes) {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    background-color: themed(background, 0);
+    min-height: 100vh;
+
+    // Header section
+    .visibility-header {
+      margin-bottom: 2rem;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: themed(text, 0);
+        margin: 0 0 0.5rem 0;
+      }
+
+      .subtitle {
+        font-size: 0.95rem;
+        color: themed(text, 4);
+        margin: 0;
+      }
+    }
+
+    // Section container
+    .visibility-section {
+      background: themed(background, 3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: themed(elevation, 1);
+
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: themed(text, 1);
+        margin: 0 0 0.1rem 0;
+        padding-bottom: 0.75rem;
+        
+      }
+
+      // Form fields
+      .form-field {
+        margin-bottom: 1.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        label {
+          display: block;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: themed(text, 2);
+          margin-bottom: 0.5rem;
+        }
+
+        .field-value {
+          background: themed(background, 0);
+          border: 1px solid themed(border, 2);
+          border-radius: 8px;
+          padding: 0.875rem 1rem;
+          font-size: 0.95rem;
+          color: themed(text, 1);
+        }
+
+        .field-row {
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+
+          .field-value {
+            flex: 1;
+          }
+        }
+
+        &.password-field {
+          .password-hidden {
+            letter-spacing: 2px;
+            font-size: 1.2rem;
+          }
+        }
+
+        // Radio buttons for gender
+        &.genre-field {
+          .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+
+            .radio-option {
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+              position: relative;
+
+              input[type="radio"] {
+                width: 18px;
+                height: 18px;
+                margin-right: 0.5rem;
+                cursor: pointer;
+                accent-color: themed(mainColor, purple);
+              }
+
+              span {
+                font-size: 0.95rem;
+                color: themed(text, 1);
+              }
+            }
+          }
+        }
+      }
+      .custom-switch {
+        .form-check-input {
+          width: 3rem;
+          height: 1.5rem;
+          border-radius: 1rem;
+          border: 1px;
+          // background-color: #6f42c1;
+          transition: all 0.3s ease;
+          cursor: pointer;
+          position: relative;
+          
+          
+          // Style du bouton blanc (thumb)
+          &::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            right: auto;
+            left: 2px;
+            width: 1.25rem;
+            height: 1.25rem;
+            background-color: white;
+            border-radius: 50%;
+            border: 1px;
+            transition: all 0.3s ease;
+            // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          }
+          
+          &:checked {
+            
+            background-color: #6f42c1 !important;
+            border: none;
+            
+            &::before {
+              right: 2px;
+              left: auto;
+            }
+            
+            // &:hover {
+            //   background-color: #45a049 !important;
+            // }
+          }
+          
+          &:not(:checked) {
+            background-color: #ececec !important;
+            
+            &::before {
+              right: auto;
+              left: 2px;
+            }
+            
+            // &:hover {
+            //   background-color: #5a359a !important;
+            // }
+          }
+          
+          &:focus {
+            // box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+            outline: none;
+            box-shadow: none;
+            border: none;
+          }
+          
+          &:active {
+            outline: none;
+            box-shadow: none;
+            border: none;
+          }
+        }
+
+        
+        // .form-check-label {
+        //   font-weight: 500;
+        //   color: themed(text, 1);
+        //   margin-left: 0.5rem;
+        //   cursor: pointer;
+        // }
+      }
+
+      // Buttons
+      .btn-modifier {
+        background: transparent;
+        border: 1px solid themed(border, 1);
+        color: themed(mainColor, purple);
+        padding: 0.5rem 1.25rem;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+
+        &:hover {
+          background: themed(background, 0);
+          border-color: themed(mainColor, purple);
+        }
+      }
+    }
+
+    // Danger section
+    .danger-section {
+      .danger-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem 0;
+        gap: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid themed(border, 2);
+        }
+
+        h3 {
+          font-size: 0.95rem;
+          font-weight: 600;
+          color: themed(text, 0);
+          margin: 0 0 0.25rem 0;
+        }
+
+        p {
+          font-size: 0.85rem;
+          color: themed(text, 4);
+          margin: 0;
+        }
+
+        .btn-danger-outline {
+          background: transparent;
+          border: 1.5px solid map-get($red, primary);
+          color: map-get($red, primary);
+          padding: 0.5rem 1.5rem;
+          border-radius: 6px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+
+          &:hover {
+            background: rgba(252, 61, 50, 0.05);
+          }
+        }
+
+        .btn-danger {
+          background: map-get($red, primary);
+          border: none;
+          color: white;
+          padding: 0.6rem 1.5rem;
+          border-radius: 6px;
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+
+          &:hover {
+            background: darken(map-get($red, primary), 5%);
+            box-shadow: 0 2px 8px rgba(252, 61, 50, 0.3);
+          }
+        }
+      }
+    }
+
+    // Language selector styling
+    .language-selector,
+    select {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border-radius: 8px;
+      border: 1px solid themed(border, 2);
+      background: themed(background, 0);
+      font-size: 0.95rem;
+      color: themed(text, 1);
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: themed(border, 1);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: themed(mainColor, purple);
+        box-shadow: 0 0 0 3px rgba(112, 47, 128, 0.1);
+      }
+    }
+
+    .switch-row {
+      margin-top: -1.5rem; 
+      display: flex;
+      align-items: center;
+      gap: -0.5rem; // espace entre texte et switch
+
+      p {
+        margin: 0; // enlever margin par défaut
+        flex: 1;   // le texte prend tout l'espace restant
+      }
+
+      .custom-switch {
+        margin: 0; // enlever padding/margin par défaut
+      }
+    }
+
+
+    // Responsive
+    @include tablet {
+      padding: 1.5rem 1rem;
+
+      .compte-section {
+        padding: 1.25rem;
+
+        .danger-action {
+          flex-direction: column;
+          align-items: flex-start;
+
+          button {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    @include mobile {
+      padding: 1rem 0.75rem;
+
+      .visibility-header h1 {
+        font-size: 1.5rem;
+      }
+
+      .visibility-section {
+        padding: 1rem;
+        border-radius: 8px;
+
+        .form-field {
+          .field-row {
+            flex-direction: column;
+            align-items: stretch;
+
+            .btn-modifier {
+              width: 100%;
+            }
+          }
+
+          &.genre-field .radio-group {
+            flex-direction: column;
+            gap: 1rem;
+          }
+        }
+      }
+    }
+  }
+}

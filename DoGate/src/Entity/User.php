@@ -33,6 +33,9 @@ use App\Controller\User\GetOnlineContactsAction;
     normalizationContext: [
         'groups' => ['users_read']
     ],
+    denormalizationContext: [
+        'groups' => ['users_write']
+    ],
     operations:[
         new Get(),
         new PostMetadata(),
@@ -55,7 +58,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
     #[Assert\Email(
         message: '{{ value }} n\'est pas une adresse email valide !',
     )]
-    #[Groups(['users_read','discu_read','contact_read','eval_read', 'reservation_read'])]
+    #[Groups(['users_read', 'users_write', 'discu_read','contact_read','eval_read', 'reservation_read'])]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -69,6 +72,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
         'message' => 'Veillez entrer un mot de passe !'
     ])]
     #[Assert\Regex('/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/', message: 'Le mot de passe est invalide !')]
+    #[Groups(['users_write'])] // Seulement en écriture, jamais en lecture pour la sécurité
     private ?string $password = null;
 
 
@@ -77,7 +81,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
         'message' => 'Veillez entrer votre nom !'
     ])]
     #[Groups([
-        'users_read', 'posts_read','image_read','discu_read','msg_read','notif_read',
+        'users_read', 'users_write', 'posts_read','image_read','discu_read','msg_read','notif_read',
         'contact_read','invest_read','eval_read','author_read','comment_read',
         'reply_read', 'reservation_read','comp_access_read', 'artist_read'
     ])]
@@ -85,7 +89,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Groups([
-        'users_read', 'posts_read','image_read','discu_read','msg_read','notif_read',
+        'users_read', 'users_write', 'posts_read','image_read','discu_read','msg_read','notif_read',
         'contact_read','invest_read','eval_read','author_read','comment_read',
         'reply_read', 'reservation_read','comp_access_read'
     ])]
@@ -96,12 +100,12 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
     #[Assert\NotBlank([
         'message' => 'Veillez entrer votre date de naissance !'
     ])]
-    #[Groups(['users_read', 'posts_read'])]
+    #[Groups(['users_read', 'users_write', 'posts_read'])]
     private ?string $birthDate = null;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(['users_read', 'posts_read'])]
+    #[Groups(['users_read', 'users_write', 'posts_read'])]
     private ?Gender $gender = null;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: ProfilePicture::class, orphanRemoval: true)]
@@ -187,6 +191,12 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
     )]
     private ?string $phoneNumber = null;
 
+    /**
+     * @var Collection<int, Desactivation>
+     */
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Desactivation::class, orphanRemoval: true)]
+    private Collection $Desactivation;
+
     public function getId(): ?string
     {
         return parent::getId();
@@ -200,6 +210,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
         $this->domains = new ArrayCollection();
         $this->accesses = new ArrayCollection();
         $this->notifications = new ArrayCollection();
+        $this->Desactivation = new ArrayCollection();
     }
 
     public function getEmail(): ?string
@@ -635,6 +646,36 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
     public function setPhoneNumber(?string $phoneNumber): static
     {
         $this->phoneNumber = $phoneNumber;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Desactivation>
+     */
+    public function getDesactivation(): Collection
+    {
+        return $this->Desactivation;
+    }
+
+    public function addDesactivation(Desactivation $desactivation): static
+    {
+        if (!$this->Desactivation->contains($desactivation)) {
+            $this->Desactivation->add($desactivation);
+            $desactivation->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDesactivation(Desactivation $desactivation): static
+    {
+        if ($this->Desactivation->removeElement($desactivation)) {
+            // set the owning side to null (unless already changed)
+            if ($desactivation->getUser() === $this) {
+                $desactivation->setUser(null);
+            }
+        }
 
         return $this;
     }

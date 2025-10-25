@@ -184,11 +184,12 @@ function App() {
       const user = jwt_decode(token);
       if (user.exp * 1000 > new Date().getTime()) {
         axios({
-          url: `${process.env.REACT_APP_API_DOMAIN}/users/${user.id}`,
+          url: `${process.env.REACT_APP_API_DOMAIN}/users/${user.id}?groups[]=users_read`,
           method: "get",
           withCredentials: true,
         })
           .then((res) => {
+            console.log('User loaded from API:', res.data); // Debug
             dispatch(setConnectedUser(res.data));
             setPageLoading(false);
             setSocket(io(process.env.REACT_APP_REAL_DOMAIN));

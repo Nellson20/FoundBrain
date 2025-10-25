@@ -16,17 +16,17 @@ const LanguageSelector = () => {
   ]
 
   return (
-    <ul className="language-menu">
+    <select
+      className="language-selector"
+      value={i18n.language}
+      onChange={(e) => changeLanguage(e.target.value)}
+    >
       {languages.map((lang) => (
-        <li
-          key={lang.code}
-          className={i18n.language === lang.code ? 'active' : ''}
-          onClick={() => changeLanguage(lang.code)}
-        >
+        <option key={lang.code} value={lang.code}>
           {lang.label}
-        </li>
+        </option>
       ))}
-    </ul>
+    </select>
   )
 }
 

@@ -9,6 +9,7 @@ use ApiPlatform\Metadata\ApiResource;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: GenderRepository::class)]
 #[ApiResource]
@@ -19,9 +20,11 @@ class Gender
     #[ORM\Column(type:"string", unique:true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'App\Doctrine\Base58UuidGenerator')]
+    #[Groups(['users_read', 'posts_read'])]
     private ?string $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(['users_read', 'posts_read'])]
     private ?string $title = null;
 
     #[ORM\OneToMany(mappedBy: 'gender', targetEntity: User::class)]

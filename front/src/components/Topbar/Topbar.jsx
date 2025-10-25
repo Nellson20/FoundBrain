@@ -14,7 +14,7 @@ import CaretInput from '../CaretInput/CaretInput'
 import CurrencySelector from '../CurrencySelector/CurrencySelector'
 import CurrencyContext from '../../context/CurrencyContext'
 import NavigableList from '../Input/NavigableList/NavigableList'
-import LanguageSelector from '../../components/LanguageSelector';
+import LanguageSelector from '../Language/LanguageSelector';
 import Settings from '../../pages/Settings/Settings'
 import { useTranslation } from 'react-i18next'
 
@@ -116,6 +116,7 @@ const Topbar = ({ setOpenRightbar = () => { } }) => {
         </div>
       </header>
       <PostModal isOpen={openPostModal} setIsOpen={setOpenPostModal} />
+      
     </>
 
   )
