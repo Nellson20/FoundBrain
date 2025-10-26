@@ -32,5 +32,13 @@ else
     echo "Database already has tables. Skipping migrations and fixtures."
 fi
 
-# Démarrer le service PHP
+# Démarrer le service cron
+echo "Starting cron service..."
+service cron start
+
+# Vérifier que cron tourne
+service cron status
+
+# Démarrer le service PHP (en mode foreground pour que le conteneur reste actif)
+echo "Starting PHP-FPM..."
 exec php-fpm

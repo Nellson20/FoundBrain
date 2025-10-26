@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
     libxslt1-dev \
     acl \
     netcat-openbsd \
+    cron \
     && echo 'alias sf="php bin/console"' >> ~/.bashrc
 
 RUN docker-php-ext-configure gd --with-jpeg --with-freetype 
@@ -39,7 +40,10 @@ RUN composer install
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
+# --- Ajout d’une tâche cron Symfony toutes les 5 minutes ---
+RUN echo "*/5 * * * * root /usr/local/bin/php /var/www/symfony/bin/console app:delete-expired-users >> /var/log/cron_delete.log 2>&1" > /etc/cron.d/symfony-cron \
+    && echo "" >> /etc/cron.d/symfony-cron \
+    && chmod 0644 /etc/cron.d/symfony-cron
+
+# --- Démarrage : cron + ton script entrypoint ---
 ENTRYPOINT ["/entrypoint.sh"]
-
-
-
