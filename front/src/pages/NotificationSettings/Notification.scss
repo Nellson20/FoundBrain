@@ -57,9 +57,7 @@
         }
 
         .notification-item {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
+          display: block;
           padding: 1.25rem 0;
           border-bottom: 1px solid themed(border, 2);
           cursor: pointer;
@@ -74,6 +72,13 @@
             margin: 0 -1rem;
             padding: 1.25rem 1rem;
             border-radius: 8px;
+          }
+
+          // Header row for expandable items
+          .notification-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
           }
 
           .notification-content {
@@ -102,7 +107,119 @@
           }
 
           &:hover .chevron-icon {
+            color: themed(text, 0);
+          }
+
+          .chevron-icon.rotated {
             transform: rotate(180deg);
+          }
+
+          // Details section that appears below
+          .notification-details {
+            margin-top: 1rem;
+            padding: 1rem 0 0 0;
+            font-size: 0.9rem;
+            color: themed(text, 4);
+            animation: fadeIn 0.3s ease;
+
+            p {
+              margin-bottom: 0.75rem;
+              font-weight: 500;
+              color: themed(text, 0);
+            }
+
+            .switch-row {
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+              margin-top: 0.5rem;
+
+              > div {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.5rem 0;
+              }
+
+              p {
+                margin: 0;
+                font-weight: normal;
+                color: themed(text, 2);
+                font-size: 0.9rem;
+              }
+
+              .custom-switch {
+                .form-check-input {
+                  width: 3rem;
+                  height: 1.5rem;
+                  border-radius: 1rem;
+                  border: 1px;
+                  // background-color: #6f42c1;
+                  transition: all 0.3s ease;
+                  cursor: pointer;
+                  position: relative;
+                  
+                  
+                  // Style du bouton blanc (thumb)
+                  &::before {
+                    content: '';
+                    position: absolute;
+                    top: 2px;
+                    right: auto;
+                    left: 2px;
+                    width: 1.25rem;
+                    height: 1.25rem;
+                    background-color: white;
+                    border-radius: 50%;
+                    border: 1px;
+                    transition: all 0.3s ease;
+                    // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                  }
+                  
+                  &:checked {
+                    
+                    background-color: #6f42c1 !important;
+                    border: none;
+                    
+                    &::before {
+                      right: 2px;
+                      left: auto;
+                    }
+                    
+                    // &:hover {
+                    //   background-color: #45a049 !important;
+                    // }
+                  }
+                  
+                  &:not(:checked) {
+                    background-color: #ececec !important;
+                    
+                    &::before {
+                      right: auto;
+                      left: 2px;
+                    }
+                    
+                    // &:hover {
+                    //   background-color: #5a359a !important;
+                    // }
+                  }
+                  
+                  &:focus {
+                    // box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.25);
+                    outline: none;
+                    box-shadow: none;
+                    border: none;
+                  }
+                  
+                  &:active {
+                    outline: none;
+                    box-shadow: none;
+                    border: none;
+                  }
+                }
+
+              }
+            }
           }
         }
       }
@@ -162,3 +279,9 @@
     }
   }
 }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+

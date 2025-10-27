@@ -15,16 +15,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Visibility = ()=>{
+    const { t } = useTranslation();
     return(
        <main className='visibility'>
             <div className='visibility-header'>
-                <h1>Visibilité de mon compte</h1>
-                <p className="subtitle">Choisir comment votre profil doit etre affiché sur FoundBrain ou ailleurs</p>
+                <h1>{t('Visibilité de mon compte')}</h1>
+                <p className="subtitle">{t('Choisir comment votre profil doit etre affiché sur FoundBrain ou ailleurs')}</p>
             </div>
             <section className="visibility-section">
-                <h2 className="section-title">Profil privée</h2>
+                <h2 className="section-title">{t('Profil privée')}</h2>
                 <div className="switch-row">
-                    <p>Rendez privée votre profil pour le rendre accessible seulement pour vos selection de contact</p>
+                    <p>{t('Rendez privée votre profil pour le rendre accessible seulement pour vos selection de contact')}</p>
                     <Form className="custom-switch" style={{ padding: '20px' }}>
                         <Form.Check 
                             type="switch"
@@ -32,9 +33,9 @@ const Visibility = ()=>{
                         />
                     </Form>
                 </div>
-                <h2 className="section-title">Moteurs de rechereches</h2>
+                <h2 className="section-title">{t('Moteurs de rechereches')}</h2>
                 <div className="switch-row">
-                    <p>Paramaètrer vos moteurs de rechereche d'affiche votre profil sur Google.....</p>
+                    <p>{t("Paramaètrer vos moteurs de rechereche d'affiche votre profil sur Google.....")}</p>
                     <Form className="custom-switch" style={{ padding: '20px' }}>
                         <Form.Check 
                             type="switch"

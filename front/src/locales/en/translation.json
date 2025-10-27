@@ -1588,8 +1588,59 @@
   "companyType.Entreprise de production de jeux vidéo": "Video Game Production Company",
   "companyType.Entreprise de conception de logiciels de gestion": "Management Software Development Company",
   "companyType.Entreprise de gestion de la chaîne d'approvisionnement": "Supply Chain Management Company",
+  "Sélectionnez le genre de notifications que vous voulez recevoir sur FoundBrain": "Select the type of notifications you want to receive on FoundBrain",
+  "Général": "General",
+  "Recevez une notification lorsque quelqu'un commente une publication que vous avez posté, partagé ou suivi.": "Receive a notification when someone comments on a post you have posted, shared, or followed.",
+  "Recevoir des notifications par:": "Receive notifications via:",
+  "Notification push": "Push notification",
+  "Notification dans l'application": "In-app notification",
+  "Réactions": "Reactions",
+  "Enregistrements": "Saves",
+  "Republications": "Reposts",
+  "Captures d'écrans": "Screenshots",
+  "Visites de profil": "Profile visits",
+  "Aparitions dans les resultats de rechereches": "Appearances in search results",
+  "Réseautages": "Networking",
+  "Messsages": "Messages",
+  "Demande de contact": "Contact request",
+  "Recevez une notification lorsque quelqu'un vous envoie une demande de contact.": "Receive a notification when someone sends you a contact request.",
+  "Rechercher dans paramètre": "Search in settings",
+  "Mon compte": "My account",
+  "Visibilté": "Visibility",
+  "Apparence": "Appearance",
+  "Confidentialité et sécurité": "Privacy and security",
+  "Notification": "Notification",
+  "Les paramètres de notification...": "Notification settings...",
+  "Gérez vos identifiants et le fonctionnement de votre compte": "Manage your credentials and how your account works",
+  "Mes identifiants": "My credentials",
+  "Mes informations personnelles": "My personal information",
+  "Né(e) le": "Born on",
+  "Homme": "Male",
+  "Femme": "Female",
+  "Activités de mon compte": "My account activities",
+  "Désactiver mon compte": "Deactivate my account",
+  "Masquer temporairement votre compte sur tout le réseau": "Temporarily hide your account from the network",
+  "Supprimer mon compte": "Delete my account",
+  "Supprimer définitivement votre compte et vos données": "Permanently delete your account and data",
+  "Veuillez entrer votre mot de passe actuel": "Please enter your current password",
+  "Changer votre mots de passe": "Change your password",
+  "votre mot de passe actuel": "your current password",
+  "votre nouveau mot de passe": "your new password",
+  "Confirmer votre mot de passe": "Confirm your password",
 
- 
+  "Visibilité de mon compte": "Visibility of my account",
+  "Choisir comment votre profil doit etre affiché sur FoundBrain ou ailleurs": "Choose how your profile should be displayed on FoundBrain or elsewhere",
+  "Profil privée": "Private profile",
+  "Rendez privée votre profil pour le rendre accessible seulement pour vos selection de contact": "Make your profile private so it is accessible only to your selected contacts",
+  "Moteurs de rechereches": "Search engines",
+  "Paramaètrer vos moteurs de rechereche d'affiche votre profil sur Google.....": "Configure your search engines to display your profile on Google.....",
+
+
+
+
+
+
+
  "cv": {
     "firstName": "First name",
     "lastName": "Last name",
@@ -1600,4 +1651,6 @@
     "postalCode": "Your postal code",
     "adress": "Your residence address"
   }
+
+
 }

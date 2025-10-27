@@ -15,6 +15,7 @@ import CheckMdp from './CheckMdp';
 
 
 const MonCompte = () => {
+    const { t } = useTranslation();
     const { user } = useSelector(state => state.user);
     const dispatch = useDispatch();
     const [actionType, setActionType] = useState(null);
@@ -56,12 +57,12 @@ const MonCompte = () => {
     return(
        <main className="mon-compte">
             <div className="compte-header">
-                <h1>Mon compte</h1>
-                <p className="subtitle">Gérez vos identifiants et le fonctionnement de votre compte</p>
+                <h1>{t('Mon compte')}</h1>
+                <p className="subtitle">{t('Gérez vos identifiants et le fonctionnement de votre compte')}</p>
             </div>
 
             <section className="compte-section">
-                <h2 className="section-title">Mes identifiants</h2>
+                <h2 className="section-title">{t('Mes identifiants')}</h2>
                 
                 <div className="form-field">
                     <label>Mon adresse email</label>
@@ -80,24 +81,24 @@ const MonCompte = () => {
                             •••••••••
                         </div>
                         <ChangeMdp>
-                            <button className="btn-modifier">Modifier</button>
+                            <button className="btn-modifier">{t('Modifier')}</button>
                         </ChangeMdp>
                     </div>
                 </div>
             </section>
 
             <section className="compte-section">
-                <h2 className="section-title">Mes informations personnelles</h2>
+                <h2 className="section-title">{t('Mes informations personnelles')}</h2>
                 
                 <div className="form-field">
-                    <label>Né(e) le</label>
+                    <label>{t('Né(e) le')}</label>
                     <div className="field-value">
                         {user?.birthDate || 'waiting...'}
                     </div>
                 </div>
 
                 <div className="form-field genre-field">
-                    <label>Genre</label>
+                    <label>{t('Genre')}</label>
                     <div className="radio-group">
                         <label className="radio-option">
                             <input 
@@ -107,7 +108,7 @@ const MonCompte = () => {
                                 checked={user?.gender?.title?.toLowerCase() === 'homme'}
                                 readOnly
                             />
-                            <span>Homme</span>
+                            <span>{t('Homme')}</span>
                         </label>
                         <label className="radio-option">
                             <input 
@@ -117,7 +118,7 @@ const MonCompte = () => {
                                 checked={user?.gender?.title?.toLowerCase() === 'femme'}
                                 readOnly
                             />
-                            <span>Femme</span>
+                            <span>{t('Femme')}</span>
                         </label>
                         <label className="radio-option">
                             <input 
@@ -127,7 +128,7 @@ const MonCompte = () => {
                                 checked={user?.gender?.title?.toLowerCase() === 'autre'}
                                 readOnly
                             />
-                            <span>Autre</span>
+                            <span>{t('Autre')}</span>
                         </label>
                     </div>
                 </div>
@@ -140,18 +141,18 @@ const MonCompte = () => {
                 </div>
 
                 <div className="form-field">
-                    <label>Langue</label>
+                    <label>{t('Langue')}</label>
                     <LanguageSelector />
                 </div>
             </section>
 
             <section className="compte-section danger-section">
-                <h2 className="section-title">Activités de mon compte</h2>
+                <h2 className="section-title">{t('Activités de mon compte')}</h2>
                 
                 <div className="danger-action">
                     <div>
-                        <h3>Désactiver mon compte</h3>
-                        <p>Masquer temporairement votre compte sur tout le réseau</p>
+                        <h3>{t('Désactiver mon compte')}</h3>
+                        <p>{t('Masquer temporairement votre compte sur tout le réseau')}</p>
                     </div>
                     <button 
                         className="btn-danger-outline" 
@@ -160,14 +161,14 @@ const MonCompte = () => {
                             setModalOpen(true);
                         }}
                         >
-                        Désactiver
+                        {t('Désactiver')}
                     </button>
                 </div>
 
                 <div className="danger-action">
                     <div>
-                        <h3>Supprimer mon compte</h3>
-                        <p>Supprimer définitivement votre compte et vos données</p>
+                        <h3>{t('Supprimer mon compte')}</h3>
+                        <p>{t('Supprimer définitivement votre compte et vos données')}</p>
                     </div>
                     <button 
                         className="btn-danger" 
@@ -176,7 +177,7 @@ const MonCompte = () => {
                             setModalOpen(true);
                         }}
                         >
-                        Supprimer
+                        {t('Supprimer')}
                     </button>
                 </div>
             </section>
