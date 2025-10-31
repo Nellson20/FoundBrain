@@ -36,6 +36,7 @@ import StickySideBar from '../components/StickySideBar/StickySideBar'
 import { getUser } from '../api/users'
 import { acceptContact, existContact, requestContact } from '../api/contacts'
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query'
+import axios from '../axios'
 import DonationCard from '../components/DonationCard/DonationCard'
 import ProfilePictureSelectorModal from '../components/ProfilePictureSelectorModal/ProfilePictureSelectorModal'
 import MediaContext from '../context/MediaContext'
@@ -72,13 +73,23 @@ const ProfileLayout = () => {
     })
 
     const {
+        isLoading: privacyLoading,
+        error: privacyError,
+        data: privacyData
+    } = useQuery({
+        queryKey: ['repoUserPrivacy', userId],
+        queryFn: () => axios.get(`/api/users/${userId}/is-private`).then(res => res.data),
+        enabled: (currentUser && currentUser?.id !== userId) ? true : false
+    })
+
+    const {
         isLoading: existContactLoading,
         error: existContactError,
         data: existContactData
     } = useQuery({
         queryKey: ['repoExistContact', userId],
         queryFn: () => existContact(userId),
-        enabled: (currentUser && currentUser?.id !== userId) ? true : false
+        enabled: (currentUser && currentUser?.id !== userId && privacyData?.isPrivate) ? true : false
     })
 
     const {
@@ -106,16 +117,48 @@ const ProfileLayout = () => {
         })
 
     useEffect(() => {
-        console.log(existContactData, 'EXISTCONTACT')
-    }, [existContactData])
+        console.log('🔍 EXISTCONTACT Data:', existContactData)
+        console.log('🔒 Privacy Data:', privacyData)
+        if (existContactData && existContactData.length > 0) {
+            console.log('📋 Contact Status:', existContactData[0].status)
+            console.log('👤 Receiver ID:', existContactData[0].receiver?.id, 'Type:', typeof existContactData[0].receiver?.id)
+            console.log('👤 Requester ID:', existContactData[0].requester?.id, 'Type:', typeof existContactData[0].requester?.id)
+            console.log('🔐 Current User ID:', currentUser?.id, 'Type:', typeof currentUser?.id)
+            console.log('✅ Is receiver?', existContactData[0].receiver?.id === currentUser?.id)
+            console.log('✅ Is requester?', existContactData[0].requester?.id === currentUser?.id)
+        }
+    }, [existContactData, currentUser, privacyData])
 
-
-
+   
+    const hasAccessToPrivateProfile = () => {
+       
+        if (currentUser?.id === userId) return true;
+        
+        
+        if (!privacyData?.isPrivate) return true;
+        
+        
+        if (existContactData && existContactData.length > 0) {
+            return existContactData[0].status === 'accepté';
+        }
+        
+       
+        return false;
+    };
 
 
     return (
-        userLoading ? <h1></h1> :
+        userLoading || privacyLoading ? <h1></h1> :
             user ?
+                !hasAccessToPrivateProfile() ? (
+                    <div id='profile-page' style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '60vh', flexDirection: 'column', gap: '20px' }}>
+                        <h1>🔒 Ce profil est privé</h1>
+                        <p>Vous devez être en contact accepté avec cet utilisateur pour voir son profil.</p>
+                        <button className="btn btn-purple" onClick={() => requestContactFn()}>
+                            {requestContactLoading ? <CircleLoader /> : 'Envoyer une demande de contact'}
+                        </button>
+                    </div>
+                ) : (
                 <div id='profile-page'>
 
                     {
@@ -254,6 +297,7 @@ const ProfileLayout = () => {
                     }
                     <ProfilePictureSelectorModal file={tmpProfilePicture} />
                 </div>
+                )
                 : (
                     <NotFound />
                 ));

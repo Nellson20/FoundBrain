@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import { setConnectedUser } from '../../redux/actions/userActions';
-import axios from 'axios'
+import axios from '../../axios'
 import { ColorRing } from 'react-loader-spinner'
 
 
@@ -54,8 +54,9 @@ const ChangeMdp = ({ children }) => {
             alert(`✅ Mot de passe mis à jour pour: ${user.email}`,user.id)
             
             console.log('✅ Mot de passe mis à jour avec succès:', response.data)
-            setModalOpen(false)
-            setIsLoading(false)
+            
+            
+           
         })
         .catch((error) => {
             console.error('❌ Erreur lors de la mise à jour du mot de passe:', error)
@@ -73,6 +74,7 @@ const ChangeMdp = ({ children }) => {
             }
         })
     }
+    
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -88,7 +90,7 @@ const ChangeMdp = ({ children }) => {
             console.log('User data from login:', res?.data.user);
             alert('✅ Mot de passe actuel correct!')
             
-            // Étape 2: Mettre à jour le mot de passe
+            
             return updatePassword()
             setModalOpen(false)
         })

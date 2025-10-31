@@ -12,6 +12,7 @@ import axios from 'axios';
 import { setConnectedUser } from '../../redux/actions/userActions';
 import ChangeMdp from './ChangeMdp';
 import CheckMdp from './CheckMdp';
+import {getCountryList} from '../../api/coutry';
 
 
 const MonCompte = () => {
@@ -20,6 +21,8 @@ const MonCompte = () => {
     const dispatch = useDispatch();
     const [actionType, setActionType] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
+    const [countries, setCountries] = useState([])
+    const [selectedCountry, setSelectedCountry] = useState('')
     
     // Debug: vérifier les données de l'utilisateur
     console.log('===== USER DEBUG =====');
@@ -27,7 +30,17 @@ const MonCompte = () => {
     console.log('User birthDate:', user?.birthDate);
     console.log('Toutes les clés de user:', user ? Object.keys(user) : 'pas de user');
     console.log('======================');
-    
+    const userSettingsId = user?.id;
+    const getCountries = async () => {
+    try {
+      const data = await getCountryList({ ipp: 50, pg: 1 })
+      setCountries(data) // data = res.data
+      console.log('Countries:', data)
+    } catch (error) {
+      console.error('Erreur lors du chargement des pays:', error)
+    }
+  }
+   
   
     const reloadUserData = () => {
         if (user?.id) {
@@ -46,11 +59,33 @@ const MonCompte = () => {
             });
         }
     };
+
+    const updateCountry = async (id) => {
+    try {
+      await axios.patch(`${process.env.REACT_APP_API_DOMAIN}/api/me/account-country`, {
+        country: id, }
+    , { withCredentials: true });
+      alert('Pays mis à jour avec succès 🇲🇬')
+    } catch (error) {
+      console.error('Erreur de mise à jour du pays :', error)
+    }
+  }
+
+  // 🔹 Quand l’utilisateur change le pays
+  const handleChange = (e) => {
+    const id = e.target.value
+    console.log('l"id est:',id)
+    setSelectedCountry(id)
+    if (id) {
+      updateCountry(id)
+        }
+    }
     
 
     useEffect(() => {
         console.log('🔍 useEffect déclenché, user?.id:', user?.id);
         reloadUserData();
+        getCountries();
     }, [user?.id]);
 
     
@@ -135,14 +170,20 @@ const MonCompte = () => {
 
                 <div className="form-field">
                     <label>Mon pays/region</label>
-                    <div className="field-value">
-                        {user?.birthDate || 'Non renseigné'}
-                    </div>
+                    <select value={selectedCountry} onChange={handleChange}>
+                    <option value="">-- Sélectionnez un pays --</option>
+                        {countries.map((country) => (
+                            <option key={country.id} value={country.id}>
+                            {country.name}
+                            </option>
+                        ))}
+                    </select>  
                 </div>
+                
 
                 <div className="form-field">
                     <label>{t('Langue')}</label>
-                    <LanguageSelector />
+                    <LanguageSelector userSettingsId={userSettingsId}/>
                 </div>
             </section>
 

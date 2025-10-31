@@ -3,13 +3,15 @@ import Modal from '../../components/Modal/Modal';
 import { XLg, ExclamationTriangleFill } from 'react-bootstrap-icons';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import axios from 'axios';
+import axios from '../../axios';
 import { ColorRing } from 'react-loader-spinner';
+import { useDispatch } from 'react-redux';
+import { setConnectedUser } from '../../redux/actions/userActions';
 
 const CheckMdp = ({ actionType, onClose }) => {
     const { t } = useTranslation();
     const { user } = useSelector(state => state.user);
-
+    const dispatch = useDispatch();
     const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [errorMsg, setErrorMsg] = useState(null);
@@ -20,6 +22,32 @@ const CheckMdp = ({ actionType, onClose }) => {
         ? '/user/desactivate' 
         : '/user/delete';
 
+    const desactivateUserSettings = () => {
+             return axios.patch('/api/me/account-desactivation', {
+                active: false
+            })
+            .then((res) => {
+                console.log('🔄 desactivation user_settings avec succes');
+                console.log('🔍 Toutes les clés:', Object.keys(res.data));
+                dispatch(setConnectedUser(res.data));
+               
+            })
+            .catch((error) => {
+                console.error('❌ Erreur lors de la mise à jour du desactivation user_settings', error)
+                setIsLoading(false)
+                if (error.response) {
+                    console.error('Statut HTTP:', error.response.status)
+                    console.error('Détails du serveur:', error.response.data)
+                    alert(`Erreur: ${error.response.data.message || 'Impossible de mettre à jour le mot de passe'}`)
+                } else if (error.request) {
+                    console.error('Aucune réponse reçue:', error.request)
+                    alert('Erreur: Aucune réponse du serveur')
+                } else {
+                    console.error('Erreur Axios:', error.message)
+                    alert(`Erreur: ${error.message}`)
+                }
+            })
+    }
     const handleAction = async (e) => {
         e.preventDefault();
         setErrorMsg(null);
@@ -32,10 +60,15 @@ const CheckMdp = ({ actionType, onClose }) => {
                 password: password
             }, { withCredentials: true });
 
-            // Exécuter l'action (désactiver ou supprimer)
+            
             await axios.post(`${process.env.REACT_APP_API_DOMAIN}${apiEndpoint}`, {
                 userId: user?.id
             }, { withCredentials: true });
+            console.log('desactivation avec succes et avant la usersettings');
+            if(actionType === 'desactiver'){
+                await desactivateUserSettings()
+                console.log('usersettings apres la fonction desactivation');
+            }
 
             alert(actionType === 'desactiver' ? '✅ Votre compte a été désactivé.' : '✅ Votre compte a été supprimé.');
             setIsLoading(false);

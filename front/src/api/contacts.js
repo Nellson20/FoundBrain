@@ -16,9 +16,17 @@ export const getOnlineContacts=()=>{
 
 export const existContact=(userId)=>{
     return axios({
-        url: `${process.env.REACT_APP_API_DOMAIN}/contacts?or[receiver.id]=${userId}&or[requester.id]=${userId}`,
-        method: 'get', withCredentials: true
-    }).then((res) => res.data)
+        url: `${process.env.REACT_APP_API_DOMAIN}/contacts`,
+        params: {
+            'or[receiver.id]': userId,
+            'or[requester.id]': userId
+        },
+        method: 'get', 
+        withCredentials: true
+    }).then((res) => {
+        console.log('📡 API existContact response:', res.data)
+        return res.data
+    })
 }
 
 export const acceptContact=(contactId)=>{

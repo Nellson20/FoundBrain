@@ -197,6 +197,16 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Desactivation::class, orphanRemoval: true)]
     private Collection $Desactivation;
 
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: UserAccountSettings::class, cascade: ['persist', 'remove'])]
+    private ?UserAccountSettings $accountSettings = null;
+
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: UserVisibilitySettings::class, cascade: ['persist', 'remove'])]
+    private ?UserVisibilitySettings $visibilitySettings = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserNotificationSettings::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $notificationSettings;
+
+
     public function getId(): ?string
     {
         return parent::getId();
@@ -211,6 +221,7 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
         $this->accesses = new ArrayCollection();
         $this->notifications = new ArrayCollection();
         $this->Desactivation = new ArrayCollection();
+        $this->notificationSettings = new ArrayCollection();
     }
 
     public function getEmail(): ?string
@@ -674,6 +685,60 @@ class User extends Author implements UserInterface, PasswordAuthenticatedUserInt
             // set the owning side to null (unless already changed)
             if ($desactivation->getUser() === $this) {
                 $desactivation->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAccountSettings(): ?UserAccountSettings
+    {
+        return $this->accountSettings;
+    }
+
+    public function setAccountSettings(?UserAccountSettings $accountSettings): static
+    {
+        $this->accountSettings = $accountSettings;
+
+        return $this;
+    }
+
+    public function getVisibilitySettings(): ?UserVisibilitySettings
+    {
+        return $this->visibilitySettings;
+    }
+
+    public function setVisibilitySettings(?UserVisibilitySettings $visibilitySettings): static
+    {
+        if ($visibilitySettings !== null && $visibilitySettings->getUser() !== $this) {
+            $visibilitySettings->setUser($this);
+        }
+
+        $this->visibilitySettings = $visibilitySettings;
+
+        return $this;
+    }
+
+    public function getNotificationSettings(): Collection
+    {
+        return $this->notificationSettings;
+    }
+
+    public function addNotificationSetting(UserNotificationSettings $notificationSetting): static
+    {
+        if (!$this->notificationSettings->contains($notificationSetting)) {
+            $this->notificationSettings->add($notificationSetting);
+            $notificationSetting->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNotificationSetting(UserNotificationSettings $notificationSetting): static
+    {
+        if ($this->notificationSettings->removeElement($notificationSetting)) {
+            if ($notificationSetting->getUser() === $this) {
+                $notificationSetting->setUser(null);
             }
         }
 

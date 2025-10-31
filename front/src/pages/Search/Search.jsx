@@ -31,9 +31,15 @@ import VideoCard from "../../components/VideoCard/VideoCard";
 import Rating from "react-rating";
 import { getUsers } from "../../api/users";
 import { useTranslation } from 'react-i18next'
+import { existContact } from "../../api/contacts";
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import axiosInstance from "../../axios";
 
 const Search = () => {
   const { t } = useTranslation()
+  const navigate = useNavigate();
+  const currentUser = useSelector((store) => store.user.user);
   const [searchParams, setSearchParams] = useSearchParams();
   const htmlToJsx = new Parser();
   const [filters, setFilters] = useState({
@@ -140,6 +146,51 @@ const Search = () => {
   useEffect(() => {
     console.log(posts, "pOSTSsearch");
   }, [posts]);
+
+  const handleProfileClick = async (userId) => {
+    if (!currentUser) {
+      alert(t("Vous devez être connecté pour voir les profils"));
+      return;
+    }
+
+    if (currentUser.id === userId) {
+      navigate(`/profil/${userId}`);
+      return;
+    }
+
+    try {
+      
+      const privacyResponse = await axiosInstance.get(`/api/users/${userId}/is-private`);
+      console.log('🔒 Privacy check:', privacyResponse.data);
+
+     
+      if (!privacyResponse.data.isPrivate) {
+        console.log('✅ Profil public, accès autorisé');
+        navigate(`/profil/${userId}`);
+        return;
+      }
+
+      
+      console.log('🔒 Profil privé, vérification du contact...');
+      const contactData = await existContact(userId);
+      console.log('📞 Contact data:', contactData);
+
+      if (contactData && contactData.length > 0) {
+        const contact = contactData[0];
+        if (contact.status === 'accepté') {
+          console.log('✅ Contact accepté, accès autorisé');
+          navigate(`/profil/${userId}`);
+        } else {
+          alert(t("Ce profil est privé. Vous devez être en contact accepté pour y accéder."));
+        }
+      } else {
+        alert(t("Ce profil est privé. Envoyez une demande de contact pour y accéder."));
+      }
+    } catch (error) {
+      console.error('Erreur lors de la vérification du profil:', error);
+      alert(t("Une erreur s'est produite. Veuillez réessayer."));
+    }
+  };
 
   const settings = {
     dots: false,
@@ -335,7 +386,7 @@ const Search = () => {
               <div className="persons-results-list flex flex-column">
                 {
                   users?.map((u, i) => (
-                    <Link key={i} to={`/profil/${u.id}`} className="person flex justify-content-between align-items-center ">
+                    <div key={i} onClick={() => handleProfileClick(u.id)} className="person flex justify-content-between align-items-center" style={{ cursor: 'pointer' }}>
                       <div className="flex align-items-center gap-10">
                         <Avatar src={u.activeProfilePicture?.fileUrl} width={45} height={45} />
                         <div className="info flex flex-column gap-5">
@@ -347,10 +398,10 @@ const Search = () => {
                         </div>
                       </div>
                       <div className="right flex gap-10">
-                        <buttton className="btn-purple">{t("Contacter")}</buttton>
-                        <buttton className="btn-outline-yellow">{t("Recruter")}</buttton>
+                        <button className="btn-purple">{t("Contacter")}</button>
+                        <button className="btn-outline-yellow">{t("Recruter")}</button>
                       </div>
-                    </Link>
+                    </div>
                   ))
                 }
 
