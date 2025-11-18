@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './PostCard.scss'
-import { Plus, Diamond, Gem, ChatLeft, Share } from 'react-bootstrap-icons'
+import { Plus, Diamond, Gem, ChatLeft, Share,Chat,ChevronCompactDown,ChevronCompactUp, HandThumbsUp ,ChevronDown, EmojiSmile, Image, CameraVideo, Paperclip, Bookmark, Bell, PencilSquare, Trash } from 'react-bootstrap-icons'
 import Avatar from '../Avatar/Avatar'
 import MediaContext from '../../context/MediaContext'
 import { DESKTOP, SMARTPHONE, TABLET } from '../../constants/MediaTypeConstants'
@@ -34,6 +34,7 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
   const { user } = useSelector((store) => store.user)
   const [commentsFetching, setCommentsFetching] = useState(false)
   const [comments, setComments] = useState([])
+  const [showCommentInput, setShowCommentInput] = useState(false)
   const deletePost = (e) => {
     e.preventDefault()
     axios({
@@ -58,6 +59,7 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
       method: 'post', withCredentials: true,
     }).then((res) => {
       console.log(res.data)
+      console.log("heloo")
     }).catch((err) => console.log(err.response))
   }
   useEffect(() => {
@@ -84,6 +86,7 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
               <Link className='author-domains'>{data.author.domains?.map((d) => d.title).join(',')}</Link>
             }
             <span>{moment(data.createdAt).fromNow()}</span>
+            
           </div>
         </div>
         <div className="flex gap-10">
@@ -95,15 +98,15 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
           }
 
           <DropDown>
-            <div className="plus-btn"><Plus size={28} style={{ display: 'block' }} /></div>
+            <div className="plus-btn"><ChevronCompactUp size={28} /><ChevronCompactDown size={28} /></div>
             <NavigableList startIndex={0}>
-              <Link to='/emplois/cv'>Enregistrer</Link>
-              <Link to='/emplois/nouveau'>Alerter les activités</Link>
+              <Link to='/emplois/cv'><Bookmark size={20} /> Enregistrer</Link>
+              <Link to='/emplois/nouveau'><Bell size={20} /> Alerter les activités</Link>
               {
                 (user && (data.author.id === user?.id || data.author.author?.id === user?.id)) &&
                 
-                  [<Link to='/'>Modifier la publication</Link>,
-                  <Link to='/' onClick={deletePost}>Suprimer</Link>]
+                  [<Link to='/' key="edit"><PencilSquare size={20} /> Modifier la publication</Link>,
+                  <Link to='/' onClick={deletePost} key="delete"><Trash size={20} /> Suprimer</Link>]
                 
               }
             </NavigableList>
@@ -111,13 +114,14 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
         </div>
       </div>
 
-      {
-        data.content && <div className="body">
-
-          <TextViewMore>{data.content}</TextViewMore></div>
-      }
+      
 
       <PostImagesGrid postId={data.id} images={data.thumbnails} />
+      {
+            data.content && <div className="body">
+
+              <TextViewMore>{data.content}</TextViewMore></div>
+          }
       {/* {
         !noComment &&
         <div className="post-comment-list p-10">
@@ -163,20 +167,12 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
 
       <div className="footer flex align-items-center gap-15">
 
-        <div className='relative evaluation-btn'>
-          <DropDown placement='top-start' closeOnclickInside={true}>
+        <div className='relative avatar-dropdown-btn'>
+          <DropDown placement='top-start' closeOnclickInside={false}>
             <RequireAuthOnClick>
-              <span className='flex align-items-center gap-10 no-wrap-text'>
-
-                <div className="ico">
-                  <Gem size={22} />
-                  {
-                    data.evaluationCount > 0 &&
-                    <div className="badge purple">{(data.evaluationSum / data.evaluationCount).toFixed(1)}/5</div>
-                  }
-                </div>
-                <span>Evaluer</span>
-
+              <span className='flex align-items-center gap-3 no-wrap-text'>
+                <Avatar height={24} width={24} src={user?.activeProfilePicture?.fileUrl || user?.activeLogo?.fileUrl} />
+                <ChevronDown size={16} />
               </span>
             </RequireAuthOnClick>
             <Rating
@@ -188,23 +184,46 @@ const PostCard = ({ noComment = false, data, onDelete = () => { }, showInteracti
           </DropDown>
         </div>
 
-        <span onClick={() => setShowPostModal(true)} className='flex align-items-center gap-10 no-wrap-text'>
-          <div className="ico">
-            <ChatLeft size={22} />
-            {data.commentsCount > 0 ? <div className="badge">{millify(data.commentsCount)}</div> : ''}
-          </div>
-          <span>Commenter</span>
-        </span>
         <RequireAuthOnClick>
-          <span className='flex align-items-center gap-10 no-wrap-text'>
-            <div className="ico">
-              <Share size={22} />
-              <div className="badge">{millify(getRandomNumber(100, 10000))}</div>
-            </div>
-            <span>Partager</span>
+          <span className='flex align-items-center gap-3 no-wrap-text'>
+            <HandThumbsUp size={20} style={{ color: '#FFA500' }} />
+            <span>Bravo</span>
+          </span>
+        </RequireAuthOnClick>
+
+        <span onClick={() => setShowCommentInput(!showCommentInput)} className='flex align-items-center gap-3 no-wrap-text'>
+          <Chat size={20} />
+          <span>Commentaire</span>
+        </span>
+
+        <RequireAuthOnClick>
+          <span className='flex align-items-center gap-3 no-wrap-text'>
+            <Share size={20} />
+            <span>Republier</span>
           </span>
         </RequireAuthOnClick>
       </div>
+      
+      {
+        showCommentInput && (
+          <div className="comment-input-section">
+            <div className="comment-input-wrapper">
+              <input 
+                type="text" 
+                placeholder="Écrire un commentaire" 
+                className="comment-input"
+              />
+              <div className="comment-icons">
+                <EmojiSmile size={20} className="comment-icon" />
+                <Image size={20} className="comment-icon" />
+                <CameraVideo size={20} className="comment-icon" />
+                <Paperclip size={20} className="comment-icon" />
+              </div>
+            </div>
+          </div>
+        )
+      }
+      
       {
         showPostModal && <PostViewModal post={data} open={showPostModal} setOpen={setShowPostModal} />
       }

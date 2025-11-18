@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { ChevronBarLeft, ChevronLeft, ChevronRight, Download, Fullscreen, PencilSquare, Plus, PlusLg, X, XLg, ZoomIn, ZoomOut } from 'react-bootstrap-icons'
+import { ChevronBarLeft, ChevronDown, ChevronLeft, ChevronRight, Download, Fullscreen, PencilSquare, Plus, PlusLg, X, XLg, ZoomIn, ZoomOut, EmojiSmile, CameraVideo, Paperclip} from 'react-bootstrap-icons'
 import Avatar from '../../components/Avatar/Avatar'
 import CommentForm from '../../components/commentForm/CommentForm'
 import './Image.scss'
-import { Gem, ChatLeft, Share, Clipboard } from 'react-bootstrap-icons'
+import { Gem, ChatLeft, Share, Clipboard, HandThumbsUp } from 'react-bootstrap-icons'
 import Tab from '../../components/Tabs/Tab'
 import Tabs from '../../components/Tabs/Tabs'
 import { useLocation } from 'react-router-dom';
@@ -43,6 +43,7 @@ const Image = ({ closeFn = () => { } }) => {
 
     const [tmpComment, setTmpComment] = useState('')
     const [scrollingElement, setScrollingElement] = useState(null)
+    const [showCommentInput, setShowCommentInput] = useState(false)
 
     const { data: post, error: postError, isLoading: postLoading } = useQuery({
         queryKey: ['imagePostRepo', searchParams.get('p')],
@@ -90,13 +91,13 @@ const Image = ({ closeFn = () => { } }) => {
     return (
         <div id="image-page" className='flex'>
             <div className="left flex flex-column flex-grow-1">
+                <div className="close-btn-outside" onClick={(e) => { navigate(-1) }}>
+                    <XLg size={15} />
+                </div>
                 <div className="top relative">
                     <img src={image?.imageEntity.fileUrl} alt="" className="background-post-img absolute" />
                     <div className="background-post-img-glass absolute flex align-items-center justify-content-center">
                         <img ref={img} src={image?.imageEntity.fileUrl} alt="" className="single-post-img absolute" style={{ maxWidth: "100% !important", height: "100% !important" }} />
-                    </div>
-                    <div className="close-btn" onClick={(e) => { navigate(-1) }}>
-                        <XLg size={16} />
                     </div>
                     <div className="post-imgs-slide-actions absolute flex gap-10">
                         <div className="zoom-in-btn">
@@ -105,13 +106,18 @@ const Image = ({ closeFn = () => { } }) => {
                         <div className="zoom-out-btn">
                             <ZoomOut size={16} />
                         </div>
-                        <div className="full-screen-btn">
+                        {/* <div className="full-screen-btn">
                             <Fullscreen size={16} />
                         </div>
                         <div className="download-btn">
                             <Download size={16} />
-                        </div>
+                        </div> */}
                     </div>
+                    {post?.thumbnails && post.thumbnails.length > 1 && (
+                        <div className="image-counter">
+                            {post.thumbnails.findIndex(t => t.image?.id == image_id) + 1} <ChevronRight size={12} />
+                        </div>
+                    )}
                     <div className="prev-slide-btn">
                         <ChevronLeft size={20} />
                     </div>
@@ -129,24 +135,31 @@ const Image = ({ closeFn = () => { } }) => {
                             <h4><Link to={`${post?.author.firstName ?
                                 `/profil/${post?.author.id}` : post?.author.name ? `/portail/${post?.author.id}` : null}`
                             }>{(post?.author.firstName || post?.author.name)}{post?.author.lastName ? " " + post?.author.lastName : ""}</Link></h4>
-                            <span>{moment(post?.createdAt).fromNow()}</span>
+                            <span className="author-time">{moment(post?.createdAt).fromNow()}</span>
+                            {post?.author.domains && post?.author.domains.length > 0 && (
+                                <span className="author-domains">{post?.author.domains?.map((d) => d.title).join(', ')}</span>
+                            )}
                         </div>
                     </div>
-                    <div className="right flex gap-10">
-                        {
-                            post?.author.country &&
+                    <div className="right flex gap-10 align-items-center">
+                        {post?.author.country && (
                             <div className="flag">
                                 <img src={post?.author.country?.flag.fileUrl} height={30} alt="" />
                             </div>
-                        }
+                        )}
 
                         <button className='post-plus-btn'>
-                            <Plus size={28} />
+                            <ChevronDown size={18} />
                         </button>
                     </div>
                 </div>
                 <div className="body">
-                    <div className='p-10'>
+                    {post?.content && (
+                        <div className="post-main-content p-10">
+                            <h3 className="post-title">{post.content}</h3>
+                        </div>
+                    )}
+                    {/* <div className='p-10'>
                         {
                             editDescription && (user?.id === post?.author.id || post?.author.author?.id) ?
                                 <div className='description-edit-inpt'>
@@ -176,14 +189,14 @@ const Image = ({ closeFn = () => { } }) => {
                                     <button className="btn btn-transparent" onClick={() => setEditDescription(true)}><PencilSquare /> {t('Ajouter une déscription')}</button>
                                 : ''
                         }
-                    </div>
-                    <div className="px-10">
+                    </div> */}
+                    {/* <div className="px-10">
                         <div className="link-input flex">
                             <input readOnly className="link flex-grow-1" value={currentURL} />
                             <button><Clipboard /></button>
                         </div>
-                    </div>
-                    <div className="post-comments p-10">
+                    </div> */}
+                    {/* <div className="post-comments p-10">
                         <Tabs className='post-comments-tabs'>
                             <Tab title={<span className='flex align-items-center gap-5'><span>{t('Commentaires')}</span>{image?.commentsCount > 0 ? ` (${millify(image?.commentsCount)})` : ''}</span>}>
                                 <CommentList
@@ -197,50 +210,72 @@ const Image = ({ closeFn = () => { } }) => {
 
                             </Tab>
                         </Tabs>
-                    </div>
+                    </div> */}
 
                 </div>
                 <div className="footer">
-                    {
+                    {/* {
                         user &&
                         <div className="top">
                             <CommentForm commentable={`/images/${image_id}`} onSended={(data) => {
                                 addItem(data)
                             }} />
                         </div>
-                    }
-                    <div className="bottom flex gap-10">
+                    } */}
+                    <div className="bottom flex gap-15 align-items-center">
+                        <div className='avatar-small flex align-items-center'>
+                            <Avatar height={25} width={25} src={user?.activeProfilePicture?.fileUrl || user?.activeLogo?.fileUrl} />
+                            <ChevronDown size={14} />
+                        </div>
                         <RequireAuthOnClick>
-                            <span className='flex align-items-center gap-10 no-wrap-text'>
-                                <div className="ico">
-                                    <Gem size={21} />
-                                    {image?.evaluationCount > 0 ? <div className="badge">{millify(image?.evaluationCount)}</div> : ''}
+                            <span className='flex align-items-center gap-3 no-wrap-text interaction-btn'>
+                                <div className="ico-wrapper">
+                                    <HandThumbsUp size={18} className="ico-bravo" />
+                                    
                                 </div>
-                                <span>{t('Evaluer')}</span>
+                                <span>{t('Bravo')}</span>
                             </span>
                         </RequireAuthOnClick>
                         <RequireAuthOnClick>
-                            <span className='flex align-items-center gap-10 no-wrap-text'>
-                                <div className="ico">
-                                    <ChatLeft size={21} />
-                                    {image?.commentsCount > 0 ? <div className="badge">{millify(image?.commentsCount)}</div> : ''}
+                            <span  onClick={() => setShowCommentInput(!showCommentInput)} className='flex align-items-center gap-3 no-wrap-text interaction-btn'>
+                                <div className="ico-wrapper">
+                                    <ChatLeft size={18} />
                                 </div>
-                                <span>{t('Commenter')}</span>
+                                <span>{t('Commentaire')}</span>
                             </span>
                         </RequireAuthOnClick>
                         <RequireAuthOnClick>
-                            <span className='flex align-items-center gap-10 no-wrap-text'>
-                                <div className="ico">
-                                    <Share size={21} />
-                                    <div className="badge">50</div>
+                            <span className='flex align-items-center gap-3 no-wrap-text interaction-btn'>
+                                <div className="ico-wrapper">
+                                    <Share size={18} />
                                 </div>
-                                <span>{t('Partager')}</span>
+                                <span>{t('Republier')}</span>
                             </span>
                         </RequireAuthOnClick>
                     </div>
                 </div>
+                {
+                    showCommentInput && (
+                        <div className="comment-input-section">
+                            <div className="comment-input-wrapper">
+                                <input 
+                                    type="text" 
+                                    placeholder="Écrire un commentaire" 
+                                    className="comment-input"
+                                />
+                                <div className="comment-icons">
+                                    <EmojiSmile size={18} className="comment-icon" />
+                                   
+                                    <CameraVideo size={18} className="comment-icon" />
+                                    <Paperclip size={18} className="comment-icon" />
+                                </div>
+                            </div>
+                        </div>
+                    )
+                }
             </div>
         </div>
+        
     )
 }
 

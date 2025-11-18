@@ -2,21 +2,23 @@
 
 .mon-compte {
   @include themify($themes) {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    background-color: themed(background, 0);
-    min-height: 100vh;
+    // max-width: 900px;
+    // margin: 0 auto;
+    // padding: 2rem 1.5rem;
+    // background-color: themed(background, 0);
+    // min-height: 100vh;
+    
 
     // Header section
     .compte-header {
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
+      padding: 1.5rem;
 
       h1 {
         font-size: 2rem;
         font-weight: 600;
         color: themed(text, 0);
-        margin: 0 0 0.5rem 0;
+        // margin: 0 0 0.5rem 0;
       }
 
       .subtitle {
@@ -28,24 +30,26 @@
 
     // Section container
     .compte-section {
-      background: themed(background, 3);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      box-shadow: themed(elevation, 1);
+      // background: themed(background, 3);
+      // border-radius: 12px;
+      padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+      // margin-bottom: 0.2rem;
+      // border-radius: 20px;
+      // box-shadow: themed(elevation, 1);
 
       .section-title {
         font-size: 1.1rem;
         font-weight: 600;
         color: themed(text, 1);
-        margin: 0 0 1.5rem 0;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid themed(border, 2);
+        margin: 0 0 0.5rem 0;
+        padding-bottom: 0;
+        // border-bottom: 1px solid themed(border, 2);
       }
 
       // Form fields
       .form-field {
         margin-bottom: 1.5rem;
+        border-radius: 20px;
 
         &:last-child {
           margin-bottom: 0;
@@ -62,8 +66,8 @@
         .field-value {
           background: themed(background, 0);
           border: 1px solid themed(border, 2);
-          border-radius: 8px;
-          padding: 0.875rem 1rem;
+          border-radius: 20px;
+          padding: 1.125rem 1rem;
           font-size: 0.95rem;
           color: themed(text, 1);
         }
@@ -80,8 +84,27 @@
 
         &.password-field {
           .password-hidden {
-            letter-spacing: 2px;
-            font-size: 1.2rem;
+            // letter-spacing: 2px;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+
+            label {
+              margin: 0;
+              flex: 1;
+            }
+
+            .link-icon {
+              color: themed(text, 3);
+              cursor: pointer;
+              transition: color 0.2s ease;
+
+              &:hover {
+                color: themed(text, 1);
+              }
+            }
           }
         }
 
@@ -119,10 +142,11 @@
       .btn-modifier {
         background: transparent;
         border: 1px solid themed(border, 1);
-        color: themed(mainColor, purple);
-        padding: 0.5rem 1.25rem;
-        border-radius: 6px;
-        font-size: 0.875rem;
+        color: black;
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        
         font-weight: 500;
         cursor: pointer;
         transition: all 0.2s ease;
@@ -144,9 +168,9 @@
         padding: 1.25rem 0;
         gap: 1rem;
 
-        &:not(:last-child) {
-          border-bottom: 1px solid themed(border, 2);
-        }
+        // &:not(:last-child) {
+        //   // border-bottom: 1px solid themed(border, 2);
+        // }
 
         h3 {
           font-size: 0.95rem;
@@ -166,7 +190,7 @@
           border: 1.5px solid map-get($red, primary);
           color: map-get($red, primary);
           padding: 0.5rem 1.5rem;
-          border-radius: 6px;
+          border-radius: 20px;
           font-size: 0.875rem;
           font-weight: 500;
           cursor: pointer;
@@ -180,10 +204,10 @@
 
         .btn-danger {
           background: map-get($red, primary);
-          border: none;
+          border: 1.5px solid map-get($red, primary);
           color: white;
-          padding: 0.6rem 1.5rem;
-          border-radius: 6px;
+          padding: 0.5rem 1.5rem;
+          border-radius: 20px;
           font-size: 0.875rem;
           font-weight: 500;
           cursor: pointer;
@@ -202,8 +226,8 @@
     .language-selector,
     select {
       width: 100%;
-      padding: 0.875rem 1rem;
-      border-radius: 8px;
+      padding: 1rem;
+      border-radius: 20px;
       border: 1px solid themed(border, 2);
       background: themed(background, 0);
       font-size: 0.95rem;
@@ -219,6 +243,150 @@
         outline: none;
         border-color: themed(mainColor, purple);
         box-shadow: 0 0 0 3px rgba(112, 47, 128, 0.1);
+      }
+    }
+
+    // Custom select wrapper for country and similar selects
+    .custom-select-wrapper {
+      position: relative;
+      width: 50%;
+      padding: 1rem;
+      border-radius: 20px;
+      border: 1px solid themed(border, 2);
+      background: themed(background, 0);
+      transition: all 0.2s ease;
+
+      &:hover {
+        border-color: themed(border, 1);
+      }
+
+      &:focus-within {
+        border-color: themed(mainColor, purple);
+        box-shadow: 0 0 0 3px rgba(112, 47, 128, 0.1);
+      }
+
+      .select-label {
+        display: block;
+        font-size: 0.75rem;
+        color: themed(text, 2);
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+
+      .custom-select {
+        width: 100%;
+        border: none;
+        background: themed(background, 0);
+        font-size: 0.95rem;
+        color: themed(text, 1);
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        // appearance: none;
+        // -webkit-appearance: none;
+        // -moz-appearance: none;
+        // box-shadow: none;
+        // background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+        // background-repeat: no-repeat;
+        background-position: right 0 center;
+        background-size: 20px;
+        padding-right: 25px;
+
+        &:focus {
+          outline: none;
+          border: none;
+          box-shadow: none;
+        }
+
+        option {
+          background: themed(background, 0);
+          color: themed(text, 1);
+          padding: 0.5rem;
+        }
+      }
+    }
+
+    // Custom language selector
+    .custom-language-selector {
+      position: relative;
+      width: 50%;
+
+      .selected-language {
+        width: 100%;
+        padding: 1rem;
+        border-radius: 20px;
+        border: 1px solid themed(border, 2);
+        background: themed(background, 0);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        transition: all 0.2s ease;
+
+        &:hover {
+          border-color: themed(border, 1);
+        }
+
+        .language-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+          flex: 1;
+
+          .language-label {
+            display: block;
+            font-size: 0.85rem;
+            color: themed(text, 2);
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+          }
+
+          .language-value {
+            font-size: 0.95rem;
+            color: themed(text, 1);
+          }
+        }
+
+        .dropdown-arrow {
+          font-size: 0.7rem;
+          color: themed(text, 3);
+        }
+      }
+
+      .language-dropdown {
+        position: absolute;
+        top: calc(100% + 0.5rem);
+        left: 0;
+        right: 0;
+        background: themed(background, 0);
+        border: 1px solid themed(border, 2);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        z-index: 10;
+        overflow: hidden;
+
+        .language-option {
+          padding: 0.875rem 1rem;
+          cursor: pointer;
+          transition: background 0.2s ease;
+          font-size: 0.95rem;
+          color: themed(text, 1);
+
+          &:hover {
+            background: themed(background, 1);
+          }
+
+          &.active {
+            background: themed(background, 2);
+            color: themed(mainColor, purple);
+            font-weight: 500;
+          }
+
+          &:not(:last-child) {
+            border-bottom: 1px solid themed(border, 3);
+          }
+        }
       }
     }
 

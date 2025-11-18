@@ -55,7 +55,11 @@ const CreateInvest = () => {
 
     const addInvest = () => {
         resetErrors()
-        const toSend = { ...invest,author:invest.author.name ? `/companies/${invest.author.id}` : `/users/${invest.author.id}`, currency: invest.currency?.value || null }
+        const toSend = { 
+            ...invest,
+            author: invest.author.name ? `/companies/${invest.author.id}` : `/users/${invest.author.id}`, 
+            currency: invest.currency?.['@id'] || (invest.currency?.id ? `/currencies/${invest.currency.id}` : null)
+        }
         const data = new FormData()
         for (var key in toSend) {
             if (Array.isArray(toSend[key])) {
@@ -164,7 +168,12 @@ const CreateInvest = () => {
                 </div>
             </div>
             <div className="center flex flex-grow-1 align-items-center justify-content-center">
-                <FundingCard data={{...invest,investPictures:invest.medias.map((p)=>({fileUrl:URL.createObjectURL(p)}))}}/>
+                <FundingCard data={{
+                    ...invest,
+                    need: invest.need ? { value: invest.need, currency: invest.currency } : null,
+                    collected: invest.collected ? { value: invest.collected, currency: invest.currency } : null,
+                    investPictures: invest.medias.map((p) => ({ fileUrl: URL.createObjectURL(p) }))
+                }}/>
             </div>
         </div>
     )

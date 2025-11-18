@@ -1,62 +1,131 @@
 @import "../../style.scss";
 
 .home-banner-slider {
-    @include themify($themes) {
-        padding: 20px 0 30px 15px;
-        background: themed("background", 3);
-        box-shadow: var(--elevation-1);
-        border-bottom: 1px solid themed("border", 2);
+  @include themify($themes) {
+    padding: 20px 0 30px 15px;
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 1500px;
+    margin: -40px auto 0 auto; // combine margin-top et centrer
+    display: flex;
+    align-items: center;
+    border-radius: 12px;
+    position: relative; // pour positionner le bouton en absolute
 
-        .home-banner-top {
-            margin: 20px 0 15px 0;
-            padding-right: 15px;
-        }
+    .home-banner-top {
+      margin: 20px 0 15px 0;
+      padding-right: 15px;
 
-        .home-banner-top .heading h1 {
-            margin: 0 !important;
-            color: themed("text", 2)
-        }
-
-        .add-invest {
-            color: themed("text", 3);
-            border-radius: 5px;
-            height: 204px;
-
-            >div {
-                background: var(--main-gradient);
-                width: 100%;
-                height: 100%;
-                border-radius: 5px;
-                display: flex;
-                padding: 1px;
-                >div {
-                    flex-grow: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    flex-direction: column;
-                    background: themed("background",3);
-                    border-radius: 6px;
-                    gap: 8px;
-                    cursor: pointer;
-                    transition: .5s;
-                    .ico {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50%;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        background: themed("background", 5);
-                        svg{
-                            display: block;
-                        }
-                    }
-                    &:hover{
-                        filter: brightness(1.05);
-                    }
-                }
-            }
-        }
+      .heading h1 {
+        margin: 0 !important;
+        color: themed("text", 2);
+      }
     }
+
+    /* === Bouton "Créer un investissement" === */
+    .add-invest {
+      color: themed("text", 3);
+      height: 180px;
+
+      > div {
+        background: var(--main-gradient);
+        width: 100%;
+        height: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        padding: 1px;
+
+        > div {
+          flex-grow: 1;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          background: themed("background", 3);
+          border-radius: 12px;
+          gap: 8px;
+          cursor: pointer;
+          transition: 0.5s;
+
+          .ico {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: themed("background", 5);
+
+            svg {
+              display: block;
+            }
+          }
+
+          &:hover {
+            filter: brightness(1.05);
+          }
+        }
+      }
+    }
+
+    /* === Espacement et border-radius des slides === */
+    .slick-slide {
+      margin-right: 8px;
+
+      > div {
+        border-radius: 12px; // arrondi des cartes
+        overflow: hidden;    // pour que le contenu ne dépasse pas
+        height: 180px;
+      }
+    }
+
+    .slick-list {
+      margin-right: -8px; // compense l’espace du dernier élément
+    }
+
+    .slick-track {
+      display: flex !important;
+      align-items: center;
+      border-radius: 12px;
+    }
+
+    /* === Boutons de navigation superposés === */
+    .prev-btn,
+    .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      background: themed("background", 3);
+      box-shadow: var(--elevation-2);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      
+      &:hover {
+        background: themed("background", 4);
+      }
+    }
+
+    .prev-btn {
+      left: 0;
+    }
+
+    .next-btn {
+      right: 15px;
+    }
+  }
+}
+
+/* === Si tu veux que toutes les cartes GoodDealCard aient le même radius === */
+.good-deal-card {
+  border-radius: 12px;
+  overflow: hidden;
+  background: white; // ou themed("background", 3)
 }

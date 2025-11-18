@@ -4,8 +4,9 @@
     @include themify($themes) {
         color: themed("text",2);
         background: themed("background",3);
-        border-radius: 5px;
-        box-shadow: var(--elevation-1);
+        border-radius: 12px; 
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+        border: 1px solid themed("border",3);
         margin-bottom: 20px;
         max-width: 100vw;
 
@@ -14,11 +15,26 @@
             border-bottom: 1px solid themed("border",2);
             z-index: 10;
             background: themed("background",3);
-            border-radius: 5px 5px 0 0;
+            border-radius: 12px 12px 0 0;
             gap: 10px;
             .left{
                 min-width: 0;
             }
+        }
+        .plus-btn{
+            display: flex;
+            flex-direction: row; 
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            cursor: pointer;
+            background: none !important;
+            border: none !important; 
+            padding: 6px; 
+            /* removed accidental huge width/height values */
+            width: auto;
+            height: auto;
+
         }
 
         .top .flag img {
@@ -27,13 +43,28 @@
 
         .top .plus-btn {
             background: themed("background",5);
-            height: 31px;
-            width: 31px;
-            border-radius: 5px;
+            height: auto;
+            width: auto;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            padding: 6px;
+            transition: all 0.2s ease;
+            /* allow overflowing SVGs to be visible when a larger icon size is used */
+            overflow: visible;
+            
+            &:hover {
+                background: themed("background",4);
+            }
+        }
+
+        /* If you pass a large `size` prop to the icon component, force the svg
+           to use those dimensions so it's not restricted by other global svg rules. */
+        .top .plus-btn svg {
+            width: 28px;
+            height: 28px;
         }
 
         .body {
@@ -67,16 +98,21 @@
             min-width: 0;
             h1 {
                 font-size: 18px;
+                text-decoration: none;
             }
         } 
 
         .author-info h1 a {
             font-size: 15px;
             color: themed("text",2) !important;
+            text-decoration: none;
         }
 
         .author-info {
-            line-height: 10px;
+            line-height: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
         .author-domains{
             color: themed("text",3) !important;
@@ -84,53 +120,50 @@
             white-space: pre;
             text-overflow: ellipsis;
             overflow: hidden;
-            line-height: 16px;
+            line-height: 1.2;
+            font-size: 13px;
         }
 
         .author-info span {
             font-size: 13px;
             color: themed("text",4);
+            line-height: 1.2;
         }
 
         .footer {
-            height: 44px;
+            height: auto;
+            min-height: 50px;
             font-weight: 500;
-            padding: 0 15px;
+            padding: 10px 15px;
             color:  themed("text",3);
             border-top: 1px solid themed("border",2);
             background: themed("background",3);
             z-index: 10;
             position: relative;
-            border-radius: 0 0 5px 5px;
+            gap: 20px;
+            border-radius: 0 0 12px 12px;
+            justify-content: center;
+             
         }
 
-        .footer & * {
-            line-height: 10px;
+        .footer > * {
             cursor: pointer;
-            min-width: 0;
-            max-width: 100%;
+            transition: all 0.2s ease;
+            font-size: 14px;
+            border: 1px solid themed("border",2);
+            border-radius: 20px;
+            padding: 8px 16px;
+            background: rgba(255, 152, 0, 0.06) !important;
         }
 
-        .footer > * > * {
-            // overflow: hidden;
-            text-overflow: ellipsis;
-            display: block;
-            white-space: pre;
-            line-height: 30px;
-            min-width: 0;
-            width: auto;
-            min-width: 0;
-            max-width: 100%;
-            flex-grow: 1;
-            color: themed("text",3);
-            cursor: pointer;
-        }
-
-        .footer > * > *:hover {
+        .footer > *:hover {
             color: themed("text",1);
-            .evaluation-container{
-                display: flex;
-            }
+            border-color: themed("border",1);
+        }
+
+        .avatar-dropdown-btn {
+            display: flex;
+            align-items: center;
         }
         .evaluation-container{
             background: themed("background",4);
@@ -142,6 +175,56 @@
             align-items: center;
             display: none;
             border: 1px solid themed("border",2);
+        }
+
+        .footer:has(+ .comment-input-section) {
+            border-radius: 0;
+        }
+
+        .comment-input-section {
+            padding: 12px 15px;
+            background: themed("background",3);
+            border-top: 1px solid themed("border",2);
+            border-radius: 0 0 12px 12px;
+        }
+
+        .comment-input-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: themed("background",4);
+            border: 1px solid themed("border",2);
+            border-radius: 20px;
+            padding: 8px 15px;
+        }
+
+        .comment-input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 14px;
+            color: themed("text",2);
+            
+            &::placeholder {
+                color: themed("text",4);
+            }
+        }
+
+        .comment-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comment-icon {
+            cursor: pointer;
+            color: themed("text",3);
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: themed("text",1);
+            }
         }
         
     }

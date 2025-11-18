@@ -1,82 +1,156 @@
 @import "../../style.scss";
 
 .searchbar {
-    @include themify($themes) {
-        padding: 5px;
-        margin-left: 0 -5px;
-        border-radius: 5px;
-        
-        position: relative;
-        
-        z-index: 1000 !important;
-        &.expandable{
-            width: 40px;
-            overflow: hidden;
-            transition: .5s;
-            &:not(.expanded){
-                padding-left: 0px;
-            }
-            &.expanded{
-                width: 100% !important;
-                flex-grow: 1;
-            }
-        }
-        &.has-suggests{
-            background: themed("background", 3);
-            box-shadow:  -1px -1px 5px #0000005d, 1px -1px 6px #00000028;
-            .suggests{
-                position: absolute;
-                height: 300px;
-                width: 100%;
-                top: calc(100% - 4px);
-                background: inherit;
-                box-shadow:  -1px 5px 5px #00000054, 1px 5px 6px #0000001e;
-                border-radius: 0 0 5px 5px;
-                padding: 8px 5px 5px 5px;
-                ul{
-                    li{
-                        >*{
-                            display: flex;
-                            align-items: center;
-                            gap: 10px;
-                            height: 45px;
-                            padding: 0 15px;
-                            border-radius: 5px;
-                            color: themed('text',3);
-                            cursor: pointer;
-                            &:not(:first-child){
-                                margin-top: 10px;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+  @include themify($themes) {
+    padding: 0;
+    margin: 0 12px; /* ✅ même espacement que les autres icônes du topbar */
+    border-radius: 6px;
+    position: relative;
+    z-index: 1000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* --- MODE EXTENSIBLE --- */
+    &.expandable {
+      width: 32px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: transparent;
+
+      /* --- ÉTAT FERMÉ : seule la loupe --- */
+      &:not(.expanded) {
         .input {
-            background: themed("background", 5);
-            border-radius: 5px;
-            height: 35px;
-            padding: 0 10px;
-            width: 100%;
-            /* border: 1px solid var(--border-grey); */
+          width: 32px;
+          height: 32px;
+          padding: 0;
+          justify-content: center;
+          align-items: center;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+
+        input {
+          opacity: 0;
+          width: 0;
+          pointer-events: none;
         }
 
         .icon-left {
-            margin-top: 3px;
-            color: themed("text", 3);
-            margin-right: 10px;
-            margin-left: 3px;
+          margin: 0;
+          color: themed("text", 3);
+          font-size: 20px;
         }
+      }
 
+      /* --- ÉTAT OUVERT : champ visible --- */
+      &.expanded {
+        width: 280px !important;
+        transition: width 0.3s ease;
+
+        .input {
+          padding: 0 12px;
+          background: themed("background", 5);
+          border: 1px solid themed("border", 2);
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          height: 36px;
+          box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+        }
 
         input {
-            all: unset;
-            flex-grow: 1;
-            min-width: 0;
-            font-size: 14px;
-            border: none !important;
-            box-shadow: none !important;
+          opacity: 1;
+          width: 100%;
+          pointer-events: auto;
+          transition: opacity 0.2s ease;
         }
 
+        .icon-left {
+          margin-right: 10px;
+          margin-left: 3px;
+          color: themed("text", 3);
+        }
+      }
     }
+
+    /* --- LISTE DE SUGGESTIONS --- */
+    &.has-suggests {
+      background: themed("background", 3);
+      box-shadow: -1px -1px 5px #0000005d, 1px -1px 6px #00000028;
+
+      .suggests {
+        position: absolute;
+        height: 300px;
+        width: 100%;
+        top: calc(100% - 4px);
+        background: inherit;
+        box-shadow: -1px 5px 5px #00000054, 1px 5px 6px #0000001e;
+        border-radius: 0 0 5px 5px;
+        padding: 8px 5px 5px 5px;
+        overflow-y: auto;
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            > * {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              height: 45px;
+              padding: 0 15px;
+              border-radius: 5px;
+              color: themed('text', 3);
+              cursor: pointer;
+              transition: background 0.2s ease;
+
+              &:hover {
+                background: themed("background", 6);
+              }
+
+              &:not(:first-child) {
+                margin-top: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* --- STYLE PAR DÉFAUT --- */
+    .input {
+      background: transparent;
+      border: 1px solid themed("border", 2);
+      border-radius: 8px;
+      height: 36px;
+      padding: 0 11px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .icon-left {
+      margin-top: 3px;
+      color: themed("text", 3);
+      margin-right: 10px;
+      margin-left: 3px;
+      display: flex;
+      align-items: center;
+    }
+
+    input {
+      all: unset;
+      flex-grow: 1;
+      min-width: 0;
+      font-size: 14px;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
 }

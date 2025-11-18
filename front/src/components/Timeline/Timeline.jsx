@@ -4,47 +4,18 @@ import axios from '../../axios'
 import PostCardSkeleton from '../../components/PostCard/PostCardSkeleton';
 import PostCard from '../PostCard/PostCard';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
-import SliderNav from '../SliderNav/SliderNav';
-import { getDomains, getUserDomains } from '../../api/domain';
-
 import { filtersToURL } from '../../functions';
-import { Sliders } from 'react-bootstrap-icons';
 import { getUserCompanies } from '../../api/company';
 import { useSelector } from 'react-redux';
-import DomainsSelector from '../DomainsSelector/DomainsSelector';
 import PostModal from '../PostModal/PostModal';
 import RequireAuthOnClick from '../RequireAuthOnclick/RequireAuthOnClick';
 import useInfiniteScroll from '../../Hooks/useInfiniteScroll';
 import { useTranslation } from 'react-i18next';
-const Timeline = () => {
+const Timeline = ({ filters }) => {
     const { t } = useTranslation();
     const { user } = useSelector(store => store.user)
     const [posts, setPosts] = useState([])
-    const [filters, setFilters] = useState(null)
     const [openPostModal, setOpenPostModal] = useState(false)
-
-    /**
-     * Recuperation userDomains
-     */
-    const { data: userDomains, error: userDomainsErr, isLoading: userDomainsLoading } = useQuery({
-        queryKey: ['repoUserDomains'],
-        queryFn: () => getUserDomains(user.id),
-        enabled: user ? true : false
-    })
-
-    const {
-        status,
-        fetchStatus,
-        data: domains,
-    } = useQuery({
-        queryKey: ['repoDomainsList', userDomains],
-        queryFn: () => getDomains(),
-        enabled: userDomains ? false : true,
-    })
-
-    useEffect(() => {
-        console.log(userDomains, domains, 'DOMAINS')
-    }, [userDomains, domains])
 
     /**
      * Recuperation des posts
@@ -114,32 +85,8 @@ const Timeline = () => {
 
     }, [postsListFetchingNextPage, postsListIsFetching])
 
-    const [chooseDomains, setChooseDomains] = useState(false)
-
     return (
         <div className='timeline'>
-            <DomainsSelector open={chooseDomains} onClose={() => setChooseDomains(false)} />
-            {
-                (userDomains || domains) &&
-                <SliderNav defaultActive={1}>
-                    {
-                        [
-                            user && <span key='k1' className='flex align-items-center' onClick={() => {
-                                setChooseDomains(true)
-                                return false
-                            }}><Sliders size={18} /></span>,
-                            <span key='k2' onClick={() => setFilters(null)}>Tous</span>,
-
-                            ...(userDomains || domains).map((d, i) =>
-                                <span key={i} onClick={() => setFilters((prev) => ({ ...prev, ['author.domain']: d.title }))}>
-                                    {d.title}
-                                </span>
-                            )
-                        ].filter(element => element !== null)
-                    }
-                </SliderNav>
-
-            }
 
             <div className="post-list">
                 {

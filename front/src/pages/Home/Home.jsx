@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import HomeBannerSlider from '../../components/HomeBannerSlider/HomeBannerSlider';
 import WelcomeBanner from '../../components/WelcomeBanner/WelcomeBanner';
-import { Briefcase, PlayFill, Tag, ChevronRight, ChevronLeft, Check2, ArrowRight, BuildingFill, Building, Megaphone } from 'react-bootstrap-icons';
+import { Briefcase, PlayFill, Tag, ChevronRight, ChevronLeft, Check2, ArrowRight, BuildingFill, Building, Megaphone, Sliders,BiCompass,PeopleFill,CalendarRange,GeoAltFill   } from 'react-bootstrap-icons';
 import Avatar from '../../components/Avatar/Avatar';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
@@ -25,6 +25,9 @@ import CurrencyContext from '../../context/CurrencyContext';
 import { convertCurrency } from '../../utils/currencyUtils';
 import RequireAuthOnClick from '../../components/RequireAuthOnclick/RequireAuthOnClick';
 import { useTranslation } from 'react-i18next';
+import SliderNav from '../../components/SliderNav/SliderNav';
+import { getDomains, getUserDomains } from '../../api/domain';
+import DomainsSelector from '../../components/DomainsSelector/DomainsSelector';
 
 
 const Home = () => {
@@ -32,10 +35,33 @@ const Home = () => {
   const { user } = useSelector(store => store.user)
   const { deviceType } = useContext(MediaContext)
   const htmlToJsx = new Parser();
+  
+  // États pour le filtrage des domaines
+  const [filters, setFilters] = useState(null)
+  const [chooseDomains, setChooseDomains] = useState(false)
+  
   const { data: companies, error: companiesGetError } = useQuery({
     queryKey: ['repoCompanies'],
     queryFn: getCompanies
   })
+  
+  // Récupération des domaines
+  const { data: userDomains, error: userDomainsErr, isLoading: userDomainsLoading } = useQuery({
+    queryKey: ['repoUserDomains'],
+    queryFn: () => getUserDomains(user.id),
+    enabled: user ? true : false
+  })
+
+  const {
+    status,
+    fetchStatus,
+    data: domains,
+  } = useQuery({
+    queryKey: ['repoDomainsList', userDomains],
+    queryFn: () => getDomains(),
+    enabled: userDomains ? false : true,
+  })
+  
   const { data: latestNews, error: latestNewsError } = useQuery({
     queryKey: ['repoGateNews'],
     queryFn: () => {
@@ -58,6 +84,30 @@ const Home = () => {
     <div className='home-page'>
       <WelcomeBanner />
       <HomeBannerSlider />
+      
+      <DomainsSelector open={chooseDomains} onClose={() => setChooseDomains(false)} />
+      
+      {/* SliderNav qui s'étend sur toute la largeur */}
+      {
+        (userDomains || domains) &&
+        <SliderNav defaultActive={1}>
+          {
+            [
+              user && <span key='k1' className='flex align-items-center' onClick={() => {
+                setChooseDomains(true)
+                return false
+              }}><Sliders size={18} /></span>,
+              <span key='k2' onClick={() => setFilters(null)}>Tous</span>,
+
+              ...(userDomains || domains).map((d, i) =>
+                <span key={i} onClick={() => setFilters((prev) => ({ ...prev, ['author.domain']: d.title }))}>
+                  {d.title}
+                </span>
+              )
+            ].filter(element => element !== null)
+          }
+        </SliderNav>
+      }
      
       <main className="flex gap-20">
         {
@@ -73,24 +123,29 @@ const Home = () => {
               <li>
                 <RequireAuthOnClick>
                   <Link to='/contacts'>
-                    <div className="ico"><Briefcase size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Mes contacts')}</span>
+                    <div className="ico"><PeopleFill size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Mes contacts')}</span>
                   </Link>
                 </RequireAuthOnClick>
               </li>
               <li>
                 <Link>
-                  <div className="ico"><Megaphone size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Promotions')}</span>
+                  <div className="ico"><CalendarRange size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Promotions')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link>
+                  <div className="ico"><GeoAltFill  size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Rencontres')}</span>
                 </Link>
               </li>
             </ul>
             <hr style={{ margin: '20px 10px' }} />
 
-            <PortalList activeUser={user ? true : false} />
+            {/* <PortalList activeUser={user ? true : false} /> */}
 
           </div> : ""
         }
         <div className="center">
-          <Timeline />
+          <Timeline filters={filters} />
         </div>
         {
           ((deviceType === DESKTOP) || (deviceType === TABLET)) ? <div className="right">

@@ -1,7 +1,7 @@
 @import "../../style.scss";
 
 :root {
-    --topbar-height: 58px;
+    --topbar-height: 38px;
 }
 
 #topbar {
@@ -12,12 +12,26 @@
         min-height: var(--topbar-height);
         transition: .5s;
         z-index: 1000;
-        box-shadow: var(--elevation-1);
-        border-bottom: 1px solid themed("border", 2);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        box-shadow: themed(elevation, 1);
+        border-radius: 12px; 
+        margin-bottom: 3px; 
+        margin-top: 5px;
+        align-items: center;
+        display: flex;
+        max-width: 1500px;  
+        margin-left: auto;
+        margin-right: auto;
 
         &.sticky {
             position: sticky;
             top: 0;
+        }
+
+        > * {
+            display: flex;
+            align-items: center;
         }
 
         .top-to-afrimuz {
@@ -28,7 +42,15 @@
         }
 
         .topbar-mew-btn {
-            padding: 0 6px;
+            padding: 0 15px;
+            border-radius: 18px;
+            font-weight: 600;
+            height: 36px;
+            min-width: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
         }
 
         >.left {
@@ -42,144 +64,144 @@
 
         .right {
             width: 280px;
-            gap: 10px;
-
-            >* {
-                cursor: pointer;
-            }
-        }
-
-        .right>*:not(.profile) {
-            transition: .5s;
-            border-radius: 5px;
-            cursor: pointer;
             display: flex;
             align-items: center;
-            padding: 0 8px;
-            height: 35px;
-            color: themed("text", 2);
-            background: themed("background", 5);
-        }
+            gap: 16px;
 
-        .right>.profile {
-            position: relative;
-            transition: .5s;
-            background: none !important;
-
-            &:hover {
-                img {
-
-                    filter: brightness(1.3);
-                }
-
+            > * {
+                cursor: pointer;
             }
-
-            .ico {
-                position: absolute;
-                right: -3px;
-                bottom: 0px;
-                width: 15px;
-                height: 15px;
-                border-radius: 5px;
-                background: themed('background', 5);
-                display: flex;
+            
+            /* Messages et notifications en cercle - Cible tous les descendants (pas que les enfants directs) */
+            .topbar-icon-circle {
+                display: flex !important;
                 align-items: center;
                 justify-content: center;
-                color: themed('text', 2);
+                width: 40px !important;
+                height: 40px !important;
+                min-width: 40px !important;
+                min-height: 40px !important;
+                max-width: 40px !important;
+                max-height: 40px !important;
+                border-radius: 50% !important;
+                border: 1px solid themed("border", 2) !important;
+                background: rgba(255, 152, 0, 0.06) !important;
+                position: relative;
+                flex-shrink: 0 !important;
+                padding: 0 !important;
+                // transition: 0.3s;
+                
+
+                // &:hover {
+                //     background: rgba(255, 152, 0, 0.06);
+                //     border-color: rgba(255, 152, 0, 0.15);
+                // }
+
+                .badge {
+                    position: absolute;
+                    top: -4px;
+                    right: -4px;
+                    width: 18px;
+                    height: 18px;
+                    font-size: 10px;
+                    padding: 0;
+                    background: var(--red);
+                    color: #fff;
+                    border-radius: 50%;
+                    border: 2px solid themed('background',5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            /* CurrencySelector avec contour rectangle - après les autres styles */
+            > .currency-selector-inpt {
+                border: 1px solid themed("border", 2) !important;
+                border-radius: 8px !important;
+                padding: 8px 12px;
+                position: relative;
+                background: rgba(255, 152, 0, 0.06) !important;
+            }
+
+            .profile {
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                background: none !important;
+                border: none !important;
+                padding: 0 !important;
+                transition: 0.3s;
+
+                &:hover img {
+                    filter: brightness(1.1);
+                    transform: scale(1.05);
+                }
             }
         }
 
-        .right>a {
-            position: relative;
-            .badge{
-                background: var(--red) !important;
-                color: white;
-                border-radius: 10px !important;
-                font-size: 10px !important;
-                position: absolute;
-                padding: 2px !important;
-                height: 18px !important;
-                border: 2px solid themed('background',5);
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: 2px;
-            }
-        }
-
-        .right>span:hover,
-        #topbar .right>a:hover {
-            background: themed("background", 5);
-        }
-
-        >nav {
+        > nav {
             flex-grow: 1;
             max-width: 789px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 12px;
 
-            >ul {
-                width: 100%;
+            > ul {
+                width: auto;
+                gap: 24px;
+                align-items: center;
+                display: flex;
 
-                >li {
+                > li {
                     line-height: 16px;
+                    align-items: center;
+                    justify-content: center;
 
-                    >a {
-                        display: block;
-                        color: themed("text", 4);
-                        min-width: 65px;
-                        position: relative;
-
-                        border-radius: 5px;
-                        height: 35px;
+                    > a {
                         display: flex;
+                        color: themed("text", 3);
+                        min-width: 68px;
+                        width: 68px;
+                        height: 36px;
                         align-items: center;
                         justify-content: center;
                         position: relative;
+                        border-radius: 28px;
+                        transition: .3s;
+                        background: transparent;
                     }
 
-                    >a.active {
-                        background: themed("background", 5);
+                    > a.active {
+                        background: rgba(255, 152, 0, 0.1);
+                        color: #FF9800;
 
-                        color: themed("mainColor", purple);
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            bottom: -14px;
+                            left: 50%;
+                            transform: translateX(-50%);
+                            width: 100px;
+                            height: 3px;
+                            background: #FF9800;
+                            // border-radius: 3px 3px 0 0;
+                        }
                     }
 
-                    >a.active::before {
-                        content: "";
-                        background: themed("mainColor", purple);
-                        position: absolute;
-                        width: 20px;
-                        height: 15px;
-                        left: 50%;
-                        transform: translateX(-50%);
-                        top: -22px;
-                        border-radius: 5px;
+                    > a:hover:not(.active) {
+                        background: rgba(255, 152, 0, 0.06);
                     }
 
                     .searchbar {
-                        margin-left: 10px;
+                        height: 36px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                     }
                 }
             }
         }
-
-        /* #topbar nav ul li a::after{
-    content: "";
-    position: absolute;
-    width: 1px;
-    border-radius: 360%;
-    height: 15px;
-    margin-top: 5px;
-    background: rgb(212, 211, 211);
-    top: 0;
-    right: 0;
-}
-#topbar nav ul li a:first-child:after{
-    content: "";
-    position: absolute;
-    width: 1px;
-    border-radius: 360%;
-    height: 15px;
-    background: rgb(212, 211, 211);
-    top: 0;
-    left: 0;
-} */
     }
 }

@@ -49,7 +49,7 @@ const Contacts = () => {
                 </div>
                 <div className="bottom">
                     <Tabs className='post-comments-tabs'>
-                        <Tab title={<span>{t('Tous ')}({contactsList?.pages[0]?.totalItems})</span>}>
+                        <Tab title={<span>{t('Tous')}({contactsList?.pages[0]?.totalItems})</span>}>
                             <ul className='contact-list'>
                                 {
                                     contactsListFetching ? (

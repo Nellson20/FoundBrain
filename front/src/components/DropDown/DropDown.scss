@@ -4,13 +4,13 @@
 .dropdownMenu {
   @include themify($themes) {
     display: none;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.419);
-    background: themed("background", 3);
-    border: 1px solid themed("border", 2);
-    padding: 8px;
-    border-radius: 6px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.08);
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 12px;
+    border-radius: 12px !important;
     z-index: 10000000 !important;
-    min-width: 250px;
+    min-width: 220px;
 
     &.shown {
       display: block;
@@ -31,7 +31,7 @@
     }
 
     ul li {
-      margin: 0 0 4px 0 !important;
+      margin: 0 0 6px 0 !important;
       &:last-child {
         margin: 0;
       }
@@ -39,9 +39,28 @@
         width: 100%;
       }
       a {
-        font-weight: themed("weight", 600);
-        color: themed('text',2);
-        padding: 0 10px;
+        font-weight: 600;
+        color: #111827;
+        padding: 10px 14px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        
+        svg {
+          flex-shrink: 0;
+          color: #4b5563;
+        }
+        
+        &:hover {
+          background: #f9fafb;
+          
+          svg {
+            color: #111827;
+          }
+        }
       }
     }
   }

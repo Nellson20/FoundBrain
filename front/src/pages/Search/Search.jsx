@@ -9,7 +9,7 @@ import {
   CupHot,
   GeoAlt,
   Water,
-  Wifi,
+  Wifi,Building, Megaphone, Sliders,BiCompass,PeopleFill,CalendarRange,GeoAltFill,Person,Newspaper   
 } from "react-bootstrap-icons";
 import { useQuery } from "@tanstack/react-query";
 import { getInvests } from "../../api/invest";
@@ -35,6 +35,7 @@ import { existContact } from "../../api/contacts";
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axiosInstance from "../../axios";
+import RequireAuthOnClick from '../../components/RequireAuthOnclick/RequireAuthOnClick';
 
 const Search = () => {
   const { t } = useTranslation()
@@ -298,7 +299,7 @@ const Search = () => {
   return (
     <div id="search-page">
       <div className="left">
-        <StickySideBar top={63}>
+        {/* <StickySideBar top={63}>
           <div className="search-nav">
             <h2>{t('100 Resultats pour "{{search}}"', { search: searchParams.get("k") })}</h2>
               <ul>
@@ -328,58 +329,86 @@ const Search = () => {
                 </li>
               </ul>
           </div>
-        </StickySideBar>
+        </StickySideBar> */}
+        <ul className='left-menu'>
+        
+          <li>
+            <Link><div className="ico">
+              <Person size={18} />
+            </div>
+              <span className='text-ellipsis flex-grow-1'>{t('Personnes')}</span></Link>
+          </li>
+          <li>
+            <RequireAuthOnClick>
+              <Link to='/contacts'>
+                <div className="ico"><Newspaper size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Publications')}</span>
+              </Link>
+            </RequireAuthOnClick>
+          </li>
+          <li>
+            <Link>
+              <div className="ico"><Newspaper size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Jobs')}</span>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <div className="ico"><GeoAltFill  size={18} /></div><span className='text-ellipsis flex-grow-1'>{t('Autres recherches')}</span>
+            </Link>
+          </li>
+        </ul>
       </div>
       <div className="center">
-    {
-      (!portalsLoading && portals.length > 0) &&
-      <div className="portals-results">
-        {portalsLoading ? (
-          <PortalsListSkeleton />
-        ) : (
-          <>
-            <div className="top">
-              <h2>{t("Entreprises")}</h2>
-            </div>
-            <ul className="body">
-              {portals &&
-                portals.map((p, i) => (
-                  <li key={i} className="flex">
-                    <div className="left">
-                      <Avatar
-                        src={p.activeLogo?.fileUrl}
-                        height={50}
-                        width={50}
-                      />
-                    </div>
-                    <div className="center">
-                      <h1 className="portal-name">
-                        <Link to={`/portail/${p.id}`}>{p.name}</Link>
-                      </h1>
-                      <span className="portal-domains">
-                        {p.domains.map((d) => d.title).join(",")}
-                      </span>
-                      <small>{htmlToJsx.parse(p.description)}</small>
-                    </div>
-                    <div className="right flex gap-10">
-                      <button className="btn-purple">{t("Contacter")}</button>
-                    </div>
-                  </li>
-                ))}
-            </ul>
-            <div className="footer">
-              <button className="btn btn-transparent">{t("Voir plus")}</button>
-            </div>
-          </>
-        )}
-      </div>        
-      }
+      {
+        (!portalsLoading && portals.length > 0) &&
+        <div className="portals-results">
+          {portalsLoading ? (
+            <PortalsListSkeleton />
+          ) : (
+            <>
+              <div className="top">
+                <h2>{t("Entreprises")}</h2>
+              </div>
+              <ul className="body">
+                {portals &&
+                  portals.map((p, i) => (
+                    <li key={i} className="flex">
+                      <div className="left">
+                        <Avatar
+                          src={p.activeLogo?.fileUrl}
+                          height={50}
+                          width={50}
+                        />
+                      </div>
+                      <div className="center">
+                        <h1 className="portal-name">
+                          <Link to={`/portail/${p.id}`}>{p.name}</Link>
+                        </h1>
+                        <span className="portal-domains">
+                          {p.domains.map((d) => d.title).join(",")}
+                        </span>
+                        <small>{htmlToJsx.parse(p.description)}</small>
+                      </div>
+                      <div className="right flex gap-10">
+                        <button className="btn-purple">{t("Contacter")}</button>
+                      </div>
+                    </li>
+                  ))}
+              </ul>
+              <div className="footer">
+                <button className="btn btn-transparent">{t("Voir plus")}</button>
+              </div>
+            </>
+          )}
+        </div>        
+        }
 
 
         {
           (users && users?.length > 0) &&
           (
+            
             <div className="persons-results ">
+              <h4>{t('100 Resultats pour "{{search}}"', { search: searchParams.get("k") })}</h4>
               <div className="top">
                 <h2>{t("Personnes")}</h2>
               </div>
@@ -404,8 +433,9 @@ const Search = () => {
                     </div>
                   ))
                 }
-
-
+              </div>
+              <div className="footer">
+                <button className="btn ">{t("Afficher plus de personnes")}</button>
               </div>
             </div>
           )
@@ -715,25 +745,25 @@ const Search = () => {
                   </div>
                 </div>
 
-      <div className="right"> 
-      <StickySideBar top={63}>
-        <div className="suggest-search-invest">
-          <h2>
-            {t("Où investir en Afrique?")} <br />
-          </h2>
-          <span>
-            {t("Trouver des placements sûr pour Investir rapidement et facilement dans un continent à fort potentiel.")}
-          </span>
-          <img src="/img/other/afrique2.png" alt="" />
-          <Link to="/investissements" className="btn btn-gradient">
-            {t("Début")}
-          </Link>
-        </div>
-        <div className="square-ad">
-          <img src="/img/ads/ad1.png" alt="" />
-        </div>
-      </StickySideBar>
-    </div>
+      {/* <div className="right"> 
+        <StickySideBar top={63}>
+          <div className="suggest-search-invest">
+            <h2>
+              {t("Où investir en Afrique?")} <br />
+            </h2>
+            <span>
+              {t("Trouver des placements sûr pour Investir rapidement et facilement dans un continent à fort potentiel.")}
+            </span>
+            <img src="/img/other/afrique2.png" alt="" />
+            <Link to="/investissements" className="btn btn-gradient">
+              {t("Début")}
+            </Link>
+          </div>
+          <div className="square-ad">
+            <img src="/img/ads/ad1.png" alt="" />
+          </div>
+        </StickySideBar>
+      </div> */}
     </div>
   );
 };

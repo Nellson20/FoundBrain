@@ -13,6 +13,7 @@ import { setConnectedUser } from '../../redux/actions/userActions';
 import ChangeMdp from './ChangeMdp';
 import CheckMdp from './CheckMdp';
 import {getCountryList} from '../../api/coutry';
+import { Unlock } from 'react-bootstrap-icons';
 
 
 const MonCompte = () => {
@@ -22,12 +23,14 @@ const MonCompte = () => {
     const [actionType, setActionType] = useState(null);
     const [isModalOpen, setModalOpen] = useState(false);
     const [countries, setCountries] = useState([])
-    const [selectedCountry, setSelectedCountry] = useState('')
+    const [selectedCountry, setSelectedCountry] = useState(user?.country?.id || '')
     
     // Debug: vérifier les données de l'utilisateur
     console.log('===== USER DEBUG =====');
     console.log('User complet:', user);
     console.log('User birthDate:', user?.birthDate);
+    console.log('User country:', user?.country);
+    console.log('Selected country ID:', selectedCountry);
     console.log('Toutes les clés de user:', user ? Object.keys(user) : 'pas de user');
     console.log('======================');
     const userSettingsId = user?.id;
@@ -38,6 +41,21 @@ const MonCompte = () => {
       console.log('Countries:', data)
     } catch (error) {
       console.error('Erreur lors du chargement des pays:', error)
+    }
+  }
+
+  // Récupérer le pays actuel de l'utilisateur
+  const getCurrentCountry = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_DOMAIN}/api/me/account-country`, {
+        withCredentials: true
+      })
+      console.log('🌍 Pays actuel récupéré:', response.data)
+      if (response.data?.country?.id) {
+        setSelectedCountry(response.data.country.id)
+      }
+    } catch (error) {
+      console.error('Erreur lors de la récupération du pays:', error)
     }
   }
    
@@ -86,6 +104,7 @@ const MonCompte = () => {
         console.log('🔍 useEffect déclenché, user?.id:', user?.id);
         reloadUserData();
         getCountries();
+        getCurrentCountry();
     }, [user?.id]);
 
     
@@ -100,8 +119,9 @@ const MonCompte = () => {
                 <h2 className="section-title">{t('Mes identifiants')}</h2>
                 
                 <div className="form-field">
-                    <label>Mon adresse email</label>
+                    
                     <div className="field-value">
+                        <label>Mon adresse email</label>
                         {user?.email || 'Non disponible'}
                     </div>
                     {/* <div className="field-value">
@@ -110,10 +130,11 @@ const MonCompte = () => {
                 </div>
 
                 <div className="form-field password-field">
-                    <label>Mon mot de passe</label>
+                    
                     <div className="field-row">
                         <div className="field-value password-hidden">
-                            •••••••••
+                            <label>Mon mot de passe</label>
+                            <Unlock size={18} className="link-icon" />
                         </div>
                         <ChangeMdp>
                             <button className="btn-modifier">{t('Modifier')}</button>
@@ -126,8 +147,9 @@ const MonCompte = () => {
                 <h2 className="section-title">{t('Mes informations personnelles')}</h2>
                 
                 <div className="form-field">
-                    <label>{t('Né(e) le')}</label>
+                    
                     <div className="field-value">
+                        <label>{t('Né(e) le')}</label>
                         {user?.birthDate || 'waiting...'}
                     </div>
                 </div>
@@ -169,20 +191,21 @@ const MonCompte = () => {
                 </div>
 
                 <div className="form-field">
-                    <label>Mon pays/region</label>
-                    <select value={selectedCountry} onChange={handleChange}>
-                    <option value="">-- Sélectionnez un pays --</option>
-                        {countries.map((country) => (
-                            <option key={country.id} value={country.id}>
-                            {country.name}
-                            </option>
-                        ))}
-                    </select>  
+                    <div className="custom-select-wrapper">
+                        <label className="select-label">{t('Mon pays/région')}</label>
+                        <select value={selectedCountry} onChange={handleChange} className="custom-select">
+                            {!selectedCountry && <option value="">-- {t('Sélectionnez un pays')} --</option>}
+                            {countries.map((country) => (
+                                <option key={country.id} value={country.id}>
+                                    {country.name}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-                
 
                 <div className="form-field">
-                    <label>{t('Langue')}</label>
+                    {/* <label>{t('Langue')}</label> */}
                     <LanguageSelector userSettingsId={userSettingsId}/>
                 </div>
             </section>

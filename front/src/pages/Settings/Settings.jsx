@@ -25,12 +25,15 @@ const Settings = () => {
     <main className="layout">
       {deviceType === DESKTOP && (
         <aside className="sidebar">
-          <header className="sidebar-header">
+          <div className="sidebar-header">
             <h1>{t('Paramètres')}</h1>
-          </header>
+          </div>
             
+          <div className="sidebar-search">
+            <Searchbar placeholder={t('Rechercher dans les paramètres')} />
+          </div>
+
           <nav className="sidebar-menu">
-            <Searchbar placeholder={t('Rechercher dans paramètre')} />
             <ul>
               <li 
                 className={activeSection === "MonCompte" ? "active" : ""}

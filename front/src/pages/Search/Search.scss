@@ -2,25 +2,109 @@
 
 #search-page {
   @include themify($themes) {
-    max-width: 1400px;
-    margin: auto;
     display: flex;
-    gap: 5px;
-    padding: 15px;
+    gap: 10px;
+    max-width: 1500px;  
+    margin-left: auto;
+    margin-right: auto;
+    
 
-    >.left,
+    >.left {
+      width: 240px;
+      min-width: 240px;
+      position: sticky;
+      top: 54px;
+      border-radius: 12px 12px 12px 12px; 
+      max-height: calc(100vh - 53px);
+      overflow: auto;
+      padding: 8px 25px 18px 5px;
+      background: themed("background",3);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+      text-decoration: none;
+      align-items: center;
+      justify-content: center;
+
+      h3{
+          font-size: 14px;
+          padding: 0 5px;
+          font-weight: 500;
+          margin-left: 6px;
+          line-height: 34px;
+          color: themed("text",3);
+          text-decoration: none;
+      }
+
+      .left-menu{
+          width: 100%;
+          padding: 0;
+          margin: 0;
+      }
+
+      .left-menu li a{
+          font-weight: 600;
+          height: 45px;
+          padding: 0 5px;
+          font-size: 10px !important;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          cursor: pointer;
+          overflow: hidden;
+          white-space: pre;
+          text-overflow: ellipsis;
+          width: 100%;
+          min-width: 0;
+          color: themed("text",2);
+          margin-top: 10px;
+          text-decoration: none;
+
+          .ico{
+              width: 35px;
+              height: 35px;
+              background: themed("background",5);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50px;
+              text-decoration: none;
+          }
+      }
+
+      ul li:hover{
+          background: themed("background",5);
+          border-radius: 18px;
+          text-decoration: none;
+      }
+    }
+
     >.right {
-      width: 300px;
-      min-width: 300px;
+      width: 280px;
+      min-width: 280px !important;
+      background: themed("background",3);
+      box-shadow: var(--elevation-1);
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 13px;
+      color: themed("text",1);
     }
 
     >.center {
       min-width: 0 !important;
       flex-grow: 1;
-
+      background: themed("background",3);
+      border-radius: 12px;
+      box-shadow: var(--elevation-1);
+      padding: 8px 300px 18px 100px;
+      
+      
       >* {
         h2 {
-          font-size: 16px;
+          font-size: 20px;
+          font-weight: themed("weight", 700);
+        }
+        h4{
+          align-items: center
         }
 
         .footer {
@@ -133,7 +217,7 @@
       }
 
       h2 {
-        margin-bottom: 15px;
+        margin-bottom: 5px;
       }
 
       ul {
@@ -168,14 +252,34 @@
 
 .portals-results {
   @include themify($themes) {
-    background: themed("background", 3);
-    box-shadow: var(--elevation-1);
-    border-radius: 5px;
+    // background: themed("background", 3);
+    // box-shadow: var(--elevation-1);
+    // border-radius: 0px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 15px;
+    
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+      }
+    }
 
     ul {
       li {
@@ -226,7 +330,8 @@
 
 .invests-results {
   @include themify($themes) {
-    margin-bottom: 15px;
+    // margin-bottom: 5px;
+   
 
     >.top,
     .bottom {
@@ -235,7 +340,7 @@
       color: themed("text", 1);
       background: themed("background", 3);
       border-radius: 5px;
-      margin-bottom: 5px;
+      margin-bottom: 0px;
       display: flex;
       align-items: center;
       box-shadow: var(--elevation-1);
@@ -279,14 +384,20 @@
 
 .persons-results {
   @include themify($themes) {
-    background: themed("background", 3);
-    box-shadow: var(--elevation-1);
-    border-radius: 5px;
-    padding: 15px;
+    // background: themed("background", 3);
+    // box-shadow: var(--elevation-1);
+    // border-radius: 5px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-bottom: 15px;
+    gap: 0px;
+    // margin-bottom: 5px;
+    
+    h4 {
+      text-align: center;
+      width: 100%;
+      font-size: 14px;
+    }
 
     .person {
       border-radius: 5px;
@@ -297,6 +408,8 @@
         h3 {
           font-size: 15px;
           color: themed('text', 2);
+    
+          
         }
 
         p {
@@ -312,6 +425,30 @@
         }
       }
     }
+
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        padding: 10px 20px;
+        font-size: 14px;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+      }
+    }
   }
 }
 
@@ -319,25 +456,53 @@
   @include themify($themes) {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-bottom: 15px;
+    gap: 0px;
+    // margin-bottom: 5px;
 
     .post-card {
       margin-bottom: 0;
+      box-shadow: none !important;
+      border: 1px solid themed("border", 2) !important;
     }
 
     &> :is(.top, .footer) {
-      background: themed("background", 3);
-      border-radius: 5px;
+      // background: themed("background", 3);
+      // border-radius: 5px;
       height: 50px;
-      box-shadow: var(--elevation-1);
+      // box-shadow: var(--elevation-1);
       padding: 15px;
     }
 
     >.footer {
-      a>span {
-        font-weight: 600;
-        font-size: 15px !important;
+      a {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        padding: 10px 20px;
+        font-size: 14px;
+        text-decoration: none;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+        
+        span {
+          font-size: 14px;
+        }
+        
+        svg {
+          display: none;
+        }
       }
     }
   }
@@ -345,14 +510,14 @@
 
 .artists-results {
   @include themify($themes) {
-    background: themed("background", 3);
-    box-shadow: var(--elevation-1);
-    border-radius: 5px;
+    // background: themed("background", 3);
+    // box-shadow: var(--elevation-1);
+    // border-radius: 5px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 15px;
+    // margin-bottom: 5px;
 
     .artists-results-slider {
       background: themed("background", 3);
@@ -414,19 +579,41 @@
         border: 1px solid var(--orange);
       }
     }
+
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+      }
+    }
   }
 }
 
 .musiques-results {
   @include themify($themes) {
-    background: themed("background", 3);
-    box-shadow: var(--elevation-1);
-    border-radius: 5px;
+    // background: themed("background", 3);
+    // box-shadow: var(--elevation-1);
+    // border-radius: 5px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 15px;
+    // margin-bottom: 5px;
 
     .musiques-results-list {
       .musique {
@@ -508,19 +695,41 @@
         }
       }
     }
+
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+      }
+    }
   }
 }
 
 .hotels-results {
   @include themify($themes) {
-    background: themed("background", 3);
-    box-shadow: var(--elevation-1);
-    border-radius: 5px;
+    // background: themed("background", 3);
+    // box-shadow: var(--elevation-1);
+    // border-radius: 5px;
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-bottom: 15px;
+    // margin-bottom: 5px;
 
     .hotels-results-list {
       .hotel {
@@ -601,19 +810,42 @@
         }
       }
     }
+
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
+        }
+      }
+    }
   }
 }
 
 .attractions-results {
   @include themify($themes) {
-    background: themed("background", 3);
+    // background: themed("background", 3);
     color: themed("text", 4);
-    border-radius: 5px;
-    box-shadow: var(--elevation-1);
+    // border-radius: 5px;
+    // box-shadow: var(--elevation-1);
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    // margin-bottom: 5px;
 
     .attractions-results-list {
       .attraction {
@@ -659,6 +891,28 @@
             font-size: 13px;
             color: themed('mainColor', purple);
           }
+        }
+      }
+    }
+
+    .footer {
+      .btn {
+        background: themed("background", 5);
+        border: 1px solid themed("border", 2);
+        color: themed("text", 2);
+        font-weight: themed("weight", 600);
+        border-radius: 18px;
+        transition: none !important;
+        
+        &:hover {
+          background: themed("background", 5) !important;
+          border: 1px solid themed("border", 2) !important;
+          border-color: themed("border", 2) !important;
+          color: themed("text", 2) !important;
+          transform: none !important;
+          box-shadow: none !important;
+          opacity: 1 !important;
+          filter: none !important;
         }
       }
     }

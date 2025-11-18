@@ -4,6 +4,7 @@
     @include themify($themes) {
         font-size: 13px;
         font-weight: themed("weight", 700);
+        
     }
 }
 
