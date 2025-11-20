@@ -32,10 +32,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new GetCollection(),
         new Put(),
         new Patch(),
-        new MetadataPost(
-            controller: PayPostController::class,
-            deserialize: false
-        ),
+        new MetadataPost(),
         new Delete()
     ],
 )]
