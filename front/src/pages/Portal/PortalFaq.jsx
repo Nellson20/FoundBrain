@@ -13,6 +13,8 @@ import Modal from "../../components/Modal/Modal";
 import StickySideBar from "../../components/StickySideBar/StickySideBar";
 
 const PortalFaq = ({ t }) => {
+  // Les données statiques questionsReponses restent car il n'y a pas d'entité FAQ dans le backend
+  // TODO: Créer une entité FAQ dans le backend pour rendre ces données dynamiques
   const questionsReponses = [
     {
       question: "Pouvez-vous me parler de la culture d'entreprise ?",

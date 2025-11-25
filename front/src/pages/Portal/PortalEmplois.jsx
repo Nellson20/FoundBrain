@@ -60,36 +60,7 @@ const PortalEmplois = () => {
     }
   }, [jobOfferList])
 
-  const jobDataList = [
-    {
-      id: 1,
-      title: t("Développeur Full Stack"),
-      author: {
-        name: "Entreprise A",
-        activeLogo: { fileUrl: company?.activeLogo?.fileUrl },
-        adress: t("123 Rue de l'Exemple, Paris"),
-      },
-      domaine: t("Technologie"),
-      summary:
-        t("Résumé de l'emploi... Lorem, ipsum dolor sit amet consectetur adipisicing elitPossimus, suscipit accusamus, incidunt voluptatum dignissimosquaerat blanditiis ut nostrum harum, provident quam nemo"),
-      description:
-        t("Description détaillée de l'emploi...<br><br>Entreprise X est à la recherche d'un développeur Full Stack expérimenté pour rejoindre notre équipe de développement. Vous serez responsable de la conception, du développement et de la maintenance de nos applications web et mobiles. Nous recherchons quelqu'un qui est passionné par la technologie et qui a une expérience prouvée dans le développement Full Stack. Vous travaillerez en étroite collaboration avec notre équipe de produits pour créer des solutions qui répondent à nos besoins métier. Nous offrons un environnement de travail stimulant et une opportunité de croissance professionnelle."),
-      createdAt: "2023-04-01T00:00:00Z",
-      xp: t("2 ans"),
-      salary: {
-        min: 40000,
-        max: 60000,
-        currency: { code: "USD" },
-      },
-      grade: {
-        title: t("Senior"),
-      },
-      type: {
-        title: t("Temps plein"),
-      },
-    },
-    // ... autres objets inchangés mais avec t("...") ajouté
-  ];
+  // Les données statiques jobDataList restent car elles sont déjà utilisées via jobOfferListFlat depuis le backend
 
   const show = (element) => {
     setOpen(true);

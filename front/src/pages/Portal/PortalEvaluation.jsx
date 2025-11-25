@@ -13,10 +13,47 @@ const PortalEvaluation = ({ t }) => {
   const [isActive, setIsActive] = useState(t("Date"));
   const [open, setOpen] = useState(false)
 
+  // Données statiques car les évaluations ne sont pas directement liées à Company dans le backend
+  // TODO: Créer une relation Company-Evaluation dans le backend
+
+  const evaluations = [
+    {
+      note: 3.5,
+      commentaire: "Bon équilibre vie pro/perso",
+      auteur: "Harena",
+      date: "18/02/2024",
+    },
+    {
+      note: 3.5,
+      commentaire: "Un travail pour enrichir son expérience CV",
+      auteur: "Harena",
+      date: "18/02/2024",
+    },
+    {
+      note: 3.5,
+      commentaire: "Un bon équilibre vie professionnelle et personnelle",
+      auteur: "Harena",
+      date: "18/02/2024",
+    },
+  ];
+
+  const evaluationStats = {
+    total: evaluations.length,
+    average: evaluations.reduce((acc, ev) => acc + ev.note, 0) / evaluations.length,
+    distribution: {
+      5: evaluations.filter(ev => ev.note === 5).length,
+      4: evaluations.filter(ev => ev.note === 4).length,
+      3: evaluations.filter(ev => ev.note === 3).length,
+      2: evaluations.filter(ev => ev.note === 2).length,
+      1: evaluations.filter(ev => ev.note === 1).length,
+    }
+  };
+
   const handleClick = (value) => {
     setIsActive(value);
     setIsCroissant((val) => !val);
   };
+
   return (
     <div className="portal-evaluation">
       <div className="head elevated-card px-15 mt-15 pb-15">

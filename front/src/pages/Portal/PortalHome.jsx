@@ -39,6 +39,8 @@ const PageHome = ({ t }) => {
   const { portalId } = useParams();
   const { company } = useOutletContext();
   const htmlToJsx = new Parser();
+
+  // Données statiques car turnover n'existe pas encore dans le backend
   const yearlyData = [6, 7, 6, 5.6, 6.5];
 
   /**
