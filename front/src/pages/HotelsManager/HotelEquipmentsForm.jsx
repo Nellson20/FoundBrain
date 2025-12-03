@@ -68,7 +68,7 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
                                             )
                                         }}
                                     </Field>
-                                    <span>{e.equipmentTitle}</span>
+                                    <span>{t(e.equipmentTitle)}</span>
                                 </label>
                             </div>
                         ))
@@ -103,7 +103,7 @@ const HotelEquipmentsForm = ({ formData, initialFields, setFormData, currentStep
                                             )
                                         }}
                                     </Field>
-                                    <span>{s.title}</span>
+                                    <span>{t(s.title)}</span>
                                 </label>
                             </div>
                         ))

@@ -15,6 +15,7 @@ import { getHotelDetails } from '../../api/hotel'
 import { Link } from 'react-router-dom'
 import TextViewMore from '../../components/TextViewMore/TextViewMore'
 import StickySideBar from '../../components/StickySideBar/StickySideBar'
+import { useTranslation } from 'react-i18next'
 
 const AttractionReservation = ({ data }) => {
 
@@ -117,6 +118,7 @@ const AvisCard = ({ data }) => {
 }
 
 const HotelsReservation = () => {
+  const { t } = useTranslation()
 
   //get hotel details
   const { hotelId } = useParams()
@@ -390,7 +392,7 @@ const HotelsReservation = () => {
                               <div className="ico">
                                 <LuCalendarCog />
                               </div>
-                              <span className='txt-2'>{e.equipmentTitle}</span>
+                              <span className='txt-2'>{t(e.equipmentTitle)}</span>
                             </div>
                           ))
                         }

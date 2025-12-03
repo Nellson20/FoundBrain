@@ -167,7 +167,7 @@ const Register = () => {
                                 >
                                     {
                                         genders.length > 0 ?
-                                            genders.map((g, i) => <option key={i} value={g.id}>{g.title}</option>) : 
+                                            genders.map((g, i) => <option key={i} value={g.id}>{t(g.title)}</option>) : 
                                             <option value="">{t('Chargement...')}</option>
                                     }
                                 </select>

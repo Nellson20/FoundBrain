@@ -33,12 +33,14 @@ import Logo from "../../components/Logo/Logo";
 import Skeleton from "../../components/Skeleton/Skeleton";
 import { } from "react-bootstrap-icons";
 import YearlyStatsChart from "../../components/YearlyStatsChart/YearlyStatsChart";
+import { useTranslation } from "react-i18next";
 
-const PageHome = ({ t }) => {
+const PageHome = () => {
   const { deviceType } = useContext(MediaContext);
   const { portalId } = useParams();
   const { company } = useOutletContext();
   const htmlToJsx = new Parser();
+  const { t } = useTranslation();
 
   // Données statiques car turnover n'existe pas encore dans le backend
   const yearlyData = [6, 7, 6, 5.6, 6.5];

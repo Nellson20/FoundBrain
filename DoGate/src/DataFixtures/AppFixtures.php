@@ -733,23 +733,23 @@ class AppFixtures extends Fixture
             } 
 
         $jobGrades = [
-            "Etudiant",
-            "Junior",
-            "Senior"
+            "jobGrades.Etudiant",
+            "jobGrades.Junior",
+            "jobGrades.Senior"
         ];
         $jobTypes = [
-            "Temps plein",
-            "Temps partiel",
-            "CDI",
-            "CDD",
-            "Alternance",
-            "Teletravail/Freelance",
-            "Stage",
+            "jobTypes.Temps plein",
+            "jobTypes.Temps partiel",
+            "jobTypes.CDI",
+            "jobTypes.CDD",
+            "jobTypes.Alternance",
+            "jobTypes.Teletravail/Freelance",
+            "jobTypes.Stage",
         ];
         $genders = [
-            "Homme",
-            "Femme",
-            "Autre"
+            "genders.Homme",
+            "genders.Femme",
+            "genders.Autre"
         ];
         $companySizes = [
             "1-10",
@@ -1026,77 +1026,77 @@ class AppFixtures extends Fixture
         ];
         $equipments_hotel = 
         [
-            "Wi-Fi",
-            "Television",
-            "Climatisation",
-            "Minibar",
-            "Coffre-fort",
-            "Sèche-cheveux",
-            "Fer et planche à repasser",
-            "Machine à café",
-            "bouilloire",
-            "Téléphone",
-            "Radio-réveil",
-            "Baignoire ou douche",
-            "Miroir de maquillage",
-            "Ventilateur",
-            "Articles de toilette",
-            "Table et chaises",
-            "Fournitures de bureau",
-            "Moustiquaires",
-            "Porte-bagages",
-            "Lampes de lecture",
-            "Réfrigérateur",
-            "Lave-linge et sèche-linge",
-            "Salle de sport",
-            "Restaurant",
-            "Piscine",
-            "Bar",
-            "Salle de conference",
-            "Salle de reunion" 
+            "equipments_hotel.Wi-Fi",
+            "equipments_hotel.Television",
+            "equipments_hotel.Climatisation",
+            "equipments_hotel.Minibar",
+            "equipments_hotel.Coffre-fort",
+            "equipments_hotel.Sèche-cheveux",
+            "equipments_hotel.Fer et planche à repasser",
+            "equipments_hotel.Machine à café",
+            "equipments_hotel.bouilloire",
+            "equipments_hotel.Téléphone",
+            "equipments_hotel.Radio-réveil",
+            "equipments_hotel.Baignoire ou douche",
+            "equipments_hotel.Miroir de maquillage",
+            "equipments_hotel.Ventilateur",
+            "equipments_hotel.Articles de toilette",
+            "equipments_hotel.Table et chaises",
+            "equipments_hotel.Fournitures de bureau",
+            "equipments_hotel.Moustiquaires",
+            "equipments_hotel.Porte-bagages",
+            "equipments_hotel.Lampes de lecture",
+            "equipments_hotel.Réfrigérateur",
+            "equipments_hotel.Lave-linge et sèche-linge",
+            "equipments_hotel.Salle de sport",
+            "equipments_hotel.Restaurant",
+            "equipments_hotel.Piscine",
+            "equipments_hotel.Bar",
+            "equipments_hotel.Salle de conference",
+            "equipments_hotel.Salle de reunion" 
         ];
         $equipments_accomodations = 
         [
-            "Wi-Fi",
-            "Television",
-            "Climatisation",
-            "Coffre-fort",
-            "Fer et planche à repasser",
-            "Machine à café",
-            "Bouilloire",
-            "Téléphone",
-            "Radio-réveil",
-            "Ventilateur",
-            "Articles de toilette",
-            "Table et chaises",
-            "Fournitures de bureau",
-            "Moustiquaires",
-            "Porte-bagages",
-            "Lampes de lecture",
-            "Réfrigérateur"
+            "equipments_accomodations.Wi-Fi",
+            "equipments_accomodations.Television",
+            "equipments_accomodations.Climatisation",
+            "equipments_accomodations.Coffre-fort",
+            "equipments_accomodations.Fer et planche à repasser",
+            "equipments_accomodations.Machine à café",
+            "equipments_accomodations.Bouilloire",
+            "equipments_accomodations.Téléphone",
+            "equipments_accomodations.Radio-réveil",
+            "equipments_accomodations.Ventilateur",
+            "equipments_accomodations.Articles de toilette",
+            "equipments_accomodations.Table et chaises",
+            "equipments_accomodations.Fournitures de bureau",
+            "equipments_accomodations.Moustiquaires",
+            "equipments_accomodations.Porte-bagages",
+            "equipments_accomodations.Lampes de lecture",
+            "equipments_accomodations.Réfrigérateur"
         ];
         $equipments_bathroom = 
         [
-            "Sèche-cheveux",
-            "Baignoire ou douche",
-            "Miroir de maquillage",
-            "Articles de toilette"
+            "equipments_bathroom.Sèche-cheveux",
+            "equipments_bathroom.Baignoire ou douche",
+            "equipments_bathroom.Miroir de maquillage",
+            "equipments_bathroom.Articles de toilette"
         ];
         $servicesHotel = 
         [
-            "Restauration",
-            "Blanchisserie",
-            "Nettoyage à sec",
-            "Conciergerie",
-            "Navette aéroport",
-            "Centre d'affaires",
-            "Salles de réunion",
-            "Activités pour enfants",
-            "Spa et Bien-être",
-            "Services de transport",
-            "Services médicaux",
-            "Services de mariage et Événements",
-            "Services de sécurité"
+            "servicesHotel.Restauration",
+            "servicesHotel.Blanchisserie",
+            "servicesHotel.Nettoyage à sec",
+            "servicesHotel.Conciergerie",
+            "servicesHotel.Navette aéroport",
+            "servicesHotel.Centre d'affaires",
+            "servicesHotel.Salles de réunion",
+            "servicesHotel.Activités pour enfants",
+            "servicesHotel.Spa et Bien-être",
+            "servicesHotel.Services de transport",
+            "servicesHotel.Services médicaux",
+            "servicesHotel.Services de mariage et Événements",
+            "servicesHotel.Services de sécurité"
         ];
         
         $thingstoDos=
